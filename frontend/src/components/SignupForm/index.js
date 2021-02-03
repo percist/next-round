@@ -4,11 +4,15 @@ import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 
-function SignupFormPage() {
+function SignupForm() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [zip, setZip] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -19,7 +23,15 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
+      return dispatch(sessionActions.signup({ 
+        email,
+        firstName,
+        lastName,
+        zip,
+        imgUrl, 
+        username, 
+        password 
+      }))
         .catch(res => {
           if (res.data && res.data.errors) setErrors(res.data.errors);
         });
@@ -37,15 +49,58 @@ function SignupFormPage() {
         <label>
           Email
           <input
-            type="text"
+            className="input sign-up-form_input"
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </label>
         <label>
+          First Name
+          <input
+            className="input sign-up-form_input"
+            type="text"
+            id="firstName"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          Last Name
+          <input
+            className="input sign-up-form_input"
+            type="text"
+            id="lastName"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          Zip Code
+          <input
+            className="input sign-up-form_input"
+            type="integer"
+            value={zip}
+            onChange={(e) => setZip(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          Profile Picture
+          <input
+            className="input sign-up-form_input"
+            type="src"
+            value={imgUrl}
+            onChange={(e) => setImgUrl(e.target.value)}
+          />
+        </label>
+        <label>
           Username
           <input
+            className="input sign-up-form_input"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -55,6 +110,7 @@ function SignupFormPage() {
         <label>
           Password
           <input
+            className="input sign-up-form_input"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -64,16 +120,23 @@ function SignupFormPage() {
         <label>
           Confirm Password
           <input
+            className="input sign-up-form_input"
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
         </label>
-        <button type="submit">Sign Up</button>
+        <button 
+          className="button"
+          id="sign-up-form_button"
+          type="submit"
+          >
+            Sign Up
+        </button>
       </form>
     </>
   );
 }
 
-export default SignupFormPage;
+export default SignupForm;
