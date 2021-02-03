@@ -14,7 +14,7 @@ module.exports = {
             address: faker.address.streetAddress(),
             city: faker.address.city(),
             state: state,
-            zip: faker.address.zipCodeByState(state),
+            zip: faker.address.zipCode("#####"),
             website: faker.internet.url(),
             imgUrl: faker.image.business(),
           }
@@ -24,7 +24,7 @@ module.exports = {
       return fakeUsers;
     }
 
-    return queryInterface.bulkInsert('People', [
+    return queryInterface.bulkInsert('Sites', [
       {
         name: `Stems and Skins`,
         address: "1070 E Montague Ave",
@@ -40,6 +40,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-      return queryInterface.bulkDelete('People', null, {});
+      return queryInterface.bulkDelete('Sites', null, {});
   }
 };

@@ -5,13 +5,21 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING(25)
     },
-    recipientId: {
+    recieverId: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: "Users",
+      refereceKey: "id",
+      onUpdate: "cascade",
+      onDelete: "cascade",
     },
-    purchaserId: {
+    senderId: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: "Users",
+      refereceKey: "id",
+      onUpdate: "cascade",
+      onDelete: "cascade",
     },
     roundItemId: {
       allowNull: false,

@@ -12,11 +12,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(25)
       },
-      recipientId: {
+      recieverId: {
         allowNull: false,
         type: Sequelize.INTEGER
       },
-      purchaserId: {
+      senderId: {
         allowNull: false,
         type: Sequelize.INTEGER
       },
@@ -32,11 +32,13 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now'),
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now'),
       }
     });
   },

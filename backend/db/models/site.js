@@ -52,21 +52,18 @@ module.exports = (sequelize, DataTypes) => {
     },
     facbook: {
       type: DataTypes.STRING(2),
-      allowNuyll: false,
       validate: {
         len: [2],
       },
     },
     twitter: {
       type: DataTypes.STRING(2),
-      allowNuyll: false,
       validate: {
         len: [2],
       },
     },
     instagram: {
       type: DataTypes.STRING(2),
-      allowNuyll: false,
       validate: {
         len: [2],
       },

@@ -32,23 +32,19 @@ module.exports = {
       },
       website: {
         type: Sequelize.STRING,
-        allowNull: false,
         unique: true
       },
       facbook: {
         type: Sequelize.STRING(50),
-        allowNull: false,
       },
       twitter: {
         type: Sequelize.STRING(50),
-        allowNull: false,
       },
       instagram: {
         type: Sequelize.STRING(50),
-        allowNull: false,
       },
       imgUrl: {
-        type: Sequelize.String(1000)
+        type: Sequelize.STRING(1000)
       },
       menuId: {
         type: Sequelize.INTEGER
@@ -64,11 +60,13 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now'),
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now'),
       }
     });
   },

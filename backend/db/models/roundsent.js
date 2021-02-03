@@ -3,11 +3,19 @@ module.exports = (sequelize, DataTypes) => {
   const RoundSent = sequelize.define('RoundSent', {
     userId: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: "Users",
+      refereceKey: "id",
+      onUpdate: "cascade",
+      onDelete: "cascade",
     },
     roundId: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: "Users",
+      refereceKey: "id",
+      onUpdate: "cascade",
+      onDelete: "cascade",
     }
   }, {});
   RoundSent.associate = function(models) {

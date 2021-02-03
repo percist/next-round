@@ -3,7 +3,11 @@ module.exports = (sequelize, DataTypes) => {
   const Owner = sequelize.define('Owner', {
     userId: {
       allowNull: false, 
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: "Users",
+      refereceKey: "id",
+      onUpdate: "cascade",
+      onDelete: "cascade",
     },
     siteId: {
       allowNull: false, 

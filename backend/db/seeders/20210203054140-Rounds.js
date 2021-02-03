@@ -5,42 +5,50 @@ module.exports = {
     return queryInterface.bulkInsert('Rounds', [
       {
         status: 'pending',
-        userId: 1,
+        recieverId: 1,
+        senderId: 2,
         siteId: 1,
       },
       {
         status: 'pending',
-        userId: 2,
+        recieverId: 1,
+        senderId: 2,
         siteId: 1,
       },
       {
         status: 'pending',
-        userId: 1,
+        recieverId: 1,
+        senderId: 2,
         siteId: 1,
       },
       {
         status: 'pending',
-        userId: 1,
+        recieverId: 1,
+        senderId: 2,
         siteId: 1,
       },
       {
         status: 'pending',
-        userId: 1,
+        recieverId: 1,
+        senderId: 2,
         siteId: 1,
       },
       {
         status: 'pending',
-        userId: 1,
+        recieverId: 1,
+        senderId: 2,
         siteId: 1,
       },
       {
         status: 'pending',
-        userId: 2,
+        recieverId: 1,
+        senderId: 2,
         siteId: 1,
       },
       {
         status: 'pending',
-        userId: 1,
+        recieverId: 1,
+        senderId: 2,
         siteId: 1,
       },
 

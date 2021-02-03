@@ -1,0 +1,35 @@
+
+npx sequelize-cli model:generate --name  Comment --attributes "name:string" &&
+npx sequelize-cli model:generate --name  Favorite --attributes "name:string" &&
+npx sequelize-cli model:generate --name  Item --attributes "name:string" &&
+npx sequelize-cli model:generate --name  ItemRating --attributes "name:string" &&
+npx sequelize-cli model:generate --name  Like --attributes "name:string" &&
+npx sequelize-cli model:generate --name  Menu --attributes "name:string" &&
+npx sequelize-cli model:generate --name  Owner --attributes "name:string" &&
+npx sequelize-cli model:generate --name  Payment --attributes "name:string" &&
+npx sequelize-cli model:generate --name  Post --attributes "name:string" &&
+npx sequelize-cli model:generate --name  Round --attributes "name:string" &&
+npx sequelize-cli model:generate --name  RoundItem --attributes "name:string" &&
+npx sequelize-cli model:generate --name  RoundReceived --attributes "name:string" &&
+npx sequelize-cli model:generate --name  RoundSent --attributes "name:string" &&
+npx sequelize-cli model:generate --name  Save --attributes "name:string"
+
+npx sequelize-cli seed:generate --name 'Users' &&
+npx sequelize-cli seed:generate --name 'Sites' &&
+npx sequelize-cli seed:generate --name 'Owners' &&
+npx sequelize-cli seed:generate --name 'Items' &&
+npx sequelize-cli seed:generate --name 'Menus' &&
+npx sequelize-cli seed:generate --name 'Rounds' &&
+npx sequelize-cli seed:generate --name 'RoundItems' &&
+npx sequelize-cli seed:generate --name 'Posts' &&
+npx sequelize-cli seed:generate --name 'Comments' &&
+npx sequelize-cli seed:generate --name 'Payments' &&
+npx sequelize-cli seed:generate --name 'Saves' &&
+npx sequelize-cli seed:generate --name 'Likes' &&
+npx sequelize-cli seed:generate --name 'Buddies' &&
+npx sequelize-cli seed:generate --name 'Favorites' &&
+npx sequelize-cli seed:generate --name 'ItemRatings' &&
+npx sequelize-cli seed:generate --name 'RoundReceived' &&
+npx sequelize-cli seed:generate --name 'RoundSent'
+
+npx dotenv sequelize-cli db:seed:undo:all && npx dotenv sequelize-cli db:migrate:undo:all && npx dotenv sequelize-cli db:migrate && npx dotenv sequelize-cli db:seed:all  
