@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session';
+import posts from './posts';
 import users from './users';
 import sites from './sites';
 import rounds from './rounds';

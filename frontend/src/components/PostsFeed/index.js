@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Maps = () => {
+const PostsFeed = () => {
     return <h1>PostsFeed</h1>
 }
 
-export default Maps;
+export default PostsFeed;
