@@ -1,7 +1,11 @@
 import React from 'react';
 
-const Comment = () => {
-    return <h1>Comment</h1>
+const Comment = ({ comment }) => {
+    return (
+        <div className="comment" >
+            {comment.content}
+        </div>    
+    )
 }
 
 export default Comment;

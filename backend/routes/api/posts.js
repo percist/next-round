@@ -1,18 +1,16 @@
 const express = require("express")
 const asyncHandler = require('express-async-handler');
 const { requireAuth } = require('../../utils/auth');
-const {Round, User, Buddy} = require("../../db/models");
-const user = require("../../db/models/user");
-const { route } = require("./users");
+const {Round, User, Reply} = require("../../db/models");
 
 const router = express.Router();
 
-route.get(
+router.get(
     `/buddies/:id(\\d+)`,
     asyncHandler(async (req, res) => {
-        const id = req.params.id;
+        const userId = req.params.id;
         const user = await User.findOne({
-            where: { id },
+            where: { userId },
             include: [
                 {
                     model: User,
@@ -33,5 +31,26 @@ route.get(
         
     })
 );
+
+router.get(
+    `/:id(\\d+)/replies`,
+    asyncHandler(async (req, res) => {
+        const postId = req.params.id
+        const replies = await Reply.findAll({
+            where: {
+                postId
+            }
+        })
+        res.json({ replies })
+    })
+)
+
+router.post(
+    `/:id(\\d+)/comments`,
+    asyncHandler(async (req, res) => {
+        const postId = req.params.id
+        const comment = await Comment.create(req.body);
+        res.json(comment)
+    })
 
 module.exports = router;

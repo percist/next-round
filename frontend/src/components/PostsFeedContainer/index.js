@@ -7,7 +7,7 @@ import PostsFeed from '../PostsFeed';
 const PostsFeedContainer = () => {
     const dispatch = useDispatch();
 
-    const user =  useSelector(reduxState => {
+    const {user} =  useSelector(reduxState => {
         return reduxState.session;
       });
 
@@ -23,7 +23,7 @@ const PostsFeedContainer = () => {
         dispatch(fetchAllBuddyPosts(user.id))
     },[dispatch, user])
     
-    return <PostsFeed posts={posts} />
+    return <PostsFeed posts={posts} user={user} />
 }
 
 export default PostsFeedContainer;
