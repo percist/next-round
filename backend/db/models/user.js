@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [4, 30],
+        // len: [4, 50],
         isNotEmail(value) {
           if (Validator.isEmail(value)) {
             throw new Error('Cannot be an email.');
@@ -33,9 +33,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     zip: {
       type: DataTypes.STRING(10),
-      validate: {
-        len: [5, 10]
-      }
     },
     email: {
       type: DataTypes.STRING,
@@ -123,11 +120,11 @@ module.exports = (sequelize, DataTypes) => {
     User.belongsToMany(models.User, columnMapping6);
     User.belongsToMany(models.User, columnMapping7);
     User.belongsToMany(models.User, columnMapping8);
-    User.hasMany(models.Round, {as: 'SentRounds', foreignKey: 'senderId' });
-    User.hasMany(models.Round, {as: 'ReceivedRounds', foreignKey: 'receiverId' });
+    User.hasMany(models.Round, {foreignKey: 'senderId' });
+    User.hasMany(models.Round, {foreignKey: 'receiverId' });
   };
-  User.prototype.toSafeObject = function () { // remember, this cannot be an arrow function
-    const { id, username, email } = this; // context will be the User instance
+  User.prototype.toSafeObject = function () { 
+    const { id, username, email } = this; 
     return { id, username, email };
   };
   User.prototype.validatePassword = function (password) {

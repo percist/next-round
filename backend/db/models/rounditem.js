@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     roundId: {
       allowNull: false,
+      unique: true,
       type: DataTypes.INTEGER
     }
   }, {});

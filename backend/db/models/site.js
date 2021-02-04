@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [4, 256],
       },
-      unique: true,
+      // unique: true,
     },
     address: {
       type: DataTypes.STRING(256),
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [4, 256],
       },
-      unique: true,
+      // unique: true,
     },
     city: {
       type: DataTypes.STRING(100),
@@ -34,21 +34,17 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     zip: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(10),
       allowNuyll: false,
       validate: {
         len: [2, 5],
       },
     },
     website: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(1000),
       validate: {
-        isURL: [{
-            msg: 'website must be a URL beginning with "https://".',
-            protocols: ['https'],
-            require_protocol: true
-        }]
-      },
+        isURL: true
+      }
     },
     facbook: {
       type: DataTypes.STRING(2),

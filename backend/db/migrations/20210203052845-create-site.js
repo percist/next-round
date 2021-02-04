@@ -11,12 +11,12 @@ module.exports = {
       name: {
         type: Sequelize.STRING(256),
         allowNull: false,
-        unique: true
+        // unique: true
       },
       address: {
         type: Sequelize.STRING(256),
         allowNull: false,
-        unique: true
+        // unique: true
       },
       city: {
         type: Sequelize.STRING(100),
@@ -27,12 +27,12 @@ module.exports = {
         allowNull: false
       },
       zip: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(10),
         allowNull: false,
       },
       website: {
-        type: Sequelize.STRING,
-        unique: true
+        type: Sequelize.STRING(1000),
+        // unique: true
       },
       facbook: {
         type: Sequelize.STRING(50),

@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler');
 
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User, Buddy } = require('../../db/models');
 
 const router = express.Router();
 
@@ -65,6 +65,24 @@ router.get(
       const userId = req.params.id
       const user = await User.findByPk(userId)
       res.json({ user })
+  })
+)
+
+router.get(
+  `/:id(\\d+)/buddies`,
+  asyncHandler(async (req, res) => {
+      const userId = req.params.id
+      const buddies = await User.findAll({
+        where: {
+          id: userId
+        },
+        include: {
+          model: User,
+          as: "following"
+        }
+      })
+      console.log(buddies)
+      res.json({ buddies })
   })
 )
 

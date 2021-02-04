@@ -13,16 +13,17 @@ const paymentTypes = [
   "diner's club"
 ]
 
-const generateFakePayments = (numPayments = 749) =>{
+const generateFakePayments = (numPayments = 800) =>{
   const fakePayments = [];
   while (numPayments > 0){
     fakePayments.push({
       paymentStatus: paymentStatuses[Math.floor(Math.random())],
-      paymentType: paymentTypes[Math.floor(math.random() * 4)],
-      roundId: numPayment
+      paymentType: paymentTypes[Math.floor(Math.random() * 4)],
+      roundId: numPayments
     })
     numPayments -= 1
   }
+  return fakePayments;
 }
 
 module.exports = {

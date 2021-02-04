@@ -5,33 +5,37 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING(25)
     },
-    recieverId: {
+    receiverId: {
       allowNull: false,
       type: DataTypes.INTEGER,
-      references: "Users",
-      refereceKey: "id",
-      onUpdate: "cascade",
-      onDelete: "cascade",
+      references: {model: "Users"}
+      // refereceKey: "id",
+      // onUpdate: "cascade",
+      // onDelete: "cascade",
     },
     senderId: {
       allowNull: false,
       type: DataTypes.INTEGER,
-      references: "Users",
-      refereceKey: "id",
-      onUpdate: "cascade",
-      onDelete: "cascade",
+      references: {model: "Users"}
+      // refereceKey: "id",
+      // onUpdate: "cascade",
+      // onDelete: "cascade",
     },
     roundItemId: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {model: "RoundItems"}
+
     },
-    siteId: {
-      allowNull: false,
-      type: DataTypes.INTEGER
-    },
+    // siteId: {
+    //   allowNull: false,
+    //   type: DataTypes.INTEGER
+    // },
     paymentId: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {model: "Payments"}
+
     }
   }, {});
   Round.associate = function(models) {
@@ -47,10 +51,10 @@ module.exports = (sequelize, DataTypes) => {
     };
     Round.belongsToMany(models.Item, columnMapping1);
     Round.belongsToMany(models.Item, columnMapping2);
-    Round.belongsTo(models.User, { as: 'sender', foreignKey: 'senderId'})
-    Round.belongsTo(models.User, { as: 'receiver', foreignKey: 'receiverId'})
+    Round.belongsTo(models.User, {foreignKey: 'senderId'})
+    Round.belongsTo(models.User, {foreignKey: 'receiverId'})
     Round.hasOne(models.Site, {foreignKey: "roundId"});
-    Round.hasOne(models.Post, {foreignKey: "roundId"});
+    Round.hasMany(models.Post, {foreignKey: "roundId"});
     Round.hasOne(models.Payment, {foreignKey: "roundId"})
   };
   return Round;

@@ -9,16 +9,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       image_url: {
-        allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING(1000)
       },
       content: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING(2000)
       },
       roundId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {model: "Rounds"}
       },
       likesId: {
         type: Sequelize.INTEGER
