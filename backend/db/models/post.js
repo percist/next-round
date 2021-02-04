@@ -3,19 +3,12 @@ module.exports = (sequelize, DataTypes) => {
   const Post = sequelize.define('Post', {
     image_url: {
       allowNull: false,
-      type: DataTypes.STRING(1000)
+      type: DataTypes.STRING(1000),
+      default: "https://picsum.photos/seed/picsum/400/600"
     },
     content: {
       allowNull: false,
       type: DataTypes.STRING(2000)
-    },
-    userId: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-      references: "Users",
-      refereceKey: "id",
-      onUpdate: "cascade",
-      onDelete: "cascade",
     },
     roundId: {
       allowNull: false,
@@ -38,7 +31,6 @@ module.exports = (sequelize, DataTypes) => {
     };
     Post.belongsToMany(models.User, columnMapping1);
     Post.belongsToMany(models.User, columnMapping2);
-    Post.belongsTo(models.User, { foreignKey: "postId"});
     Post.belongsTo(models.Round, { foreignKey: "postId"});
   };
   return Post;

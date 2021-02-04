@@ -45,22 +45,10 @@ module.exports = (sequelize, DataTypes) => {
       through: 'ItemRatings',
       otherKey: 'itemId'
     };
-    const columnMapping3 = {
-      foreignKey: 'roundId',
-      as: 'received',
-      through: 'RoundsReceived',
-      otherKey: 'userId'
-    };
-    const columnMapping4 = {
-      foreignKey: 'roundId',
-      as: 'sent',
-      through: 'RoundsSent',
-      otherKey: 'userId'
-    };
     Round.belongsToMany(models.Item, columnMapping1);
     Round.belongsToMany(models.Item, columnMapping2);
-    Round.belongsToMany(models.User, columnMapping3);
-    Round.belongsToMany(models.User, columnMapping4);
+    Round.belongsTo(models.User, { as: 'sender', foreignKey: 'senderId'})
+    Round.belongsTo(models.User, { as: 'receiver', foreignKey: 'receiverId'})
     Round.hasOne(models.Site, {foreignKey: "roundId"});
     Round.hasOne(models.Post, {foreignKey: "roundId"});
     Round.hasOne(models.Payment, {foreignKey: "roundId"})

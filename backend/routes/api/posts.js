@@ -52,5 +52,6 @@ router.post(
         const comment = await Comment.create(req.body);
         res.json(comment)
     })
+);
 
 module.exports = router;

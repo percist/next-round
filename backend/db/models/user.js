@@ -104,16 +104,16 @@ module.exports = (sequelize, DataTypes) => {
       otherKey: 'ownerId',
     };
     const columnMapping7 = {
-      foreignKey: 'userId',
-      through: 'RoundReceived',
-      as: "Receiver",
-      otherKey: 'roundId'
+      as: 'HasSentRoundsTo', 
+      through: models.Round, 
+      foreignKey: 'senderId', 
+      otherKey: 'receiverId'
     }
     const columnMapping8 = {
-      foreignKey: 'userId',
-      through: 'RoundSent',
-      as: "Sender",
-      otherKey: 'roundId'
+      as: 'HasReceivedRoundsFrom', 
+      through: models.Round, 
+      foreignKey: 'receiverId', 
+      otherKey: 'senderId'
     }
     User.belongsToMany(models.Site, columnMapping1);
     User.belongsToMany(models.Comment, columnMapping2);
@@ -121,9 +121,10 @@ module.exports = (sequelize, DataTypes) => {
     User.belongsToMany(models.Site, columnMapping4);
     User.belongsToMany(models.User, columnMapping5);
     User.belongsToMany(models.User, columnMapping6);
-    User.belongsToMany(models.Round, columnMapping7);
-    User.belongsToMany(models.Round, columnMapping8);
-    User.hasMany(models.Post, { foreignKey: "userId" });
+    User.belongsToMany(models.User, columnMapping7);
+    User.belongsToMany(models.User, columnMapping8);
+    User.hasMany(models.Round, {as: 'SentRounds', foreignKey: 'senderId' });
+    User.hasMany(models.Round, {as: 'ReceivedRounds', foreignKey: 'receiverId' });
   };
   User.prototype.toSafeObject = function () { // remember, this cannot be an arrow function
     const { id, username, email } = this; // context will be the User instance

@@ -1,28 +1,21 @@
 'use strict';
 
+const fakeOwnerGenerator = (num) => {
+  const fakeOwners = []
+  while (num > 0) {
+    fakeOwners.push({
+      userId: Math.ceil(num/2),
+      siteId: num
+    })
+    num -= 1
+  }
+  return fakeOwners;
+}
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
       return queryInterface.bulkInsert('Owners', [
-        {
-        userId: 1,
-        siteId: 1
-      },
-        {
-        userId: 2,
-        siteId: 2
-      },
-        {
-        userId: 3,
-        siteId: 3
-      },
-        {
-        userId: 3,
-        siteId: 4
-      },
-        {
-        userId: 4,
-        siteId: 5
-      },
+        ...fakeOwnerGenerator(300)
     ], {});
   },
 

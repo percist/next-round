@@ -35,7 +35,7 @@ module.exports = {
         imgUrl: 'https://static.spotapps.co/spots/04/eb0940bf5f11e7b09ee7a22877fee1/full',
         active: true,
       },
-      ...fakeSiteGenerator(20)
+      ...fakeSiteGenerator(300)
     ], {});
   },
 

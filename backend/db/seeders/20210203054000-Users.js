@@ -33,7 +33,7 @@ module.exports = {
         zip: 29405,
         imgUrl: null,
         hashedPassword: bcrypt.hashSync('password'),
-      }, ...fakeUserGenerator(100)
+      }, ...fakeUserGenerator(1000)
     ], {});
   },
 
