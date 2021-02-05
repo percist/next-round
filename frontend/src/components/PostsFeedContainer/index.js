@@ -12,11 +12,9 @@ const PostsFeedContainer = ({ user }) => {
     });
 
     useEffect(() => {
-        dispatch(restoreUser());
-    },[dispatch])
-
-    useEffect(() => {
-        dispatch(fetchAllBuddyPosts(user.id))
+        if (user){
+            dispatch(fetchAllBuddyPosts(user.id))
+        }
     },[dispatch, user])
     
     return <PostsFeed posts={posts} user={user} />
