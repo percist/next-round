@@ -4,12 +4,8 @@ import { restoreUser } from '../../store/session';
 import { fetchAllBuddyPosts } from '../../store/posts';
 import PostsFeed from '../PostsFeed';
 
-const PostsFeedContainer = () => {
+const PostsFeedContainer = ({ user }) => {
     const dispatch = useDispatch();
-
-    const {user} =  useSelector(reduxState => {
-        return reduxState.session;
-      });
 
     const posts = useSelector(reduxState => {
         return reduxState.posts;

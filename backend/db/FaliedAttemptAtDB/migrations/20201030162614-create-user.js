@@ -6,53 +6,35 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
       username: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false,
-        validate: {
-          // len: [4, 50],
-          isNotEmail(value) {
-            if (Validator.isEmail(value)) {
-              throw new Error('Cannot be an email.');
-            }
-          },
-        },
+        unique: true,
       },
       firstName: {
         type: Sequelize.STRING(30),
         allowNull: false,
-        validate: {
-          len: [3, 30]
-        }
       },
       lastName: {
         type: Sequelize.STRING(50),
+        allowNull: false,      
+      },
+      email: {
+        type: Sequelize.STRING(256),
         allowNull: false,
-        validate: {
-          len: [3, 50]
-        }
+        unique: true,
       },
       zip: {
         type: Sequelize.STRING(10),
       },
-      email: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-          len: [3, 256]
-        },
-      },
       imgUrl: {
-        type: Sequelize.STRING(1000)
+        type: Sequelize.STRING(1000),
       },
       hashedPassword: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING.BINARY,
         allowNull: false,
-        validate: {
-          len: [60, 60]
-        },
       },
       createdAt: {
         allowNull: false,
@@ -68,5 +50,5 @@ module.exports = {
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('Users');
-  },
+  }
 };

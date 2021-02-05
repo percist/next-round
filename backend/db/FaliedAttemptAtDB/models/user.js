@@ -1,11 +1,10 @@
 'use strict';
-const { Validator } = require('sequelize');
+
+const { Validator } = require("sequelize");
 const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define(
-    'User',
-    {
+  const User = sequelize.define('User', {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -71,77 +70,104 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function (models) {
     const columnMapping1 = {
       foreignKey: 'userId',
-      through: 'Owners',
+      through: 'Saves',
       otherKey: 'siteId'
     };
     const columnMapping2 = {
-      foreignKey: 'ownerId',
-      through: 'Buddies',
-      as: "follower",
-      otherKey: 'buddyId',
+      foreignKey: 'userId',
+      through: 'Likes',
+      otherKey: 'commentId'
     };
     const columnMapping3 = {
+      foreignKey: 'userId',
+      through: 'Favorites',
+      otherKey: 'itemId'
+    };
+    const columnMapping4 = {
+      foreignKey: 'userId',
+      through: 'Owners',
+      otherKey: 'siteId'
+    };
+    const columnMapping5 = {
+      foreignKey: 'ownerId',
+      through: 'Buddy',
+      as: "followers",
+      otherKey: 'buddyId',
+    };
+    const columnMapping6 = {
       foreignKey: 'buddyId',
-      through: 'Buddies',
+      through: 'Buddy',
       as: "following",
       otherKey: 'ownerId',
     };
-    const columnMapping4 = {
+    const columnMapping7 = {
       as: 'HasSentRoundsTo', 
-      through: "Rounds", 
+      through: models.Round, 
       foreignKey: 'senderId', 
       otherKey: 'receiverId'
     }
-    const columnMapping5 = {
+    const columnMapping8 = {
       as: 'HasReceivedRoundsFrom', 
-      through: "Rounds", 
+      through: models.Round, 
       foreignKey: 'receiverId', 
       otherKey: 'senderId'
     }
-    User.belongsToMany(models.Site, columnMapping1); // through Owners
-    User.belongsToMany(models.User, columnMapping2); // through Buddies as follower
-    User.belongsToMany(models.User, columnMapping3); // through Buddies as following
-    User.belongsToMany(models.Round, columnMapping4); // through Rounds as hasSentRoundsTo
-    User.belongsToMany(models.Round, columnMapping5); // through Rounds as hasReceivedRoundsFrom
+    User.belongsToMany(models.Site, columnMapping1);
+    User.belongsToMany(models.Comment, columnMapping2);
+    User.belongsToMany(models.Item, columnMapping3);
+    User.belongsToMany(models.Site, columnMapping4);
+    User.belongsToMany(models.User, columnMapping5);
+    User.belongsToMany(models.User, columnMapping6);
+    User.belongsToMany(models.User, columnMapping7);
+    User.belongsToMany(models.User, columnMapping8);
     User.hasMany(models.Round, {foreignKey: 'senderId' });
     User.hasMany(models.Round, {foreignKey: 'receiverId' });
   };
-  User.prototype.toSafeObject = function () {
+  User.prototype.toSafeObject = function () { 
     const { id, username, email } = this; 
     return { id, username, email };
   };
-
   User.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.hashedPassword.toString());
   };
-
   User.getCurrentUserById = async function (id) {
     return await User.scope('currentUser').findByPk(id);
   };
-
   User.login = async function ({ credential, password }) {
     const { Op } = require('sequelize');
     const user = await User.scope('loginUser').findOne({
       where: {
         [Op.or]: {
           username: credential,
-          email: credential
-        }
-      }
+          email: credential,
+        },
+      },
     });
     if (user && user.validatePassword(password)) {
       return await User.scope('currentUser').findByPk(user.id);
     }
   };
-
-  User.signup = async function ({ username, email, password }) {
+  User.signup = async function ({ 
+    username, 
+    firstName,
+    lastName,
+    zip,
+    imgUrl,
+    email, 
+    password 
+  }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
       username,
+      firstName,
+      lastName,
+      zip,
+      imgUrl,
       email,
-      hashedPassword
+      hashedPassword,
     });
     return await User.scope('currentUser').findByPk(user.id);
   };
+
   return User;
 };

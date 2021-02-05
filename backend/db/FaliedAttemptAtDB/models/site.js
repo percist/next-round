@@ -1,4 +1,6 @@
 'use strict';
+const { Validator} = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   const Site = sequelize.define('Site', {
     name: {
@@ -7,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [4, 256],
       },
+      // unique: true,
     },
     address: {
       type: DataTypes.STRING(256),
@@ -14,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [4, 256],
       },
+      // unique: true,
     },
     city: {
       type: DataTypes.STRING(100),
@@ -42,11 +46,31 @@ module.exports = (sequelize, DataTypes) => {
         isURL: true
       }
     },
+    facbook: {
+      type: DataTypes.STRING(2),
+      validate: {
+        len: [2],
+      },
+    },
+    twitter: {
+      type: DataTypes.STRING(2),
+      validate: {
+        len: [2],
+      },
+    },
+    instagram: {
+      type: DataTypes.STRING(2),
+      validate: {
+        len: [2],
+      },
+    },
     imgUrl: {
       type: DataTypes.STRING(1000)
     },
+    menuId: DataTypes.INTEGER,
+    ownersId: DataTypes.INTEGER,
+    reviewId: DataTypes.INTEGER,
     active: DataTypes.BOOLEAN
-    
   }, {});
   Site.associate = function(models) {
     const columnMapping1 = {
@@ -56,11 +80,19 @@ module.exports = (sequelize, DataTypes) => {
     };
     const columnMapping2 = {
       foreignKey: 'siteId',
+      through: 'Saves',
+      otherKey: 'userId'
+    };
+    const columnMapping3 = {
+      foreignKey: 'siteId',
       through: 'Menus',
       otherKey: 'itemId'
     };
     Site.belongsToMany(models.User, columnMapping1);
-    Site.belongsToMany(models.Item, columnMapping2);
+    Site.belongsToMany(models.User, columnMapping1);
+    Site.belongsToMany(models.Item, columnMapping1);
+    Site.hasMany(models.Round, {foreignKey: "siteId"})
+
   };
   return Site;
 };

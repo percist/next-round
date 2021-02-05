@@ -7,6 +7,8 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
+import UserPage from "./components/UserPage";
+import BuddiesSidebar from "./components/BuddiesSidebar"
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +30,12 @@ function App() {
           </Route>
           <Route path="/" exact>
             <HomePage />
+          </Route>
+          <Route path="/users/:id" exact >
+            <UserPage />
+          </Route>
+          <Route path="/users/:id/buddies" exact >
+            <BuddiesSidebar />
           </Route>
         </Switch>
       )}
