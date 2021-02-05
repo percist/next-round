@@ -10,18 +10,20 @@ module.exports = {
       },
       ownerId: {
         type: Sequelize.INTEGER,
-        references: {model: "Users"},
-        refereceKey: "id",
-        onUpdate: "cascade",
-        onDelete: "cascade",
+        references: {
+          model: "Users",
+          key: "id",
+          as: "following"
+        },
         allowNull: false,
       },
       buddyId: {
         type: Sequelize.INTEGER,
-        references: {model: "Users"},
-        refereceKey: "id",
-        onUpdate: "cascade",
-        onDelete: "cascade",
+        references: {
+          model: "Users",
+          references: "id",
+          as: "follower"
+        },
         allowNull: false,
       },
       createdAt: {

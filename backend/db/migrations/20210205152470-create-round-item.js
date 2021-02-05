@@ -15,7 +15,6 @@ module.exports = {
       },
       roundId: {
         allowNull: false,
-        unique: true,
         type: Sequelize.INTEGER,
         references: {model: "Rounds"}
       },

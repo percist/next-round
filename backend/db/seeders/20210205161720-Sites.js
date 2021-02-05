@@ -12,7 +12,6 @@ module.exports = {
           website: 'https://www.accentonwinepc.com',
           imgUrl: 'https://static.spotapps.co/spots/04/eb0940bf5f11e7b09ee7a22877fee1/full',
           active: true,
-          menuId: 1
          },
         { 
           name: `Accent On Wine`,
@@ -23,7 +22,6 @@ module.exports = {
           website: 'https://www.stemsandskins.com',
           imgUrl: 'https://cdn.shopify.com/s/files/1/0323/9283/9299/files/DSC01130_480x480.jpg?v=1585859221',
           active: true,
-          menuId: 2
          },
         { 
           name: `CommonHouse Aleworks`,
@@ -34,7 +32,6 @@ module.exports = {
           website: 'commonhousealeworks.com',
           imgUrl: 'https://cdn.shopify.com/s/files/1/0365/4097/3101/files/IMG_5689.jpg?v=1584364823',
           active: true,
-          menuId: 3
          },
         { 
           name: `Dig in the Park`,
@@ -45,7 +42,6 @@ module.exports = {
           website: 'dighospitality.com',
           imgUrl: 'https://digitalmarketing.blob.core.windows.net/11629/images/items/image584273.gif',
           active: true,
-          menuId: 4
          },
     ], {});
   },

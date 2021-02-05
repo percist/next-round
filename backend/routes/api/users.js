@@ -59,6 +59,7 @@ router.post(
   })
 );
 
+// Get a User by Id
 router.get(
   `/:id(\\d+)`,
   asyncHandler(async (req, res) => {
