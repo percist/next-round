@@ -3,12 +3,14 @@ module.exports = (sequelize, DataTypes) => {
   const Menu = sequelize.define('Menu', {
     itemId: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {model: "Items"}
     },
     siteId: {
       allowNull: false,
-      type: DataTypes.INTEGER
-    }
+      type: DataTypes.INTEGER,
+      references: {model: "Sites"}
+    }  
   }, {});
   Menu.associate = function(models) {
     // associations can be defined here

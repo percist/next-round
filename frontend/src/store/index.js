@@ -6,7 +6,8 @@ import users from './users';
 import sites from './sites';
 import rounds from './rounds';
 import comments from './comments';
-import drinks from './drinks';
+import items from './items';
+import buddies from './buddies';
 
 const rootReducer = combineReducers({
   session

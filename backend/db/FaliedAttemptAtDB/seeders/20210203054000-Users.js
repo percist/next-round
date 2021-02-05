@@ -8,17 +8,16 @@ module.exports = {
     function fakeUserGenerator(num) {
       const fakeUsers = []
       while ( num > 0 ){
-        fakeUsers.push (
-          {
-            email: faker.internet.email(),
-            username: faker.internet.userName(),
-            firstName: faker.name.firstName(),
-            lastName: faker.name.lastName(),
-            zip: faker.address.zipCode("#####"),
-            imgUrl: faker.image.people(),
-            hashedPassword: bcrypt.hashSync(faker.internet.password()),
-          }
-        )
+        const newFakeUser = {
+          email: faker.internet.email(),
+          username: faker.internet.userName(),
+          firstName: faker.name.firstName(),
+          lastName: faker.name.lastName(),
+          zip: faker.address.zipCode("#####"),
+          imgUrl: faker.image.people(),
+          hashedPassword: bcrypt.hashSync('password'),
+        }
+        fakeUsers.push (newFakeUser)
         num -= 1
       }
       return fakeUsers;

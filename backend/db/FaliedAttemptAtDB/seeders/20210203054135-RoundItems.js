@@ -9,12 +9,13 @@ const generateRandomRoundItems = (numItems, numRounds) =>{
     randomRoundItems.push({itemId: itemId, roundId: numRounds})
     numRounds -= 1
   }
+  return randomRoundItems;
 }
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('RoundItems', [
-      ...generateRandomRoundItems(2700, 900)
+      ...generateRandomRoundItems(2400, 800)
     ], {});
   },
 

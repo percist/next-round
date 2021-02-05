@@ -1,7 +1,7 @@
 'use strict';
 const faker = require("faker");
 
-drinks = [ //250 beers from thebeerguy.ca/alphabetical-list-of-beer
+const drinks = [ //250 beers from thebeerguy.ca/alphabetical-list-of-beer
 `4 Degrees Brewing Hill 70 Belgian Blonde Ale	5 Oclock Shadow Pale Ale`, 
 `5 Paddles Brewing Home Sweet Home	5 Paddles Brewing In Your Face Ipa`, 
 `5 Paddles Home Sweet Home	8 .6 Extreme`, 
@@ -277,12 +277,12 @@ const profiles = [
 
 
 
-const beer =  drinks[(Math.floor(Math.random() * 250))]
-const description =  `This ${faker.hacker.adjective()} beer has a ${profiles[(Math.floor(Math.random() * 17))]} flavor profile`
 
 const fakeItems = (num) => {
   const fakeItemsArray = []
   while (num > 0){
+    const beer =  drinks[(Math.floor(Math.random() * 250))]
+    const description =  `This ${faker.hacker.adjective()} beer has a ${profiles[(Math.floor(Math.random() * 17))]} flavor profile`
     fakeItemsArray.push({name:beer, description:description})
     num -= 1
   }

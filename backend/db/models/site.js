@@ -1,6 +1,4 @@
 'use strict';
-const { Validator} = require('sequelize');
-
 module.exports = (sequelize, DataTypes) => {
   const Site = sequelize.define('Site', {
     name: {
@@ -9,7 +7,6 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [4, 256],
       },
-      unique: true,
     },
     address: {
       type: DataTypes.STRING(256),
@@ -17,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [4, 256],
       },
-      unique: true,
     },
     city: {
       type: DataTypes.STRING(100),
@@ -34,47 +30,23 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     zip: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(10),
       allowNuyll: false,
       validate: {
         len: [2, 5],
       },
     },
     website: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(1000),
       validate: {
-        isURL: [{
-            msg: 'website must be a URL beginning with "https://".',
-            protocols: ['https'],
-            require_protocol: true
-        }]
-      },
-    },
-    facbook: {
-      type: DataTypes.STRING(2),
-      validate: {
-        len: [2],
-      },
-    },
-    twitter: {
-      type: DataTypes.STRING(2),
-      validate: {
-        len: [2],
-      },
-    },
-    instagram: {
-      type: DataTypes.STRING(2),
-      validate: {
-        len: [2],
-      },
+        isURL: true
+      }
     },
     imgUrl: {
       type: DataTypes.STRING(1000)
     },
-    menuId: DataTypes.INTEGER,
-    ownersId: DataTypes.INTEGER,
-    reviewId: DataTypes.INTEGER,
     active: DataTypes.BOOLEAN
+    
   }, {});
   Site.associate = function(models) {
     const columnMapping1 = {
@@ -84,19 +56,11 @@ module.exports = (sequelize, DataTypes) => {
     };
     const columnMapping2 = {
       foreignKey: 'siteId',
-      through: 'Saves',
-      otherKey: 'userId'
-    };
-    const columnMapping3 = {
-      foreignKey: 'siteId',
       through: 'Menus',
       otherKey: 'itemId'
     };
     Site.belongsToMany(models.User, columnMapping1);
-    Site.belongsToMany(models.User, columnMapping1);
-    Site.belongsToMany(models.Item, columnMapping1);
-    Site.hasMany(models.Round, {foreignKey: "siteId"})
-
+    Site.belongsToMany(models.Item, columnMapping2);
   };
   return Site;
 };

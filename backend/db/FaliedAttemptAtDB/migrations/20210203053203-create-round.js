@@ -12,23 +12,27 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(25)
       },
-      recieverId: {
+      receiverId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {model: "Users"}
       },
       senderId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {model: "Users"}
       },
       roundItemId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {model: "RoundItems"}
       },
-      siteId: {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
+      // siteId: {
+      //   allowNull: false,
+      //   type: Sequelize.INTEGER
+      // },
       paymentId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {model: "Payments"}
       },
       createdAt: {
         allowNull: false,

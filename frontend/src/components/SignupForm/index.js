@@ -12,10 +12,16 @@ function SignupForm() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [zip, setZip] = useState("");
+  const [image, setImage] = useState(null);
   const [imgUrl, setImgUrl] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+
+  const updateFile = (event) => {
+    const file = event.target.file;
+    if (file) setImage(file);
+  }
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -28,7 +34,8 @@ function SignupForm() {
         firstName,
         lastName,
         zip,
-        imgUrl, 
+        image,
+        // imgUrl, 
         username, 
         password 
       }))
@@ -92,11 +99,19 @@ function SignupForm() {
           Profile Picture
           <input
             className="input sign-up-form_input"
+            type="file"
+            onChange={(e) => updateFile(e.target.value)}
+          />
+        </label>
+        {/* <label>
+          Profile Picture
+          <input
+            className="input sign-up-form_input"
             type="src"
             value={imgUrl}
             onChange={(e) => setImgUrl(e.target.value)}
           />
-        </label>
+        </label> */}
         <label>
           Username
           <input
@@ -107,6 +122,7 @@ function SignupForm() {
             required
           />
         </label>
+        
         <label>
           Password
           <input

@@ -1,27 +1,26 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Posts', {
+    return queryInterface.createTable('Owners', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      image_url: {
-        allowNull: false,
-        type: Sequelize.STRING
+      userId: {
+        allowNull: false, 
+        type: Sequelize.INTEGER,
+        references: {model: "Users"},
+        onUpdate: "cascade",
+        onDelete: "cascade",
       },
-      content: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      roundId: {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
-      likesId: {
-        type: Sequelize.INTEGER
+      siteId: {
+        allowNull: false, 
+        type: Sequelize.INTEGER,
+        references: {model: "Sites"},
+        onUpdate: "cascade",
+        onDelete: "cascade",
       },
       createdAt: {
         allowNull: false,
@@ -36,6 +35,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Posts');
+    return queryInterface.dropTable('Owners');
   }
 };

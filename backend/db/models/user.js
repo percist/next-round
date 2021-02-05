@@ -1,15 +1,16 @@
 'use strict';
-
-const { Validator } = require("sequelize");
+const { Validator } = require('sequelize');
 const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
+  const User = sequelize.define(
+    'User',
+    {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [4, 30],
+        // len: [4, 50],
         isNotEmail(value) {
           if (Validator.isEmail(value)) {
             throw new Error('Cannot be an email.');
@@ -33,9 +34,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     zip: {
       type: DataTypes.STRING(10),
-      validate: {
-        len: [5, 10]
-      }
     },
     email: {
       type: DataTypes.STRING,
@@ -73,61 +71,43 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function (models) {
     const columnMapping1 = {
       foreignKey: 'userId',
-      through: 'Saves',
-      otherKey: 'siteId'
-    };
-    const columnMapping2 = {
-      foreignKey: 'userId',
-      through: 'Likes',
-      otherKey: 'commentId'
-    };
-    const columnMapping3 = {
-      foreignKey: 'userId',
-      through: 'Favorites',
-      otherKey: 'itemId'
-    };
-    const columnMapping4 = {
-      foreignKey: 'userId',
       through: 'Owners',
       otherKey: 'siteId'
     };
-    const columnMapping5 = {
+    const columnMapping2 = {
       foreignKey: 'ownerId',
-      through: 'Buddy',
-      as: "followers",
+      through: 'Buddies',
+      as: "follower",
       otherKey: 'buddyId',
     };
-    const columnMapping6 = {
+    const columnMapping3 = {
       foreignKey: 'buddyId',
-      through: 'Buddy',
+      through: 'Buddies',
       as: "following",
       otherKey: 'ownerId',
     };
-    const columnMapping7 = {
+    const columnMapping4 = {
       as: 'HasSentRoundsTo', 
-      through: models.Round, 
+      through: "Rounds", 
       foreignKey: 'senderId', 
       otherKey: 'receiverId'
     }
-    const columnMapping8 = {
+    const columnMapping5 = {
       as: 'HasReceivedRoundsFrom', 
-      through: models.Round, 
+      through: "Rounds", 
       foreignKey: 'receiverId', 
       otherKey: 'senderId'
     }
-    User.belongsToMany(models.Site, columnMapping1);
-    User.belongsToMany(models.Comment, columnMapping2);
-    User.belongsToMany(models.Item, columnMapping3);
-    User.belongsToMany(models.Site, columnMapping4);
-    User.belongsToMany(models.User, columnMapping5);
-    User.belongsToMany(models.User, columnMapping6);
-    User.belongsToMany(models.User, columnMapping7);
-    User.belongsToMany(models.User, columnMapping8);
-    User.hasMany(models.Round, {as: 'SentRounds', foreignKey: 'senderId' });
-    User.hasMany(models.Round, {as: 'ReceivedRounds', foreignKey: 'receiverId' });
+    User.belongsToMany(models.Site, columnMapping1); // through Owners
+    User.belongsToMany(models.User, columnMapping2); // through Buddies as follower
+    User.belongsToMany(models.User, columnMapping3); // through Buddies as following
+    User.belongsToMany(models.Round, columnMapping4); // through Rounds as hasSentRoundsTo
+    User.belongsToMany(models.Round, columnMapping5); // through Rounds as hasReceivedRoundsFrom
+    User.hasMany(models.Round, {foreignKey: 'senderId' });
+    User.hasMany(models.Round, {foreignKey: 'receiverId' });
   };
-  User.prototype.toSafeObject = function () { // remember, this cannot be an arrow function
-    const { id, username, email } = this; // context will be the User instance
+  User.prototype.toSafeObject = function () { 
+    const { id, username, email } = this; 
     return { id, username, email };
   };
   User.prototype.validatePassword = function (password) {

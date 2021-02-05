@@ -4,23 +4,17 @@ import { restoreUser } from '../../store/session';
 import { fetchAllBuddyPosts } from '../../store/posts';
 import PostsFeed from '../PostsFeed';
 
-const PostsFeedContainer = () => {
+const PostsFeedContainer = ({ user }) => {
     const dispatch = useDispatch();
-
-    const {user} =  useSelector(reduxState => {
-        return reduxState.session;
-      });
 
     const posts = useSelector(reduxState => {
         return reduxState.posts;
     });
 
     useEffect(() => {
-        dispatch(restoreUser());
-    },[dispatch])
-
-    useEffect(() => {
-        dispatch(fetchAllBuddyPosts(user.id))
+        if (user){
+            dispatch(fetchAllBuddyPosts(user.id))
+        }
     },[dispatch, user])
     
     return <PostsFeed posts={posts} user={user} />

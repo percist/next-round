@@ -2,7 +2,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Post = sequelize.define('Post', {
     image_url: {
-      allowNull: false,
       type: DataTypes.STRING(1000),
       default: "https://picsum.photos/seed/picsum/400/600"
     },
@@ -12,26 +11,28 @@ module.exports = (sequelize, DataTypes) => {
     },
     roundId: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {model: "Rounds"}
+
     },
-    likesId: {
-      type: DataTypes.INTEGER
-    }
+    // likesId: {
+    //   type: DataTypes.INTEGER
+    // }
   }, {});
   Post.associate = function(models) {
-    const columnMapping1 = {
-      foreignKey: 'postId',
-      through: 'Likes',
-      otherKey: 'userId'
-    };
+    // const columnMapping1 = {
+    //   foreignKey: 'postId',
+    //   through: 'Likes',
+    //   otherKey: 'userId'
+    // };
     const columnMapping2 = {
       foreignKey: 'postId',
       through: 'Comments',
       otherKey: 'userId'
     };
-    Post.belongsToMany(models.User, columnMapping1);
+    // Post.belongsToMany(models.User, columnMapping1);
     Post.belongsToMany(models.User, columnMapping2);
-    Post.belongsTo(models.Round, { foreignKey: "postId"});
+    Post.belongsTo(models.Round, { foreignKey: "roundId"});
   };
   return Post;
 };

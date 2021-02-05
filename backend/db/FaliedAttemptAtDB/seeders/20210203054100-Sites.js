@@ -5,23 +5,24 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
 
     function fakeSiteGenerator(num) {
-      const fakeUsers = []
+      const fakeSites = []
       while ( num > 0 ){
         const state = faker.address.stateAbbr()
-        fakeUsers.push (
-          {
-            name: `The ${faker.hacker.adjective()} ${faker.hacker.noun()}`,
-            address: faker.address.streetAddress(),
-            city: faker.address.city(),
-            state: state,
-            zip: faker.address.zipCode("#####"),
-            website: faker.internet.url(),
-            imgUrl: faker.image.business(),
-          }
-        )
+        const newFakeSite = {
+          name: `The ${faker.hacker.adjective()} ${faker.hacker.noun()}`,
+          address: faker.address.streetAddress(),
+          city: faker.address.city(),
+          state: state,
+          zip: faker.address.zipCode("#####"),
+          website: faker.internet.url(),
+          imgUrl: faker.image.business(),
+          // menuId: num
+        }
+        console.log(newFakeSite, num)
+        fakeSites.push (newFakeSite)
         num -= 1
       }
-      return fakeUsers;
+      return fakeSites;
     }
 
     return queryInterface.bulkInsert('Sites', [
@@ -34,6 +35,7 @@ module.exports = {
         website: 'https://www.stemsandskins.com',
         imgUrl: 'https://static.spotapps.co/spots/04/eb0940bf5f11e7b09ee7a22877fee1/full',
         active: true,
+        menuId: 1
       },
       ...fakeSiteGenerator(300)
     ], {});

@@ -4,18 +4,19 @@ module.exports = (sequelize, DataTypes) => {
     userId: {
       allowNull: false, 
       type: DataTypes.INTEGER,
-      references: "Users",
-      refereceKey: "id",
+      references: {model: "Users"},
       onUpdate: "cascade",
       onDelete: "cascade",
     },
     siteId: {
       allowNull: false, 
-      type: DataTypes.INTEGER
-    }
+      type: DataTypes.INTEGER,
+      references: {model: "Sites"},
+      onUpdate: "cascade",
+      onDelete: "cascade",
+    }  
   }, {});
   Owner.associate = function(models) {
-    // associations can be defined here
   };
   return Owner;
 };
