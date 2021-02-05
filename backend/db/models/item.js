@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     imgUrl: {
       allowNull: true,
-      typ: DataTypes.STRING(1000)
+      type: DataTypes.STRING(1000)
     }
   }, {});
   Item.associate = function(models) {
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       through: 'Menus',
       otherKey: 'siteId'
     };
-    const columnMapping1 = {
+    const columnMapping2 = {
       foreignKey: 'itemId',
       through: 'RoundItems',
       otherKey: 'roundId'

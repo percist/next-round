@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     imageUrl: {
       allowNull: true,
-      type: Sequelize.STRING(1000)
+      type: DataTypes.STRING(1000)
     },
   });
   Round.associate = function(models) {
