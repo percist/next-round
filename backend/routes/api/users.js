@@ -1,7 +1,7 @@
 const express = require('express');
 const { check } = require('express-validator');
 const asyncHandler = require('express-async-handler');
-
+const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User, Buddy } = require('../../db/models');
@@ -46,11 +46,13 @@ const validateSignup = [
 // Sign up
 router.post(
   '/',
+  singleMulterUpload("image"), //receives req.file
   validateSignup,
   asyncHandler(async (req, res) => {
-    const body = req.body;
-    const user = await User.signup(body);
-
+    console.log("ROUTE HIT**************")
+    const { email, password, firstName, lastName, userName, zip } = req.body;
+    const imgUrl = await singlePublicFileUpload(req.file);
+    const user = await User.signup({email, password, imgUrl, firstName, lastName, userName, zip});
     await setTokenCookie(res, user);
 
     return res.json({
