@@ -10,7 +10,7 @@ const RoundsSidebar = (user) => {
 
     const [ buddyRound, setBuddyRound ] = useState({});
     const [ numRounds, setNumRounds ] = useState({})
-
+    console.log("BUDDY ROUND:", buddyRound )
     useEffect(() => {
         const fetchBuddyRound = async () => {
             const response = await fetch(`/api/rounds/buddies/recent`)
@@ -36,7 +36,7 @@ const RoundsSidebar = (user) => {
                 {`Your buddy User.username(Round.senderId) recently bought a round for User.username(Round.receiverId)`}
             </div>
             <div className="Rounds-sidebar_status">
-                {`you currently have Rounds.length rounds waiting on you!`}
+                {`${numRounds} rounds waiting`}
             </div>
             <button 
                 className="button"

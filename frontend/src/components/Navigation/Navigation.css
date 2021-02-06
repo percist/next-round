@@ -1,3 +1,127 @@
+* {
+  --main-bg-color: #FFFAFF;
+  --secondary-bg-color: #FFFFFF;
+  --main-text-color: #232B2B;
+  --main-accent-color: #6B0E23;
+  --secondary-accent-color: #6F4E37;
+  --main-border-color: #D5BF86;
+}
+
+.navbar {
+  position: sticky;
+  top: 0px;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+  margin: 0px;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  z-index: 100;
+}
+
+.navbar-logo{
+  margin-left: -10px;
+}
+
+.navbar-link {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+a {
+  cursor: default;
+}
+
+#navbar-link-home, 
+h2 {
+  letter-spacing: -2px;
+  font-family: "Source Sans Pro";
+}
+
 .profile-dropdown {
   position: absolute;
+}
+
+.button {
+  margin: 2pt 2pt 5pt 5pt;
+  border: 1pt var(--main-accent-color) solid;
+  border-radius: 8pt;
+  height: 30px;
+  width: 70px;
+}
+
+#link-logout {
+  cursor: default;
+}
+
+.input {
+  color: var(--main-text-color);
+  background: --main-;
+  margin: 2pt;
+  border: 1pt var(--main-accent-color) solid;
+  border-radius: 8pt;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items:flex-end;
+  border-radius: 8pt;
+}
+
+#modal-content {
+  border-radius: 8pt;
+}
+
+#login,
+#signup {
+  border-radius: 8pt;
+  display: flex;
+  justify-content: center;
+  min-width: 400px;
+  border-radius: 8pt;
+}
+
+#link-signup,
+#link-login,
+#link-logout,
+#link-demo,
+#link-home,
+#link-profile,
+#link-sites,
+#link-my-rounds
+{
+  padding-top: 31px;    
+  padding-bottom: 30px;    
+  padding-left: 14px;    
+  padding-right: 14px;    
+}
+
+#link-login:hover,
+#link-logout:hover,
+#link-signup:hover,
+#link-demo:hover,
+#link-home:hover,
+#link-profile:hover,
+#link-sites:hover
+#link-my-rounds:hover
+{
+  background-color: var(--secondary-bg-color);
+}
+
+.profile-dropdown {
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 15px 79px 9px 10px;
+  background-color: --main-;
+}
+
+.button:hover {
+  background-color: var(--secondary-bg-color);
+  
 }

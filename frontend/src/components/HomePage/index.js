@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import PostsFeedContainer from '../PostsFeedContainer';
 import RoundsSidebar from '../RoundsSidebar';
 import BuddiesSidebar from '../BuddiesSidebar';
@@ -12,14 +12,16 @@ const HomePage = () => {
 
     const {user} =  useSelector(reduxState => {
         return reduxState.session;
-      });
-      
+    });
+
     return (
-    <div className="home-page">
-        <RoundsSidebar user={user}/>
-        <PostsFeedContainer user={user}/>
-        <BuddiesSidebar user={user}/>
-    </div>
+        <>
+            <div className="home-page">
+                <RoundsSidebar user={user}/>
+                <PostsFeedContainer user={user}/>
+                <BuddiesSidebar user={user}/>
+            </div>
+        </>
     )
 }
 

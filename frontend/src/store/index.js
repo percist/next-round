@@ -10,7 +10,14 @@ import items from './items';
 import buddies from './buddies';
 
 const rootReducer = combineReducers({
-  session
+  session,
+  posts,
+  users,
+  sites,
+  rounds,
+  comments,
+  items,
+  buddies
 });
 
 let enhancer;

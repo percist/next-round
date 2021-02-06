@@ -1,1 +1,23 @@
 /* TODO Add site wide styles */
+* {
+    --main-bg-color: #FFFAFF;
+    --secondary-bg-color: #FFFFFF;
+    --main-text-color: #232B2B;
+    --main-accent-color: #6B0E23;
+    --secondary-accent-color: #6F4E37;
+    --main-border-color: #D5BF86;
+}
+
+* {
+    box-sizing: border-box;
+    text-decoration: none;
+    
+}
+
+html,body {
+    font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+}

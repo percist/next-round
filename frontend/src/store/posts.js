@@ -22,9 +22,9 @@ const initialState = {}
 function reducer(state = initialState, action){
     let newState;
     switch (action.type){
-        case SET_ALL_POSTS:
-            newState = action.payload;
-            return newState;
+        // case SET_ALL_POSTS:
+        //     newState = action.payload;
+        //     return newState;
         default:
             return state;
     }

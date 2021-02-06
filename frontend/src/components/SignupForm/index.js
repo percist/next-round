@@ -13,18 +13,12 @@ function SignupForm() {
   const [lastName, setLastName] = useState("");
   const [zip, setZip] = useState("");
   const [image, setImage] = useState(null);
-  const [imgUrl, setImgUrl] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const updateFile = (event) => {
-    const file = event.target.file;
-    if (file) setImage(file);
-  }
-
   if (sessionUser) return <Redirect to="/" />;
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
@@ -39,12 +33,17 @@ function SignupForm() {
         username, 
         password 
       }))
-        .catch(res => {
-          if (res.data && res.data.errors) setErrors(res.data.errors);
-        });
+      .catch(res => {
+        if (res.data && res.data.errors) setErrors(res.data.errors);
+      });
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
+
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
+  }
 
   return (
     <>
@@ -100,7 +99,7 @@ function SignupForm() {
           <input
             className="input sign-up-form_input"
             type="file"
-            onChange={(e) => updateFile(e.target.value)}
+            onChange={updateFile}
           />
         </label>
         {/* <label>

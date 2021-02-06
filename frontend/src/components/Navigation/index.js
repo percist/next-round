@@ -66,11 +66,9 @@ function Navigation({ isLoaded }) {
     <>
       <ul className='navbar'>
         <li>
-          <h2 id="navbar-link-home">
-            <Link to="/">
-              INSERT LOGO HERE
-            </Link>
-          </h2>
+            <a className='navbar-logo' href={'/'} >
+              <img src="./NextRoundText.png" alt="Next Round's on Me"/>
+            </a>
         </li>
         <li className="navbar-link">
           <NavLink
