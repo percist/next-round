@@ -4,7 +4,8 @@ const asyncHandler = require('express-async-handler');
 const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Buddy } = require('../../db/models');
+const { User, Round, Site, Item, Buddy } = require('../../db/models');
+const round = require('../../db/FaliedAttemptAtDB/models/round');
 
 const router = express.Router();
 
@@ -71,21 +72,31 @@ router.get(
   })
 )
 
+// Get all User buddies with their Round/Item/Site info
 router.get(
   `/:id(\\d+)/buddies`,
   asyncHandler(async (req, res) => {
       const userId = req.params.id
-      const buddies = await User.findAll({
+      const buddies = await User.findOne({
         where: {
           id: userId
         },
-        include: {
+        include: [{
           model: User,
-          as: "following"
-        }
+          as: "following",
+          include: [{
+            model: Round,
+            order: [["createdAt", "DESC"]],
+            include: [{
+              model: Item,
+              include: [{
+                model: Site
+              }]
+            }]
+          }]
+        }]
       })
-      console.log(buddies)
-      res.json({ buddies })
+      res.json(buddies)
   })
 )
 

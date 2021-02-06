@@ -24,24 +24,23 @@ router.get(
         //array of following userIds
         let followingIds = user.following.map((followed => followed.dataValues.id));
         followingIds = [...followingIds];
-        console.log(followingIds)
 
         const payload = [];
 
-        await Promise.all(followingIds.map(async (receiverId) => {
-            const rounds = await Round.findAll({
-                where: {
-                    receiverId
-                },
-                include: {
-                    model: Post,
-                },
-                order: [["createdAt", "DESC"]],
-                limit: 20
-            })
-            payload.push(rounds)
-        }
-        ))
+        // await Promise.all(followingIds.map(async (receiverId) => {
+        //     const rounds = await Round.findAll({
+        //         where: {
+        //             receiverId
+        //         },
+        //         include: {
+        //             model: Post,
+        //         },
+        //         order: [["createdAt", "DESC"]],
+        //         limit: 20
+        //     })
+        //     payload.push(rounds)
+        // }
+        // ))
 
         // const posts = await Post.findAll({
         //     where: {
@@ -58,7 +57,7 @@ router.get(
         //     order: [["createdAt", "DESC"]],
         //     limit: 20,
         // });
-        console.log(payload)
+        // console.log(payload)
         res.json({ payload });
 
     })
