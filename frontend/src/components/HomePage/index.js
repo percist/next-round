@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import PostsFeedContainer from '../PostsFeedContainer';
+import RoundsFeedContainer from '../RoundsFeedContainer';
 import RoundsSidebar from '../RoundsSidebar';
 import BuddiesSidebar from '../BuddiesSidebar';
 import { useSelector, useDispatch } from 'react-redux';
@@ -18,7 +18,7 @@ const HomePage = () => {
         <>
             <div className="home-page">
                 <RoundsSidebar user={user}/>
-                <PostsFeedContainer user={user}/>
+                <RoundsFeedContainer user={user}/>
                 <BuddiesSidebar user={user}/>
             </div>
         </>

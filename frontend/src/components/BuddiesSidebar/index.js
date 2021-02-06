@@ -13,10 +13,6 @@ const BuddiesSidebar = ({user}) => {
         dispatch(fetchAllBuddies(user.id))
     },[dispatch, user])
 
-    console.log(buddies)
-    //TODO: fetch and set in state the users' buddies join rounds order most recent limit 1
-    //TODO: map over buddy state and send to buddies component
-    let buddy;
     return (
         <div className="buddies-sidebar">
             <div className="buddies-sidebar_header">

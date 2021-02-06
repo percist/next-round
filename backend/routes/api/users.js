@@ -52,7 +52,6 @@ router.post(
   asyncHandler(async (req, res) => {
     const { email, password, firstName, lastName, username, zip } = req.body;
     const imgUrl = await singlePublicFileUpload(req.file);
-    console.log("IMAGE URL:", imgUrl)
     const user = await User.signup({email, password, imgUrl, firstName, lastName, username, zip});
     await setTokenCookie(res, user);
 
@@ -68,7 +67,7 @@ router.get(
   asyncHandler(async (req, res) => {
       const userId = req.params.id
       const user = await User.findByPk(userId)
-      res.json({ user })
+      res.json( user )
   })
 )
 

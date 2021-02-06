@@ -29,7 +29,6 @@ function SignupForm() {
         lastName,
         zip,
         image,
-        // imgUrl, 
         username, 
         password 
       }))
@@ -102,15 +101,6 @@ function SignupForm() {
             onChange={updateFile}
           />
         </label>
-        {/* <label>
-          Profile Picture
-          <input
-            className="input sign-up-form_input"
-            type="src"
-            value={imgUrl}
-            onChange={(e) => setImgUrl(e.target.value)}
-          />
-        </label> */}
         <label>
           Username
           <input
@@ -121,7 +111,6 @@ function SignupForm() {
             required
           />
         </label>
-        
         <label>
           Password
           <input

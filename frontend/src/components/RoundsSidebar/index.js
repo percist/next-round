@@ -8,21 +8,20 @@ const RoundsSidebar = (user) => {
     //TODO: clickhandler to direct to round form
     const dispatch = useDispatch();
 
-    const [ buddyRound, setBuddyRound ] = useState({});
+    // const [ buddyRound, setBuddyRound ] = useState({});
     const [ numRounds, setNumRounds ] = useState({})
-    console.log("BUDDY ROUND:", buddyRound )
     useEffect(() => {
-        const fetchBuddyRound = async () => {
-            const response = await fetch(`/api/rounds/buddies/recent`)
-            const round = await response.json()
-            setBuddyRound(round)
-        }
+        // const fetchBuddyRound = async () => {
+        //     const response = await fetch(`/api/rounds/buddies/recent`)
+        //     const round = await response.json()
+        //     setBuddyRound(round)
+        // }
         const fetchPaidRounds = async () => {
             const response = await fetch('/api/rounds/user/total')
             const roundsToRedeem = await response.json()
             setNumRounds(roundsToRedeem)
         }
-        fetchBuddyRound()
+        // fetchBuddyRound()
         fetchPaidRounds()
     },[]);
 
@@ -32,9 +31,9 @@ const RoundsSidebar = (user) => {
 
     return (
         <div className="Rounds-sidebar">
-            <div className="Rounds-sidebar_update">
+            {/* <div className="Rounds-sidebar_update">
                 {`Your buddy User.username(Round.senderId) recently bought a round for User.username(Round.receiverId)`}
-            </div>
+            </div> */}
             <div className="Rounds-sidebar_status">
                 {`${numRounds} rounds waiting`}
             </div>

@@ -12,7 +12,7 @@ const setAllRounds = (rounds) => {
 export const fetchAllBuddyRounds = (userid) => {
     return async (dispatch) => {
         const response = await fetch(`/api/rounds/buddies/${userid}`);
-        dispatch(setAllRounds(response.data.rounds));
+        dispatch(setAllRounds(response.data.payload));
     };
 };
 

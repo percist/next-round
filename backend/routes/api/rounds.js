@@ -1,7 +1,7 @@
 const express = require("express")
 const asyncHandler = require('express-async-handler');
 const { requireAuth, restoreUser } = require('../../utils/auth');
-const {Round, User, Buddy} = require("../../db/models");
+const {Round, User, Buddy, Item, Site} = require("../../db/models");
 
 const router = express.Router();
 
@@ -65,8 +65,49 @@ router.get(
             }
         })
         const numRounds = Object.keys(rounds).length
-        console.log("NUM ROUNDS: ", numRounds)
         res.json(numRounds)
     })
 )
+
+// GET most recent twenty rounds from all buddies
+router.get(
+    `/buddies/:id(\\d+)`,
+    asyncHandler(async (req, res) => {
+        const userId = req.params.id;
+        //users being followed
+        const user = await User.findOne({
+            where: { id: userId },
+            include: [
+                {model: User,
+                as: "following",
+                },
+            ],
+        });
+        //array of following userIds
+        let followingIds = user.following.map((followed => followed.dataValues.id));
+        followingIds = [...followingIds];
+        const payload = [];
+        await Promise.all(followingIds.map(async (receiverId) => {
+            const rounds = await Round.findAll({
+                where: {
+                    receiverId: receiverId,
+                    status: "recipientClaimed"
+                },
+                include: [{
+                    model: Item,
+                    include: [{
+                        model: Site
+                    }]
+                }],
+                order: [["createdAt", "DESC"]],
+                limit: 20
+            })
+            payload.push(rounds)
+        }))
+        res.json({ payload });
+    })
+);
+
+
+
 module.exports = router;
