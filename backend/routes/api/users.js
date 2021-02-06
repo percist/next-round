@@ -49,10 +49,10 @@ router.post(
   singleMulterUpload("image"), //receives req.file
   validateSignup,
   asyncHandler(async (req, res) => {
-    console.log("ROUTE HIT**************")
-    const { email, password, firstName, lastName, userName, zip } = req.body;
+    const { email, password, firstName, lastName, username, zip } = req.body;
     const imgUrl = await singlePublicFileUpload(req.file);
-    const user = await User.signup({email, password, imgUrl, firstName, lastName, userName, zip});
+    console.log("IMAGE URL:", imgUrl)
+    const user = await User.signup({email, password, imgUrl, firstName, lastName, username, zip});
     await setTokenCookie(res, user);
 
     return res.json({

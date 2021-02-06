@@ -58,9 +58,7 @@ router.get(
   '/',
   restoreUser,
   (req, res) => {
-    console.log("REQ*******",req)
     const { user } = req;
-    console.log(user)
     if (user) {
       return res.json({
         user: user.toSafeObject()
