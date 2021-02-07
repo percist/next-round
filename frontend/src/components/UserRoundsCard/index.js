@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import CommentFeed from '../CommentFeed'
 
 
-const RoundsCard = ({ round }) => {
+const UserRoundsCard = ({ round }) => {
   const dispatch = useDispatch()
   const [ user, setUser ] = useState({})
 
@@ -63,4 +63,4 @@ const RoundsCard = ({ round }) => {
     )
 }
 
-export default RoundsCard;
+export default UserRoundsCard;

@@ -5,7 +5,7 @@ const {Round, User, Buddy, Item, Site} = require("../../db/models");
 
 const router = express.Router();
 
-// GET a user by Id
+// GET a round by Id
 router.get(
     `/:id(\\d+)`,
     asyncHandler(async (req, res) => {
@@ -138,11 +138,18 @@ router.get(
             roundsArray.push(item.dataValues.Rounds)
         }))
         const rounds = roundsArray.flat()
-        console.log(rounds[0].dataValues.receiverId, rounds[0].User)
         res.json( rounds );
     })
 );
 
-
+// GET item by itemId
+router.get(
+    `/items/:id(\\d+)`,
+    asyncHandler(async (req, res) => {
+        const itemId = req.params.id
+        const roundItem = await Item.findByPk(itemId)
+        res.json({ roundItem })
+    })
+)
 
 module.exports = router;

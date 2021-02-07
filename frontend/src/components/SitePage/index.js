@@ -13,7 +13,6 @@ const SitePage = () => {
     const dispatch = useDispatch();
     const params = useParams();
     const { siteId } = params;
-    console.log(siteId)
     const user = useSelector((state) => state.session.user)
     const [ items, setItems ] = useState([]);
 
@@ -47,7 +46,7 @@ const SitePage = () => {
                 <div className="site-page-content-feed">
                     {/* TODO: map items to item cards */}
                     <ItemCardContainer />
-                    <RoundsFeed rounds={rounds}/>
+                    <RoundsFeed rounds={rounds} site={site}/>
                 </div>
                 <div className="site-page-content-buddy-sidebar">
                     <BuddiesSidebar user={user}/>
