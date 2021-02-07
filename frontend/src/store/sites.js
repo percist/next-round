@@ -25,7 +25,14 @@ export const createNewSite = (site) => async (dispatch) => {
   
     dispatch(setSite(response.data.site));
     return response;
-  };
+};
+
+export const fetchOneSite = (siteId) => async (dispatch) => {
+    const response = await fetch(`/api/sites/${siteId}`);
+    dispatch(
+        setSite(response.data.site)
+    )
+}
 
 const initialState = {}
 

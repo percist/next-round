@@ -108,6 +108,55 @@ router.get(
     })
 );
 
+// GET most recent 20 rounds for a site
+router.get(
+    `/sites/:id(\\d+)`,
+    asyncHandler(async (req, res) => {
+        const siteId = req.params.id;
+
+        const items = Item.findAll({
+            where: {
+
+            }
+        })
+
+
+
+        const userId = req.params.id;
+        //users being followed
+        const user = await User.findOne({
+            where: { id: userId },
+            include: [
+                {model: User,
+                as: "following",
+                },
+            ],
+        });
+        //array of following userIds
+        let followingIds = user.following.map((followed => followed.dataValues.id));
+        followingIds = [...followingIds];
+        const payload = [];
+        await Promise.all(followingIds.map(async (receiverId) => {
+            const rounds = await Round.findAll({
+                where: {
+                    receiverId: receiverId,
+                    status: "recipientClaimed"
+                },
+                include: [{
+                    model: Item,
+                    include: [{
+                        model: Site
+                    }]
+                }],
+                order: [["createdAt", "DESC"]],
+                limit: 20
+            })
+            payload.push(rounds)
+        }))
+        res.json({ payload });
+    })
+);
+
 
 
 module.exports = router;

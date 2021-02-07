@@ -16,6 +16,12 @@ export const fetchAllBuddyRounds = (userid) => {
     };
 };
 
+export const fetchAllSiteRounds = (siteId) => {
+    return async (dispatch) => {
+        const response = await fetch(`/api/rounds/sites/${siteId}`);
+        dispatch(setAllRounds(response.data.payload));
+    };
+};
 
 const initialState = {}
 

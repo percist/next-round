@@ -21,7 +21,7 @@ const SignupFormPage = () => {
     return (
         <>
             <SignupForm />
-            <button className="button" id="owner-button" onClick={()=>handleOwnerButtonClick()}>
+            <button className="button" id="owner-button" onClick={(e)=>handleOwnerButtonClick(e)}>
                 Click here to register your business
             </button>
             {displaySiteFormPage()}

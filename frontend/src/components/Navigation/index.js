@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import { Modal } from '../../context/Modal';
 import LoginForm from '../LoginForm';
-import SignupForm from '../SignupForm';
+import SignupFormPage from '../SignupFormPage';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
@@ -54,7 +54,7 @@ function Navigation({ isLoaded }) {
               <LoginForm />
             )}
             { form === "signup" && (
-              <SignupForm />
+              <SignupFormPage />
             )}
           </Modal>
         )}

@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler');
 const { restoreUser } = require('../../utils/auth');
 const { handleValidationErrors } = require('../../utils/validation');
 const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
-const { Site, Owner } = require("../../db/models"
+const { Site, Owner, Item } = require("../../db/models"
 )
 const router = express.Router();
 
@@ -44,7 +44,14 @@ router.get(
     `/:id(\\d+)`,
     asyncHandler(async (req, res) => {
         const siteId = req.params.id
-        const site = await Site.findByPK(siteId)
+        const site = await Site.findOne({
+            where: {id: siteId},
+            include: [
+                {
+                    model: Item
+                }
+            ]
+        })
         res.json({ site })
     })
 )
