@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import RoundsFeedContainer from '../RoundsFeedContainer';
+import RoundsFeed from '../RoundsFeed';
 import RoundsSidebar from '../RoundsSidebar';
 import BuddiesSidebar from '../BuddiesSidebar';
 import { useSelector, useDispatch } from 'react-redux';
-import { restoreUser } from '../../store/session'
+import { fetchAllBuddyRounds } from '../../store/rounds';
 import "./HomePage.css"
 
 const HomePage = () => {
@@ -14,11 +14,19 @@ const HomePage = () => {
         return reduxState.session;
     });
 
+    const rounds = useSelector(reduxState => {
+        return reduxState.rounds;
+    });
+
+    useEffect(() => {
+        dispatch(fetchAllBuddyRounds(user.id))
+    },[dispatch, user])
+
     return (
         <>
             <div className="home-page">
                 <RoundsSidebar user={user}/>
-                <RoundsFeedContainer user={user}/>
+                <RoundsFeed rounds={rounds}/>
                 <BuddiesSidebar user={user}/>
             </div>
         </>

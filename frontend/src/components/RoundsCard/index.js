@@ -20,7 +20,7 @@ const RoundsCard = ({ round }) => {
 
   if (round[0] === undefined)return null
   return (
-        <div className="rounds-card">
+        <div className="rounds-card" >
             <div className="rounds-card-header">
                 <div id="rounds-card-header_site_name">
                   {!round && <h2>loading....</h2>}

@@ -2,29 +2,32 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import ItemCardContainer from "../ItemCardContainer";
-import RoundsFeedContainer from "../RoundsFeedContainer";
+import RoundsFeed from "../RoundsFeed";
 import RoundsSidebar from "../RoundsSidebar";
 import BuddiesSidebar from "../BuddiesSidebar";
 import { fetchOneSite } from "../../store/sites";
-import { fetchAllSiteRounds } from "../../sotre/rounds";
+import { fetchAllSiteRounds } from "../../store/rounds";
 import "./SitePage.css";
-import { fetchAllBuddies } from '../../store/buddies';
 
 const SitePage = () => {
     const dispatch = useDispatch();
     const params = useParams();
     const { siteId } = params;
-    const sessionUser = useSelector((state) => state.session.user)
+    console.log(siteId)
+    const user = useSelector((state) => state.session.user)
     const [ items, setItems ] = useState([]);
 
     const site = useSelector(fullReduxState=> {
-        return fullReduxState.site;
+        return fullReduxState.sites;
+    })
+
+    const rounds = useSelector(fullReduxState=> {
+        return fullReduxState.rounds;
     })
 
     useEffect(()=> {
         dispatch(fetchOneSite(siteId))
         dispatch(fetchAllSiteRounds(siteId))
-        dispatch(fetchAllBuddies(userId))
     },[dispatch, siteId]);
 
     useEffect(()=> {
@@ -39,15 +42,15 @@ const SitePage = () => {
             <div className="site-page-content">
                 <div className="site-page-content-rounds-sidebar">
                     Site Info
-                    <RoundsSidebar />
+                    <RoundsSidebar user={user}/>
                 </div>
                 <div className="site-page-content-feed">
                     {/* TODO: map items to item cards */}
                     <ItemCardContainer />
-                    <RoundsFeedContainer />
+                    <RoundsFeed rounds={rounds}/>
                 </div>
                 <div className="site-page-content-buddy-sidebar">
-                    <BuddiesSidebar />
+                    <BuddiesSidebar user={user}/>
                 </div>
             </div>
         </div>

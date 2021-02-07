@@ -6,7 +6,7 @@ const RoundsFeed = ({ rounds }) => {
         <div className="rounds-feed">
             {!Array.isArray(rounds) && <h2>loading...</h2> }
             {Array.isArray(rounds) && rounds.map(round => {
-                if (round) return <RoundsCard round={round}/>
+                if (round) return <RoundsCard round={round} />
                 else return null
             })}
         </div>

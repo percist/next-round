@@ -113,47 +113,33 @@ router.get(
     `/sites/:id(\\d+)`,
     asyncHandler(async (req, res) => {
         const siteId = req.params.id;
-
-        const items = Item.findAll({
-            where: {
-
-            }
-        })
-
-
-
-        const userId = req.params.id;
-        //users being followed
-        const user = await User.findOne({
-            where: { id: userId },
-            include: [
-                {model: User,
-                as: "following",
-                },
-            ],
+        //items from that site
+        const site = await Site.findOne({
+            where: { id: siteId },
+            include: {model: Item},
         });
-        //array of following userIds
-        let followingIds = user.following.map((followed => followed.dataValues.id));
-        followingIds = [...followingIds];
-        const payload = [];
-        await Promise.all(followingIds.map(async (receiverId) => {
-            const rounds = await Round.findAll({
-                where: {
-                    receiverId: receiverId,
-                    status: "recipientClaimed"
-                },
-                include: [{
-                    model: Item,
+        //array of itemIds
+        let itemIds = site.Items.map((item => item.dataValues.id));
+        itemIds = [...itemIds];
+        const roundsArray = [];
+        await Promise.all(itemIds.map(async (itemId) => {
+            const item = await Item.findOne({
+                where: { id: itemId},
+                include: {
+                    model: Round,
+                    where: {
+                        status: "recipientClaimed" || "sitePaidOut"
+                    }, 
                     include: [{
-                        model: Site
+                        model: User
                     }]
-                }],
-                order: [["createdAt", "DESC"]],
-                limit: 20
+                },
             })
-            payload.push(rounds)
+            roundsArray.push(item.dataValues.Rounds)
         }))
-        res.json({ payload });
+        const rounds = roundsArray.flat()
+        console.log(rounds[0].dataValues.receiverId, rounds[0].User)
+        res.json( rounds );
     })
 );
 
