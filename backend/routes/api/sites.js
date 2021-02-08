@@ -56,6 +56,19 @@ router.get(
     })
 )
 
+// Get owner of site
+router.get(
+  `/:id(\\d+)/owners`,
+  asyncHandler(async (req, res) => {
+      const siteId = req.params.id
+      const siteOwners = await Owner.findAll({
+        where: {siteId: siteId}
+      })
+      console.log(siteOwners)
+      res.json( siteOwners )
+  })
+)
+
 router.post(
     `/`,
     restoreUser,

@@ -15,6 +15,7 @@ const SitePage = () => {
     const { siteId } = params;
     const user = useSelector((state) => state.session.user)
     const [ items, setItems ] = useState([]);
+    const [ isOwner, setIsOwner ] = useState(false)
 
     const site = useSelector(fullReduxState=> {
         return fullReduxState.sites;
@@ -25,9 +26,18 @@ const SitePage = () => {
     })
 
     useEffect(()=> {
+        const checkIsOwner= async() => {
+            const response = await fetch(`api/sites/${siteId}/owners`)
+            const owners = await response.json();
+            console.log(owners)
+            // if (owners.includes(user.id)){
+            //     setIsOwner(true)
+            // }
+        }
+        checkIsOwner(user.id)
         dispatch(fetchOneSite(siteId))
         dispatch(fetchAllSiteRounds(siteId))
-    },[dispatch, siteId]);
+    },[dispatch, siteId, user]);
 
     useEffect(()=> {
         setItems(site.Item);
