@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import { Modal } from '../../context/Modal';
+import image from "./NextRoundText.png";
 import LoginForm from '../LoginForm';
 import SignupFormPage from '../SignupFormPage';
 import './Navigation.css';
@@ -67,7 +68,7 @@ function Navigation({ isLoaded }) {
       <ul className='navbar'>
         <li>
             <a className='navbar-logo' href={'/'} >
-              <img src="./NextRoundText.png" alt="Next Round's on Me"/>
+              <img src={image} alt="Next Round's on Me"/>
             </a>
         </li>
         <li className="navbar-link">

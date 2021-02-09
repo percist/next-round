@@ -60,13 +60,11 @@ router.get(
 router.get(
   `/:id(\\d+)/owners`,
   asyncHandler(async (req, res) => {
-    console.log("ROUTE HIT****************")
     const siteId = req.params.id
     const siteOwners = await Owner.findAll({
       where: {siteId: siteId}
     })
-    console.log("SITE OWNERS:************", siteOwners)
-    res.json( siteOwners )
+    res.json( {siteOwners} )
   })
 )
 
