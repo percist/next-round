@@ -3,7 +3,6 @@ import thunk from 'redux-thunk';
 import session from './session';
 import sites from './sites';
 import rounds from './rounds';
-import comments from './comments';
 import items from './items';
 import buddies from './buddies';
 
@@ -11,7 +10,6 @@ const rootReducer = combineReducers({
   session,
   sites,
   rounds,
-  comments,
   items,
   buddies
 });
