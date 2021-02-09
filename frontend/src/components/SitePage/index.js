@@ -5,9 +5,7 @@ import ItemCardContainer from "../ItemCardContainer";
 import RoundsFeed from "../RoundsFeed";
 import RoundsSidebar from "../RoundsSidebar";
 import BuddiesSidebar from "../BuddiesSidebar";
-import Dashboard from "../Dashboard";
 import { fetchOneSite } from "../../store/sites";
-import { fetchDataForSite } from "../../store/data";
 import { fetchAllSiteRounds } from "../../store/rounds";
 import "./SitePage.css";
 
@@ -16,62 +14,56 @@ const SitePage = () => {
     const params = useParams();
     const { siteId } = params;
     const user = useSelector((state) => state.session.user)
-    const [ items, setItems ] = useState([]);
-    const [ isOwner, setIsOwner ] = useState(false)
+    const [items, setItems] = useState([]);
+    const [isOwner, setIsOwner] = useState(false)
 
-    const site = useSelector(fullReduxState=> {
+    const site = useSelector(fullReduxState => {
         return fullReduxState.sites;
     })
 
-    const rounds = useSelector(fullReduxState=> {
+    const rounds = useSelector(fullReduxState => {
         return fullReduxState.rounds;
     })
 
-    // const items = useSelector(fullReduxState=> {
-    //     return fullReduxState.items;
-    // })
-
-    useEffect(()=> {
-        const checkIsOwner= async() => {
+    useEffect(() => {
+        const checkIsOwner = async () => {
             const response = await fetch(`/api/sites/${siteId}/owners`)
             const owners = await response.json();
-            if (Array.isArray(owners.siteOwners)){
+            if (Array.isArray(owners.siteOwners)) {
                 owners.siteOwners.forEach(owner => {
-                if (owner.id === user.id) setIsOwner(true) 
-            })
+                    if (owner.id === user.id) setIsOwner(true)
+                })
             }
         }
         checkIsOwner(user.id)
         dispatch(fetchOneSite(siteId))
-        // dispatch(fetchAllSiteItems)(siteId)
         dispatch(fetchAllSiteRounds(siteId))
-    },[dispatch, siteId, user]);
+    }, [dispatch, siteId, user]);
 
-    useEffect(()=> {
-        setItems(site.Item);
+    useEffect(() => {
+        setItems(site.Items);
     }, [site])
 
     return (
         <div className="site-page">
             <div className="site-page-header">
-                <img src={site.imgUrl} alt={site.name}/>            
+                <img src={site.imgUrl} alt={site.name} />
             </div>
             <div className="site-page-content">
                 <div className="site-page-content-rounds-sidebar">
-                    <div classname="site-page-content-rounds-sidebar_info">
-                        {site.name} <br/>
-                        {`${site.address}`}<br/>{`${site.city}, ${site.state}`}
+                    <div id="site-page-content-rounds-sidebar_info">
+                        <h2>{site.name}</h2>
+                        <h3>{`${site.address}`}</h3>
+                        <h3>{`${site.city}, ${site.state}`}</h3>
                     </div>
-                    <RoundsSidebar user={user}/>
+                    <RoundsSidebar user={user} />
                 </div>
                 <div className="site-page-content-feed">
-                    {isOwner && site && <Dashboard site={site}/>}
-                    {/* TODO: map items to item cards */}
-                    <ItemCardContainer />
-                    <RoundsFeed rounds={rounds} site={site}/>
+                    <ItemCardContainer items={items}/>
+                    <RoundsFeed rounds={rounds} site={site} />
                 </div>
                 <div className="site-page-content-buddy-sidebar">
-                    <BuddiesSidebar user={user}/>
+                    <BuddiesSidebar user={user} />
                 </div>
             </div>
         </div>

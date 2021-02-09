@@ -4,11 +4,8 @@ import "./index.css"
 const SplashPage = () => {
     return (
         <div className="splash-page">
-            <div className="splash-page_banner">
-                <img src='./SplashBackgound.png' />
-            </div>
-            <div className="splash-page_logo">
-                <img src='./NR.png' />
+            <div className="splash-page_img">
+                <img src='./N.png' />
 
             </div>
         </div>    

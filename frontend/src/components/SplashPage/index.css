@@ -2,15 +2,13 @@
 .splash-page_banner{
     position: absolute;
     bottom: 0px;
-    height: calc(100vh - 80px);
     object-fit: cover;
 }
 
-.splash-page_logo img{
-    height: 100%;
+.splash-page{
+    width: 100%;
     /* background: rgba(0, 0, 0, 0.2); */
-    position: absolute;
-    top: 0;
-    left: auto;
-    margin-top: -100px;
+    position: fixed;
+    height: calc(100vh);
+    object-fit: cover;
 }

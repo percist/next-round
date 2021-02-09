@@ -1,7 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session';
-import data from './data';
 import sites from './sites';
 import rounds from './rounds';
 import comments from './comments';
@@ -10,7 +9,6 @@ import buddies from './buddies';
 
 const rootReducer = combineReducers({
   session,
-  data,
   sites,
   rounds,
   comments,

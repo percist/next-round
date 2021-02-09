@@ -40,6 +40,7 @@ const validateSignup = [
     handleValidationErrors
   ];
 
+// Get one site by ID
 router.get(
     `/:id(\\d+)`,
     asyncHandler(async (req, res) => {
@@ -68,6 +69,7 @@ router.get(
   })
 )
 
+// Create a new site
 router.post(
     `/`,
     restoreUser,
@@ -88,5 +90,21 @@ router.post(
     })
 );
 
+// Get all items from one site
+router.get(
+  `/:id(\\d+)`,
+  asyncHandler(async (req, res) => {
+      const siteId = req.params.id
+      const site = await Site.findOne({
+          where: {id: siteId},
+          include: [
+              {
+                  model: Item
+              }
+          ]
+      })
+      res.json({ site })
+  })
+)
 
 module.exports = router;
