@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import ItemCardContainer from "../ItemCardContainer";
 import RoundsFeed from "../RoundsFeed";
 import RoundsSidebar from "../RoundsSidebar";
@@ -10,6 +10,7 @@ import { fetchAllSiteRounds } from "../../store/rounds";
 import "./SitePage.css";
 
 const SitePage = () => {
+    const history = useHistory();
     const dispatch = useDispatch();
     const params = useParams();
     const { siteId } = params;
@@ -25,6 +26,10 @@ const SitePage = () => {
         return fullReduxState.rounds;
     })
 
+    const updateMenuHandler = () => {
+        history.push(`/sites/${site.id}/menu`)
+    }
+    
     useEffect(() => {
         const checkIsOwner = async () => {
             const response = await fetch(`/api/sites/${siteId}/owners`)
@@ -51,6 +56,13 @@ const SitePage = () => {
             </div>
             <div className="site-page-content">
                 <div className="site-page-content-rounds-sidebar">
+                    { isOwner && <button 
+                                    onClick={updateMenuHandler}
+                                    className="button update-menu-button"
+                                    >
+                                    Update menu
+                                </button>
+                    }
                     <div id="site-page-content-rounds-sidebar_info">
                         <h2>{site.name}</h2>
                         <h3>{`${site.address}`}</h3>
