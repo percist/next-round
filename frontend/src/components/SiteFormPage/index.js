@@ -49,7 +49,7 @@ const SiteFormPage = ( ) => {
                 <label>
                     Name
                     <input
-                        className="input sign-up-form_input"
+                        className="input site-creation-form_input"
                         type="text"
                         id="name"
                         value={name}
@@ -60,7 +60,7 @@ const SiteFormPage = ( ) => {
                 <label>
                     Address
                     <input
-                        className="input sign-up-form_input"
+                        className="input site-creation-form_input"
                         type="text"
                         id="address"
                         value={address}
@@ -71,7 +71,7 @@ const SiteFormPage = ( ) => {
                 <label>
                     City
                     <input
-                        className="input sign-up-form_input"
+                        className="input site-creation-form_input"
                         type="text"
                         id="city"
                         value={city}
@@ -82,7 +82,7 @@ const SiteFormPage = ( ) => {
                 <label>
                     State
                     <input
-                        className="input sign-up-form_input"
+                        className="input site-creation-form_input"
                         type="text"
                         id="state"
                         value={state}
@@ -93,7 +93,7 @@ const SiteFormPage = ( ) => {
                 <label>
                     Zip Code
                     <input
-                        className="input sign-up-form_input"
+                        className="input site-creation-form_input"
                         type="integer"
                         value={zip}
                         onChange={(e) => setZip(e.target.value)}
@@ -103,7 +103,7 @@ const SiteFormPage = ( ) => {
                 <label>
                     Website
                     <input
-                        className="input sign-up-form_input"
+                        className="input site-creation-form_input"
                         type="text"
                         id="website"
                         value={website}
@@ -114,7 +114,7 @@ const SiteFormPage = ( ) => {
                 <label>
                     Profile Picture
                     <input
-                        className="input sign-up-form_input"
+                        className="input site-creation-form_input"
                         type="file"
                         onChange={updateFile}
                     />
@@ -122,7 +122,7 @@ const SiteFormPage = ( ) => {
                 <label>
                     isActive
                     <input
-                        className="input sign-up-form_input"
+                        className="input site-creation-form_input"
                         type="select"
                         id="active"
                         onChange={(e) => setIsActive(e.target.value)}
@@ -131,7 +131,7 @@ const SiteFormPage = ( ) => {
                 </label>
                 <button 
                     className="button"
-                    id="sign-up-form_button"
+                    id="site-creation-form_button"
                     type="submit"
                     >
                         Create Your Business

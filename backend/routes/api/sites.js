@@ -40,6 +40,25 @@ const validateSignup = [
     handleValidationErrors
   ];
 
+const validateItemCreation = [
+  check("name")
+    .exists({ checkFalsy: true})
+    .isString()
+    .isLength({ min: 1, max: 200 })
+    .withMessage('Please provide a name for your item.'),
+  check("description")
+    .exists({ checkFalsy: true})
+    .isString()
+    .isLength({ min: 1, max: 2000 })
+    .withMessage('Please provide a description for your item.'),
+  check("price")
+    .exists({ checkFalsy: true})
+    .isInt()
+    .isLength({ min: 100, max: 100000 })
+    .withMessage('Please provide a price for your item.'),
+    handleValidationErrors
+];
+
 // Get one site by ID
 router.get(
     `/:id(\\d+)`,
@@ -92,7 +111,7 @@ router.post(
 
 // Get all items from one site
 router.get(
-  `/:id(\\d+)`,
+  `/:id(\\d+)/items`,
   asyncHandler(async (req, res) => {
       const siteId = req.params.id
       const site = await Site.findOne({
@@ -104,6 +123,35 @@ router.get(
           ]
       })
       res.json({ site })
+  })
+)
+
+// Delete an item
+router.delete(
+  `/:siteId(\\d+)/items/:itemId(\\d+)`,
+  asyncHandler(async (req, res) => {
+    const itemId = req.params.itemId;
+    const item = await Item.findByPk(itemId);
+    await item.destroy();
+  })
+)
+
+// Create an item
+router.post(
+  `/:siteId(\\d+)/items`,
+  validateItemCreation,
+  singleMulterUpload("image"), 
+  asyncHandler(async (req, res) => {
+    console.log("ROUTE HIT*******")
+    const siteId = req.params.siteId;
+    const { name, description, price } = req.body
+    const imgUrl = await singlePublicFileUpload(req.file);
+    const item = await Item.create({name, description, price, imgUrl});
+    await Menu.create({
+      siteId,
+      itemId: item.id
+    });
+    return res.json({item})
   })
 )
 

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import CommentFeed from '../CommentFeed'
 
 
 const SiteRoundsCard = ({ round, site }) => {

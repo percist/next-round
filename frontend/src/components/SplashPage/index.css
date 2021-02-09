@@ -5,10 +5,8 @@
     object-fit: cover;
 }
 
-.splash-page{
+.splash-page img{
     width: 100%;
     /* background: rgba(0, 0, 0, 0.2); */
-    position: fixed;
-    height: calc(100vh);
     object-fit: cover;
 }

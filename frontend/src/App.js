@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
 import SplashPage from "./components/SplashPage/SplashPage";
 import SitePage from "./components/SitePage";
+import MenuPage from "./components/MenuPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route path="/sites/:siteId" exact >
             <SitePage />
+          </Route>
+          <Route path="/sites/:siteId/menu" exact >
+            <MenuPage />
           </Route>
         </Switch>
       )}
