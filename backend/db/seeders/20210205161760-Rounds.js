@@ -1,7 +1,6 @@
 'use strict';
 
 const statuses= [
-  "pending",
   "userPaid",
   "recipientClaimed",
   "sitePaidOut"

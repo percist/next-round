@@ -13,7 +13,7 @@ export const fetchAllBuddies = (userId) => {
     return async (dispatch) => {
         const response = await fetch(`/api/users/${userId}/buddies`);
         dispatch(
-            setBuddies(response.data.following)
+            setBuddies(response.data.follower)
         );
     };
 }

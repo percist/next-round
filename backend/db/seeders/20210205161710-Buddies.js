@@ -3,7 +3,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
       return queryInterface.bulkInsert('Buddies', [
-        { ownerId: 1, buddyId: 1  },
         { ownerId: 1, buddyId: 2 },
         { ownerId: 1, buddyId: 3 },
         { ownerId: 1, buddyId: 4 },
@@ -16,7 +15,6 @@ module.exports = {
         { ownerId: 1, buddyId: 11  },
         { ownerId: 1, buddyId: 12  },
         { ownerId: 2, buddyId: 1  },
-        { ownerId: 2, buddyId: 2 },
         { ownerId: 2, buddyId: 3 },
         { ownerId: 2, buddyId: 4 },
         { ownerId: 2, buddyId: 5 },
@@ -29,7 +27,6 @@ module.exports = {
         { ownerId: 2, buddyId: 12  },
         { ownerId: 3, buddyId: 1  },
         { ownerId: 3, buddyId: 2 },
-        { ownerId: 3, buddyId: 3 },
         { ownerId: 3, buddyId: 4 },
         { ownerId: 3, buddyId: 5 },
         { ownerId: 3, buddyId: 6 },

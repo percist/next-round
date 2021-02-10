@@ -36,6 +36,7 @@ function ProfileButton({ user }) {
     <>
       <button id="profile-button" onClick={openMenu}>
         {!user && <i className="fas fa-user" />}
+        {!user.imgUrl && <i className="fas fa-user" />}
         {user.imgUrl && <img id="navbar-link_user_image" src={user.imgUrl} alt="Me"/>}
       </button>
       {showMenu && (

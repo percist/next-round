@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler');
 const { restoreUser } = require('../../utils/auth');
 const { handleValidationErrors } = require('../../utils/validation');
 const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
-const { Site, Owner, Item } = require("../../db/models"
+const { Site, Owner, Item, Menu } = require("../../db/models"
 )
 const router = express.Router();
 
@@ -42,19 +42,19 @@ const validateSignup = [
 
 const validateItemCreation = [
   check('name')
-    .exists({ checkFalsy: true })
     .isString()
+    .withMessage('Please ensure input is a string')
     .isLength({ min: 1, max: 200 })
     .withMessage('Please provide a name for your item.'),
   check("description")
-    .exists({ checkFalsy: true })
     .isString()
+    .withMessage('Please ensure input is a string')
     .isLength({ min: 1, max: 2000 })
     .withMessage('Please provide a description for your item.'),
   check("price")
-    .exists({ checkFalsy: true })
     .isString()
-    .isLength({ min: 100, max: 100000 })
+    .withMessage('Please ensure input is a string')
+    .isLength({ min: 3, max: 5 })
     .withMessage('Please provide a price for your item.'),
   handleValidationErrors
 ];
@@ -165,13 +165,12 @@ router.delete(
 // Create an item
 router.post(
   `/:siteId(\\d+)/items`,
-  // validateItemCreation,
   singleMulterUpload("image"),
+  validateItemCreation,
   asyncHandler(async (req, res) => {
     const siteId = req.params.siteId;
     const { name, description, price } = req.body
     const imgUrl = await singlePublicFileUpload(req.file);
-    console.log(name, description, parseInt(price), imgUrl)
     const item = await Item.create({
       name,
       description,

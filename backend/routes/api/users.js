@@ -82,7 +82,7 @@ router.get(
         },
         include: [{
           model: User,
-          as: "following",
+          as: "follower",
           include: [{
             model: Round,
             order: [["createdAt", "DESC"]],

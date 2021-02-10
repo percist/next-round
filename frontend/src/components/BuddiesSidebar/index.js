@@ -9,7 +9,7 @@ const BuddiesSidebar = ({user}) => {
     const buddies = useSelector(fullReduxState => {
         return fullReduxState.buddies;
     });
-    
+
     useEffect( () => {
         dispatch(fetchAllBuddies(user.id))
     },[dispatch, user])
@@ -20,7 +20,9 @@ const BuddiesSidebar = ({user}) => {
                 My Buddies:
             </div>
             <div className="buddies-sidebar_feed">
-                {(Array.isArray(buddies) && buddies.map(buddy=> {
+                {(Array.isArray(buddies) && buddies.filter(buddy => {
+                    if (buddy.Rounds[0] !== undefined) return buddy;
+                }).map(buddy=> {
                     return <Buddies buddy={buddy} key={buddy.id}/>
                 }))}
                 

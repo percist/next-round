@@ -19,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
     }  
   }, {});
   Buddy.associate = function(models) {
-    // associations can be defined here
   };
   return Buddy;
 };

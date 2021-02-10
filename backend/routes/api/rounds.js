@@ -91,7 +91,6 @@ router.get(
             const rounds = await Round.findAll({
                 where: {
                     receiverId: receiverId,
-                    status: "recipientClaimed"
                 },
                 include: [{
                     model: Item,
@@ -100,7 +99,6 @@ router.get(
                     }]
                 }],
                 order: [["createdAt", "DESC"]],
-                limit: 20
             })
             payload.push(rounds)
         }))

@@ -3,16 +3,13 @@ import "./Buddies.css"
 
 
 const Buddies = ({ buddy, rounds, sites }) => {
-
-    //TODO fetch buddy most recent round with status used (see if we can reuse the rounds sidebar call)
-    //TODO fetch item of round
-    //TODO fetch Site who has item on their menu
-
+    console.log(buddy.Rounds[0])
     return (
         <div className="buddy">
-            <img src={buddy.imgUrl} alt="user"/>
+            {!buddy.imgUrl && "Loading ..."}
+            {buddy.imgUrl && <img src={buddy.imgUrl} alt="user"/>}
             <div className='buddy-info'>
-                <h4>{buddy.username}</h4> {`recently enjoyed a ${buddy.Rounds[0].Items[0].name} at ${buddy.Rounds[0].Items[0].Sites[0].name}`} 
+                { buddy.Rounds[0] && <><h4>{buddy.username}</h4> {`recently enjoyed a ${buddy.Rounds[0].Items[0].name} at ${buddy.Rounds[0].Items[0].Sites[0].name}`} </>}
             </div>
         </div>
         
