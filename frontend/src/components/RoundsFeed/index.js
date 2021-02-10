@@ -1,6 +1,7 @@
 import React from 'react';
 import UserRoundsCard from '../UserRoundsCard';
 import SiteRoundsCard from '../SiteRoundsCard';
+import './RoundsFeed.css'
 
 const RoundsFeed = ({ rounds, site }) => {
     return (

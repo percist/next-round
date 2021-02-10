@@ -1,4 +1,22 @@
-.home-page {
+.user-page {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+}
+
+.user-page-rounds_sidebar {
+    display: flex;
+    margin: 20px;
+    width: 15%;
+    justify-content: center;
+}
+
+.user-page-site_feed {
+    width: 50%;
+}
+
+.user-page-buddies_sidebar {
+    display: flex;
+    margin: 20px;
+    width: 20%;
 }

@@ -23,13 +23,17 @@ const HomePage = () => {
     },[dispatch, user])
 
     return (
-        <>
-            <div className="home-page">
-                <RoundsSidebar user={user}/>
-                <RoundsFeed rounds={rounds}/>
-                <BuddiesSidebar user={user}/>
+        <div className="user-page">
+            <div className="user-page-rounds_sidebar">
+            <RoundsSidebar user={user}/>
             </div>
-        </>
+            <div className="user-page-site_feed">
+                <RoundsFeed rounds={rounds}/>
+            </div>
+            <div className="user-page-buddies_sidebar">
+            <BuddiesSidebar user={user}/>
+            </div>
+        </div>
     )
 }
 

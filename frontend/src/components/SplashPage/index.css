@@ -7,6 +7,55 @@
 
 .splash-page img{
     width: 100%;
-    /* background: rgba(0, 0, 0, 0.2); */
+    position: fixed;
+    bottom: 0px;
+    height: calc(100vh - 80px);
     object-fit: cover;
+}
+
+.splash-page-overlay {
+    width: 500px;
+    height: 500px;
+    padding: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    position: absolute;
+    top: 20vh;
+    right: 40px;
+    display: flex;
+    border-radius: 20px;
+}
+
+#splash-page-cta,
+#splash-page-cta_1,
+#splash-page-cta_buttons,
+#splash-page-cta_buttons button {
+    background: none;
+}
+#splash-page-cta,
+#splash-page-cta_1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#splash-page-cta h1 {
+    color: var(--secondary-bg-color);
+    text-shadow: black 1px 1px 2px;
+    text-align: center;
+    font-size: 60px;
+}
+
+#splash-page-cta_buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+#splash-page-cta_buttons button{
+    font-size: large;
+    color: var(--secondary-bg-color);
+    margin: 10px;
+    height: 40px;
+    width: 300px;
+    background-color: var(--main-border-color);
 }

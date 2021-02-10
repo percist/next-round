@@ -17,7 +17,7 @@ const BuddiesSidebar = ({user}) => {
     return (
         <div className="buddies-sidebar">
             <div className="buddies-sidebar_header">
-                My Buddies:
+               <h2>Buddies</h2> 
             </div>
             <div className="buddies-sidebar_feed">
                 {(Array.isArray(buddies) && buddies.filter(buddy => {

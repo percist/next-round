@@ -1,9 +1,25 @@
-.footer, 
-.footer h1 {
+.footer,
+.footer {
     height: 80px;
     width: 100vw;
     position: fixed;
     bottom: 0px;
-    background-color: var(--secondary-accent-color);
+    background-color: var(--main-accent-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.icons {
+    width: 300px;
+    margin-left: 30px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footer h2 {
+    background-color: var(--main-accent-color);
     color: var(--main-border-color);
+    margin-right: 40px;
 }

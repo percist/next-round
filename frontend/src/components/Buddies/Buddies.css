@@ -6,6 +6,8 @@
     max-height: 80px;
     min-height: 80px;
     object-fit: cover;
+    align-self: flex-end;
+    margin: 0 5px;
 }
 
 .buddy {
@@ -16,6 +18,6 @@
 }
 
 .buddy-info {
-    padding: 5px;
+    padding: 0 5px;
     margin: 0 2px 0 5px;
 }

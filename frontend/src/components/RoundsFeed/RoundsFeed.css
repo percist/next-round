@@ -1,0 +1,10 @@
+.rounds-card {
+    width: 500px;
+    height: 600px;
+}
+
+.round-card-image img {
+    width: 500px;
+    height: 400px;
+    object-fit: cover;
+}
