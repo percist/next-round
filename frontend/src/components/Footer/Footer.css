@@ -1,0 +1,9 @@
+.footer, 
+.footer h1 {
+    height: 80px;
+    width: 100vw;
+    position: fixed;
+    bottom: 0px;
+    background-color: var(--secondary-accent-color);
+    color: var(--main-border-color);
+}

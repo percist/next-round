@@ -107,8 +107,8 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Round, {foreignKey: 'receiverId' });
   };
   User.prototype.toSafeObject = function () { 
-    const { id, username, email } = this; 
-    return { id, username, email };
+    const { id, username, email, imgUrl } = this; 
+    return { id, username, email, imgUrl };
   };
   User.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.hashedPassword.toString());

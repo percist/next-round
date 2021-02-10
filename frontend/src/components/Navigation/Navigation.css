@@ -113,5 +113,23 @@ a {
 
 .button:hover {
   background-color: var(--secondary-bg-color);
-  
+}
+
+#profile-button {
+  border-radius: 100px;
+  border: 2pt black;
+  min-width: 40px;
+  max-width: 40px;
+  max-height: 40px;
+  min-height: 40px;
+}
+
+#profile-button img {
+  border-radius: 100px;
+  border: 2pt black;
+  min-width: 40px;
+  max-width: 40px;
+  max-height: 40px;
+  min-height: 40px;
+  object-fit: cover;
 }

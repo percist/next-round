@@ -30,6 +30,11 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
         <NavLink
+            to={`/users/${sessionUser.id}`} exact
+            id="link-home"
+          >Home
+        </NavLink>
+        <NavLink
           id="link-sites"
           to="/sites"
         >
@@ -71,12 +76,7 @@ function Navigation({ isLoaded }) {
               <img src={image} alt="Next Round's on Me"/>
             </a>
         </li>
-        <li className="navbar-link">
-          <NavLink
-            to="/" exact
-            id="link-home"
-          >Home
-            </NavLink>
+        <li>
           {isLoaded && sessionLinks}
         </li>
       </ul>
