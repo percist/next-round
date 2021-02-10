@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllBuddies } from '../../store/buddies'
 import Buddies from '../Buddies'
+import "./BuddiesSidebar.css"
 
 const BuddiesSidebar = ({user}) => {
     const dispatch = useDispatch()

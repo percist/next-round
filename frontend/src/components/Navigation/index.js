@@ -37,7 +37,7 @@ function Navigation({ isLoaded }) {
         </NavLink>
         <NavLink
           id="link-my-rounds"
-          to="/user/:id"
+          to={`/users/${sessionUser.id}`}
         >
           My Rounds
         </NavLink>

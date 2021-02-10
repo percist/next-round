@@ -21,6 +21,7 @@ export const fetchAllSiteItems = (siteId) => async (dispatch) => {
 }
 
 export const createNewItem = (siteId, item) => async (dispatch) => {
+    console.log("ITEM: ", item)
     const { name, description, price, image } = item;
     const formData = new FormData();
     formData.append("name", name);
@@ -28,9 +29,10 @@ export const createNewItem = (siteId, item) => async (dispatch) => {
     formData.append("price", price);
     if (image) formData.append("image", image);
     const response = await fetch(`/api/sites/${siteId}/items`, {
-        mehtod: 'POST',
+        method: 'POST',
         body: formData,
     });
+
     dispatch(addOneItem(response.data.item));
     return response;
 }

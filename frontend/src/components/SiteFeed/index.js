@@ -1,11 +1,15 @@
 import React from 'react';
-import SiteCard from '../SiteCard';
+import UserRoundsCard from '../UserRoundsCard';
 
-const SiteFeed = () => {
+const SiteFeed = ({ sites }) => {
+    console.log(sites)
     return (
-    <div className="site-feed">
-        <h1>SiteFeed</h1>
-        <SiteCard />
+        <div className="rounds-feed">
+        {!Array.isArray(sites) && <h2>loading...</h2> }
+        {Array.isArray(sites[0]) && sites.map((round,i) => {
+            if (round) return <UserRoundsCard round={round} key={i}/>
+            else return null
+        })}
     </div>
     )
 }

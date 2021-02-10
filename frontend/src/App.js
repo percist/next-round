@@ -10,6 +10,7 @@ import HomePage from "./components/HomePage";
 import SplashPage from "./components/SplashPage/SplashPage";
 import SitePage from "./components/SitePage";
 import MenuPage from "./components/MenuPage";
+import RoundsForm from "./components/RoundsForm/RoundsForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route path="/" exact>
             <SplashPage />
+          </Route>
+          <Route path="/users/round" exact>
+            <RoundsForm />
           </Route>
           <Route path="/users/:id" exact >
             <HomePage />

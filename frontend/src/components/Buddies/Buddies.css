@@ -1,0 +1,21 @@
+.buddy img {
+    border-radius: 100px;
+    border: 2pt black;
+    min-width: 80px;
+    max-width: 80px;
+    max-height: 80px;
+    min-height: 80px;
+    object-fit: cover;
+}
+
+.buddy {
+    display: flex;
+    background-color: var(--main-accent-color);
+    color: var(--main-border-color);
+    padding: 5pt;
+}
+
+.buddy-info {
+    padding: 5px;
+    margin: 0 2px 0 5px;
+}

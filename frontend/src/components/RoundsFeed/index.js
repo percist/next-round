@@ -10,7 +10,7 @@ const RoundsFeed = ({ rounds, site }) => {
                 if (round) return <UserRoundsCard round={round} key={i}/>
                 else return null
             })}
-            {Array.isArray(rounds) && rounds.map((round, i) => {
+            {site && Array.isArray(rounds) && rounds.map((round, i) => {
                 if (round) return <SiteRoundsCard round={round} key={i} site={site}/>
                 else return "No Rounds Redeemed Here Yet."
             })}

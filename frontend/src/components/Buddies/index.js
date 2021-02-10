@@ -1,4 +1,6 @@
 import React from 'react';
+import "./Buddies.css"
+
 
 const Buddies = ({ buddy, rounds, sites }) => {
 
@@ -8,7 +10,10 @@ const Buddies = ({ buddy, rounds, sites }) => {
 
     return (
         <div className="buddy">
-           {`${buddy.username} had a ${buddy.Rounds[0].Items[0].name} at ${buddy.Rounds[0].Items[0].Sites[0].name}`} 
+            <img src={buddy.imgUrl} alt="user"/>
+            <div className='buddy-info'>
+                <h4>{buddy.username}</h4> {`recently enjoyed a ${buddy.Rounds[0].Items[0].name} at ${buddy.Rounds[0].Items[0].Sites[0].name}`} 
+            </div>
         </div>
         
     )

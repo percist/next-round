@@ -1,4 +1,5 @@
 import React from 'react';
+import './MenuItem.css'
 
 const MenuItem = ({ item, siteId }) => {
 
@@ -10,15 +11,15 @@ const MenuItem = ({ item, siteId }) => {
 
     return (
         <div className="menu-item">
-            <h2>{item.name}</h2>
             <div className="menu-item_image">
                 {item.imgUrl && <img src={item.imgUrl} alt="site item"/>}          
             </div>
+            <h2>Name: {item.name}</h2>
             <div className="menu-item_info">
-                {item.description}
+                Description: {item.description}
             </div>
             <div className="menu-item_price">
-                {`$${item.price / 100}`}
+                Price: {`$${item.price / 100}`}
             </div>
             <button onClick={deleteMenuItem}>Delete</button>
         </div>

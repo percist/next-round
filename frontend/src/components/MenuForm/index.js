@@ -14,12 +14,13 @@ const MenuForm = ({siteId}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        dispatch(createNewItem(siteId, {
+        const item = {
             name,
             description,
-            price,
+            price: (price * 100),
             image
-        }))
+        }
+        dispatch(createNewItem(siteId, item))
         .catch(res => {
             if (res.data && res.data.errors) setErrors(res.data.errors);
         })
