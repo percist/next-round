@@ -150,4 +150,26 @@ router.get(
     })
 )
 
+// TODO: Form Validation
+// create one round and accompanying roundItem
+router.post(
+    `/`,
+    asyncHandler(async (req, res, next) =>{
+        const { receiverId, senderId, itemId } = req.body;
+        const round = await Round.create({
+            status: "userPaid",
+            receiverId,
+            senderId 
+        })
+        await RoundItem.create({
+            roundId: round.id,
+            itemId: itemId
+        })
+        return res.json({
+            round
+        })
+    })
+)
+
+
 module.exports = router;

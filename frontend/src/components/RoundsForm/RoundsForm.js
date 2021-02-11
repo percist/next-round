@@ -9,14 +9,15 @@ import * as sessionActions from "../../store/session";
 const RoundsForm = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-    const [ buddy, setBuddy ] = useState({});
-    const [ site, setSite ] = useState('');
-    const [ round, setRound ] = useState({});
-    const [ item, setItem ] = useState({});
-    const [ siteItems, setSiteItems ] = useState([]);
-    const [ total, setTotal ] = useState(0.00);
+    const [ buddy, setBuddy ] = useState({}); // sets buddy id (integer)
+    const [ site, setSite ] = useState(''); // sets site id
+    const [ round, setRound ] = useState({}); 
+    const [ item, setItem ] = useState([]); // sets an array with a single item object
+    const [ siteItems, setSiteItems ] = useState([]); // sets an array of item objects
+    const [ total, setTotal ] = useState(0.00); // sets an integer
     const [ errors, setErrors ] = useState([]);
-    const [ confirmSubmit, setConfirmSubmit ] = useState(false)
+    const [ confirmSubmit, setConfirmSubmit ] = useState(false);
+    const [ confirm, setConfirm ] = useState(false);
     
     const buddies = useSelector(fullReduxState => {
         return fullReduxState.buddies;
@@ -27,79 +28,62 @@ const RoundsForm = () => {
     })
 
     // TODO: create one round and create one round item
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // createOneRound({
-        //     status: "userPaid",
-        //     receiverId: buddy.id,
-        //     senderId: sessionUser.id, 
-        // })
-        // .catch(res => {
-        //     if (res.data && res.data.errors) setErrors(res.data.errors);
-        // });
-        // createOneRoundItem({
-
-        // })
+        await createOneRound({
+            receiverId: buddy,
+            senderId: sessionUser.id,
+            itemId: item[0].id 
+        })
+        .catch(res => {
+            if (res.data && res.data.errors) setErrors(res.data.errors);
+        });
         // setConfirmSubmit(true)
+        // TODO: RESET VALUES FOR SELECTORS
     }
-
-    const handleBuddySelect = (e) => {
-        setBuddy(e.target.value)
-    }
-
-    const handleSiteSelect = (e) => {
-        console.log(e.target.value)
-        // const selectedSite = e.target.value
-        // dispatch(fetchAllSiteItems(selectedSite))
-        // setSite(selectedSite)
-    }
-
-    const handleItemSelect = (e) => {
-        // const selectedItem = e.target.value
-        // setItem(selectedItem);
-        // setTotal(parseInt(selectedItem.price) / 100)
-    }
-
-    const createOneRound = async (round) => {
-        const { status, receiverId, senderId } = round;
+    
+    const createOneRound = async (data) => {
+        const { status, receiverId, senderId } = data;
         const formData = new FormData();
         formData.append("status", status);
         formData.append("receiverId", receiverId);
         formData.append("senderId", senderId);
-        const response = await fetch(`api/user/${sessionUser.id}/round`, {
+        const response = await fetch(`api/rounds/`, {
             method: 'POST',
             body: formData
         });
         setRound(response.data.Round);
     }
-
-    const createOneRoundItem = async (item, round) => {
-        const roundId = round.id;
-        const itemId = item.id;
-        const formData = new FormData();
-        formData.append("status")
+    
+    const handleItemSelect = (e) => {
+        const itemId = e
+        setItem(siteItems.filter(item => item.id == itemId))
     }
 
     useEffect(() => {
         if (Array.isArray(sites) && site){
-            setSiteItems(sites[site - 1].Items) 
+            setSiteItems(sites[site - 1].Items);
         }   
-    },[site, dispatch, sites])
+    },[site, dispatch, sites]);
 
     useEffect(() => {
         dispatch(fetchAllBuddies(sessionUser.id));
-        dispatch(fetchAllSites())
-    },[dispatch, sessionUser])
+        dispatch(fetchAllSites());
+    },[dispatch, sessionUser]);
+
+    useEffect(() => {
+        if (item[0]) {
+            setTotal(item[0].price)    
+        }    
+    }, [item])
 
     return (
         <>
-            <h1>Next Round's on Me</h1>
             <h3>Just because you're separated doesn't mean you have to drink alone! Buy a buddy a Round today.</h3>
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
-                {/* TODO: set up a selector with buddies dropdown */}
                 <label>
                     Choose a Buddy
                     <select name="buddy" 
@@ -111,13 +95,6 @@ const RoundsForm = () => {
                             return <option value={buddy.id}>{buddy.firstName}</option>
                         })}
                     </select>
-                    {/* <input
-                        className="input sign-up-form_input"
-                        type="select"
-                        value={buddy}
-                        onChange={(e) => setBuddy(e.target.value)}
-                        required
-                    /> */}
                 </label>
                 <label>
                     Choose a Participating Restaurant or Bar
@@ -135,7 +112,7 @@ const RoundsForm = () => {
                     Choose an Item off their Menu
                     <select name="item" 
                         className="input sign-up-form_input"
-                        onChange={(e) => setItem(e.target.value)}>
+                        onChange={(e) => handleItemSelect(e.target.value)}>
                         <option value="">--Please choose an option--</option>
                         {!siteItems && <option value=''>None</option>}
                         {Array.isArray(siteItems) && siteItems.map(item => {
@@ -147,8 +124,7 @@ const RoundsForm = () => {
                     </select>
                 </label>
                 <label>
-                    Total for this round: {item.price ?  `$${item.price / 100}` : "$0.00"}
-                    {/* TODO:  */}
+                    Total for this round: {total ?  `$${total / 100}` : "$0.00"}
                 </label>
                 <button
                     className="button"
