@@ -19,7 +19,7 @@ const SiteRoundsCard = ({ round, site }) => {
         <div className="rounds-card" >
             <div className="rounds-card-header">
                 <div id="rounds-card-header_site_name">
-                    {site && <h2>loading....</h2>}
+                    {!site && <h2>loading....</h2>}
                     {site && site.name}
                 </div>
                 <div id="rounds-card-header_site_location">
