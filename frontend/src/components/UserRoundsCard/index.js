@@ -29,7 +29,7 @@ const UserRoundsCard = ({ round }) => {
                     {`${round[0].Items[0].Sites[0].city}, ${round[0].Items[0].Sites[0].state}`}
                 </div>
             </div>
-            <div className="round-card-image">
+            <div className="rounds-card-image">
                 {!round[0].imageUrl && 
                   !round[0].Items[0].Sites[0].imgUrl && 
                   round[0].Items[0].imageUrl && 
@@ -46,12 +46,22 @@ const UserRoundsCard = ({ round }) => {
                   <img src={round[0].imageUrl} alt="round"
                 />}
             </div>
-            <div className="round-card-info">
-                <div>
-                    {`${user.username} having a ${round[0].Items[0].name}`}
+            <div className="rounds-card-info">
+                <div id="rounds-card-info_image">
+                    {!user.imgUrl && "Loading ..."}
+                    {user.imgUrl && <img src={user.imgUrl} alt="user"/>}
+                  </div>
+                  <div className="rounds-card-info-description">
+                  <div id="rounds-card-info_name">
+                    {user.username} 
+                  </div>
+                  <div id="rounds-card-info_caption">
+                      {`having a ${round[0].Items[0].name}`}
                 </div>
-                <div>
+                <br color="#FFFFF"/>
+                <div id="rounds-card-info_comment">
                     {round[0].comment}
+                </div>
                 </div>
                 {/* <div>
                     {!Array.isArray(replies) && "Be the first to comment"}

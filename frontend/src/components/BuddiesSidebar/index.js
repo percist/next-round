@@ -15,7 +15,8 @@ const BuddiesSidebar = ({user}) => {
     },[dispatch, user])
 
     return (
-        <div className="buddies-sidebar">
+        <div className="buddies-sidebar-container">
+            <div className="buddies-sidebar">
             <div className="buddies-sidebar_header">
                <h2>Buddies</h2> 
             </div>
@@ -26,6 +27,7 @@ const BuddiesSidebar = ({user}) => {
                     return <Buddies buddy={buddy} key={buddy.id}/>
                 }))}
                 
+            </div>
             </div>
         </div>
     )

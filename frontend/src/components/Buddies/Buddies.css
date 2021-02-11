@@ -10,6 +10,10 @@
     margin: 0 5px;
 }
 
+.buddy h2 {
+    display: inline;
+}
+
 .buddy {
     display: flex;
     background-color: var(--main-accent-color);

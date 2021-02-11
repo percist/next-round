@@ -11,6 +11,7 @@ const RoundsForm = () => {
     const sessionUser = useSelector((state) => state.session.user);
     const [ buddy, setBuddy ] = useState({});
     const [ site, setSite ] = useState('');
+    const [ round, setRound ] = useState({});
     const [ item, setItem ] = useState({});
     const [ siteItems, setSiteItems ] = useState([]);
     const [ total, setTotal ] = useState(0.00);
@@ -69,7 +70,14 @@ const RoundsForm = () => {
             method: 'POST',
             body: formData
         });
-        return response;
+        setRound(response.data.Round);
+    }
+
+    const createOneRoundItem = async (item, round) => {
+        const roundId = round.id;
+        const itemId = item.id;
+        const formData = new FormData();
+        formData.append("status")
     }
 
     useEffect(() => {

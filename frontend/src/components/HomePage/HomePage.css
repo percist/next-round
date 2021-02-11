@@ -1,22 +1,71 @@
 .user-page {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+    margin-top: -10px;
+    margin-bottom: 80px;
 }
 
 .user-page-rounds_sidebar {
     display: flex;
-    margin: 20px;
-    width: 15%;
     justify-content: center;
+    position: fixed;
+    height: calc(100% - 160px);
+    left: 0;
+    top: 80;
+    overflow-y: scroll;
+    width: 20vw;
+    min-width: 100px;
+    max-width: 450px;
+}
+
+.rounds-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 80vh;
+    justify-content: space-around;
+}
+
+.rounds-sidebar .button{
+    color: #FFFAFF;
+    font-size: 40px;
+    padding: 20px;
+    font-weight: 600;
+    background-color: var(--main-border-color);
+    width: 250px;
+    height: 250px;
+}
+
+.rounds-sidebar_status {
+    font-size: 30px;
+    font-weight: 400;
 }
 
 .user-page-site_feed {
+    margin: 15px 0;
     width: 50%;
+    align-self: center;
+}
+
+.buddies-sidebar-container {
+    position: fixed;
+    height: calc(100% - 160px);
+    right: 0;
+    top: 80;
+    overflow-y: scroll;
+    background-color: var(--main-accent-color);
+    color: var(--main-border-color);
+    width: 20vw;
+    min-width: 100px;
+    max-width: 450px;
+}
+
+.buddies-sidebar_header {
+    padding: 0 15px;
 }
 
 .user-page-buddies_sidebar {
     display: flex;
-    margin: 20px;
-    width: 20%;
+    margin: 0px;
+    max-width: 400px;
 }

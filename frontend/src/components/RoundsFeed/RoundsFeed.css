@@ -1,10 +1,53 @@
 .rounds-card {
-    width: 500px;
-    height: 600px;
+    width: 680px;
+    
+    border: 0pt black solid;
+    border-radius: 12pt;
+    margin: 5pt 0;
+    background-color: #EEE7EA;
 }
 
-.round-card-image img {
-    width: 500px;
+.rounds-card-image img {
+    width: 680px;
     height: 400px;
     object-fit: cover;
+}
+
+.rounds-card-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px 5px;
+    align-items: flex-end;
+}
+
+.rounds-card-info{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 15px 20px;
+}
+
+.rounds-card-info-description{
+    display: flex;
+    flex-direction: column;
+}
+
+.rounds-card-info img {
+    border-radius: 100px;
+    border: 2pt black;
+    min-width: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    min-height: 40px;
+    object-fit: cover;
+    align-self: flex-end;
+    margin: 0 5px;
+}
+
+#rounds-card-info_comment{
+    padding-top: 20px;
+}
+
+#rounds-card-header_site_name {
+    font-size: 20px;
+    font-weight: 600;
 }
