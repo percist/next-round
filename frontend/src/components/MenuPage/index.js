@@ -9,23 +9,31 @@ const MenuPage = () => {
 
     const params = useParams();
     const { siteId } = params
-    
-    const dispatch = useDispatch();
-
     const items = useSelector(fullReduxState => {
         return fullReduxState.items;
     })
 
+    const [ itemsToDisplay, setItemsToDisplay ] = useState([])
+    
+    const dispatch = useDispatch();
+
     useEffect(() => {
         dispatch(fetchAllSiteItems(siteId))
-    },[dispatch, siteId, MenuForm])
+    },[dispatch, siteId])
+
+    useEffect(() => {
+        if(items[0])
+        setItemsToDisplay([...items])
+    },[dispatch, items])
+
+
     
     return (
         <div className="menu">
             <div className="menu-list">
-                <MenuList items={items} siteId={siteId}/>
+                <MenuList itemsToDisplay={itemsToDisplay} setItemsToDisplay={setItemsToDisplay} siteId={siteId}/>
             </div>
-            <MenuForm siteId={siteId}/>
+            <MenuForm siteId={siteId} itemsToDisplay={itemsToDisplay} setItemsToDisplay={setItemsToDisplay}/>
         </div>
     )
 }

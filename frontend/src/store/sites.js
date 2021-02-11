@@ -26,6 +26,9 @@ export const createNewSite = (site) => async (dispatch) => {
     if (image) formData.append("image", image);
     const response = await fetch('/api/sites', {
       method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: formData, 
     });
     dispatch(setSite(response.data.site));

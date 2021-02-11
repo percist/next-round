@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteMenuItem } from "../../store/items";
 import './MenuItem.css'
 
-const MenuItem = ({ item, siteId }) => {
+const MenuItem = ({ item, itemsToDisplay, setItemsToDisplay, siteId }) => {
+    const dispatch = useDispatch();
+    const [ errors, setErrors ] = useState([])
 
-    const deleteMenuItem = async () => {
-        await fetch(`/api/site/${siteId}/items/${item.id}`, {
-            method: 'DELETE',
+    const handleMenuDelete = async (e) => {
+        e.preventDefault();
+        await dispatch(deleteMenuItem(siteId, item.id))
+        .catch(res => {
+            if (res.data && res.data.errors) setErrors(res.data.errors);
         })
+        setItemsToDisplay([...itemsToDisplay.filter(setItem => setItem.id != item.id)])
     }
 
     return (
@@ -21,7 +28,7 @@ const MenuItem = ({ item, siteId }) => {
             <div className="menu-item_price">
                 Price: {`$${item.price / 100}`}
             </div>
-            <button onClick={deleteMenuItem}>Delete</button>
+            <button onClick={handleMenuDelete}>Delete</button>
         </div>
         )
 }

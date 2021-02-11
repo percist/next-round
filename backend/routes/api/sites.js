@@ -5,7 +5,7 @@ const { restoreUser } = require('../../utils/auth');
 const { handleValidationErrors } = require('../../utils/validation');
 const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
 const { Site, Owner, Item, Menu } = require("../../db/models"
-)
+);
 const router = express.Router();
 
 const validateSignup = [
@@ -157,8 +157,16 @@ router.delete(
   `/:siteId(\\d+)/items/:itemId(\\d+)`,
   asyncHandler(async (req, res) => {
     const itemId = req.params.itemId;
+    const siteId = req.params.siteId;
+    const menu = await Menu.findOne({
+      where: {
+        itemId: itemId
+      }
+    });
+    await menu.destroy();
     const item = await Item.findByPk(itemId);
     await item.destroy();
+    res.json({ message: "item deleted" })
   })
 )
 
@@ -181,7 +189,7 @@ router.post(
       siteId,
       itemId: item.id
     });
-    return res.json({ item })
+    res.json(item)
   })
 )
 

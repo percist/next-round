@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch} from 'react-redux'
 import { createNewItem } from '../../store/items'
 
-const MenuForm = ({siteId}) => {
+const MenuForm = ({siteId, itemsToDisplay, setItemsToDisplay}) => {
 
     const dispatch = useDispatch();
     const [ name, setName ] = useState("");
@@ -11,7 +11,7 @@ const MenuForm = ({siteId}) => {
     const [ image, setImage ] = useState(null);
     const [ errors, setErrors ] = useState([])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
         const item = {
@@ -20,7 +20,7 @@ const MenuForm = ({siteId}) => {
             price: (price * 100),
             image
         }
-        dispatch(createNewItem(siteId, item))
+        const newItem = await dispatch(createNewItem(siteId, item))
         .catch(res => {
             if (res.data && res.data.errors) setErrors(res.data.errors);
         })
@@ -28,6 +28,7 @@ const MenuForm = ({siteId}) => {
         setDescription("");
         setPrice("");
         setImage(null);
+        setItemsToDisplay([...itemsToDisplay, newItem])
     }
 
     const updateFile = (e) => {

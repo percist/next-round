@@ -21,7 +21,17 @@
     padding: 5pt;
 }
 
-.buddy-info {
+#buddy-info a:link{
+    color: var(--main-border-color);
+    text-decoration: none;
+}
+
+#buddy-info a:visited{
+    color: var(--main-border-color);
+    text-decoration: none;
+}
+
+#buddy-info {
     padding: 0 5px;
     margin: 0 2px 0 5px;
 }

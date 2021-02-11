@@ -4,20 +4,20 @@ import { Redirect } from "react-router-dom";
 import { fetchAllBuddies } from "../../store/buddies";
 import { fetchAllSites } from "../../store/sites";
 import { fetchAllSiteItems } from "../../store/items";
+import { createOneRound } from "../../store/rounds";
 import * as sessionActions from "../../store/session";
 
 const RoundsForm = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-    const [ buddy, setBuddy ] = useState({}); // sets buddy id (integer)
+    const [ buddyId, setBuddyId ] = useState(''); // sets buddy id (integer)
+    const [ buddy, setBuddy ] = useState({})
     const [ site, setSite ] = useState(''); // sets site id
-    const [ round, setRound ] = useState({}); 
     const [ item, setItem ] = useState([]); // sets an array with a single item object
     const [ siteItems, setSiteItems ] = useState([]); // sets an array of item objects
     const [ total, setTotal ] = useState(0.00); // sets an integer
     const [ errors, setErrors ] = useState([]);
     const [ confirmSubmit, setConfirmSubmit ] = useState(false);
-    const [ confirm, setConfirm ] = useState(false);
     
     const buddies = useSelector(fullReduxState => {
         return fullReduxState.buddies;
@@ -27,32 +27,25 @@ const RoundsForm = () => {
         return fullReduxState.sites;
     })
 
+    const round = useSelector(fullReduxState => {
+        return fullReduxState.round;
+    })
+
     // TODO: create one round and create one round item
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await createOneRound({
-            receiverId: buddy,
-            senderId: sessionUser.id,
+        if(!buddyId || !item[0] || !site){
+            return setErrors(['Please select a buddy, site, and item to send a round.'])
+        }
+        setErrors([]);
+        await dispatch(createOneRound({
+            receiverId: buddyId,
             itemId: item[0].id 
-        })
+        }))
         .catch(res => {
             if (res.data && res.data.errors) setErrors(res.data.errors);
         });
-        // setConfirmSubmit(true)
-        // TODO: RESET VALUES FOR SELECTORS
-    }
-    
-    const createOneRound = async (data) => {
-        const { status, receiverId, senderId } = data;
-        const formData = new FormData();
-        formData.append("status", status);
-        formData.append("receiverId", receiverId);
-        formData.append("senderId", senderId);
-        const response = await fetch(`api/rounds/`, {
-            method: 'POST',
-            body: formData
-        });
-        setRound(response.data.Round);
+        setConfirmSubmit(true)
     }
     
     const handleItemSelect = (e) => {
@@ -77,6 +70,12 @@ const RoundsForm = () => {
         }    
     }, [item])
 
+    useEffect(() => {
+        if (buddyId) {
+            setBuddy(buddies.filter(buddy => buddy.id == buddyId)[0])}
+            console.log(buddy)
+    }, [buddyId])
+
     return (
         <>
             <h3>Just because you're separated doesn't mean you have to drink alone! Buy a buddy a Round today.</h3>
@@ -88,7 +87,7 @@ const RoundsForm = () => {
                     Choose a Buddy
                     <select name="buddy" 
                         className="input sign-up-form_input"
-                        onChange={(e) => setBuddy(e.target.value)}>
+                        onChange={(e) => setBuddyId(e.target.value)}>
                         <option value="">--Please choose an option--</option>
                         {!buddies && <option value=''>None</option>}
                         {Array.isArray(buddies) && buddies.map(buddy => {
@@ -134,6 +133,10 @@ const RoundsForm = () => {
                     Buy Now
                 </button>
             </form>
+            <div className="round-confirmation" hidden={!confirmSubmit}>
+                Purchase Details:
+                {item[0] && buddy.firstName && ` ${item[0].name} sent to ${buddy.firstName}`}
+            </div>
         </>)
 }
 

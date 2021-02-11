@@ -1,7 +1,7 @@
 const express = require("express")
 const asyncHandler = require('express-async-handler');
 const { requireAuth, restoreUser } = require('../../utils/auth');
-const {Round, User, Buddy, Item, Site} = require("../../db/models");
+const {Round, User, RoundItem, Item, Site} = require("../../db/models");
 
 const router = express.Router();
 
@@ -151,15 +151,19 @@ router.get(
 )
 
 // TODO: Form Validation
-// create one round and accompanying roundItem
+// Create one round and accompanying roundItem
 router.post(
     `/`,
-    asyncHandler(async (req, res, next) =>{
-        const { receiverId, senderId, itemId } = req.body;
+    restoreUser,
+    asyncHandler(async (req, res) =>{
+        console.log("******************ROUTE HIT")
+        const user = await req.user.toJSON()
+        console.log(user)
+        const { receiverId, itemId } = req.body;
         const round = await Round.create({
             status: "userPaid",
-            receiverId,
-            senderId 
+            receiverId: parseInt(receiverId),
+            senderId: user.id
         })
         await RoundItem.create({
             roundId: round.id,

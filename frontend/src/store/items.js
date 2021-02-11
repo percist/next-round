@@ -2,6 +2,7 @@ import { fetch } from './csrf.js';
 
 const SET_ALL_ITEMS = "SET_ALL_ITEMS"
 const ADD_ONE_ITEM = "ADD_ONE_ITEM"
+const REMOVE_ONE_ITEM = "REMOVE_ONE_ITEM"
 
 const setItems = (item) => ({
     type: SET_ALL_ITEMS,
@@ -13,6 +14,11 @@ const addOneItem = (item) => ({
     payload: item
 });
 
+const removeOneItem = (item) => ({
+    type: REMOVE_ONE_ITEM,
+    payload: item
+})
+
 export const fetchAllSiteItems = (siteId) => async (dispatch) => {
     const response = await fetch(`/api/sites/${siteId}/items`);
     dispatch(
@@ -20,8 +26,16 @@ export const fetchAllSiteItems = (siteId) => async (dispatch) => {
     )
 }
 
+export const deleteMenuItem = (siteId, itemId) => async (dispatch) => {
+    const response = await fetch(`/api/sites/${siteId}/items/${itemId}`, {
+        method: 'DELETE',
+    })
+    dispatch(
+        removeOneItem(response.data.site.item)
+    )
+}
+
 export const createNewItem = (siteId, item) => async (dispatch) => {
-    console.log("ITEM: ", item)
     const { name, description, price, image } = item;
     const formData = new FormData();
     formData.append("name", name);
@@ -32,9 +46,8 @@ export const createNewItem = (siteId, item) => async (dispatch) => {
         method: 'POST',
         body: formData,
     });
-
     dispatch(addOneItem(response.data.item));
-    return response;
+    return response.data.item;
 }
 
 const initialState = {}
@@ -43,7 +56,10 @@ function reducer(state = initialState, action){
     let newState;
     switch (action.type){
         case ADD_ONE_ITEM:
-            newState = [...state, ...action.payload]
+            newState = [...state, action.payload]
+            return newState;
+        case REMOVE_ONE_ITEM:
+            newState = [...state.filter(item => item.id != action.payload.id)];
             return newState;
         case SET_ALL_ITEMS:
             newState = action.payload;
