@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import ItemImage from "../ItemImage"
 // import './roundCard.css'
 
 const RoundsClaimRound = ({round}) => {
@@ -21,17 +22,16 @@ const RoundsClaimRound = ({round}) => {
             setSite(round.Items[0].Sites[0]);
             fetchOneUser(round.senderId);
         }
-    },[round])
+    },[])
 
     return (
         <div className="rounds-claim-card">
             <div id="rounds-claim-card_image">
-                {!round.Items[0].imgUrl && <img src="https://img.icons8.com/fluent/96/000000/beer-glass.png"/>}
-                {round.Items[0].imgUrl && <img src={round.Items[0].imgUrl} alt={round.name}/>}
+                <ItemImage image={item.imgUrl} />
             </div>
             <div id="rounds-claim-card_info">
                 <div id="rounds-claim-card_info_round">
-                    Redeem a {round.Items[0].name} at {round.Items[0].Sites[0].name}
+                    Redeem a {item.name} at {site.name}
                 </div>
                 <div id="rounds-claim-card_info_sender">
                     Sent by {sender.username}

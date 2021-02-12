@@ -1,0 +1,13 @@
+.item-image{
+    position: relative;
+    width: 110px;
+    height: 190px;
+    margin: 5px;
+}
+
+.item-image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8pt;
+}
