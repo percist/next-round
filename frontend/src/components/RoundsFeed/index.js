@@ -1,6 +1,6 @@
 import React from 'react';
-import UserRoundsCard from '../UserRoundsCard';
-import SiteRoundsCard from '../SiteRoundsCard';
+import UserRoundsFeed from '../UserRoundsFeed';
+import SiteRoundsFeed from '../SiteRoundsFeed';
 import './RoundsFeed.css'
 
 const RoundsFeed = ({ rounds, site }) => {
@@ -8,11 +8,12 @@ const RoundsFeed = ({ rounds, site }) => {
         <div className="rounds-feed">
             {!Array.isArray(rounds) && <h2>loading...</h2> }
             {Array.isArray(rounds[0]) && rounds.map((round,i) => {
-                if (round) return <UserRoundsCard roundArray={round} key={i}/>
+                if (round) return <UserRoundsFeed roundArray={round} key={i}/>
                 else return null
             })}
+            {!site && <h2>loading...</h2> }
             {site && Array.isArray(rounds) && rounds.map((round, i) => {
-                if (round) return <SiteRoundsCard round={round} key={i} site={site}/>
+                if (round) return <SiteRoundsFeed round={round} key={i} site={site}/>
                 else return "No Rounds Redeemed Here Yet."
             })}
         </div>
