@@ -24,8 +24,14 @@ export const fetchAllBuddyRounds = (userid) => {
     };
 };
 
+export const fetchAllUserRounds = (userid) => {
+    return async (dispatch) => {
+        const response = await fetch(`/api/rounds/users/${userid}`);
+        dispatch(setAllRounds(response.data));
+    };
+};
+
 export const fetchAllSiteRounds = (siteId) => {
-    console.log("THUNKED")
     return async (dispatch) => {
         const response = await fetch(`/api/rounds/sites/${siteId}`);
         dispatch(setAllRounds(response.data));

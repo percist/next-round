@@ -4,10 +4,14 @@ import { fetchAllBuddies } from '../../store/buddies'
 import Buddies from '../Buddies'
 import "./BuddiesSidebar.css"
 
-const BuddiesSidebar = ({user}) => {
+const BuddiesSidebar = () => {
     const dispatch = useDispatch()
     const buddies = useSelector(fullReduxState => {
         return fullReduxState.buddies;
+    });
+    
+    const {user} =  useSelector(reduxState => {
+        return reduxState.session;
     });
 
     useEffect( () => {

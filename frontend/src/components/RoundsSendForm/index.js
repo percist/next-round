@@ -7,7 +7,7 @@ import { fetchAllSiteItems } from "../../store/items";
 import { createOneRound } from "../../store/rounds";
 import * as sessionActions from "../../store/session";
 
-const RoundsForm = () => {
+const RoundsSendForm = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const [ buddyId, setBuddyId ] = useState(''); // sets buddy id (integer)
@@ -140,4 +140,4 @@ const RoundsForm = () => {
         </>)
 }
 
-export default RoundsForm;
+export default RoundsSendForm;

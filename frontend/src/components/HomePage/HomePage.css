@@ -22,8 +22,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-height: 80vh;
+    margin-top: 31px;
+    height: 400px;
+    width: 300px;
     justify-content: space-around;
+    font-size: 30px;
+    font-weight: 400;
+    background-color: var(--secondary-bg-color);
+    border-radius: 6pt;
+    box-shadow: var(--main-box-shadow);
 }
 
 .rounds-sidebar .button{
@@ -33,11 +40,6 @@
     background-color: var(--main-border-color);
     width: 90%;
     height: 60px;
-}
-
-.rounds-sidebar_status {
-    font-size: 30px;
-    font-weight: 400;
 }
 
 .user-page-site_feed {

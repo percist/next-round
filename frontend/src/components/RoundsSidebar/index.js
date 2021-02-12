@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-const RoundsSidebar = (user) => {
+const RoundsSidebar = () => {
     const history = useHistory();
 
-    const [ numRounds, setNumRounds ] = useState({});
+    const {user} =  useSelector(reduxState => {
+        return reduxState.session;
+    });
 
+    const [ numRounds, setNumRounds ] = useState({});
     useEffect(() => {
         const fetchPaidRounds = async () => {
             const response = await fetch('/api/rounds/user/total')
@@ -14,28 +18,30 @@ const RoundsSidebar = (user) => {
         }
         fetchPaidRounds()
     },[]);
+    
+    const redeemRoundClickHandler = () => {
+        history.push(`/users/${user.id}/round`);
+    }
 
-    const roundClickHandler = () => {
+    const buyRoundClickHandler = () => {
         history.push("/users/round");
     }
 
     return (
         <div className="rounds-sidebar">
-            <div className="rounds-sidebar_status">
                 {`${numRounds} rounds waiting`}
             <button 
                 className="button"
                 id="button-redeem-round"
-                onClick={roundClickHandler}
+                onClick={redeemRoundClickHandler}
             >
                 {/* TODO: implement round claiming */}
                 Claim a Round
             </button>
-            </div>
             <button 
                 className="button"
                 id="button-buy-round"
-                onClick={roundClickHandler}
+                onClick={buyRoundClickHandler}
             >
                 Send a Round
             </button>

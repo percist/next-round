@@ -25,13 +25,13 @@ const HomePage = () => {
     return (
         <div className="user-page">
             <div className="user-page-rounds_sidebar">
-            <RoundsSidebar user={user}/>
+            <RoundsSidebar />
             </div>
             <div className="user-page-site_feed">
                 <RoundsFeed rounds={rounds}/>
             </div>
             <div className="user-page-buddies_sidebar">
-            <BuddiesSidebar user={user}/>
+            <BuddiesSidebar />
             </div>
         </div>
     )

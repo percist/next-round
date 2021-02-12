@@ -53,6 +53,28 @@ router.get(
     })
 )
 
+// GET rounds user has not yet claimed
+router.get(
+    `/users/:id(\\d+)`,
+    restoreUser,
+    asyncHandler(async (req, res, next) => {
+        const user = await req.user.toJSON()
+        const rounds = await Round.findAll({
+            where: {
+                receiverId: user.id,
+                status: "userPaid"
+            },
+            include: {
+                model: Item,
+                include: {
+                    model: Site
+                }
+            }
+        })
+        res.json(rounds)
+    })
+)
+
 // GET number of rounds current user has not yet claimed
 router.get(
     `/user/total`,
