@@ -25,18 +25,18 @@ const ItemCardContainer = ({items}) => {
     }
 
     useEffect(() => {
-       if (Array.isArray(items) && items.length > 4) {
+        if (Array.isArray(items) && items.length > 4) {
            console.log(items.length)
             setShowButton(false)
         } 
-    }, [])
+    }, [items])
 
     const overflow = () => {
         if (!!overflowItemsShown) {
             return (
                 <>
                     {!Array.isArray(items) && <h2>loading...</h2> }
-                    {Array.isArray(items) && items.slice(4).map(item => {
+                    {Array.isArray(items) && items.slice(5).map(item => {
                         if (item) {
                             return <ItemCard item={item} key={item.name}/>
                         }else return null
@@ -52,7 +52,7 @@ const ItemCardContainer = ({items}) => {
         <div className="item-card-container">
             <div id="item-card-container_initial">
                 {!Array.isArray(items) && <h2>loading...</h2> }
-                {Array.isArray(items) && items.slice(0,4).map((item,i) => {
+                {Array.isArray(items) && items.slice(0,5).map((item,i) => {
                     if (item) return <ItemCard item={item} key={i}/>
                         else return null
                 })}  
@@ -62,7 +62,6 @@ const ItemCardContainer = ({items}) => {
             </button>
             <div id="item-card-container_additional">
                 {overflow()}
-            {/* implement show additionals  */}
             </div>
             <button hidden={hideButton} onClick={handleHideClick}>
                 Hide Items

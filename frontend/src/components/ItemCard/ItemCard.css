@@ -19,6 +19,7 @@
 #item-card_name {
     position: absolute;
     bottom: 0;
+    width: 92%;
     background-color: rgba(5, 5, 5, 0.212);
     color: white;
     padding: 0 10px 10px;

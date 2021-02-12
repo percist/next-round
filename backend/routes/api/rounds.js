@@ -1,4 +1,5 @@
 const express = require("express")
+const { Op } = require("sequelize");
 const asyncHandler = require('express-async-handler');
 const { requireAuth, restoreUser } = require('../../utils/auth');
 const {Round, User, RoundItem, Item, Site} = require("../../db/models");
@@ -119,23 +120,30 @@ router.get(
         //array of itemIds
         let itemIds = site.Items.map((item => item.dataValues.id));
         itemIds = [...itemIds];
-        const roundsArray = [];
-        await Promise.all(itemIds.map(async (itemId) => {
+        // query for all rounds associated with the items
+        const roundsArray = await Promise.all(itemIds.map(async (itemId) => {
             const item = await Item.findOne({
                 where: { id: itemId},
                 include: {
                     model: Round,
-                    where: {
-                        status: "recipientClaimed" || "sitePaidOut"
-                    }, 
+                    // where: {
+                    //     status: "recipientClaimed"
+                    // },
                     include: [{
                         model: User
                     }]
                 },
             })
-            roundsArray.push(item.dataValues.Rounds)
+            return item.dataValues.Rounds;
         }))
-        const rounds = roundsArray.flat()
+        const allRounds = roundsArray.flat()
+        const idValuesArray = []
+        const rounds = allRounds.filter(round => {
+            if (idValuesArray.includes(round.dataValues.id)) return
+            console.log(round.dataValues.id)
+            idValuesArray.push(round.dataValues.id)
+            return round
+        })
         res.json( rounds );
     })
 );

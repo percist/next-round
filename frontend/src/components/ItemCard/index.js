@@ -6,7 +6,8 @@ const ItemCard = ({item}) => {
     return (
         <div className="item-card">
             <div id="item-card_image">
-                    <img src={item.imgUrl} alt={item.name}/>
+                {!item.imgUrl && <img src="https://img.icons8.com/fluent/96/000000/beer-glass.png"/>}
+                {item.imgUrl && <img src={item.imgUrl} alt={item.name}/>}
             </div>
             {/* <h2>{item.name}</h2>
             <div className="item-card_image">

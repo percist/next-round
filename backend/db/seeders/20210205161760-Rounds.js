@@ -22,16 +22,16 @@ module.exports = {
         { status: 'recipientClaimed', comment: "5Best Beer I've had in the area", receiverId: 2, senderId: 3, imgUrl: `https://images.unsplash.com/photo-1563525329399-0c61ba41684d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NjB8fGNyYWZ0JTIwYmVlcnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60`},
         { status: 'recipientClaimed', comment: "6Best Beer I've had in the area", receiverId: 2, senderId: 4, imgUrl: `https://images.unsplash.com/photo-1555970348-3a10b197f131?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NzF8fGNyYWZ0JTIwYmVlcnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60`},
         { status: 'recipientClaimed', comment: "7Best Beer I've had in the area", receiverId: 2, senderId: 5, imgUrl: `https://images.unsplash.com/photo-1555970348-3a10b197f131?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NzF8fGNyYWZ0JTIwYmVlcnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60`},
-        { status: 'sitePaidOut', comment: "8Best Beer I've had in the area", receiverId: 2, senderId: 1},
-        { status: 'sitePaidOut', comment: "9Best Beer I've had in the area", receiverId: 3, senderId: 1},
-        { status: 'sitePaidOut', comment: "10Best Beer I've had in the area", receiverId: 4, senderId: 1},
-        { status: 'sitePaidOut', comment: "11Best Beer I've had in the area", receiverId: 5, senderId: 2},
-        { status: 'sitePaidOut', comment: "12Best Beer I've had in the area", receiverId: 3, senderId: 2},
-        { status: 'sitePaidOut', comment: "13Best Beer I've had in the area", receiverId: 4, senderId: 2},
-        { status: 'sitePaidOut', comment: "14Best Beer I've had in the area", receiverId: 5, senderId: 3},
-        { status: 'sitePaidOut', comment: "15Best Beer I've had in the area", receiverId: 6, senderId: 3},
-        { status: 'sitePaidOut', comment: "16Best Beer I've had in the area", receiverId: 7, senderId: 3},
-        { status: 'sitePaidOut', comment: "17Best Beer I've had in the area", receiverId: 8, senderId: 4}
+        { status: 'recipientClaimed', comment: "8Best Beer I've had in the area", receiverId: 2, senderId: 1},
+        { status: 'recipientClaimed', comment: "9Best Beer I've had in the area", receiverId: 3, senderId: 1},
+        { status: 'recipientClaimed', comment: "10Best Beer I've had in the area", receiverId: 4, senderId: 1},
+        { status: 'recipientClaimed', comment: "11Best Beer I've had in the area", receiverId: 5, senderId: 2},
+        { status: 'recipientClaimed', comment: "12Best Beer I've had in the area", receiverId: 3, senderId: 2},
+        { status: 'recipientClaimed', comment: "13Best Beer I've had in the area", receiverId: 4, senderId: 2},
+        { status: 'recipientClaimed', comment: "14Best Beer I've had in the area", receiverId: 5, senderId: 3},
+        { status: 'recipientClaimed', comment: "15Best Beer I've had in the area", receiverId: 6, senderId: 3},
+        { status: 'recipientClaimed', comment: "16Best Beer I've had in the area", receiverId: 7, senderId: 3},
+        { status: 'recipientClaimed', comment: "17Best Beer I've had in the area", receiverId: 8, senderId: 4}
     ], {});
   },
 
