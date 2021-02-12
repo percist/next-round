@@ -1,0 +1,11 @@
+.menu {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu-item {
+    width: 60vw;
+    display: flex;
+    justify-content: space-between;
+}

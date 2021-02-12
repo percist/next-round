@@ -5,32 +5,34 @@ import './MenuItem.css'
 
 const MenuItem = ({ item, itemsToDisplay, setItemsToDisplay, siteId }) => {
     const dispatch = useDispatch();
-    const [ errors, setErrors ] = useState([])
+    const [errors, setErrors] = useState([])
 
     const handleMenuDelete = async (e) => {
         e.preventDefault();
         await dispatch(deleteMenuItem(siteId, item.id))
-        .catch(res => {
-            if (res.data && res.data.errors) setErrors(res.data.errors);
-        })
+            .catch(res => {
+                if (res.data && res.data.errors) setErrors(res.data.errors);
+            })
         setItemsToDisplay([...itemsToDisplay.filter(setItem => setItem.id != item.id)])
     }
 
     return (
         <div className="menu-item">
             <div className="menu-item_image">
-                {item.imgUrl && <img src={item.imgUrl} alt="site item"/>}          
+                {item.imgUrl && <img src={item.imgUrl} alt="site item" />}
             </div>
-            <h2>Name: {item.name}</h2>
             <div className="menu-item_info">
-                Description: {item.description}
-            </div>
-            <div className="menu-item_price">
-                Price: {`$${item.price / 100}`}
+                <h2>Name: {item.name}</h2>
+                <div className="menu-item_info">
+                    Description: {item.description}
+                </div>
+                <div className="menu-item_price">
+                    Price: {`$${item.price / 100}`}
+                </div>
             </div>
             <button onClick={handleMenuDelete}>Delete</button>
         </div>
-        )
+    )
 }
 
 export default MenuItem;

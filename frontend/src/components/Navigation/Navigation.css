@@ -10,15 +10,16 @@
 .navbar {
   position: sticky;
   top: 0px;
-  background-color: var(--main-bg-color);
+  background-color: var(--secondary-bg-color);
   color: var(--main-text-color);
   margin: 0px;
-  height: 80px;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   list-style: none;
   padding-right: 40px;
+  box-shadow: var(--main-text-color) 0px 8px 20px 8px;
 }
 
 .navbar-link {
@@ -39,10 +40,12 @@ a {
 }
 
 .button {
-  border: 1pt var(--main-accent-color) solid;
-  border-radius: 8pt;
-  height: 30px;
-  width: 70px;
+  background-color: #E38F31;
+  color: white;
+  border-radius: 5pt;
+  height: 40px;
+  width: 95%;
+  border: none;
 }
 
 #link-logout {
@@ -111,10 +114,6 @@ a {
   align-items: flex-end;
   padding: 15px 79px 9px 10px;
   background-color: --main-;
-}
-
-.button:hover {
-  background-color: var(--secondary-bg-color);
 }
 
 #profile-button {

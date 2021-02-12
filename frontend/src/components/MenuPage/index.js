@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { fetchAllSiteItems } from '../../store/items'
 import MenuForm from '../MenuForm'
 import MenuList from '../MenuList'
+import './MenuPage.css'
 
 const MenuPage = () => {
 

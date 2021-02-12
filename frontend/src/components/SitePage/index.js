@@ -29,7 +29,7 @@ const SitePage = () => {
     const updateMenuHandler = () => {
         history.push(`/sites/${site.id}/menu`)
     }
-    
+
     useEffect(() => {
         const checkIsOwner = async () => {
             const response = await fetch(`/api/sites/${siteId}/owners`)
@@ -54,29 +54,31 @@ const SitePage = () => {
         <div className="site-page">
             <div className="site-page-header">
                 <img src={site.imgUrl} alt={site.name} />
+                <h1>{site.name}</h1>
             </div>
             <div className="site-page-content">
                 <div className="site-page-content-rounds-sidebar">
-                    { isOwner && <button 
-                                    onClick={updateMenuHandler}
-                                    className="button update-menu-button"
-                                    >
-                                    Update menu
+                    {isOwner && <button
+                        onClick={updateMenuHandler}
+                        className="button update-menu-button"
+                    >
+                        Update menu
                                 </button>
                     }
                     <div id="site-page-content-rounds-sidebar_info">
-                        <h2>{site.name}</h2>
-                        <h3>{`${site.address}`}</h3>
-                        <h3>{`${site.city}, ${site.state}`}</h3>
+                        <h2>Location</h2>
+                        <div>
+                            {`${site.address}`}
+                        </div>
+                        <div>
+                            {`${site.city}, ${site.state}`}
+                        </div>
+
                     </div>
-                    <RoundsSidebar user={user} />
                 </div>
                 <div className="site-page-content-feed">
-                    <ItemCardContainer items={items}/>
+                    <ItemCardContainer items={items} />
                     <RoundsFeed rounds={rounds} site={site} />
-                </div>
-                <div className="site-page-content-buddy-sidebar">
-                    <BuddiesSidebar user={user} />
                 </div>
             </div>
         </div>
