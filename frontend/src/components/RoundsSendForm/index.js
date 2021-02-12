@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { fetchAllBuddies } from "../../store/buddies";
+import { fetchAllBuddies } from "../../store/users";
 import { fetchAllSites } from "../../store/sites";
 import { fetchAllSiteItems } from "../../store/items";
 import { createOneRound } from "../../store/rounds";

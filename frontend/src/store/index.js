@@ -4,14 +4,14 @@ import session from './session';
 import sites from './sites';
 import rounds from './rounds';
 import items from './items';
-import buddies from './buddies';
+import users from './users';
 
 const rootReducer = combineReducers({
   session,
   sites,
   rounds,
   items,
-  buddies
+  users
 });
 
 let enhancer;

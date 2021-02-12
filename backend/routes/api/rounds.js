@@ -2,7 +2,7 @@ const express = require("express")
 const { Op } = require("sequelize");
 const asyncHandler = require('express-async-handler');
 const { requireAuth, restoreUser } = require('../../utils/auth');
-const {Round, User, RoundItem, Item, Site} = require("../../db/models");
+const { Round, User, RoundItem, Item, Site } = require("../../db/models");
 
 const router = express.Router();
 
@@ -43,13 +43,13 @@ router.get(
                 model: Round,
                 include: [{
                     model: User,
-                    where: { senderId: randomFollowingId}
+                    where: { senderId: randomFollowingId }
                 }]
             }],
             order: [["createdAt", "DESC"]],
             limit: 1,
         })
-        res.json({randomBuddyRound});
+        res.json({ randomBuddyRound });
     })
 )
 
@@ -64,12 +64,20 @@ router.get(
                 receiverId: user.id,
                 status: "userPaid"
             },
-            include: {
+            include: [{
                 model: Item,
                 include: {
                     model: Site
-                }
-            }
+                },
+            },
+            // {
+            //     model: User,
+            //     where: {
+            //         id: senderId //user.id == round.senderId 
+            //     },
+            //     as: "HasReceivedRoundsFrom"
+            // }
+        ]
         })
         res.json(rounds)
     })
@@ -101,8 +109,9 @@ router.get(
         const user = await User.findOne({
             where: { id: userId },
             include: [
-                {model: User,
-                as: "following",
+                {
+                    model: User,
+                    as: "following",
                 },
             ],
         });
@@ -137,7 +146,7 @@ router.get(
         //items from that site
         const site = await Site.findOne({
             where: { id: siteId },
-            include: {model: Item},
+            include: { model: Item },
         });
         //array of itemIds
         let itemIds = site.Items.map((item => item.dataValues.id));
@@ -145,7 +154,7 @@ router.get(
         // query for all rounds associated with the items
         const roundsArray = await Promise.all(itemIds.map(async (itemId) => {
             const item = await Item.findOne({
-                where: { id: itemId},
+                where: { id: itemId },
                 include: {
                     model: Round,
                     // where: {
@@ -166,7 +175,7 @@ router.get(
             idValuesArray.push(round.dataValues.id)
             return round
         })
-        res.json( rounds );
+        res.json(rounds);
     })
 );
 
@@ -185,7 +194,7 @@ router.get(
 router.post(
     `/`,
     restoreUser,
-    asyncHandler(async (req, res) =>{
+    asyncHandler(async (req, res) => {
         console.log("******************ROUTE HIT")
         const user = await req.user.toJSON()
         console.log(user)

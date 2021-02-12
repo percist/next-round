@@ -1,11 +1,11 @@
 import { fetch } from './csrf.js';
 
-const SET_ALL_BUDDIES = 'SET_ALL_BUDDIES';
+const SET_ALL_USERS = 'SET_ALL_USERS';
 
-const setBuddies = (buddies) => {
+const setUsers = (users) => {
     return {
-        type: SET_ALL_BUDDIES,
-        payload: buddies,
+        type: SET_ALL_USERS,
+        payload: users,
     }
 }
 
@@ -13,7 +13,7 @@ export const fetchAllBuddies = (userId) => {
     return async (dispatch) => {
         const response = await fetch(`/api/users/${userId}/buddies`);
         dispatch(
-            setBuddies(response.data.follower)
+            setUsers(response.data.follower)
         );
     };
 }
@@ -23,7 +23,7 @@ const initialState = {}
 function reducer(state = initialState, action) {
     let newState;
     switch (action.type) {
-        case SET_ALL_BUDDIES:
+        case SET_ALL_USERS:
             newState = action.payload;
             return newState;
         default:

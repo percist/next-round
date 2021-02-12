@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllBuddies } from '../../store/buddies'
+import { fetchAllBuddies } from '../../store/users'
 import Buddies from '../Buddies'
 import "./BuddiesSidebar.css"
 
