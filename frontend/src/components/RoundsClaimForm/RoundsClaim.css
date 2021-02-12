@@ -1,3 +1,14 @@
+.round-claim-feed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .rounds-claim-card {
     display: flex;
+}
+
+.rounds-claim-qr img{
+    height: 100px;
+    width: 100px;
 }

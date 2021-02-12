@@ -189,13 +189,33 @@ router.get(
     })
 )
 
+router.put(
+    `/:id(\\d+)`,
+    restoreUser,
+    asyncHandler(async (req, res) => {
+        console.log("******************ROUTE HIT")
+        const roundId = req.params.id
+        const { comment, status } = req.body
+        const round = await Round.findByPk(roundId)
+        if (comment){
+            await round.update({
+                comment: comment,
+                status: status
+            })
+        }else{
+            await round.update({
+                status: status
+            })
+        }
+        return round;
+    }))
+
 // TODO: Form Validation
 // Create one round and accompanying roundItem
 router.post(
     `/`,
     restoreUser,
     asyncHandler(async (req, res) => {
-        console.log("******************ROUTE HIT")
         const user = await req.user.toJSON()
         console.log(user)
         const { receiverId, itemId } = req.body;
