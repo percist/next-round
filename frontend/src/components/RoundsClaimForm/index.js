@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllUserRounds } from '../../store/rounds';
 import RoundsClaimItem from '../RoundsClaimItem';
+import './RoundsClaim.css'
 
 const RoundsClaimForm = () => {
     const dispatch = useDispatch();
