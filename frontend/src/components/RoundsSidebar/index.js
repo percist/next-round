@@ -37,7 +37,7 @@ const RoundsSidebar = (user) => {
                 id="button-buy-round"
                 onClick={roundClickHandler}
             >
-                Next Round's on Me
+                Send a Round
             </button>
         </div>
 

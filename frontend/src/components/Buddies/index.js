@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { IoPersonCircleOutline } from 'react-icons/io5';
 import "./Buddies.css"
 
 
@@ -17,7 +18,7 @@ const Buddies = ({ buddy }) => {
 
     return (
         <div className="buddy">
-            {!buddy.imgUrl && "Loading ..."}
+            {!buddy.imgUrl && <IoPersonCircleOutline />}
             {buddy.imgUrl && <img src={buddy.imgUrl} alt="user"/>}
             <div id='buddy-info'>
                 { round && 

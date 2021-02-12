@@ -28,12 +28,11 @@
 
 .rounds-sidebar .button{
     color: #FFFAFF;
-    font-size: 40px;
-    padding: 20px;
-    font-weight: 600;
+    font-size: 30px;
+    font-weight: 500;
     background-color: var(--main-border-color);
-    width: 250px;
-    height: 250px;
+    width: 90%;
+    height: 60px;
 }
 
 .rounds-sidebar_status {

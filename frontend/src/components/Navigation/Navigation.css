@@ -19,7 +19,7 @@
   align-items: center;
   list-style: none;
   padding-right: 40px;
-  box-shadow: var(--main-text-color) 0px 8px 20px 8px;
+  box-shadow: var(--main-box-shadow)
 }
 
 .navbar-link {
