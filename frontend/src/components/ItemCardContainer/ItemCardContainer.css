@@ -1,0 +1,4 @@
+#item-card-container_initial,
+#item-card-container_additional {
+    display: flex;
+}
