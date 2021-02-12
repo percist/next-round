@@ -6,7 +6,8 @@ import './RoundsClaim.css'
 
 const RoundsClaimForm = () => {
     const dispatch = useDispatch();
-    // const [ roundsToDisplay, setRoundsToDisplay ] = useState([]);
+    const [ roundsToDisplay, setRoundsToDisplay ] = useState([]);
+    
     const rounds = useSelector(fullReduxState => {
         return fullReduxState.rounds;
     })
@@ -18,13 +19,18 @@ const RoundsClaimForm = () => {
     useEffect(() => {
         dispatch(fetchAllUserRounds(user.id))
     },[dispatch, user])
+
+    useEffect(() => {
+        if(rounds[0])
+        setRoundsToDisplay([...rounds])
+    },[dispatch, rounds])
     
     return (
         <div className="round-claim-feed">
-            <h1>{`${user.username}, you have ${rounds.length} rounds ready to redeem`}</h1>
-        {Array.isArray(rounds) && rounds.map(round => {
+            <h1>{`${user.username}, you have ${roundsToDisplay.length} rounds ready to redeem`}</h1>
+        {Array.isArray(roundsToDisplay) && roundsToDisplay.map(round => {
         return (
-        <div className="round-claim-item" key={round.id}>
+        <div className="round-claim-item" key={round.id} roundsToDisplay={roundsToDisplay} setRoundsToDisplay={setRoundsToDisplay}>
             <RoundsClaimItem 
                 round={round} 
                  

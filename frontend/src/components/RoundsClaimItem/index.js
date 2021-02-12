@@ -5,7 +5,7 @@ import ItemImage from "../ItemImage"
 import { fetchUpdateRoundToClaimed } from '../../store/rounds'
 // import './roundCard.css'
 
-const RoundsClaimRound = ({ round }) => {
+const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay}) => {
 
     const dispatch = useDispatch();
 
@@ -16,13 +16,18 @@ const RoundsClaimRound = ({ round }) => {
     const [comment, setComment] = useState("");
     const [wasClaimed, setWasClaimed] = useState(false)
     const [wasClicked, setWasClicked] = useState(false);
+    const [errors, setErrors] = useState([])
 
-    const onCommentSubmit = (e) => {
+    const onCommentSubmit = async (e) => {
         e.preventDefault();
         console.log(id, comment)
-        dispatch(fetchUpdateRoundToClaimed(id, comment));
+        await dispatch(fetchUpdateRoundToClaimed(id, comment)) 
+            .catch(res => {
+                if (res.data && res.data.errors) setErrors(res.data.errors);
+            });
         setComment("");
         setWasClaimed(true);
+        await setRoundsToDisplay([...roundsToDisplay.filter(setRound => setRound.id != id)])
     }
 
     const handleRedeemClick = () => {
