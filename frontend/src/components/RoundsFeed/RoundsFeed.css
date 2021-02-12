@@ -2,8 +2,8 @@
     width: 680px;
     border-radius: 12pt;
     margin: 12pt 0;
-    background-color: var(--main-bg-color);
-    box-shadow: rgba(0, 0, 0, 0.144) 1px 2px 2px;
+    background-color: var(--tertiary-bg-color);
+    box-shadow: var(--main-box-shadow)
 }
 
 .rounds-card-image img {

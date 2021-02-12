@@ -2,10 +2,50 @@
     display:flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 40px;
+}
+
+.menu-item-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu-item-form form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .menu-item {
-    width: 60vw;
+    width: 40vw;
+    display: block;
+    border-radius: 12pt;
+    margin: 12pt 0;
+    background-color: var(--secondary-bg-color);
+    box-shadow: var(--main-box-shadow);
+}
+
+.menu-item img {
+    height: 190px;
+    width: 110px;
+    border-radius: 6pt;
+    object-fit: cover;
+}
+
+.menu-item {
+    border-radius: 6pt;
     display: flex;
-    justify-content: space-between;
+}
+
+.menu-item_info {
+    width: 420px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.menu-item_info h2{
+    justify-self: flex-start;
 }

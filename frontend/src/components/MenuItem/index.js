@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteMenuItem } from "../../store/items";
-import './MenuItem.css'
 
 const MenuItem = ({ item, itemsToDisplay, setItemsToDisplay, siteId }) => {
     const dispatch = useDispatch();
@@ -22,11 +21,14 @@ const MenuItem = ({ item, itemsToDisplay, setItemsToDisplay, siteId }) => {
                 {item.imgUrl && <img src={item.imgUrl} alt="site item" />}
             </div>
             <div className="menu-item_info">
-                <h2>Name: {item.name}</h2>
-                <div className="menu-item_info">
-                    Description: {item.description}
+            <div className="menu-item_info_title">
+                      <h2>{item.name}</h2>
                 </div>
-                <div className="menu-item_price">
+              
+                <div className="menu-item_info_description">
+                    {item.description}
+                </div>
+                <div className="menu-item_info_price">
                     Price: {`$${item.price / 100}`}
                 </div>
             </div>

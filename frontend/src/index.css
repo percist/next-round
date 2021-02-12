@@ -1,11 +1,13 @@
 /* TODO Add site wide styles */
 * {
-    --main-bg-color: #FFFAFF;
-    --secondary-bg-color: #FFFFFF;
+    --main-bg-color: #EEE7EA;
+    --secondary-bg-color: #FFFAFF;
+    --tertiary-bg-color: #FFFFFF;
     --main-text-color: #232B2B;
     --main-accent-color: #6B0E23;
     --secondary-accent-color: #6F4E37;
     --main-border-color: #e38f31;
+    --main-box-shadow: rgba(0, 0, 0, 0.1) 1px .5px 2px 1px;
 }
 
 * {
