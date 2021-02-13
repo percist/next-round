@@ -46,8 +46,8 @@ export const createNewItem = (siteId, item) => async (dispatch) => {
         method: 'POST',
         body: formData,
     });
-    dispatch(addOneItem(response.data.item));
-    return response.data.item;
+    dispatch(addOneItem(response.data));
+    return response.data;
 }
 
 const initialState = {}

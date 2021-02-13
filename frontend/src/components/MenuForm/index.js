@@ -24,6 +24,7 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
             .catch(res => {
                 if (res.data && res.data.errors) setErrors(res.data.errors);
             })
+        console.log(newItem)
         setName("");
         setDescription("");
         setPrice("");
