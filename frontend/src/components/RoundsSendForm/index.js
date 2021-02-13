@@ -13,7 +13,9 @@ const RoundsSendForm = () => {
     const [ buddyId, setBuddyId ] = useState(''); // sets buddy id (integer)
     const [ buddy, setBuddy ] = useState({})
     const [ site, setSite ] = useState(''); // sets site id
+    const [ siteImage, setSiteImage ] = useState(''); // sets site image url
     const [ item, setItem ] = useState([]); // sets an array with a single item object
+    const [ itemImage, setItemImage ] = useState(""); // sets site image url
     const [ siteItems, setSiteItems ] = useState([]); // sets an array of item objects
     const [ total, setTotal ] = useState(0.00); // sets an integer
     const [ errors, setErrors ] = useState([]);
@@ -50,12 +52,27 @@ const RoundsSendForm = () => {
     
     const handleItemSelect = (e) => {
         const itemId = e
-        setItem(siteItems.filter(item => item.id == itemId))
+        const selectedItem = siteItems.filter(item => item.id == itemId);
+        setItem(selectedItem[0])
     }
+
+    const handleSiteSelect = (e) => {
+        const siteId = e
+        const selectedSite = sites.filter(site => site.id == siteId);
+        setSite(selectedSite[0])
+    }
+
+    useEffect(()=>{
+        setItemImage(item.imgUrl)
+    },[item])
+
+    useEffect(()=>{
+        setSiteImage(site.imgUrl)
+    },[site])
 
     useEffect(() => {
         if (Array.isArray(sites) && site){
-            setSiteItems(sites[site - 1].Items);
+            setSiteItems(site.Items);
         }   
     },[site, dispatch, sites]);
 
@@ -77,7 +94,7 @@ const RoundsSendForm = () => {
     }, [buddyId])
 
     return (
-        <>
+        <div className="RoundsSendForm">
             <h3>Just because you're separated doesn't mean you have to drink alone! Buy a buddy a Round today.</h3>
             <form onSubmit={handleSubmit}>
                 <ul>
@@ -97,9 +114,11 @@ const RoundsSendForm = () => {
                 </label>
                 <label>
                     Choose a Participating Restaurant or Bar
+                    {!siteImage && "Loading..."}
+                    {siteImage && <img src={siteImage} alt="site"/>}
                     <select name="site" 
                         className="input sign-up-form_input"
-                        onChange={(e) => setSite(e.target.value)}>
+                        onChange={(e) => handleSiteSelect(e.target.value)}>
                         <option value="">--Please choose an option--</option>
                         {!sites && <option value=''>None</option>}
                         {Array.isArray(sites) && sites.map(site => {
@@ -109,6 +128,8 @@ const RoundsSendForm = () => {
                 </label>
                 <label>
                     Choose an Item off their Menu
+                    {!itemImage && "Loading..."}
+                    {itemImage && <img src={itemImage} alt="site"/>}
                     <select name="item" 
                         className="input sign-up-form_input"
                         onChange={(e) => handleItemSelect(e.target.value)}>
@@ -137,7 +158,7 @@ const RoundsSendForm = () => {
                 Purchase Details:
                 {item[0] && buddy.firstName && ` ${item[0].name} sent to ${buddy.firstName}`}
             </div>
-        </>)
+        </div>)
 }
 
 export default RoundsSendForm;
