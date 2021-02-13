@@ -156,8 +156,8 @@ router.get(
 
         // rounds -> include round items where item.Id = itemId
         const roundsArray = await Promise.all(itemIds.map(async (itemId) => {
-            const item = await Item.findOne({
-                where: { id: itemId },
+            const item = await RoundItem.findAll({
+                where: { itemId: itemId },
                 include: {
                     model: Round,
                     include: [{
@@ -165,17 +165,13 @@ router.get(
                     }]
                 },
             })
-            return item.dataValues.Rounds;
+            return item;
         }))
-        const allRounds = roundsArray.flat()
-        const idValuesArray = []
-        const rounds = allRounds.filter(round => {
-            if (idValuesArray.includes(round.dataValues.id)) return
-            console.log(round.dataValues.id)
-            idValuesArray.push(round.dataValues.id)
-            return round
-        })
-        res.json(rounds);
+        // returns an array for each item with an array of each item round containing round and user data
+        const allItems = roundsArray.flat()
+        const allRounds = allItems.map(item => item.Round)
+        // returns an array of rounds (including nulls)
+        res.json(allRounds);
     })
 );
 
@@ -185,6 +181,23 @@ router.get(
     asyncHandler(async (req, res) => {
         const itemId = req.params.id
         const roundItem = await Item.findByPk(itemId)
+        res.json({ roundItem })
+    })
+)
+
+// GET roundItem by roundId
+router.get(
+    `/rounditems/:id(\\d+)`,
+    asyncHandler(async (req, res) => {
+        const roundId = req.params.id
+        const roundItem = await RoundItem.findOne({
+            where: {
+                roundId: roundId
+            },
+            include: {
+                model: Item
+            }
+        })
         res.json({ roundItem })
     })
 )
@@ -216,7 +229,6 @@ router.post(
     restoreUser,
     asyncHandler(async (req, res) => {
         const user = await req.user.toJSON()
-        console.log(user)
         const { receiverId, itemId } = req.body;
         const round = await Round.create({
             status: "userPaid",

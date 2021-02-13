@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
     }  
   }, {});
   RoundItem.associate = function(models) {
-    // associations can be defined here
+    RoundItem.hasOne(models.Round, {foreignKey: "id"})
+    RoundItem.hasOne(models.Item, {foreignKey: "id"})
   };
   return RoundItem;
 };

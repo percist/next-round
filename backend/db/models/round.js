@@ -34,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
     Round.belongsTo(models.User, {foreignKey: 'senderId'})
     Round.belongsTo(models.User, {foreignKey: 'receiverId'})
     Round.hasOne(models.Payment, {foreignKey: "roundId"})
+    Round.hasOne(models.RoundItem, {foreignKey: 'roundId'})
   };
   return Round;
 };
