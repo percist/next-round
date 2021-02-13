@@ -20,9 +20,11 @@ const RoundsFeed = ({ rounds, site, type }) => {
             <div className="rounds-feed">
                 {!site && <h2>loading...</h2>}
                 {site && Array.isArray(rounds) && rounds.map((round, i) => {
-                    if (round) return <SiteRoundsFeed round={round} key={i} site={site} />
-                    else return "No Rounds Redeemed Here Yet."
+                    if (!!round) {
+                        return <SiteRoundsFeed round={round} key={i} site={site} />
+                    }else return null
                 })}
+                {site && !rounds[0]}
             </div>
         )
     }

@@ -20,7 +20,6 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay}) => {
 
     const onCommentSubmit = async (e) => {
         e.preventDefault();
-        console.log(id, comment)
         await dispatch(fetchUpdateRoundToClaimed(id, comment)) 
             .catch(res => {
                 if (res.data && res.data.errors) setErrors(res.data.errors);

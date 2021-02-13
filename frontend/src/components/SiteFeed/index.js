@@ -2,7 +2,6 @@ import React from 'react';
 import UserRoundsCard from '../UserRoundsCard';
 
 const SiteFeed = ({ sites }) => {
-    console.log(sites)
     return (
         <div className="rounds-feed">
         {!Array.isArray(sites) && <h2>loading...</h2> }

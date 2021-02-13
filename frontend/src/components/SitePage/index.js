@@ -40,7 +40,6 @@ const SitePage = () => {
                 })
             }
         }
-        console.log("SITE ID:", siteId)
         checkIsOwner(user.id)
         dispatch(fetchOneSite(siteId))
         dispatch(fetchAllSiteRounds(siteId))

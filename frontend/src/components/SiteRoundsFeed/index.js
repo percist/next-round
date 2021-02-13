@@ -10,23 +10,25 @@ const SiteRoundsCard = ({ round, site }) => {
 
     
     useEffect(() => {
-        const fetchItem = async (itemId) => {
-            const res = await fetch(`/api/rounds/items/${itemId}`)
-            const { roundItem } = await res.json()
-            return setItem(roundItem)
+        const fetchRoundItem = async (roundId) => {
+            const res = await fetch(`/api/rounds/rounditems/${roundId}`)
+            const { roundItem } = await res.json();
+            return setItem(roundItem.Item)
         }
-        fetchItem(round.RoundItems.itemId)
+        fetchRoundItem(round.id)
         setUser(round.User)
     }, [dispatch, round])
 
-    return (
-        <RoundsCard 
-            round={round} 
-            site={site} 
-            user={user} 
-            item={item} 
-        />
-    )
+    if (!!item){
+        return (
+            <RoundsCard 
+                round={round} 
+                site={site} 
+                user={user} 
+                item={item} 
+            />
+        )
+    }else return null;
 }
 
 export default SiteRoundsCard;

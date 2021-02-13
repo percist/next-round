@@ -26,7 +26,6 @@ const ItemCardContainer = ({items}) => {
 
     useEffect(() => {
         if (Array.isArray(items) && items.length > 4) {
-           console.log(items.length)
             setShowButton(false)
         } 
     }, [items])
