@@ -1,5 +1,5 @@
 const express = require("express")
-const { Op } = require("sequelize");
+const { sequelize } = require("../../db/models");
 const asyncHandler = require('express-async-handler');
 const { requireAuth, restoreUser } = require('../../utils/auth');
 const { Round, User, RoundItem, Item, Site } = require("../../db/models");
@@ -53,7 +53,7 @@ router.get(
     })
 )
 
-// GET rounds user has not yet claimed
+// GET rounds user has not yet been claimed
 router.get(
     `/users/:id(\\d+)`,
     restoreUser,
@@ -202,24 +202,27 @@ router.get(
     })
 )
 
-router.put(
+// PATCH Update round to status "claimed" and add optional comment
+router.patch(
     `/:id(\\d+)`,
     restoreUser,
     asyncHandler(async (req, res) => {
         const roundId = req.params.id
         const { comment, status } = req.body
         const round = await Round.findByPk(roundId)
-        if (comment){
-            await round.update({
-                comment: comment,
-                status: status
-            })
-        }else{
-            await round.update({
-                status: status
-            })
-        }
-        return round;
+        if (round){
+            if(comment){
+                await round.update({
+                    comment: comment,
+                    status: status
+                })
+            }else{
+                await round.update({
+                    status: status
+                })
+            }
+            res.json({ round })
+        } 
     }))
 
 // TODO: Form Validation
