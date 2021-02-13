@@ -26,6 +26,7 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay}) => {
             });
         setComment("");
         setWasClaimed(true);
+        console.log([...roundsToDisplay.filter(setRound => setRound.id != id)])
         await setRoundsToDisplay([...roundsToDisplay.filter(setRound => setRound.id != id)])
     }
 
@@ -78,7 +79,9 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay}) => {
             <div className="rounds-claim-card_comment">
                 <form className="comment-form_form" onSubmit={e=>onCommentSubmit(e)}>
                     <textarea value={comment} onChange={e => setComment(e.target.value)} className="input-field" />
-                    <button type="submit" className="submit-button">Post your Round</button>
+                    <button type="submit" className="submit-button">
+                        Post your Round
+                    </button>
                 </form>
             </div>
 

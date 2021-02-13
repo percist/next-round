@@ -8,7 +8,8 @@ import MenuList from '../MenuList'
 import './MenuPage.css'
 
 const MenuPage = () => {
-
+    
+    const dispatch = useDispatch();
     const params = useParams();
     const { siteId } = params
 
@@ -22,7 +23,6 @@ const MenuPage = () => {
 
     const [ itemsToDisplay, setItemsToDisplay ] = useState([])
     
-    const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchAllSiteItems(siteId))
@@ -40,9 +40,17 @@ const MenuPage = () => {
         <div className="menu">
             <h1>Menu for {site.name}</h1>
             <div className="menu-list">
-                <MenuList itemsToDisplay={itemsToDisplay} setItemsToDisplay={setItemsToDisplay} siteId={siteId}/>
+                <MenuList 
+                    itemsToDisplay={itemsToDisplay} 
+                    setItemsToDisplay={setItemsToDisplay} 
+                    siteId={siteId}
+                />
             </div>
-            <MenuForm siteId={siteId} itemsToDisplay={itemsToDisplay} setItemsToDisplay={setItemsToDisplay}/>
+            <MenuForm 
+                siteId={siteId} 
+                itemsToDisplay={itemsToDisplay} 
+                setItemsToDisplay={setItemsToDisplay}
+            />
         </div>
     )
 }

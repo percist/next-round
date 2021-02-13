@@ -64,7 +64,7 @@ export const createOneRound = ({itemId, receiverId}) => async (dispatch) => {
 
 export const fetchUpdateRoundToClaimed = (roundId, comment) => async (dispatch) => {
     const response = await fetch(`/api/rounds/${roundId}`, {
-        method: 'PUT',
+        method: 'PATCH',
         headers:{
             'Content-Type': "application/json", 
           },

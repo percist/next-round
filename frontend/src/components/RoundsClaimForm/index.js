@@ -5,17 +5,19 @@ import RoundsClaimItem from '../RoundsClaimItem';
 import './RoundsClaim.css'
 
 const RoundsClaimForm = () => {
+
     const dispatch = useDispatch();
-    const [ roundsToDisplay, setRoundsToDisplay ] = useState([]);
     
     const rounds = useSelector(fullReduxState => {
         return fullReduxState.rounds;
     })
-
+    
     const {user} =  useSelector(reduxState => {
         return reduxState.session;
     });    
     
+    const [ roundsToDisplay, setRoundsToDisplay ] = useState([]);
+
     useEffect(() => {
         dispatch(fetchAllUserRounds(user.id))
     },[dispatch, user])
@@ -29,13 +31,15 @@ const RoundsClaimForm = () => {
         <div className="round-claim-feed">
             <h1>{`${user.username}, you have ${roundsToDisplay.length} rounds ready to redeem`}</h1>
         {Array.isArray(roundsToDisplay) && roundsToDisplay.map(round => {
-        return (
-        <div className="round-claim-item" key={round.id} roundsToDisplay={roundsToDisplay} setRoundsToDisplay={setRoundsToDisplay}>
-            <RoundsClaimItem 
-                round={round} 
-                 
-            />
-        </div>
+            return (
+            <div className="round-claim-item" >
+                <RoundsClaimItem 
+                    round={round} 
+                    key={round.id}
+                    roundsToDisplay={roundsToDisplay} 
+                    setRoundsToDisplay={setRoundsToDisplay}
+                />
+            </div>
         )})}
 </div>
     )
