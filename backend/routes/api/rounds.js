@@ -118,6 +118,7 @@ router.get(
         //array of following userIds
         let followingIds = user.following.map((followed => followed.dataValues.id));
         followingIds = [...followingIds];
+
         const payload = [];
         await Promise.all(followingIds.map(async (receiverId) => {
             const rounds = await Round.findAll({
@@ -152,14 +153,13 @@ router.get(
         let itemIds = site.Items.map((item => item.dataValues.id));
         itemIds = [...itemIds];
         // query for all rounds associated with the items
+
+        // rounds -> include round items where item.Id = itemId
         const roundsArray = await Promise.all(itemIds.map(async (itemId) => {
             const item = await Item.findOne({
                 where: { id: itemId },
                 include: {
                     model: Round,
-                    // where: {
-                    //     status: "recipientClaimed"
-                    // },
                     include: [{
                         model: User
                     }]
@@ -193,7 +193,6 @@ router.put(
     `/:id(\\d+)`,
     restoreUser,
     asyncHandler(async (req, res) => {
-        console.log("******************ROUTE HIT")
         const roundId = req.params.id
         const { comment, status } = req.body
         const round = await Round.findByPk(roundId)

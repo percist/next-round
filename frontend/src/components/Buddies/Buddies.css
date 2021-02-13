@@ -1,10 +1,9 @@
 .buddy img {
     border-radius: 100px;
-    border: 2pt black;
-    min-width: 80px;
-    max-width: 80px;
-    max-height: 80px;
-    min-height: 80px;
+    min-width: 60px;
+    max-width: 60px;
+    max-height: 60px;
+    min-height: 60px;
     object-fit: cover;
     align-self: flex-end;
     margin: 0 5px;
@@ -16,18 +15,18 @@
 
 .buddy {
     display: flex;
-    background-color: var(--main-accent-color);
-    color: var(--main-border-color);
+    background-color: var(--secondary-bg-color);
+    color: var(--main-text-color);
     padding: 5pt;
 }
 
 #buddy-info a:link{
-    color: var(--main-border-color);
+    color: var(--main-text-color);
     text-decoration: none;
 }
 
 #buddy-info a:visited{
-    color: var(--main-border-color);
+    color: var(--main-text-color);
     text-decoration: none;
 }
 

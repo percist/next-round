@@ -1,7 +1,6 @@
 .user-page {
     display: flex;
     justify-content: center;
-    margin-top: -10px;
     margin-bottom: 80px;
 }
 
@@ -9,7 +8,6 @@
     display: flex;
     justify-content: center;
     position: fixed;
-    height: calc(100% - 160px);
     left: 0;
     top: 80;
     overflow-y: scroll;
@@ -50,15 +48,14 @@
 
 .buddies-sidebar-container {
     position: fixed;
-    height: calc(100% - 160px);
-    right: 0;
-    top: 80;
+    height: calc(100% - 100px);
     overflow-y: scroll;
-    background-color: var(--main-accent-color);
-    color: var(--main-border-color);
+    background-color: var(--secondary-bg-color);
+    color: var(--main-text-color);
     width: 20vw;
     min-width: 100px;
     max-width: 450px;
+    box-shadow: var(--main-box-shadow);
 }
 
 .buddies-sidebar_header {

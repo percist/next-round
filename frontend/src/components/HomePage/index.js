@@ -28,7 +28,7 @@ const HomePage = () => {
             <RoundsSidebar />
             </div>
             <div className="user-page-site_feed">
-                <RoundsFeed rounds={rounds}/>
+                <RoundsFeed rounds={rounds} type="users"/>
             </div>
             <div className="user-page-buddies_sidebar">
             <BuddiesSidebar />

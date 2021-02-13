@@ -2,12 +2,11 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllBuddies } from '../../store/users'
 import Buddies from '../Buddies'
-import "./BuddiesSidebar.css"
 
 const BuddiesSidebar = () => {
     const dispatch = useDispatch()
     const buddies = useSelector(fullReduxState => {
-        return fullReduxState.buddies;
+        return fullReduxState.users;
     });
     
     const {user} =  useSelector(reduxState => {

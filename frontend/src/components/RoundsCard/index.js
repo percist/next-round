@@ -22,6 +22,9 @@ const RoundsCard = ({ user, site, item, round }) => {
                     // TODO: Insert Icon here
                     "Loading ..."
                 }
+                {round.imgUrl &&
+                    <img src={round.imgUrl} alt="round"
+                    />}
                 {!round.imgUrl &&
                     !site.imgUrl &&
                     item.imgUrl &&
@@ -30,9 +33,6 @@ const RoundsCard = ({ user, site, item, round }) => {
                 {!round.imgUrl &&
                     site.imgUrl &&
                     <img src={site.imgUrl} alt="site"
-                    />}
-                {round.imgUrl &&
-                    <img src={round.imgUrl} alt="round"
                     />}
             </div>
             <div className="rounds-card-info">

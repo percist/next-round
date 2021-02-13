@@ -78,7 +78,7 @@ const SitePage = () => {
                 </div>
                 <div className="site-page-content-feed">
                     <ItemCardContainer items={items} />
-                    <RoundsFeed rounds={rounds} site={site} />
+                    <RoundsFeed rounds={rounds} site={site} type="site" />
                 </div>
             </div>
         </div>

@@ -26,7 +26,7 @@ const Buddies = ({ buddy }) => {
                         <h3>
                         <a href={`/users/${buddy.id}`} >{buddy.username}</a>
                         </h3> 
-                        {`recently enjoyed a ${item.name} at `}<a href={`/sites/${site.id}`} >{site.name}</a>
+                        {/* {`recently enjoyed a ${item.name} at `}<a href={`/sites/${site.id}`} >{site.name}</a> */}
                         
                     </>
                 }

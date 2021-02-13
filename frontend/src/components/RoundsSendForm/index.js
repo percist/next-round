@@ -20,7 +20,7 @@ const RoundsSendForm = () => {
     const [ confirmSubmit, setConfirmSubmit ] = useState(false);
     
     const buddies = useSelector(fullReduxState => {
-        return fullReduxState.buddies;
+        return fullReduxState.users;
     })
 
     const sites = useSelector(fullReduxState => {
