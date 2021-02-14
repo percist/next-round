@@ -7,6 +7,7 @@ const Buddies = ({ buddy }) => {
     const [site, setSite] = useState({})
     const [item, setItem] = useState({})
     const [round, setRound] = useState({})
+    const [show, setShow] = useState(false)
 
     useEffect(() => {
         if (buddy.Rounds[0] != undefined) {

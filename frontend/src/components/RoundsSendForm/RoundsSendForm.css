@@ -1,3 +1,64 @@
-.rounds-send-form form{
+.rounds-send-form_inputs,
+.round-send-details {
     display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+#rounds-send-form_inputs_site,
+#rounds-send-form_inputs_buddy,
+#rounds-send-form_inputs_item {
+    display: flex;
+    flex-direction: column;
+}
+
+.rounds-send-form_inputs,
+.round-send-details {
+    display: grid;
+    grid-template-columns: 30fr 30fr 30fr;
+}
+
+.round-send-details {
+    height: 300px;
+    align-content: start;
+}
+
+.icon {
+    width: 100px;
+    height: 100px;
+}
+
+#round-send-details_user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#round-send-details_user img {
+    border-radius: 100px;
+    min-width: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    min-height: 100px;
+    object-fit: cover;
+}
+
+#round-send-details_site {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#round-send-details_site img {
+    border-radius: 9px;
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+}
+
+#round-send-details_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

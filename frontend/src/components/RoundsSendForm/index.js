@@ -5,6 +5,7 @@ import { fetchAllBuddies } from "../../store/users";
 import { fetchAllSites } from "../../store/sites";
 import { createOneRound } from "../../store/rounds";
 import { IoPersonCircleOutline } from 'react-icons/io5';
+import ItemImage from '../ItemImage';
 import { FcShop, FcDecision } from 'react-icons/fc';
 import './RoundsSendForm.css'
 
@@ -24,6 +25,7 @@ const RoundsSendForm = () => {
     const [siteSelected, setSiteSelected] = useState(false) //sets whether a site has been selected (in case it doesn't have a pic);
     const [itemSelected, setItemSelected] = useState(false) //sets whether a item has been selected (in case it doesn't have a pic);
     const [errors, setErrors] = useState([]);
+    const [purchaseDetails, setPurchaseDetails] = useState([]);
     const [confirmSubmit, setConfirmSubmit] = useState(false);
 
     const buddies = useSelector(fullReduxState => {
@@ -40,18 +42,19 @@ const RoundsSendForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!buddyId || !item[0] || !site) {
+        if (!buddy || !item || !site) {
             return setErrors(['Please select a buddy, site, and item to send a round.'])
         }
         setErrors([]);
         await dispatch(createOneRound({
-            receiverId: buddyId,
-            itemId: item[0].id
+            receiverId: buddy.id,
+            itemId: item.id
         }))
             .catch(res => {
                 if (res.data && res.data.errors) setErrors(res.data.errors);
             });
         setConfirmSubmit(true)
+        setPurchaseDetails([buddy, site, item])
         setBuddy({})
         setSite({})
         setItem({})
@@ -65,6 +68,7 @@ const RoundsSendForm = () => {
             const buddyId = e
             const selectedBuddy = buddies.filter(buddy => buddy.id == buddyId);
             setBuddy(selectedBuddy[0])
+            setPurchaseDetails([])
         } else {
             setBuddy({})
         }
@@ -76,6 +80,8 @@ const RoundsSendForm = () => {
             const itemId = e
             const selectedItem = siteItems.filter(item => item.id == itemId);
             setItem(selectedItem[0])
+            setTotal(selectedItem[0].price)
+            setPurchaseDetails([])
         } else {
             setItem({})
         }
@@ -87,8 +93,10 @@ const RoundsSendForm = () => {
             const siteId = e
             const selectedSite = sites.filter(site => site.id == siteId);
             setSite(selectedSite[0])
+            setPurchaseDetails([])
         } else {
             setSite({})
+            setItem({})
         }
         setSiteSelected(true)
     }
@@ -124,14 +132,11 @@ const RoundsSendForm = () => {
 
     return (
         <div className="rounds-send">
+            <h3>Just because you're separated doesn't mean you have to drink alone! Buy a buddy a Round today.</h3>
             <div className="rounds-send-form">
-                <h3>Just because you're separated doesn't mean you have to drink alone! Buy a buddy a Round today.</h3>
                 <form onSubmit={handleSubmit}>
-                    <ul>
-                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                    </ul>
                     <div className="rounds-send-form_inputs">
-                        <div className="rounds-send-form_inputs_buddy">
+                        <div id="rounds-send-form_inputs_buddy">
                             <label>
                                 Choose a Buddy
                             </label>
@@ -145,7 +150,7 @@ const RoundsSendForm = () => {
                                     })}
                                 </select>
                             </div>
-                            <div className="rounds-send-form_inputs_site">
+                            <div id="rounds-send-form_inputs_site">
                                 <label>
                                     Choose a Participating Restaurant or Bar
                                 </label>
@@ -159,7 +164,7 @@ const RoundsSendForm = () => {
                                     })}
                                 </select>
                             </div>
-                            <div className="rounds-send-form_inputs_item">
+                            <div id="rounds-send-form_inputs_item">
                                 <label>
                                     Choose an Item off their Menu
                                 </label>
@@ -181,18 +186,18 @@ const RoundsSendForm = () => {
                     <div className="round-send-details">
                         <div id="round-send-details_user">
                             <h2>{buddy.username}</h2>
-                            {!buddy.imgUrl && <FcDecision />}
-                            {buddy.imgUrl && <img src={buddy.imgUrl} alt="buddy" />}
+                            {!buddyImage && <FcDecision class="icon"/>}
+                            {buddyImage && <img src={buddyImage} alt="buddy" />}
                         </div>
                         <div id="round-send-details_site">
                             <h2>{site.name}</h2>
-                            {!siteImage && <FcShop />}
+                            {!siteImage && <FcShop class="icon"/>}
                             {siteImage && <img src={siteImage} alt="site" />}
                         </div>
                         <div id="round-send-details_item">
                             <h2>{item.name}</h2>
                             {!itemImage && <img src="https://img.icons8.com/fluent/96/000000/beer-glass.png"/>}
-                            {itemImage && <img src={itemImage} alt="item" />}
+                            {itemImage && <ItemImage image={itemImage} alt="item" />}
                         </div>
                     </div>
                     <div id="round-send-details_price">
@@ -210,8 +215,11 @@ const RoundsSendForm = () => {
                 </form>
                 <div className="round-confirmation" hidden={!confirmSubmit}>
                     Purchase Details:
-                    {item[0] && buddy.firstName && ` ${item[0].name} sent to ${buddy.firstName}`}
+                    { purchaseDetails[0] && `${purchaseDetails[2].name} sent to ${purchaseDetails[0].username}`}
                 </div>
+                <ul>
+                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                </ul>
             </div>
         </div>
     )
