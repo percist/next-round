@@ -2,14 +2,11 @@ import React, {useEffect, useState} from 'react';
 import ItemCard from '../ItemCard';
 import "./ItemCardContainer.css"
 
-//TODO: map over items and pass each item to the item card
 const ItemCardContainer = ({items}) => {
 
-    // const [ overflow, setOverflow ] = useState(true)
     const [ overflowItemsShown, setOverflowItemsShown ] = useState(false)
     const [ showButton, setShowButton ] = useState(true)
     const [ hideButton, setHideButton ] = useState(true)
-    const [ numItems, setNumItems ] = useState(0)
    
     const handleShowClick = (e) => {
         e.preventDefault();

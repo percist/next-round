@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import MenuItem from '../MenuItem';
 
 const MenuList = ({ itemsToDisplay, setItemsToDisplay, siteId}) => {

@@ -24,9 +24,7 @@ const BuddiesSidebar = () => {
                <h2>Buddies</h2> 
             </div>
             <div className="buddies-sidebar_feed">
-                {(Array.isArray(buddies) && buddies.filter(buddy => {
-                    if (buddy.Rounds[0] !== undefined) return buddy;
-                }).map(buddy=> {
+                {(Array.isArray(buddies) && buddies.map(buddy=> {
                     return <Buddies buddy={buddy} key={buddy.id}/>
                 }))}
                 

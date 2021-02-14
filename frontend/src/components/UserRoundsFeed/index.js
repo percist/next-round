@@ -1,36 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 import RoundsCard from '../RoundsCard'
 
-const UserRoundsFeed = ({ roundArray }) => {
-  const dispatch = useDispatch()
-  const [user, setUser] = useState({})
-  const [site, setSite] = useState({})
-  const [item, setItem] = useState({})
-  const [round, setRound] = useState({})
+const UserRoundsFeed = ({ roundsArray }) => {
 
-  useEffect(() => {
-    const fetchReceiver = async (userId) => {
-      const res = await fetch(`/api/users/${userId}`)
-      const user = await res.json()
-      return setUser(user)
-    }
-    if (roundArray[0] != undefined) {
-      fetchReceiver(roundArray[0].receiverId)
-      setSite(roundArray[0].Items[0].Sites[0])
-      setItem(roundArray[0].Items[0])
-      setRound(roundArray[0])
-    }
-  }, [dispatch, roundArray])
+  const [ sites, setSites ] = useState([]);
+  const [ items, setItems ] = useState([]);
 
-  if (roundArray[0] === undefined) return null
+  useEffect(()=>{
+    const itemsArray = roundsArray.map((round) => round.Items[0])
+    const sitesArray = roundsArray.map((round) => round.Items[0].Sites[0])
+    setItems(itemsArray)
+    setSites(sitesArray)
+  },[roundsArray])
+  
+  console.log(items)
+  console.log(sites)
+
   return (
-    <RoundsCard 
-      round={round} 
-      site={site} 
-      user={user} 
-      item={item} 
-    />
+    <>
+      {!Array.isArray(roundsArray) && <h2>loading...</h2>}
+      {Array.isArray(roundsArray) && sites && items && roundsArray.map((round, i) => {
+          return  (
+            <>
+              {!round && "loading..."}
+              {round && 
+                <RoundsCard 
+                  key={round.id} 
+                  round={round} 
+                  site={sites[i]} 
+                  user={null}
+                  item={items[i]}
+                  type="user"
+                />
+              }
+            </>
+          )
+        })}    
+    </>
   )
 }
 

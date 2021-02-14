@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect } from 'react';
 import RoundsFeed from '../RoundsFeed';
 import RoundsSidebar from '../RoundsSidebar';
 import BuddiesSidebar from '../BuddiesSidebar';

@@ -26,7 +26,6 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay}) => {
             });
         setComment("");
         setWasClaimed(true);
-        console.log([...roundsToDisplay.filter(setRound => setRound.id != id)])
         await setRoundsToDisplay([...roundsToDisplay.filter(setRound => setRound.id != id)])
     }
 
@@ -59,7 +58,8 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay}) => {
             </div>
             <div id="rounds-claim-card_info">
                 <div id="rounds-claim-card_info_round">
-                    Redeem a {item.name} at {site.name}
+                    {!item && !site && <h2>loading...</h2>}
+                    {item && site && `Redeem a ${item.name} at ${site.name}`}
                 </div>
                 <div id="rounds-claim-card_info_sender">
                     Sent by {sender.username}

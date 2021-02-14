@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import ItemCardContainer from "../ItemCardContainer";
 import RoundsFeed from "../RoundsFeed";
-import RoundsSidebar from "../RoundsSidebar";
-import BuddiesSidebar from "../BuddiesSidebar";
 import { fetchOneSite } from "../../store/sites";
 import { fetchAllSiteRounds } from "../../store/rounds";
 import "./SitePage.css";
@@ -60,9 +58,9 @@ const SitePage = () => {
                     {isOwner && <button
                         onClick={updateMenuHandler}
                         className="button update-menu-button"
-                    >
-                        Update menu
-                                </button>
+                        >
+                            Update menu
+                        </button>
                     }
                     <div id="site-page-content-rounds-sidebar_info">
                         <h2>Location</h2>
@@ -72,7 +70,6 @@ const SitePage = () => {
                         <div>
                             {`${site.city}, ${site.state}`}
                         </div>
-
                     </div>
                 </div>
                 <div className="site-page-content-feed">

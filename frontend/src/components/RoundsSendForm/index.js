@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
 import { fetchAllBuddies } from "../../store/users";
 import { fetchAllSites } from "../../store/sites";
 import { createOneRound } from "../../store/rounds";
-import { IoPersonCircleOutline } from 'react-icons/io5';
 import ItemImage from '../ItemImage';
 import { FcShop, FcDecision } from 'react-icons/fc';
 import './RoundsSendForm.css'
@@ -12,7 +10,6 @@ import './RoundsSendForm.css'
 const RoundsSendForm = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-    const [buddyId, setBuddyId] = useState(''); // sets buddy id (integer)
     const [buddy, setBuddy] = useState({}) // sets a single buddy object
     const [buddyImage, setBuddyImage] = useState('') // sets a single buddy object
     const [site, setSite] = useState({}); // sets site object
@@ -34,10 +31,6 @@ const RoundsSendForm = () => {
 
     const sites = useSelector(fullReduxState => {
         return fullReduxState.sites;
-    })
-
-    const round = useSelector(fullReduxState => {
-        return fullReduxState.round;
     })
 
     const handleSubmit = async (e) => {
@@ -196,7 +189,7 @@ const RoundsSendForm = () => {
                         </div>
                         <div id="round-send-details_item">
                             <h2>{item.name}</h2>
-                            {!itemImage && <img src="https://img.icons8.com/fluent/96/000000/beer-glass.png"/>}
+                            {!itemImage && <img src="https://img.icons8.com/fluent/96/000000/beer-glass.png" alt="beer"/>}
                             {itemImage && <ItemImage image={itemImage} alt="item" />}
                         </div>
                     </div>

@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { createNewSite } from '../../store/sites'
 
 const SiteFormPage = ( ) => {
     const dispatch = useDispatch();
-    const sessionUser = useSelector((state) => state.session.user)
 
     const [ name, setName ] = useState("")
     const [ address, setAddress ] = useState("")

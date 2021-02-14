@@ -1,36 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { IoPersonCircleOutline } from 'react-icons/io5';
 import "./Buddies.css"
 
 
 const Buddies = ({ buddy }) => {
-    const [site, setSite] = useState({})
-    const [item, setItem] = useState({})
-    const [round, setRound] = useState({})
-    const [show, setShow] = useState(false)
-
-    useEffect(() => {
-        if (buddy.Rounds[0] != undefined) {
-          setSite(buddy.Rounds[0].Items[0].Sites[0])
-          setItem(buddy.Rounds[0].Items[0])
-          setRound(buddy.Rounds[0])
-        }
-      }, [buddy])
 
     return (
         <div className="buddy">
             {!buddy.imgUrl && <IoPersonCircleOutline />}
             {buddy.imgUrl && <img src={buddy.imgUrl} alt="user"/>}
             <div id='buddy-info'>
-                { round && 
-                    <>
-                        <h3>
-                        <a href={`/users/${buddy.id}`} >{buddy.username}</a>
-                        </h3> 
-                        {/* {`recently enjoyed a ${item.name} at `}<a href={`/sites/${site.id}`} >{site.name}</a> */}
-                        
-                    </>
-                }
+                <h3>
+                <a href={`/users/${buddy.id}`} >{buddy.username}</a>
+                </h3> 
+
             </div>
         </div>
         

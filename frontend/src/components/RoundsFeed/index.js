@@ -9,10 +9,8 @@ const RoundsFeed = ({ rounds, site, type }) => {
         return (
             <div className="rounds-feed">
                 {!Array.isArray(rounds) && <h2>loading...</h2>}
-                {Array.isArray(rounds[0]) && rounds.map((round, i) => {
-                    if (round) return <UserRoundsFeed roundArray={round} key={i} />
-                    else return null
-                })}
+                {Array.isArray(rounds) &&  <UserRoundsFeed roundsArray={rounds} />}
+                    
             </div>
         )
     } else if (type == "site") {
