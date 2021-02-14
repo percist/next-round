@@ -74,27 +74,26 @@ router.get(
 router.get(
   `/:id(\\d+)/buddies`,
   asyncHandler(async (req, res) => {
-      const userId = req.params.id
-      const buddies = await User.findOne({
+    const userId = req.params.id
+    const userWithBuddies = await User.findOne({
+      where: { id: userId },
+      include: [{
+            model: User,
+            as: "follower",
+      }],
+    });
+    let followingIds = userWithBuddies.follower.map((followed => followed.dataValues.id));
+    followingIds = [...followingIds];
+    const buddiesArray = await Promise.all(followingIds.map(async(userId) => {
+      const user = await User.findOne({
         where: {
-          id: userId
-        },
-        include: [{
-          model: User,
-          as: "follower",
-          include: [{
-            model: Round,
-            order: [["createdAt", "DESC"]],
-            include: [{
-              model: Item,
-              include: [{
-                model: Site
-              }]
-            }]
-          }]
-        }]
+          id: userId,
+        }
       })
-      res.json(buddies)
+      return user
+    }))
+
+      res.json(buddiesArray)
   })
 )
 

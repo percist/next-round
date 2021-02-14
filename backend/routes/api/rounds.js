@@ -131,7 +131,7 @@ router.get(
     })
 );
 
-// GET rounds for a site
+// GET most recent 20 rounds for a site
 router.get(
     `/sites/:id(\\d+)`,
     asyncHandler(async (req, res) => {
@@ -161,8 +161,9 @@ router.get(
         // returns an array for each item with an array of each item round containing round and user data
         const allItems = roundsArray.flat()
         const allRounds = allItems.map(item => item.Round)
+        const payload = allRounds.slice(0,20).sort((a,b) => a.createdAt - b.createdAt)
         // returns an array of rounds (including nulls)
-        res.json(allRounds);
+        res.json(payload);
     })
 );
 
