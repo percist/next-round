@@ -15,8 +15,8 @@
 
 .splash-page-overlay {
     width: 500px;
-    height: 500px;
-    padding: 60px;
+    height: 600px;
+    padding: 30px 60px 60px;
     background: rgba(255, 255, 255, 0.2);
     position: absolute;
     top: 20vh;

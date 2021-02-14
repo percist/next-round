@@ -46,20 +46,21 @@ function Navigation({ isLoaded }) {
     );
   } else {
     sessionLinks = (
-      <>
-        <a href="/login" id="link-login" onClick={loginButton}>Login</a>
-        <a href="/signup" id="link-signup" onClick={signupButton}>Sign Up</a>
-        {showModal && (
-          <Modal onClose={() => setShowModal(false)}>
-            { form === "login" && (
-              <LoginForm />
-            )}
-            { form === "signup" && (
-              <SignupFormPage />
-            )}
-          </Modal>
-        )}
-      </>
+      null
+    //   <>
+    //     <a href="/login" id="link-login" onClick={loginButton}>Login</a>
+    //     <a href="/signup" id="link-signup" onClick={signupButton}>Sign Up</a>
+    //     {showModal && (
+    //       <Modal onClose={() => setShowModal(false)}>
+    //         { form === "login" && (
+    //           <LoginForm />
+    //         )}
+    //         { form === "signup" && (
+    //           <SignupFormPage />
+    //         )}
+    //       </Modal>
+    //     )}
+      // </>
     );
   }
 

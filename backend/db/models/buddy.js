@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     }  
   }, {});
   Buddy.associate = function(models) {
+    
   };
   return Buddy;
 };

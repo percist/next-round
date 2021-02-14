@@ -27,7 +27,7 @@ const setUpdatedRound = (round) => {
 
 export const fetchAllBuddyRounds = (userid) => {
     return async (dispatch) => {
-        const response = await fetch(`/api/rounds/buddies/${userid}`);
+        const response = await fetch(`/api/rounds/buddies/${userid}`);        
         dispatch(setAllRounds(response.data.payload));
     };
 };

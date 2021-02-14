@@ -111,16 +111,14 @@ router.get(
             include: [
                 {
                     model: User,
-                    as: "following",
+                    as: "follower",
                 },
             ],
         });
-        //array of following userIds
-        let followingIds = user.following.map((followed => followed.dataValues.id));
+        //array of userIds for buddies of which the user is a follower
+        let followingIds = user.follower.map((followed => followed.dataValues.id));
         followingIds = [...followingIds];
-
-        const payload = [];
-        await Promise.all(followingIds.map(async (receiverId) => {
+        const roundsArray = await Promise.all(followingIds.map(async (receiverId) => {
             const rounds = await Round.findAll({
                 where: {
                     receiverId: receiverId,
@@ -133,8 +131,9 @@ router.get(
                 }],
                 order: [["createdAt", "DESC"]],
             })
-            payload.push(rounds)
+            return rounds
         }))
+        const payload = roundsArray.flat()
         res.json({ payload });
     })
 );

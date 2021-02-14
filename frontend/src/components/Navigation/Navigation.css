@@ -89,8 +89,8 @@ a {
 #link-sites,
 #link-my-rounds
 {
-  padding-top: 31px;    
-  padding-bottom: 30px;    
+  padding-top: 18px;    
+  padding-bottom: 17px;    
   padding-left: 14px;    
   padding-right: 14px;    
 }
@@ -104,16 +104,18 @@ a {
 #link-sites:hover
 #link-my-rounds:hover
 {
-  background-color: var(--secondary-bg-color);
+  background-color: var(--main-bg-color);
 }
-
+/* TODO: fix logout rendering behind buddies list */
 .profile-dropdown {
+  position: fixed;
   display: flex;
   list-style: none;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-end;
-  padding: 15px 79px 9px 10px;
-  background-color: --main-;
+  padding: 15px 5px 9px 10px;
+  background-color: var(--main-bg-color);
+  /* z-index: 999; */
 }
 
 #profile-button {
