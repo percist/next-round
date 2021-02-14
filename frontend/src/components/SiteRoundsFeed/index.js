@@ -13,7 +13,7 @@ const SiteRoundsCard = ({ round, site }) => {
         const fetchRoundItem = async (roundId) => {
             const res = await fetch(`/api/rounds/rounditems/${roundId}`)
             const { roundItem } = await res.json();
-            return setItem(roundItem.Item)
+            if (roundItem) return setItem(roundItem.Item)
         }
         fetchRoundItem(round.id)
         setUser(round.User)
