@@ -19,6 +19,10 @@ module.exports = {
         userId: 3,
         siteId: 4
       },
+      {
+        userId: 3,
+        siteId: 5
+      }
     ], {});
   },
 

@@ -139,7 +139,7 @@ router.get(
     })
 );
 
-// GET most recent 20 rounds for a site
+// GET rounds for a site
 router.get(
     `/sites/:id(\\d+)`,
     asyncHandler(async (req, res) => {
@@ -154,7 +154,6 @@ router.get(
         itemIds = [...itemIds];
         // query for all rounds associated with the items
 
-        // rounds -> include round items where item.Id = itemId
         const roundsArray = await Promise.all(itemIds.map(async (itemId) => {
             const item = await RoundItem.findAll({
                 where: { itemId: itemId },
