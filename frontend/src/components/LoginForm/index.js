@@ -12,9 +12,8 @@ const LoginForm = () => {
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
-    if (sessionUser) return (
-        <Redirect to="/" />
-    )
+    if (sessionUser) return <Redirect to={`/users/${sessionUser.id}`} />;
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -23,17 +22,8 @@ const LoginForm = () => {
             .catch((res) => {
                 if (res.data && res.data.errors) setErrors(res.data.errors);
             });
-        history.push('/');    
+        history.push(`/users/${sessionUser.id}`);    
     };
-
-    // const handleDemo = async (e) => {
-    //     e.preventDefault();
-    //     setErrors([]);
-    //     return dispatch(sessionActions.loginDemo())
-    //         .catch((res) => {
-    //             if (res.data && res.data.errors) setErrors(res.data.errors);
-    //         });
-    // };
 
     return (
         <div id="login">

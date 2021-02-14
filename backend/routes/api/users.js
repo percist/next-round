@@ -5,7 +5,6 @@ const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User, Round, Site, Item, Buddy } = require('../../db/models');
-const round = require('../../db/FaliedAttemptAtDB/models/round');
 
 const router = express.Router();
 
