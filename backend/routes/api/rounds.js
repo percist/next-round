@@ -70,13 +70,6 @@ router.get(
                     model: Site
                 },
             },
-            // {
-            //     model: User,
-            //     where: {
-            //         id: senderId //user.id == round.senderId 
-            //     },
-            //     as: "HasReceivedRoundsFrom"
-            // }
         ]
         })
         res.json(rounds)
@@ -133,7 +126,7 @@ router.get(
             })
             return rounds
         }))
-        const payload = roundsArray.flat()
+        const payload = roundsArray.flat().slice(0,20).sort((a,b) => a.createdAt - b.createdAt)
         res.json({ payload });
     })
 );
