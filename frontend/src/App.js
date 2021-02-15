@@ -16,6 +16,7 @@ import RoundsClaimForm from "./components/RoundsClaimForm";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -25,9 +26,6 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          {/* <Route path="/login" >
-            <LoginFormPage />
-          </Route> */}
           <Route path="/signup">
             <SignupFormPage />
           </Route>

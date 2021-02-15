@@ -1,5 +1,5 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import { NavLink, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import image from "./NextRoundText.png";
@@ -7,6 +7,11 @@ import './Navigation.css';
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
+  const [userId, setUserId] = useState('')
+
+  useEffect(() => {
+    if (sessionUser) setUserId(sessionUser.id)
+  }, [sessionUser])
 
   let sessionLinks;
   if (sessionUser) {
@@ -20,7 +25,7 @@ function Navigation({ isLoaded }) {
         </NavLink>
         <NavLink
           id="link-my-rounds"
-          to={`/users/${sessionUser.id}`} exact
+          to={`/users/${userId}`} exact
         >
           My Rounds
         </NavLink>
@@ -28,7 +33,8 @@ function Navigation({ isLoaded }) {
       </>
     );
   } else {
-    sessionLinks = null
+    sessionLinks = <Redirect to={`/`} />;
+
   }
 
   return (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as sessionActions from '../../store/session';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,12 +8,16 @@ const LoginForm = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+    const [userId, setUserId] = useState('')
     const [credential, setCredential] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
-    if (sessionUser) return <Redirect to={`/users/${sessionUser.id}`} />;
+    useEffect(() => {
+        if (sessionUser) setUserId(sessionUser.id)
+      }, [sessionUser])
 
+    if (sessionUser) return <Redirect to={`/users/${userId}`} />;
 
     const handleSubmit = async (e) => {
         e.preventDefault();

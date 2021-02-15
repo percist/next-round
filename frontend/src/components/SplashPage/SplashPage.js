@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '../../context/Modal';
@@ -12,8 +12,14 @@ const SplashPage = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
+  const [userId, setUserId] = useState("")
   const [form, setForm] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [errors, setErrors] = useState([]);
+  
+  useEffect(() => {
+    if (sessionUser) setUserId(sessionUser.id)
+  }, [sessionUser])
 
   if (sessionUser) return <Redirect to={`/users/${sessionUser.id}`} />;
 
@@ -30,14 +36,17 @@ const SplashPage = () => {
   }
 
   const handleDemoClick = async (e) => {
-      e.preventDefault();
-      return dispatch(sessionActions.loginDemo())
+    e.preventDefault();
+    return dispatch(sessionActions.loginDemo())
+      .catch((res) => {
+        if (res.data && res.data.errors) setErrors(res.data.errors);
+      })
   };
 
   return (
     <div className="splash-page">
       <div className="splash-page_img">
-        <img src='./N.png' alt="logo"/>
+        <img src='./N.png' alt="logo" />
         <div class="splash-page-overlay" id="splash-page-overlay">
           <div id="splash-page-cta">
             <h1 id="splash-page-cta_1">

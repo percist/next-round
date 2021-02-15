@@ -8,8 +8,8 @@
 .splash-page img{
     width: 100%;
     position: fixed;
-    bottom: 0px;
-    height: calc(100vh - 80px);
+    top: 0px;
+    height: calc(100vh);
     object-fit: cover;
 }
 
