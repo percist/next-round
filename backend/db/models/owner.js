@@ -17,6 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     }  
   }, {});
   Owner.associate = function(models) {
+    Owner.hasOne(models.User, {foreignKey: "id"})
+    Owner.hasOne(models.Site, {foreignKey: "id"})
   };
   return Owner;
 };

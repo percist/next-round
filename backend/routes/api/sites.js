@@ -91,6 +91,23 @@ router.get(
   })
 )
 
+// Get all sites owned by current user
+router.get(
+  `/user`,
+  restoreUser,
+  asyncHandler(async (req, res) => {
+    const user = await req.user.toJSON();
+    const sites = await Owner.findAll({
+      where: {
+        userId: user.id
+      },
+      include: [{
+          model: Site,
+        }]
+    })
+    res.json({ sites })
+  })
+)
 // Get owner of site
 router.get(
   `/:id(\\d+)/owners`,

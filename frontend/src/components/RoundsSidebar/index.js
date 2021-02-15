@@ -10,13 +10,22 @@ const RoundsSidebar = () => {
     });
 
     const [ numRounds, setNumRounds ] = useState({});
+    const [ sitesOwned, setSitesOwned ] = useState({});
+
     useEffect(() => {
         const fetchPaidRounds = async () => {
             const response = await fetch('/api/rounds/user/total')
             const roundsToRedeem = await response.json()
             setNumRounds(roundsToRedeem)
         }
+        const fetchOwnedSites = async () => {
+            const response = await fetch('/api/sites/user')
+            const sitesUserOwns = await response.json()
+            console.log(sitesUserOwns.sites)
+            setSitesOwned(sitesUserOwns)
+        }
         fetchPaidRounds()
+        fetchOwnedSites()
     },[]);
     
     const redeemRoundClickHandler = () => {
@@ -28,14 +37,29 @@ const RoundsSidebar = () => {
     }
 
     return (
-        <div className="rounds-sidebar">
-                {`${numRounds} rounds waiting`}
+        <div hidden={sitesOwned} className="rounds-sidebar">
+            <div className="rounds-sidebar_sites-owned">
+                Your Businesses:
+                {!Array.isArray(sitesOwned.sites) && "loading..."}
+                {Array.isArray(sitesOwned.sites) && sitesOwned.sites.map(owner => {
+                    return <div id="rounds-sidebar_site" key={owner.siteId}>
+                        <a href={`/sites/${owner.siteId}`}>
+                            {owner.Site.name}
+                        </a>
+                    </div>
+                })}
+            </div>
+            <div id="rounds-sidebar_username">
+                {user.username}
+            </div>
+            <div id="rounds-sidebar_rounds-waiting">
+                {`you have ${numRounds} rounds waiting`}
+            </div>
             <button 
                 className="button"
                 id="button-redeem-round"
                 onClick={redeemRoundClickHandler}
             >
-                {/* TODO: implement round claiming */}
                 Claim a Round
             </button>
             <button 

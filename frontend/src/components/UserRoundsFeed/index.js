@@ -13,22 +13,17 @@ const UserRoundsFeed = ({ roundsArray }) => {
       setItems(itemsArray)
       setSites(sitesArray)  
     }
-   
   },[roundsArray])
-  
-  console.log(items)
-  console.log(sites)
 
   return (
     <>
       {!Array.isArray(roundsArray) && <h2>loading...</h2>}
       {Array.isArray(roundsArray) && sites && items && roundsArray.map((round, i) => {
           return  (
-            <>
+            <div key={round.id}>
               {!round && "loading..."}
               {round && 
                 <RoundsCard 
-                  key={round.id} 
                   round={round} 
                   site={sites[i]} 
                   user={null}
@@ -36,7 +31,7 @@ const UserRoundsFeed = ({ roundsArray }) => {
                   type="user"
                 />
               }
-            </>
+            </div>
           )
         })}    
     </>

@@ -11,7 +11,9 @@ function Navigation({ isLoaded }) {
 
   useEffect(() => {
     if (sessionUser) setUserId(sessionUser.id)
+    if (!sessionUser) return <Redirect to={`/`} />;
   }, [sessionUser])
+
 
   let sessionLinks;
   if (sessionUser) {
@@ -33,7 +35,7 @@ function Navigation({ isLoaded }) {
       </>
     );
   } else {
-    sessionLinks = <Redirect to={`/`} />;
+    sessionLinks = null;
 
   }
 
