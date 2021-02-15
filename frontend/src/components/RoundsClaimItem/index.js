@@ -76,7 +76,7 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay}) => {
                     <img hidden={!wasClicked} src={image} alt="qr code" />
                 </div>
             </div>
-            <div className="rounds-claim-card_comment">
+            <div hidden={!wasClicked} className="rounds-claim-card_comment">
                 <form className="comment-form_form" onSubmit={e=>onCommentSubmit(e)}>
                     <textarea value={comment} onChange={e => setComment(e.target.value)} className="input-field" />
                     <button type="submit" className="submit-button">
