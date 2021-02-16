@@ -21,7 +21,8 @@
     flex-direction: column;
     align-items: center;
     margin-top: 31px;
-    height: 400px;
+    padding: 20px;
+    height: 500px;
     width: 300px;
     justify-content: space-around;
     font-size: 30px;
@@ -31,13 +32,17 @@
     box-shadow: var(--main-box-shadow);
 }
 
+.rounds-sidebar div{
+    text-align: center;
+}
+
 .rounds-sidebar .button{
     color: #FFFAFF;
     font-size: 30px;
     font-weight: 500;
     background-color: var(--main-border-color);
     width: 90%;
-    height: 60px;
+    height: 80px;
 }
 
 .user-page-site_feed {

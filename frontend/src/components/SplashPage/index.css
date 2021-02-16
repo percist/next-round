@@ -9,8 +9,9 @@
     width: 100%;
     position: fixed;
     top: 0px;
-    height: calc(100vh);
+    height: calc(95vh);
     object-fit: cover;
+    margin-bottom: 60px;
 }
 
 .splash-page-overlay {
