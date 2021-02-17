@@ -3,7 +3,8 @@
     border-radius: 12pt;
     margin: 12pt 0;
     background-color: var(--tertiary-bg-color);
-    box-shadow: var(--main-box-shadow)
+    box-shadow: var(--main-box-shadow);
+    padding-bottom: 20px;
 }
 
 .rounds-card-image img {
@@ -12,41 +13,44 @@
     object-fit: cover;
 }
 
-.rounds-card-header{
+.rounds-card-info{
     display: flex;
     justify-content: space-between;
-    padding: 10px 15px 5px;
+    padding: 3px 15px;
     align-items: flex-end;
 }
 
-.rounds-card-info{
+.rounds-card-header{
     display: flex;
     flex-direction: row;
-    padding: 10px 15px 20px;
+    padding: 15px 15px 20px;
 }
 
-.rounds-card-info-description{
+.rounds-card-header-description{
     display: flex;
     flex-direction: column;
 }
 
-.rounds-card-info img {
+.rounds-card-header img {
     border-radius: 100px;
-    border: 2pt black;
-    min-width: 40px;
-    max-width: 40px;
-    max-height: 40px;
-    min-height: 40px;
+    min-width: 50px;
+    max-width: 50px;
+    max-height: 50px;
+    min-height: 50px;
     object-fit: cover;
     align-self: flex-end;
     margin: 0 5px;
 }
 
-#rounds-card-info_comment{
-    padding-top: 20px;
+#rounds-card-header_comment{
+padding: 0 18px 18px;
 }
 
-#rounds-card-header_site_name {
+#rounds-card-info_site_name {
     font-size: 20px;
     font-weight: 600;
+}
+
+#rounds-card-info_divider {
+  width: 95%;
 }
