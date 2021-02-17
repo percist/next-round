@@ -19,12 +19,12 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = (
       <>
-        <NavLink
+        {/* <NavLink
           id="link-sites"
           to="/sites"
         >
           Find a Drink
-        </NavLink>
+        </NavLink> */}
         <NavLink
           id="link-my-rounds"
           to={`/users/${userId}`} exact

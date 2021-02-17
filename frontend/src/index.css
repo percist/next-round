@@ -1,6 +1,7 @@
 /* TODO Add site wide styles */
 * {
     --main-bg-color: #EEE7EA;
+    --main-bg-color-dark: #eee7eac9;
     --secondary-bg-color: #FFFAFF;
     --tertiary-bg-color: #FFFFFF;
     --main-text-color: #232B2B;

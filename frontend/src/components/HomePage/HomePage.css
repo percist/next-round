@@ -4,83 +4,142 @@
 }
 
 .user-page {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 80px;
-    width: 55vw;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
+  width: 55vw;
 }
 
 .user-page-rounds_sidebar {
-    display: flex;
-    justify-content: flex-end;
-    position: fixed;
-    left: calc(20vw - 80px);
-    top: 80;
-    overflow-y: scroll;
-    width: 20vw;
-    min-width: 100px;
-    max-width: 450px;
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  left: calc(20vw - 80px);
+  top: 80;
+  overflow-y: scroll;
+  width: 20vw;
+  min-width: 100px;
+  max-width: 450px;
 }
 
 .rounds-sidebar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 31px;
-    padding: 20px;
-    height: 500px;
-    width: 300px;
-    justify-content: space-around;
-    font-size: 30px;
-    font-weight: 400;
-    background-color: var(--main-bg-color);
-    border-radius: 6pt;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 31px;
+  padding: 20px;
+  height: 500px;
+  width: 300px;
+  justify-content: space-around;
+  font-size: 30px;
+  font-weight: 400;
+  background-color: var(--main-bg-color);
+  border-radius: 6pt;
 }
 
 #rounds-sidebar_site {
   border-radius: 8px;
+  padding: 0 8px;
 }
 
-#rounds-sidebar_site:hover {
-  background-color: white;
-
+#rounds-sidebar_site:hover,
+.rounds-sidebar .button:hover {
+  background-color: var(--main-bg-color-dark);
 }
 
-.rounds-sidebar div{
-    text-align: center;
+.rounds-sidebar div {
+  justify-content: flex-start;
 }
 
-.rounds-sidebar .button{
-    color: #FFFAFF;
-    font-size: 30px;
-    font-weight: 500;
-    background-color: var(--main-border-color);
-    width: 90%;
-    height: 80px;
+.rounds-sidebar .button {
+  color: var(--main-text-color);
+  justify-self: left;
+  margin: -10px;
+  font-size: 20px;
+  background-color: var(--main-bg-color);
+  height: 60px;
 }
 
 .user-page-site_feed {
-    margin: 15px 0;
-    width: 50%;
-    align-self: center;
+  margin: 15px 0;
+  width: 50%;
+  align-self: center;
 }
 
 .buddies-sidebar-container {
-    display: flex;
-    position: fixed;
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
-    width: 250px;
-    height: calc(100% - 100px);
-    overflow-y: scroll;
-    right: 10vw;
+  display: flex;
+  position: fixed;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+  width: 250px;
+  height: calc(100% - 100px);
+  overflow-y: scroll;
+  right: 10vw;
 }
 
 .buddies-sidebar_header {
-    padding: 0 15px;
+  padding: 0 15px;
 }
 
 .user-page-buddies_sidebar {
-    display: flex;
-    margin: 0px;
+  display: flex;
+  margin: 0px;
+}
+
+.rounds-sidebar_image {
+  min-width: 50px;
+  max-width: 50px;
+  max-height: 50px;
+  min-height: 50px;
+  object-fit: cover;
+}
+
+#rounds-sidebar_user_image {
+  border-radius: 100px;
+}
+
+#rounds-sidebar_site_image {
+  border-radius: 8px;
+}
+
+#rounds-sidebar_site,
+.rounds-sidebar_user {
+  display: flex;
+  align-items: center;
+}
+
+#rounds-sidebar_site_image,
+#rounds-sidebar_user_image {
+  display: flex;
+  align-items: center;
+  margin: 8px 8px 8px 0;
+}
+
+#button-buy-round,
+#button-redeem-round {
+  display: flex;
+  align-items: center;
+}
+
+#button-buy-round-icon,
+#button-redeem-round-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  border-radius: 100px;
+  margin: 0 10px;
+  font-size: 24px;
+}
+
+#button-buy-round-image,
+#button-redeem-round-image {
+  height: 40px;
+  width: 40px;
+  color: var(--main-border-color)
+}
+
+.rounds-sidebar_sites-owned {
+  font-size: 22px;
 }

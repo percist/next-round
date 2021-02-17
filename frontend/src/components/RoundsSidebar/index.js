@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { FiSend } from 'react-icons/all'
 import { useHistory } from 'react-router-dom';
 
 const RoundsSidebar = () => {
@@ -9,7 +10,7 @@ const RoundsSidebar = () => {
     return reduxState.session;
   });
 
-  const [numRounds, setNumRounds] = useState({});
+  const [numRounds, setNumRounds] = useState('');
   const [sitesOwned, setSitesOwned] = useState({});
 
   useEffect(() => {
@@ -38,37 +39,52 @@ const RoundsSidebar = () => {
 
   return (
     <div hidden={sitesOwned} className="rounds-sidebar">
-      <div className="rounds-sidebar_sites-owned">
-        Your Businesses:
-                {!Array.isArray(sitesOwned.sites) && "loading..."}
-        {Array.isArray(sitesOwned.sites) && sitesOwned.sites.map(owner => {
-          return <div id="rounds-sidebar_site" key={owner.siteId}>
-            <a href={`/sites/${owner.siteId}`}>
-              {owner.Site.name}
-            </a>
-          </div>
-        })}
-      </div>
-      <div id="rounds-sidebar_username">
+      <div className="rounds-sidebar_user">
+        {!user.imgUrl && "loading..."}
+        {user.imgUrl && <img className="rounds-sidebar_image" id="rounds-sidebar_user_image" src={user.imgUrl} alt="Me" />}
         {user.username}
       </div>
-      <div id="rounds-sidebar_rounds-waiting">
-        {`you have ${numRounds} rounds waiting`}
-      </div>
+
       <button
         className="button"
         id="button-redeem-round"
         onClick={redeemRoundClickHandler}
-      >
+        >
+          <div id="button-redeem-round-icon">
+            <img 
+              id="button-redeem-round-image" 
+              src="https://img.icons8.com/fluent/96/000000/beer-glass.png" 
+              alt="beer" 
+              />
+            {numRounds}
+          </div>
         Claim a Round
-            </button>
+      </button>
       <button
         className="button"
         id="button-buy-round"
         onClick={buyRoundClickHandler}
       >
+        <div id="button-buy-round-icon">
+          <FiSend 
+            id="button-buy-round-image"
+          />
+        </div>
         Send a Round
-            </button>
+      </button>
+      <div className="rounds-sidebar_sites-owned">
+        <hr />
+        Your Businesses
+                {!Array.isArray(sitesOwned.sites) && "loading..."}
+        {Array.isArray(sitesOwned.sites) && sitesOwned.sites.map(owner => {
+          return <div className="rounds-sidebar_site" key={owner.siteId}>
+            <a id="rounds-sidebar_site" href={`/sites/${owner.siteId}`}>
+              <img className="rounds-sidebar_image" id="rounds-sidebar_site_image" src={owner.Site.imgUrl} alt="site" />
+              {owner.Site.name}
+            </a>
+          </div>
+        })}
+      </div>
     </div>
 
   )
