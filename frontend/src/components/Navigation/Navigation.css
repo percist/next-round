@@ -23,12 +23,6 @@
   z-index: 999;
 }
 
-.navbar-link {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
 a {
   cursor: default;
   text-decoration: none;
@@ -77,22 +71,7 @@ a {
   border-radius: 8pt;
 }
 
-#link-sites,
-#link-my-rounds
-{
-  padding-top: 18px;    
-  padding-bottom: 17px;    
-  padding-left: 14px;    
-  padding-right: 14px;    
-}
 
-
-#link-sites:hover
-#link-my-rounds:hover
-{
-  background-color: var(--main-bg-color);
-}
-/* TODO: fix logout rendering behind buddies list */
 .profile-dropdown {
   position: absolute;
   display: flex;
@@ -105,20 +84,41 @@ a {
   /* z-index: 999; */
 }
 
+#profile-button-container {
+  display: flex;
+}
+
+#session-links {
+  display: flex;
+  align-items: center;
+}
+
 #profile-button {
+  border: none;
+  background: none;
+}
+
+#session-links_home-container{
   border-radius: 100px;
-  border: 2pt black;
-  min-width: 30px;
-  max-width: 30px;
-  max-height: 30px;
-  min-height: 30px;
+  background-color: var(--main-bg-color-dark);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+
+#session-links_home {
+  width: 30px;
+  height: 30px;
 }
 
 #profile-button img {
   border-radius: 100px;
-  min-width: 60px;
-  max-width: 60px;
-  max-height: 60px;
-  min-height: 60px;
+  min-width: 50px;
+  max-width: 50px;
+  max-height: 50px;
+  min-height: 50px;
   object-fit: cover;
 }

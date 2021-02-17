@@ -34,7 +34,8 @@ function ProfileButton({ user }) {
   };
 
   return (
-    <>
+    <div id="profile-button-container">
+      <h3>{user.username}</h3>
       <button id="profile-button" onClick={openMenu}>
         {!user && <IoPersonCircleOutline />}
         {!user.imgUrl && <IoPersonCircleOutline />}
@@ -49,7 +50,7 @@ function ProfileButton({ user }) {
           </li>
         </ul>
       )}
-    </>
+    </div>
   );
 }
 

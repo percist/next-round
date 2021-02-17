@@ -11,6 +11,7 @@
     top: 0px;
     height: calc(95vh);
     object-fit: cover;
+    object-position: 100% 100%;
     margin-bottom: 60px;
 }
 

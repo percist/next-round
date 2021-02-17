@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import {AiFillHome} from 'react-icons/all'
 import ProfileButton from './ProfileButton';
 import image from "./NextRoundText.png";
 import './Navigation.css';
@@ -18,21 +19,15 @@ function Navigation({ isLoaded }) {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <>
-        {/* <NavLink
-          id="link-sites"
-          to="/sites"
-        >
-          Find a Drink
-        </NavLink> */}
-        <NavLink
-          id="link-my-rounds"
-          to={`/users/${userId}`} exact
-        >
-          My Rounds
-        </NavLink>
+      <div id="session-links">
         <ProfileButton user={sessionUser} />
-      </>
+        <div id="session-links_home-container">
+          <AiFillHome
+            id="session-links_home"
+            to={`/users/${userId}`} exact
+          />
+        </div>
+      </div>
     );
   } else {
     sessionLinks = null;
