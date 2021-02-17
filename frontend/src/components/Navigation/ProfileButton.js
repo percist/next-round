@@ -14,7 +14,7 @@ function ProfileButton({ user }) {
     if (showMenu) return;
     setShowMenu(true);
   };
-  
+
   useEffect(() => {
     if (!showMenu) return;
 
@@ -23,7 +23,7 @@ function ProfileButton({ user }) {
     };
 
     document.addEventListener('click', closeMenu);
-  
+
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
@@ -38,7 +38,7 @@ function ProfileButton({ user }) {
       <button id="profile-button" onClick={openMenu}>
         {!user && <IoPersonCircleOutline />}
         {!user.imgUrl && <IoPersonCircleOutline />}
-        {user.imgUrl && <img id="navbar-link_user_image" src={user.imgUrl} alt="Me"/>}
+        {user.imgUrl && <img id="navbar-link_user_image" src={user.imgUrl} alt="Me" />}
       </button>
       {showMenu && (
         <ul className="profile-dropdown">

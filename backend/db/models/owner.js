@@ -2,23 +2,23 @@
 module.exports = (sequelize, DataTypes) => {
   const Owner = sequelize.define('Owner', {
     userId: {
-      allowNull: false, 
+      allowNull: false,
       type: DataTypes.INTEGER,
-      references: {model: "Users"},
+      references: { model: "Users" },
       onUpdate: "cascade",
       onDelete: "cascade",
     },
     siteId: {
-      allowNull: false, 
+      allowNull: false,
       type: DataTypes.INTEGER,
-      references: {model: "Sites"},
+      references: { model: "Sites" },
       onUpdate: "cascade",
       onDelete: "cascade",
-    }  
+    }
   }, {});
-  Owner.associate = function(models) {
-    Owner.hasOne(models.User, {foreignKey: "id"})
-    Owner.hasOne(models.Site, {foreignKey: "id"})
+  Owner.associate = function (models) {
+    Owner.hasOne(models.User, { foreignKey: "id" })
+    Owner.hasOne(models.Site, { foreignKey: "id" })
   };
   return Owner;
 };

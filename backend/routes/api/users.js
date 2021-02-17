@@ -24,7 +24,7 @@ const validateSignup = [
   check('zip')
     .exists({ checkFalsy: true })
     .isInt()
-    .isLength({min: 5, max: 5})
+    .isLength({ min: 5, max: 5 })
     .withMessage('Please provide a valid five digit zip code.'),
   // check('imgUrl')
   //   .exists({ checkFalsey: false })
@@ -51,7 +51,7 @@ router.post(
   asyncHandler(async (req, res) => {
     const { email, password, firstName, lastName, username, zip } = req.body;
     const imgUrl = await singlePublicFileUpload(req.file);
-    const user = await User.signup({email, password, imgUrl, firstName, lastName, username, zip});
+    const user = await User.signup({ email, password, imgUrl, firstName, lastName, username, zip });
     await setTokenCookie(res, user);
 
     return res.json({
@@ -64,9 +64,9 @@ router.post(
 router.get(
   `/:id(\\d+)`,
   asyncHandler(async (req, res) => {
-      const userId = req.params.id
-      const user = await User.findByPk(userId)
-      res.json( user )
+    const userId = req.params.id
+    const user = await User.findByPk(userId)
+    res.json(user)
   })
 )
 
@@ -78,13 +78,13 @@ router.get(
     const userWithBuddies = await User.findOne({
       where: { id: userId },
       include: [{
-            model: User,
-            as: "follower",
+        model: User,
+        as: "follower",
       }],
     });
     let followingIds = userWithBuddies.follower.map((followed => followed.dataValues.id));
     followingIds = [...followingIds];
-    const buddiesArray = await Promise.all(followingIds.map(async(userId) => {
+    const buddiesArray = await Promise.all(followingIds.map(async (userId) => {
       const user = await User.findOne({
         where: {
           id: userId,
@@ -93,7 +93,7 @@ router.get(
       return user
     }))
 
-      res.json(buddiesArray)
+    res.json(buddiesArray)
   })
 )
 

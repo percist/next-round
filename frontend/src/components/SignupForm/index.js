@@ -18,23 +18,23 @@ function SignupForm() {
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Redirect to={`/users/${sessionUser.id}`} />;
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ 
+      return dispatch(sessionActions.signup({
         email,
         firstName,
         lastName,
         zip,
         image,
-        username, 
-        password 
+        username,
+        password
       }))
-      .catch(res => {
-        if (res.data && res.data.errors) setErrors(res.data.errors);
-      });
+        .catch(res => {
+          if (res.data && res.data.errors) setErrors(res.data.errors);
+        });
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
@@ -131,12 +131,12 @@ function SignupForm() {
             required
           />
         </label>
-        <button 
+        <button
           className="button"
           id="sign-up-form_button"
           type="submit"
-          >
-            Sign Up
+        >
+          Sign Up
         </button>
       </form>
     </>

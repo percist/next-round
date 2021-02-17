@@ -23,7 +23,7 @@ module.exports = {
       roundId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: "Rounds"}
+        references: { model: "Rounds" }
       },
       createdAt: {
         allowNull: false,

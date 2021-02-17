@@ -8,33 +8,33 @@ import "./HomePage.css"
 
 const HomePage = () => {
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const {user} =  useSelector(reduxState => {
-        return reduxState.session;
-    });
+  const { user } = useSelector(reduxState => {
+    return reduxState.session;
+  });
 
-    const rounds = useSelector(reduxState => {
-        return reduxState.rounds;
-    });
+  const rounds = useSelector(reduxState => {
+    return reduxState.rounds;
+  });
 
-    useEffect(() => {
-        dispatch(fetchAllBuddyRounds(user.id))
-    },[dispatch, user])
+  useEffect(() => {
+    dispatch(fetchAllBuddyRounds(user.id))
+  }, [dispatch, user])
 
-    return (
-        <div className="user-page">
-            <div className="user-page-rounds_sidebar">
-            <RoundsSidebar />
-            </div>
-            <div className="user-page-site_feed">
-                <RoundsFeed rounds={rounds} type="users"/>
-            </div>
-            <div className="user-page-buddies_sidebar">
-            <BuddiesSidebar />
-            </div>
-        </div>
-    )
+  return (
+    <div className="user-page">
+      <div className="user-page-rounds_sidebar">
+        <RoundsSidebar />
+      </div>
+      <div className="user-page-site_feed">
+        <RoundsFeed rounds={rounds} type="users" />
+      </div>
+      <div className="user-page-buddies_sidebar">
+        <BuddiesSidebar />
+      </div>
+    </div>
+  )
 }
 
 export default HomePage

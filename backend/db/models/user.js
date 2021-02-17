@@ -6,53 +6,53 @@ module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
     'User',
     {
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        // len: [4, 50],
-        isNotEmail(value) {
-          if (Validator.isEmail(value)) {
-            throw new Error('Cannot be an email.');
-          }
+      username: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          // len: [4, 50],
+          isNotEmail(value) {
+            if (Validator.isEmail(value)) {
+              throw new Error('Cannot be an email.');
+            }
+          },
+        },
+      },
+      firstName: {
+        type: DataTypes.STRING(30),
+        allowNull: false,
+        validate: {
+          len: [3, 30]
+        }
+      },
+      lastName: {
+        type: DataTypes.STRING(50),
+        allowNull: false,
+        validate: {
+          len: [3, 50]
+        }
+      },
+      zip: {
+        type: DataTypes.STRING(10),
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [3, 256]
+        },
+      },
+      imgUrl: {
+        type: DataTypes.STRING(1000)
+      },
+      hashedPassword: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [60, 60]
         },
       },
     },
-    firstName: {
-      type: DataTypes.STRING(30),
-      allowNull: false,
-      validate: {
-        len: [3, 30]
-      }
-    },
-    lastName: {
-      type: DataTypes.STRING(50),
-      allowNull: false,
-      validate: {
-        len: [3, 50]
-      }
-    },
-    zip: {
-      type: DataTypes.STRING(10),
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [3, 256]
-      },
-    },
-    imgUrl: {
-      type: DataTypes.STRING(1000)
-    },
-    hashedPassword: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [60, 60]
-      },
-    },
-  },
     {
       defaultScope: {
         attributes: {
@@ -87,15 +87,15 @@ module.exports = (sequelize, DataTypes) => {
       otherKey: 'ownerId',
     };
     const columnMapping4 = {
-      as: 'HasSentRoundsTo', 
-      through: "Rounds", 
-      foreignKey: 'senderId', 
+      as: 'HasSentRoundsTo',
+      through: "Rounds",
+      foreignKey: 'senderId',
       otherKey: 'receiverId'
     }
     const columnMapping5 = {
-      as: 'HasReceivedRoundsFrom', 
-      through: "Rounds", 
-      foreignKey: 'receiverId', 
+      as: 'HasReceivedRoundsFrom',
+      through: "Rounds",
+      foreignKey: 'receiverId',
       otherKey: 'senderId'
     }
     User.belongsToMany(models.Site, columnMapping1); // through Owners
@@ -103,11 +103,11 @@ module.exports = (sequelize, DataTypes) => {
     User.belongsToMany(models.User, columnMapping3); // through Buddies as following
     User.belongsToMany(models.Round, columnMapping4); // through Rounds as hasSentRoundsTo
     User.belongsToMany(models.Round, columnMapping5); // through Rounds as hasReceivedRoundsFrom
-    User.hasMany(models.Round, {foreignKey: 'senderId' });
-    User.hasMany(models.Round, {foreignKey: 'receiverId' });
+    User.hasMany(models.Round, { foreignKey: 'senderId' });
+    User.hasMany(models.Round, { foreignKey: 'receiverId' });
   };
-  User.prototype.toSafeObject = function () { 
-    const { id, username, email, imgUrl } = this; 
+  User.prototype.toSafeObject = function () {
+    const { id, username, email, imgUrl } = this;
     return { id, username, email, imgUrl };
   };
   User.prototype.validatePassword = function (password) {
@@ -130,14 +130,14 @@ module.exports = (sequelize, DataTypes) => {
       return await User.scope('currentUser').findByPk(user.id);
     }
   };
-  User.signup = async function ({ 
-    username, 
+  User.signup = async function ({
+    username,
     firstName,
     lastName,
     zip,
     imgUrl,
-    email, 
-    password 
+    email,
+    password
   }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({

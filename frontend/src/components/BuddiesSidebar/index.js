@@ -4,34 +4,34 @@ import { fetchAllBuddies } from '../../store/users'
 import Buddies from '../Buddies'
 
 const BuddiesSidebar = () => {
-    const dispatch = useDispatch()
-    const buddies = useSelector(fullReduxState => {
-        return fullReduxState.users;
-    });
-    
-    const {user} =  useSelector(reduxState => {
-        return reduxState.session;
-    });
+  const dispatch = useDispatch()
+  const buddies = useSelector(fullReduxState => {
+    return fullReduxState.users;
+  });
 
-    useEffect( () => {
-        dispatch(fetchAllBuddies(user.id))
-    },[dispatch, user])
+  const { user } = useSelector(reduxState => {
+    return reduxState.session;
+  });
 
-    return (
-        <div className="buddies-sidebar-container">
-            <div className="buddies-sidebar">
-            <div className="buddies-sidebar_header">
-               <h2>Buddies</h2> 
-            </div>
-            <div className="buddies-sidebar_feed">
-                {(Array.isArray(buddies) && buddies.map(buddy=> {
-                    return <Buddies buddy={buddy} key={buddy.id}/>
-                }))}
-                
-            </div>
-            </div>
+  useEffect(() => {
+    dispatch(fetchAllBuddies(user.id))
+  }, [dispatch, user])
+
+  return (
+    <div className="buddies-sidebar-container">
+      <div className="buddies-sidebar">
+        <div className="buddies-sidebar_header">
+          <h2>Buddies</h2>
         </div>
-    )
+        <div className="buddies-sidebar_feed">
+          {(Array.isArray(buddies) && buddies.map(buddy => {
+            return <Buddies buddy={buddy} key={buddy.id} />
+          }))}
+
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default BuddiesSidebar;

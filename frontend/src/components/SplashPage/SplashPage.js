@@ -16,7 +16,7 @@ const SplashPage = () => {
   const [form, setForm] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [errors, setErrors] = useState([]);
-  
+
   useEffect(() => {
     if (sessionUser) setUserId(sessionUser.id)
   }, [sessionUser])

@@ -102,8 +102,8 @@ router.get(
         userId: user.id
       },
       include: [{
-          model: Site,
-        }]
+        model: Site,
+      }]
     })
     res.json({ sites })
   })

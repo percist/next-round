@@ -8,51 +8,51 @@ import MenuList from '../MenuList'
 import './MenuPage.css'
 
 const MenuPage = () => {
-    
-    const dispatch = useDispatch();
-    const params = useParams();
-    const { siteId } = params
 
-    const items = useSelector(fullReduxState => {
-        return fullReduxState.items;
-    })
+  const dispatch = useDispatch();
+  const params = useParams();
+  const { siteId } = params
 
-    const site = useSelector(fullReduxState => {
-        return fullReduxState.sites;
-    })
+  const items = useSelector(fullReduxState => {
+    return fullReduxState.items;
+  })
 
-    const [ itemsToDisplay, setItemsToDisplay ] = useState([])
-    
+  const site = useSelector(fullReduxState => {
+    return fullReduxState.sites;
+  })
 
-    useEffect(() => {
-        dispatch(fetchAllSiteItems(siteId))
-        dispatch(fetchOneSite(siteId))
-    },[dispatch, siteId])
-
-    useEffect(() => {
-        if(items[0])
-        setItemsToDisplay([...items])
-    },[dispatch, items])
+  const [itemsToDisplay, setItemsToDisplay] = useState([])
 
 
-    
-    return (
-        <div className="menu">
-            <h1>Menu for {site.name}</h1>
-            <div className="menu-list">
-                <MenuList 
-                    itemsToDisplay={itemsToDisplay} 
-                    setItemsToDisplay={setItemsToDisplay} 
-                    siteId={siteId}
-                />
-            </div>
-            <MenuForm 
-                siteId={siteId} 
-                itemsToDisplay={itemsToDisplay} 
-                setItemsToDisplay={setItemsToDisplay}
-            />
-        </div>
-    )
+  useEffect(() => {
+    dispatch(fetchAllSiteItems(siteId))
+    dispatch(fetchOneSite(siteId))
+  }, [dispatch, siteId])
+
+  useEffect(() => {
+    if (items[0])
+      setItemsToDisplay([...items])
+  }, [dispatch, items])
+
+
+
+  return (
+    <div className="menu">
+      <h1>Menu for {site.name}</h1>
+      <div className="menu-list">
+        <MenuList
+          itemsToDisplay={itemsToDisplay}
+          setItemsToDisplay={setItemsToDisplay}
+          siteId={siteId}
+        />
+      </div>
+      <MenuForm
+        siteId={siteId}
+        itemsToDisplay={itemsToDisplay}
+        setItemsToDisplay={setItemsToDisplay}
+      />
+    </div>
+  )
 }
 
 export default MenuPage;

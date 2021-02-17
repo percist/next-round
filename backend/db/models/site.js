@@ -46,9 +46,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(1000)
     },
     active: DataTypes.BOOLEAN
-    
+
   }, {});
-  Site.associate = function(models) {
+  Site.associate = function (models) {
     const columnMapping1 = {
       foreignKey: 'siteId',
       through: 'Owners',

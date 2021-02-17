@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(1000)
     }
   }, {});
-  Item.associate = function(models) {
+  Item.associate = function (models) {
     const columnMapping1 = {
       foreignKey: 'itemId',
       through: 'Menus',

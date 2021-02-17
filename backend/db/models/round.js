@@ -8,13 +8,13 @@ module.exports = (sequelize, DataTypes) => {
     receiverId: {
       allowNull: false,
       type: DataTypes.INTEGER,
-      references: {model: "Users"}
+      references: { model: "Users" }
     },
     senderId: {
       allowNull: false,
       type: DataTypes.INTEGER,
-      references: {model: "Users"}
-    }, 
+      references: { model: "Users" }
+    },
     comment: {
       allowNull: true,
       type: DataTypes.STRING(2000),
@@ -24,17 +24,17 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(1000)
     },
   });
-  Round.associate = function(models) {
+  Round.associate = function (models) {
     const columnMapping1 = {
       foreignKey: 'roundId',
       through: 'RoundItems',
       otherKey: 'itemId'
-    }; 
+    };
     Round.belongsToMany(models.Item, columnMapping1);
-    Round.belongsTo(models.User, {foreignKey: 'senderId'})
-    Round.belongsTo(models.User, {foreignKey: 'receiverId'})
-    Round.hasOne(models.Payment, {foreignKey: "roundId"})
-    Round.hasOne(models.RoundItem, {foreignKey: 'roundId'})
+    Round.belongsTo(models.User, { foreignKey: 'senderId' })
+    Round.belongsTo(models.User, { foreignKey: 'receiverId' })
+    Round.hasOne(models.Payment, { foreignKey: "roundId" })
+    Round.hasOne(models.RoundItem, { foreignKey: 'roundId' })
   };
   return Round;
 };

@@ -23,13 +23,13 @@ module.exports = {
       receiverId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: {model: "Users"}
+        references: { model: "Users" }
       },
       senderId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: {model: "Users"}
-      }, 
+        references: { model: "Users" }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

@@ -4,15 +4,15 @@ module.exports = (sequelize, DataTypes) => {
     itemId: {
       allowNull: false,
       type: DataTypes.INTEGER,
-      references: {model: "Items"}
+      references: { model: "Items" }
     },
     siteId: {
       allowNull: false,
       type: DataTypes.INTEGER,
-      references: {model: "Sites"}
-    }  
+      references: { model: "Sites" }
+    }
   }, {});
-  Menu.associate = function(models) {
+  Menu.associate = function (models) {
     // associations can be defined here
   };
   return Menu;

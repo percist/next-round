@@ -9,16 +9,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       userId: {
-        allowNull: false, 
+        allowNull: false,
         type: Sequelize.INTEGER,
-        references: {model: "Users"},
+        references: { model: "Users" },
         onUpdate: "cascade",
         onDelete: "cascade",
       },
       siteId: {
-        allowNull: false, 
+        allowNull: false,
         type: Sequelize.INTEGER,
-        references: {model: "Sites"},
+        references: { model: "Sites" },
         onUpdate: "cascade",
         onDelete: "cascade",
       },

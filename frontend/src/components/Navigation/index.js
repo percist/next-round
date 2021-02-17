@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
@@ -43,7 +43,7 @@ function Navigation({ isLoaded }) {
     <>
       <ul className='navbar'>
         <li>
-            <img src={image} alt="Next Round's on Me"/>
+          <img src={image} alt="Next Round's on Me" />
         </li>
         <li>
           {isLoaded && sessionLinks}

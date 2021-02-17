@@ -1,69 +1,69 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import ItemCard from '../ItemCard';
 import "./ItemCardContainer.css"
 
-const ItemCardContainer = ({items}) => {
+const ItemCardContainer = ({ items }) => {
 
-    const [ overflowItemsShown, setOverflowItemsShown ] = useState(false)
-    const [ showButton, setShowButton ] = useState(true)
-    const [ hideButton, setHideButton ] = useState(true)
-   
-    const handleShowClick = (e) => {
-        e.preventDefault();
-        setHideButton(false);
-        setShowButton(true);
-        setOverflowItemsShown(true);
+  const [overflowItemsShown, setOverflowItemsShown] = useState(false)
+  const [showButton, setShowButton] = useState(true)
+  const [hideButton, setHideButton] = useState(true)
+
+  const handleShowClick = (e) => {
+    e.preventDefault();
+    setHideButton(false);
+    setShowButton(true);
+    setOverflowItemsShown(true);
+  }
+  const handleHideClick = (e) => {
+    e.preventDefault();
+    setHideButton(true);
+    setShowButton(false)
+    setOverflowItemsShown(false);
+  }
+
+  useEffect(() => {
+    if (Array.isArray(items) && items.length > 4) {
+      setShowButton(false)
     }
-    const handleHideClick = (e) => {
-        e.preventDefault();
-        setHideButton(true);
-        setShowButton(false)
-        setOverflowItemsShown(false);
+  }, [items])
+
+  const overflow = () => {
+    if (!!overflowItemsShown) {
+      return (
+        <>
+          {!Array.isArray(items) && <h2>loading...</h2>}
+          {Array.isArray(items) && items.slice(5).map(item => {
+            if (item) {
+              return <ItemCard item={item} key={item.name} />
+            } else return null
+          })}
+        </>
+      )
+    } else {
+      return null
     }
+  }
 
-    useEffect(() => {
-        if (Array.isArray(items) && items.length > 4) {
-            setShowButton(false)
-        } 
-    }, [items])
-
-    const overflow = () => {
-        if (!!overflowItemsShown) {
-            return (
-                <>
-                    {!Array.isArray(items) && <h2>loading...</h2> }
-                    {Array.isArray(items) && items.slice(5).map(item => {
-                        if (item) {
-                            return <ItemCard item={item} key={item.name}/>
-                        }else return null
-                    })}
-                </>
-            )
-        }else{
-            return null
-        }
-    }
-
-    return (
-        <div className="item-card-container">
-            <div id="item-card-container_initial">
-                {!Array.isArray(items) && <h2>loading...</h2> }
-                {Array.isArray(items) && items.slice(0,5).map((item,i) => {
-                    if (item) return <ItemCard item={item} key={i}/>
-                        else return null
-                })}  
-            </div>
-            <button hidden={showButton} onClick={handleShowClick}>
-                Show All Items
+  return (
+    <div className="item-card-container">
+      <div id="item-card-container_initial">
+        {!Array.isArray(items) && <h2>loading...</h2>}
+        {Array.isArray(items) && items.slice(0, 5).map((item, i) => {
+          if (item) return <ItemCard item={item} key={i} />
+          else return null
+        })}
+      </div>
+      <button hidden={showButton} onClick={handleShowClick}>
+        Show All Items
             </button>
-            <div id="item-card-container_additional">
-                {overflow()}
-            </div>
-            <button hidden={hideButton} onClick={handleHideClick}>
-                Hide Items
+      <div id="item-card-container_additional">
+        {overflow()}
+      </div>
+      <button hidden={hideButton} onClick={handleHideClick}>
+        Hide Items
             </button>
-        </div>
-        )
+    </div>
+  )
 }
 
 export default ItemCardContainer;

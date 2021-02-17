@@ -5,19 +5,19 @@ import "./Buddies.css"
 
 const Buddies = ({ buddy }) => {
 
-    return (
-        <div className="buddy">
-            {!buddy.imgUrl && <IoPersonCircleOutline />}
-            {buddy.imgUrl && <img src={buddy.imgUrl} alt="user"/>}
-            <div id='buddy-info'>
-                <h3>
-                <a href={`/users/${buddy.id}`} >{buddy.username}</a>
-                </h3> 
+  return (
+    <div className="buddy">
+      {!buddy.imgUrl && <IoPersonCircleOutline />}
+      {buddy.imgUrl && <img src={buddy.imgUrl} alt="user" />}
+      <div id='buddy-info'>
+        <h3>
+          <a href={`/users/${buddy.id}`} >{buddy.username}</a>
+        </h3>
 
-            </div>
-        </div>
-        
-    )
+      </div>
+    </div>
+
+  )
 }
 
 export default Buddies;

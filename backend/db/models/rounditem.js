@@ -4,17 +4,17 @@ module.exports = (sequelize, DataTypes) => {
     itemId: {
       allowNull: false,
       type: DataTypes.INTEGER,
-      references: {model: "Items"}
+      references: { model: "Items" }
     },
     roundId: {
       allowNull: false,
       type: DataTypes.INTEGER,
-      references: {model: "Rounds"}
-    }  
+      references: { model: "Rounds" }
+    }
   }, {});
-  RoundItem.associate = function(models) {
-    RoundItem.hasOne(models.Round, {foreignKey: "id"})
-    RoundItem.hasOne(models.Item, {foreignKey: "id"})
+  RoundItem.associate = function (models) {
+    RoundItem.hasOne(models.Round, { foreignKey: "id" })
+    RoundItem.hasOne(models.Item, { foreignKey: "id" })
   };
   return RoundItem;
 };

@@ -16,11 +16,11 @@ module.exports = (sequelize, DataTypes) => {
     roundId: {
       allowNull: false,
       type: DataTypes.INTEGER,
-      references: { model: "Rounds"}
-    }  
+      references: { model: "Rounds" }
+    }
   }, {});
-  Payment.associate = function(models) {
-    Payment.belongsTo(models.Round, {foreignKey: "roundId"})
+  Payment.associate = function (models) {
+    Payment.belongsTo(models.Round, { foreignKey: "roundId" })
   };
   return Payment;
 };

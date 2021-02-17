@@ -15,12 +15,12 @@ const removeUser = () => ({
 export const login = ({ credential, password }) => async (dispatch) => {
   const res = await fetch('/api/session', {
     method: 'POST',
-    headers:{
-      'Content-Type': "application/json", 
+    headers: {
+      'Content-Type': "application/json",
     },
-    body: JSON.stringify({ 
-      credential, 
-      password 
+    body: JSON.stringify({
+      credential,
+      password
     })
   });
   dispatch(setUser(res.data.user));
@@ -30,10 +30,10 @@ export const login = ({ credential, password }) => async (dispatch) => {
 export const loginDemo = () => async (dispatch) => {
   const res = await fetch('/api/session/demo', {
     method: 'POST',
-    headers:{
-      'Content-Type': "application/json", 
+    headers: {
+      'Content-Type': "application/json",
     },
-    body: JSON.stringify({ 
+    body: JSON.stringify({
       credential: "DemoUser"
     })
   });
@@ -59,7 +59,7 @@ export const signup = (user) => async (dispatch) => {
   if (image) formData.append("image", image);
   const response = await fetch('/api/users', {
     method: 'POST',
-    body: formData, 
+    body: formData,
   });
 
   dispatch(setUser(response.data.user));
