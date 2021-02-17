@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import ItemCardContainer from "../ItemCardContainer";
+import RoundsSidebar from "../RoundsSidebar";
 import RoundsFeed from "../RoundsFeed";
 import { fetchOneSite } from "../../store/sites";
 import { fetchAllSiteRounds } from "../../store/rounds";
@@ -63,13 +64,16 @@ const SitePage = () => {
                         </button>
           }
           <div id="site-page-content-rounds-sidebar_info">
-            <h2>Location</h2>
+            <h2>About</h2>
             <div>
-              {`${site.address}`}
+              {site.address}
             </div>
             <div>
               {`${site.city}, ${site.state}`}
             </div>
+            <a href={`${site.website}`}>
+              {site.website}
+            </a>
           </div>
         </div>
         <div className="site-page-content-feed">

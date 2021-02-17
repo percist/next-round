@@ -37,7 +37,8 @@ const RoundsCard = ({ user, site, item, round, type }) => {
             {user.username}
           </div>
           <div id="rounds-card-header_time">
-            {timeDifference(round.createdAt)}
+            {/* using createdAt for demo but in production would use updatedAt*/}
+            {timeDifference(round.createdAt)} 
           </div>
         </div>
       </div>
