@@ -60,32 +60,6 @@
   height: 60px;
 }
 
-.user-page-site_feed {
-  margin: 15px 0;
-  width: 50%;
-  align-self: center;
-}
-
-.buddies-sidebar-container {
-  display: flex;
-  position: fixed;
-  background-color: var(--main-bg-color);
-  color: var(--main-text-color);
-  width: 250px;
-  height: calc(100% - 100px);
-  overflow-y: scroll;
-  right: 10vw;
-}
-
-.buddies-sidebar_header {
-  padding: 0 15px;
-}
-
-.user-page-buddies_sidebar {
-  display: flex;
-  margin: 0px;
-}
-
 .rounds-sidebar_image {
   min-width: 50px;
   max-width: 50px;
@@ -143,3 +117,29 @@
 .rounds-sidebar_sites-owned {
   font-size: 22px;
 }
+
+.user-page-site_feed {
+  margin: 15px 0;
+  width: 50%;
+  align-self: center;
+}
+
+.user-page-buddies_sidebar {
+  display: flex;
+  justify-content: flex-start;
+  position: fixed;
+  right: calc(20vw - 80px);
+  width: 20vw;
+  top: 80px;
+  height: calc(100% - 100px);
+  overflow-y: scroll;
+  min-width: 100px;
+  max-width: 450px;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+}
+
+.buddies-sidebar_header {
+  padding: 0 15px;
+}
+
