@@ -1,14 +1,20 @@
+.user-page-container {
+  display: flex;
+  justify-content: center;
+}
+
 .user-page {
     display: flex;
     justify-content: center;
     margin-bottom: 80px;
+    width: 55vw;
 }
 
 .user-page-rounds_sidebar {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     position: fixed;
-    left: 0;
+    left: calc(20vw - 80px);
     top: 80;
     overflow-y: scroll;
     width: 20vw;
@@ -27,9 +33,17 @@
     justify-content: space-around;
     font-size: 30px;
     font-weight: 400;
-    background-color: var(--secondary-bg-color);
+    background-color: var(--main-bg-color);
     border-radius: 6pt;
-    box-shadow: var(--main-box-shadow);
+}
+
+#rounds-sidebar_site {
+  border-radius: 8px;
+}
+
+#rounds-sidebar_site:hover {
+  background-color: white;
+
 }
 
 .rounds-sidebar div{
@@ -52,15 +66,14 @@
 }
 
 .buddies-sidebar-container {
+    display: flex;
     position: fixed;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    width: 250px;
     height: calc(100% - 100px);
     overflow-y: scroll;
-    background-color: var(--secondary-bg-color);
-    color: var(--main-text-color);
-    width: 20vw;
-    min-width: 100px;
-    max-width: 450px;
-    box-shadow: var(--main-box-shadow);
+    right: 10vw;
 }
 
 .buddies-sidebar_header {
@@ -70,5 +83,4 @@
 .user-page-buddies_sidebar {
     display: flex;
     margin: 0px;
-    max-width: 400px;
 }

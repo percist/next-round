@@ -15,9 +15,14 @@
 
 .buddy {
     display: flex;
-    background-color: var(--secondary-bg-color);
+    background-color: var(--main-bg-color);
     color: var(--main-text-color);
     padding: 5pt;
+    border-radius: 8px;
+}
+
+.buddy:hover {
+  background-color: white;
 }
 
 #buddy-info a:link{
