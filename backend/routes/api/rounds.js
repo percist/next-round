@@ -2,6 +2,7 @@ const express = require("express")
 const { sequelize } = require("../../db/models");
 const asyncHandler = require('express-async-handler');
 const { requireAuth, restoreUser } = require('../../utils/auth');
+const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
 const { Round, User, RoundItem, Item, Site } = require("../../db/models");
 
 const router = express.Router();
@@ -197,16 +198,19 @@ router.get(
 // PATCH Update round to status "claimed" and add optional comment
 router.patch(
   `/:id(\\d+)`,
+  singleMulterUpload("image"),
   restoreUser,
   asyncHandler(async (req, res) => {
     const roundId = req.params.id
     const { comment, status } = req.body
+    const imgUrl = await singlePublicFileUpload(req.file);
     const round = await Round.findByPk(roundId)
     if (round) {
       if (comment) {
         await round.update({
           comment: comment,
-          status: status
+          status: status,
+          imgUrl: imgUrl
         })
       } else {
         await round.update({

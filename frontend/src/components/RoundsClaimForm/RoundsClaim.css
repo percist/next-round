@@ -6,6 +6,26 @@
 
 .rounds-claim-card {
     display: flex;
+    width: 40vw;
+    border-radius: 8pt;
+    margin: 6pt 0;
+    background-color: var(--secondary-bg-color);
+    box-shadow: var(--main-box-shadow);
+}
+
+.rounds-claim-card-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#rounds-claim-card_image {
+  margin: 8px;
+}
+
+.rounds-claim-card_actions {
+  display: flex;
+  
 }
 
 .rounds-claim-qr img{
