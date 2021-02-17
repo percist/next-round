@@ -5,16 +5,29 @@
     margin-top: 40px;
 }
 
-.menu-item-form{
+.menu-item-form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.menu-item-form form{
+#menu-item-form_form{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.menu-item-form_field {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+.menu-item-form_input {
+  width: 250px;
+  height: 30px;
+  text-align: right;
 }
 
 .menu-item {
@@ -26,6 +39,12 @@
     box-shadow: var(--main-box-shadow);
 }
 
+.menu-item_image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0px 10px 10px;
+}
 .menu-item img {
     height: 190px;
     width: 110px;
@@ -48,4 +67,11 @@
 
 .menu-item_info h2{
     justify-self: flex-start;
+}
+
+#menu-item_delete_button {
+  border-radius: 4pt;
+  color: white;
+  width: 90%;
+  background-color: var(--main-border-color);
 }

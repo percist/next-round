@@ -31,8 +31,13 @@ const MenuItem = ({ item, itemsToDisplay, setItemsToDisplay, siteId }) => {
         <div className="menu-item_info_price">
           Price: {`$${item.price / 100}`}
         </div>
+        <button 
+          id="menu-item_delete_button" 
+          onClick={handleMenuDelete}
+        >
+          Delete
+        </button>
       </div>
-      <button onClick={handleMenuDelete}>Delete</button>
     </div>
   )
 }
