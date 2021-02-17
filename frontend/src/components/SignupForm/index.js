@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import { set } from "js-cookie";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import './SignupForm.css';
 
-function SignupForm() {
+function SignupForm({ clickedBusiness, setClickedBusiness}) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
+  const [displayButton, setDisplayButton] = useState(false)
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -17,8 +18,17 @@ function SignupForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to={`/users/${sessionUser.id}`} />;
+  useEffect(()=>{
+    console.log( clickedBusiness, displayButton)
+    setDisplayButton(true)
+  },[clickedBusiness])
 
+  if (sessionUser) return <Redirect to={`/users/${sessionUser.id}`} />;
+  
+  const handleClick = () => {
+    setClickedBusiness(false)
+  }
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
@@ -45,9 +55,8 @@ function SignupForm() {
   }
 
   return (
-    <>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
+    <div >
+      <form id="signup-form_form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
@@ -138,8 +147,16 @@ function SignupForm() {
         >
           Sign Up
         </button>
+        <button
+          hidden={displayButton}
+          className="button"
+          id="hide-form_button"
+          onClick={() => handleClick()}
+        >
+          Maybe Later
+        </button>
       </form>
-    </>
+    </div>
   );
 }
 

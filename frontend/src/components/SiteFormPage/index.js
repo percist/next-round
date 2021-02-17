@@ -39,9 +39,9 @@ const SiteFormPage = () => {
   }
 
   return (
-    <>
-      <h1>Register your Business</h1>
-      <form onSubmit={handleSubmit}>
+    <div id="site-form">
+      <h2>Register your Business</h2>
+      <form id="site-form_form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
@@ -119,10 +119,10 @@ const SiteFormPage = () => {
           />
         </label>
         <label>
-          isActive
+          Activate Now?
                     <input
             className="input site-creation-form_input"
-            type="select"
+            type="checkbox"
             id="active"
             onChange={(e) => setIsActive(e.target.value)}
             required
@@ -136,7 +136,7 @@ const SiteFormPage = () => {
           Create Your Business
                 </button>
       </form>
-    </>
+    </div>
   )
 }
 export default SiteFormPage;

@@ -6,11 +6,13 @@ import SiteFormPage from "../SiteFormPage"
 
 const SignupFormPage = () => {
   const [isOwner, setIsOwner] = useState(false)
+  const [clickedBusiness, setClickedBusiness] = useState(false)
   const sessionUser = useSelector((state) => state.session.user);
 
   const handleOwnerButtonClick = (e) => {
     e.preventDefault();
     setIsOwner(true);
+    setClickedBusiness(true);
     return (
       displaySiteFormPage()
     )
@@ -19,18 +21,23 @@ const SignupFormPage = () => {
   if (sessionUser) return <Redirect to={`/users/${sessionUser.id}`} />;
 
   const displaySiteFormPage = () => {
-    if (isOwner) return <SiteFormPage />
+    if (isOwner) return <SiteFormPage clickedBusiness={clickedBusiness} setClickedBusiness={setClickedBusiness}/>
   }
 
 
   return (
-    <>
+    <div id="signup-form">
       <SignupForm />
-      <button className="button" id="owner-button" onClick={(e) => handleOwnerButtonClick(e)}>
-        Click here to register your business
+      <button 
+        className="button" 
+        id="owner-button" 
+        hidden={clickedBusiness}
+        onClick={(e) => handleOwnerButtonClick(e)}
+      >
+        Business Owner?
             </button>
       {displaySiteFormPage()}
-    </>
+    </div>
   )
 }
 

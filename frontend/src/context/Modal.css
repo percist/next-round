@@ -1,3 +1,4 @@
+/* all modals */
 #modal {
   position: fixed;
   top: 0;
@@ -7,6 +8,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 18px;
+  padding: 8px;
 }
 
 #modal-background {
@@ -15,10 +18,63 @@
   right: 0;
   left: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(35, 43, 43, 0.7);
 }
 
 #modal-content {
   position: absolute;
   background-color:white;
 }
+
+/* login modal */
+#modal #login{
+  display: flex;
+  align-items: center;
+  min-height: 20vh;
+  width: 400px;
+}
+
+#modal #login label{
+  margin: 10px 0;
+}
+
+#modal #login input,
+#modal .button, 
+#modal #signup-form_form {
+  font-size: 18px;
+}
+#modal #signup-form label {
+  width: 400px;
+}
+#modal #signup-form input {
+  margin: 10px;
+  flex: auto;
+} 
+
+/* registration modal */
+
+#modal #signup-form,
+#modal #site-form{
+  min-width: 20vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 20px 20px;
+} 
+
+#modal .button {
+  width: 90%;
+  margin: 5px 0;
+}
+
+#modal #signup-form_form,
+#modal #site-form_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#modal #signup-form label{
+  display: flex;
+  align-items: center;
+} 
