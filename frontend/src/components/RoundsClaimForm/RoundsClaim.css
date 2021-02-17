@@ -4,19 +4,40 @@
     align-items: center;
 }
 
-.rounds-claim-card {
+.rounds-claim-card{
+  width: 40vw;
+  border-radius: 8pt;
+  margin: 6pt 0;
+  background-color: var(--secondary-bg-color);
+  box-shadow: var(--main-box-shadow);
+}
+
+.rounds-claim-card-info{
     display: flex;
-    width: 40vw;
-    border-radius: 8pt;
-    margin: 6pt 0;
-    background-color: var(--secondary-bg-color);
-    box-shadow: var(--main-box-shadow);
+    align-items: center;
 }
 
 .rounds-claim-card-details {
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: space-between;
+}
+
+#rounds-claim-card_info_sender{
+  display: flex;
+  align-items: center;
+}
+
+#rounds-claim-card_info_sender img{
+  border-radius: 100px;
+  min-width: 50px;
+  max-width: 50px;
+  max-height: 50px;
+  min-height: 50px;
+  object-fit: cover;
+  align-self: flex-end;
+  margin: 0 5px;
 }
 
 #rounds-claim-card_image {
@@ -25,10 +46,38 @@
 
 .rounds-claim-card_actions {
   display: flex;
-  
+  justify-content: space-evenly;
 }
 
 .rounds-claim-qr img{
     height: 100px;
     width: 100px;
+}
+
+.redeem-button {
+  width: 90%;
+  margin: 8px;
+}
+
+.comment-form_buttons{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.comment-form_buttons .button{
+  margin: 8px 4px;
+}
+
+.comment-form_form {
+  text-align: center;
+}
+
+.rounds-claim-card .input {
+  width: 60%;
+  font-size: 18px;
+  margin: 4px;
+}
+
+.later-button {
+  background-color: var(--main-accent-color);
 }
