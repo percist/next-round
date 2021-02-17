@@ -1,8 +1,6 @@
 export function timeDifference(inputTimeThen) {
   const dateThen = new Date(inputTimeThen);
-  console.log(dateThen)
   const dateNow = new Date();
-  console.log(dateNow)
 
   let diffInSeconds = Math.abs(dateThen - dateNow) / 1000;
 

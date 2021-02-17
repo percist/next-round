@@ -35,7 +35,7 @@ const SitePage = () => {
       const owners = await response.json();
       if (Array.isArray(owners.siteOwners)) {
         owners.siteOwners.forEach(owner => {
-          if (owner.id === user.id) setIsOwner(true)
+          if (owner.userId === user.id) setIsOwner(true)
         })
       }
     }
