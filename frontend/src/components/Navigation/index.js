@@ -21,12 +21,11 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <div id="session-links">
         <ProfileButton user={sessionUser} />
-        <div id="session-links_home-container">
+        <a id="session-links_home-container" href={`/`}>
           <AiFillHome
             id="session-links_home"
-            to={`/users/${userId}`}
           />
-        </div>
+        </a>
       </div>
     );
   } else {
