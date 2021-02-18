@@ -5,7 +5,7 @@ import './RoundsFeed.css'
 
 const RoundsFeed = ({ rounds, site, type }) => {
 
-  if (type == "users") {
+  if (type === "users") {
     return (
       <div className="rounds-feed">
         {!Array.isArray(rounds) && <h2>loading...</h2>}
@@ -13,7 +13,7 @@ const RoundsFeed = ({ rounds, site, type }) => {
 
       </div>
     )
-  } else if (type == "site") {
+  } else if (type === "site") {
     return (
       <div className="rounds-feed">
         {!site && <h2>loading...</h2>}

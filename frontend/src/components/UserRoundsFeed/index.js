@@ -14,7 +14,7 @@ const UserRoundsFeed = ({ roundsArray }) => {
       setSites(sitesArray)
     }
   }, [roundsArray])
-
+  console.log(sites, items)
   return (
     <>
       {!Array.isArray(roundsArray) && <h2>loading...</h2>}

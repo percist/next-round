@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import ItemCardContainer from "../ItemCardContainer";
-import UserRoundsFeed from "../RoundsFeed";
+import UserRoundsFeed from "../UserRoundsFeed";
 import { fetchOneUser } from "../../store/users";
 import { fetchAllUserClaimedRounds } from "../../store/rounds";
 
@@ -13,7 +13,7 @@ const UserPage = () => {
   const { id } = params;
   const [bannerImg, setBannerImg] = useState(null)
   const  user  = useSelector((state) => state.users)
-  console.log(user)
+
   const rounds = useSelector(fullReduxState => {
     return fullReduxState.rounds;
   })
@@ -31,12 +31,12 @@ const UserPage = () => {
         {!user && "loading..."}
         {user && <h1>{user.username}</h1>}
       </div>
-    {/*   <div className="buddy-page-content">
+      <div className="buddy-page-content">
         <div className="buddy-page-content-feed">
-        <ItemCardContainer items={items} /> 
-        <RoundsFeed rounds={rounds} site={site} type="buddy" />
-      </div>*/}
-        {/* </div> */}
+        {/* <ItemCardContainer items={items} />  */}
+        <UserRoundsFeed roundsArray={rounds} />
+      </div>
+        </div>
   </div>
   )
 }
