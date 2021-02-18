@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import ItemCardContainer from "../ItemCardContainer";
-import RoundsFeed from "../RoundsFeed";
+import UserRoundsFeed from "../RoundsFeed";
 import { fetchOneUser } from "../../store/users";
 import { fetchAllUserClaimedRounds } from "../../store/rounds";
 
