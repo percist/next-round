@@ -39,6 +39,13 @@ export const fetchAllUserRounds = (userid) => {
   };
 };
 
+export const fetchAllUserClaimedRounds = (userid) => {
+  return async (dispatch) => {
+    const response = await fetch(`/api/rounds/users/${userid}/claimed`);
+    dispatch(setAllRounds(response.data));
+  };
+};
+
 export const fetchAllSiteRounds = (siteId) => {
   return async (dispatch) => {
     const response = await fetch(`/api/rounds/sites/${siteId}`);

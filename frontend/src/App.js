@@ -2,16 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
-// import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
-import SplashPage from "./components/SplashPage/SplashPage";
 import SitePage from "./components/SitePage";
 import MenuPage from "./components/MenuPage";
 import RoundsSendForm from "./components/RoundsSendForm";
 import RoundsClaimForm from "./components/RoundsClaimForm";
+import HomePageContainer from "./components/HomePageContainer";
+import UserPage from "./components/UserPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route path="/" exact>
-            <SplashPage />
+            <HomePageContainer />
           </Route>
           <Route path="/users/round" exact>
             <RoundsSendForm />
@@ -39,7 +39,7 @@ function App() {
             <RoundsClaimForm />
           </Route>
           <Route path="/users/:id" exact >
-            <HomePage />
+            <UserPage />
           </Route>
           <Route path="/sites/:siteId" exact >
             <SitePage />

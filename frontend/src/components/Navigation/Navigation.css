@@ -75,8 +75,8 @@ a {
 .profile-dropdown {
   position: absolute;
   display: flex;
-  margin-top: -48px;
-  margin-right: -40px;
+  margin: 0px 20px 0 0;
+  padding: 21px 18px 20px;
   flex-direction: row;
   list-style: none;
   align-items: center;
@@ -96,6 +96,11 @@ a {
 #profile-button {
   border: none;
   background: none;
+  text-decoration: none;
+}
+
+#profile-button:active {
+  border: none;
 }
 
 #session-links_home-container{
