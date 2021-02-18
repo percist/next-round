@@ -1,0 +1,42 @@
+#buddy-page { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buddy-page-header {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 60px;
+  width: 100vw;
+  box-shadow: var(--main-box-shadow);
+}
+
+#buddy-page-header_banner img{
+  width: 940px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+#buddy-page-header_profile img{
+  position: absolute;
+  top: 290px;
+  left: calc(50vw - 90px);
+  width: 190px;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 100px;
+  border: 5px white solid;
+  margin-top: -700;
+}
+
+.buddy-page-content { 
+  padding-top: 12px;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  background-color: var(--main-bg-color-dark);
+}
+
