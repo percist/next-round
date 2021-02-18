@@ -3,42 +3,41 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import ItemCardContainer from "../ItemCardContainer";
 import RoundsFeed from "../RoundsFeed";
+import { fetchOneUser } from "../../store/users";
 import { fetchAllUserClaimedRounds } from "../../store/rounds";
 
 const UserPage = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const params = useParams();
-  const { buddyId } = params;
-  const [ bannerImg, setBannerImg ] = useState(null)
-  const user = useSelector((state) => state.session.user)
-
-  const site = useSelector(fullReduxState => {
-    return fullReduxState.sites;
-  })
-
+  const { id } = params;
+  const [bannerImg, setBannerImg] = useState(null)
+  const  user  = useSelector((state) => state.users)
+  console.log(user)
   const rounds = useSelector(fullReduxState => {
     return fullReduxState.rounds;
   })
 
   useEffect(() => {
-
-    dispatch(fetchAllUserClaimedRounds(buddyId))
-  }, [dispatch, buddyId]);
+    dispatch(fetchOneUser(id))
+    dispatch(fetchAllUserClaimedRounds(id))
+  }, [dispatch, id]);
 
   return (
-    <div className="buddy-page">
+    <div id="buddy-page">
       <div className="buddy-page-header">
-        <img src={site.imgUrl} alt={site.name} />
-        <h1>{site.name}</h1>
+        {!Array.isArray(rounds) && "loading..."}
+        {Array.isArray(rounds) && <img src={rounds[0].imgUrl} alt="a round" />}
+        {!user && "loading..."}
+        {user && <h1>{user.username}</h1>}
       </div>
-      <div className="buddy-page-content">
+    {/*   <div className="buddy-page-content">
         <div className="buddy-page-content-feed">
-          {/* <ItemCardContainer items={items} /> */}
-          <RoundsFeed rounds={rounds} site={site} type="buddy" />
-        </div>
-      </div>
-    </div>
+        <ItemCardContainer items={items} /> 
+        <RoundsFeed rounds={rounds} site={site} type="buddy" />
+      </div>*/}
+        {/* </div> */}
+  </div>
   )
 }
 

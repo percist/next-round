@@ -19,7 +19,7 @@ const RoundsCard = ({ user, site, item, round, type }) => {
     receiverFetchFunction()
   }, [type, round])
 
-  if (type == "user") user = receiver
+  if (type === "user") user = receiver
 
   if (user === undefined || site === undefined || item === undefined || round === undefined) return null
 

@@ -1,4 +1,5 @@
 const express = require("express")
+const { Op } = require("sequelize")
 const { sequelize } = require("../../db/models");
 const asyncHandler = require('express-async-handler');
 const { requireAuth, restoreUser } = require('../../utils/auth');
@@ -81,12 +82,12 @@ router.get(
 router.get(
   `/users/:id(\\d+)/claimed`,
   asyncHandler(async (req, res, next) => {
-    const user = await req.params.id
+    const id = await req.params.id
     const rounds = await Round.findAll({
       where: {
-        receiverId: user.id,
+        receiverId: id,
         status: {
-          exclude: ["userPaid"]
+          [Op.ne]: "userPaid"
           }
         },
       include: [{

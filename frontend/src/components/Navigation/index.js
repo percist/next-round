@@ -24,7 +24,7 @@ function Navigation({ isLoaded }) {
         <div id="session-links_home-container">
           <AiFillHome
             id="session-links_home"
-            to={`/users/${userId}`} exact
+            to={`/users/${userId}`}
           />
         </div>
       </div>

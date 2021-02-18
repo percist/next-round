@@ -5,7 +5,6 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
-import HomePage from "./components/HomePage";
 import SitePage from "./components/SitePage";
 import MenuPage from "./components/MenuPage";
 import RoundsSendForm from "./components/RoundsSendForm";
