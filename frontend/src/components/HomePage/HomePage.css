@@ -130,8 +130,8 @@
   position: fixed;
   right: calc(20vw - 80px);
   width: 20vw;
-  top: 80px;
-  height: calc(100% - 100px);
+  top: 60px;
+  height: calc(100% - 80px);
   overflow-y: scroll;
   min-width: 100px;
   max-width: 450px;
