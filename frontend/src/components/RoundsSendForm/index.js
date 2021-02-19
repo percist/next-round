@@ -4,7 +4,7 @@ import { fetchAllBuddies } from "../../store/users";
 import { fetchAllSites } from "../../store/sites";
 import { createOneRound } from "../../store/rounds";
 import ItemImage from '../ItemImage';
-import { FcShop, FcDecision } from 'react-icons/fc';
+import {FaUserCircle, IoStorefront} from 'react-icons/all';
 import './RoundsSendForm.css'
 
 const RoundsSendForm = () => {
@@ -124,91 +124,101 @@ const RoundsSendForm = () => {
   }, [item])
 
   return (
-    <div className="rounds-send">
-      <h3>Just because you're separated doesn't mean you have to drink alone! Buy a buddy a Round today.</h3>
-      <div className="rounds-send-form">
-        <form onSubmit={handleSubmit}>
-          <div className="rounds-send-form_inputs">
-            <div id="rounds-send-form_inputs_buddy">
-              <label>
-                Choose a Buddy
-                            </label>
-              <select name="buddy"
-                className="input sign-up-form_input"
-                onChange={(e) => handleBuddySelect(e.target.value)}>
-                <option value="">--Please choose an option--</option>
-                {!buddies && <option value=''>None</option>}
-                {Array.isArray(buddies) && buddies.map(buddy => {
-                  return <option value={buddy.id}>{buddy.firstName}</option>
-                })}
-              </select>
+    <div className="rounds-send-page">
+      <h2>Just because you're separated doesn't mean you have to drink alone </h2>
+      <div className="rounds-send-body">
+        <div className="rounds-send-form">
+
+          <form onSubmit={handleSubmit}>
+          <h3>Send a buddy a round today </h3>
+            <div className="rounds-send-form_inputs">
+              <div id="rounds-send-form_inputs_buddy">
+                <label>
+                  Choose a Buddy
+                              </label>
+                <select name="buddy"
+                  className="input sign-up-form_input"
+                  onChange={(e) => handleBuddySelect(e.target.value)}>
+                  <option value="">--Please choose an option--</option>
+                  {!buddies && <option value=''>None</option>}
+                  {Array.isArray(buddies) && buddies.map(buddy => {
+                    return <option value={buddy.id}>{buddy.firstName}</option>
+                  })}
+                </select>
+              </div>
+              <div id="rounds-send-form_inputs_site">
+                <label>
+                  Choose a Participating Restaurant or Bar
+                                  </label>
+                <select name="site"
+                  className="input sign-up-form_input"
+                  onChange={(e) => handleSiteSelect(e.target.value)}>
+                  <option value="">--Please choose an option--</option>
+                  {!sites && <option value=''>None</option>}
+                  {Array.isArray(sites) && sites.map(site => {
+                    return <option value={site.id}>{site.name}</option>
+                  })}
+                </select>
+              </div>
+              <div id="rounds-send-form_inputs_item">
+                <label>
+                  Choose an Item off their Menu
+                                  </label>
+                <select name="item"
+                  className="input sign-up-form_input"
+                  onChange={(e) => handleItemSelect(e.target.value)}>
+                  <option value="">--Please choose an option--</option>
+                  {!siteItems && <option value=''>None</option>}
+                  {Array.isArray(siteItems) && siteItems.map(item => {
+                    return (
+                      <option value={`${item.id}`}>
+                        {`${item.name} $${item.price / 100}`}
+                      </option>
+                    )
+                  })}
+                </select>
+              </div>
             </div>
-            <div id="rounds-send-form_inputs_site">
+            <div id="round-send-details_price">
               <label>
-                Choose a Participating Restaurant or Bar
-                                </label>
-              <select name="site"
-                className="input sign-up-form_input"
-                onChange={(e) => handleSiteSelect(e.target.value)}>
-                <option value="">--Please choose an option--</option>
-                {!sites && <option value=''>None</option>}
-                {Array.isArray(sites) && sites.map(site => {
-                  return <option value={site.id}>{site.name}</option>
-                })}
-              </select>
+                Total for this round: {total ? `$${total / 100}` : "$0.00"}
+              </label>
+              <button
+                className="button"
+                id="sign-up-form_button"
+                type="submit"
+              >
+                Buy Now
+                          </button>
             </div>
-            <div id="rounds-send-form_inputs_item">
-              <label>
-                Choose an Item off their Menu
-                                </label>
-              <select name="item"
-                className="input sign-up-form_input"
-                onChange={(e) => handleItemSelect(e.target.value)}>
-                <option value="">--Please choose an option--</option>
-                {!siteItems && <option value=''>None</option>}
-                {Array.isArray(siteItems) && siteItems.map(item => {
-                  return (
-                    <option value={`${item.id}`}>
-                      {`${item.name} $${item.price / 100}`}
-                    </option>
-                  )
-                })}
-              </select>
-            </div>
+          </form>
+        </div>
+        <div className="round-send-mockup">
+          <div id="round-send-mockup_item">
+           <ItemImage image={itemImage} alt="item" />
           </div>
-          <div className="round-send-details">
-            <div id="round-send-details_user">
-              <h2>{buddy.username}</h2>
-              {!buddyImage && <FcDecision class="icon" />}
-              {buddyImage && <img src={buddyImage} alt="buddy" />}
-            </div>
-            <div id="round-send-details_site">
+          <div id="round-send-mockup_details">
+            <h2>{item.name}</h2>
               <h2>{site.name}</h2>
-              {!siteImage && <FcShop class="icon" />}
+            <div id="round-send-mockup_details_user">
+            <div id="round-send-mockup_details_user_image">
+              {!buddyImage && <FaUserCircle class="icon" />}
+              {buddyImage && <img src={buddyImage} alt="buddy" />}
+              </div>
+              <h2>{buddy.username}</h2>
+            </div>
+          </div>
+            <div id="round-send-mockup_details_site">
+              <div id="round-send-mockup_details_site_image">
+              {!siteImage && <IoStorefront class="icon" /> }
               {siteImage && <img src={siteImage} alt="site" />}
+              </div>
             </div>
-            <div id="round-send-details_item">
-              <h2>{item.name}</h2>
-              {!itemImage && <img src="https://img.icons8.com/fluent/96/000000/beer-glass.png" alt="beer" />}
-              {itemImage && <ItemImage image={itemImage} alt="item" />}
-            </div>
-          </div>
-          <div id="round-send-details_price">
-            <label>
-              Total for this round: {total ? `$${total / 100}` : "$0.00"}
-            </label>
-            <button
-              className="button"
-              id="sign-up-form_button"
-              type="submit"
-            >
-              Buy Now
-                        </button>
-          </div>
-        </form>
+        </div>
         <div className="round-confirmation" hidden={!confirmSubmit}>
-          Purchase Details:
-                    {purchaseDetails[0] && `${purchaseDetails[2].name} sent to ${purchaseDetails[0].username}`}
+          <h2 hidden={!confirmSubmit}>Congrats, You just sent a Round!</h2>
+          <h2 hidden={!confirmSubmit}>Purchase Details:</h2>
+          <h3>{purchaseDetails[0] && `${purchaseDetails[2].name} sent to ${purchaseDetails[0].username}`}</h3>
         </div>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}

@@ -6,42 +6,102 @@
     align-items: flex-start;
 }
 
+.rounds-send-page {
+  min-width: 600px;
+}
+
+.rounds-send-page h2{
+  text-align: center;
+}
+
+.rounds-send-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.rounds-send-form {
+  display: flex;
+  justify-content: flex-end;
+  left: calc(18vw - 80px);
+  top: 80;
+  margin: 0 60px 0 10vw;
+  overflow-y: scroll;
+  width: 20vw;
+  min-width: 300px;
+  max-width: 500px;
+}
+
 #rounds-send-form_inputs_site,
 #rounds-send-form_inputs_buddy,
 #rounds-send-form_inputs_item {
     display: flex;
     flex-direction: column;
+    margin: 8px;
 }
 
-.rounds-send-form_inputs,
-.round-send-details {
-    display: grid;
-    grid-template-columns: 30fr 30fr 30fr;
+.rounds-send-form_inputs {
+  display: flex;
+  flex-direction: column;
 }
 
-.round-send-details {
-    height: 300px;
-    align-content: start;
+.round-send-mockup {
+  width: 40vw;
+  border-radius: 8pt;
+  margin: 6pt 0;
+  padding: 10px;
+  background-color: var(--secondary-bg-color);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  align-items: space;
+  justify-content: space-between;
 }
 
-.icon {
-    width: 100px;
-    height: 100px;
+#round-send-mockup_item{
+    margin: 8px;
 }
 
-#round-send-details_user {
+.rounds-claim-card-details {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+#round-send-mockup_details_user,
+#round-send-mockup_details_site {
     display: flex;
-    flex-direction: column;
     align-items: center;
 }
 
-#round-send-details_user img {
-    border-radius: 100px;
-    min-width: 100px;
-    max-width: 100px;
-    max-height: 100px;
-    min-height: 100px;
+#round-send-mockup_details_site img,
+#round-send-mockup_details_site_image {
+    border-radius: 8px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
+}
+
+#round-send-mockup_details_site_image {
+  margin: 10px;
+  align-self: center;
+}
+
+.icon {
+  width: 100px;
+  height: 60px;
+  margin: 8px;
+  color: var(--main-border-color)
+}
+
+#round-send-mockup_details_user img,
+#round-send-mockup_details_user_image {
+    border-radius: 100px;
+    min-width: 60px;
+    max-width: 60px;
+    max-height: 60px;
+    min-height: 60px;
+    object-fit: cover;
+    margin: 8px;
 }
 
 #round-send-details_site {
@@ -50,15 +110,24 @@
     align-items: center;
 }
 
-#round-send-details_site img {
-    border-radius: 9px;
-    width: 300px;
-    height: 200px;
-    object-fit: cover;
+#round-send-mockup_details_site .icon{
+  height: 200px;
 }
 
 #round-send-details_item {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#round-send-mockup_details{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.round-confirmation {
+  width: 15vw;
+  margin: 0 20px;
 }
