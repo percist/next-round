@@ -131,8 +131,9 @@
   display: flex;
   justify-content: flex-start;
   position: fixed;
-  right: calc(20vw - 80px);
+  right: calc(40vw - 650px);
   width: 20vw;
+  margin-right: auto;
   top: 60px;
   height: calc(100% - 80px);
   overflow-y: scroll;

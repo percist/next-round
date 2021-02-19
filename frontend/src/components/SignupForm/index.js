@@ -2,6 +2,7 @@ import { set } from "js-cookie";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import LoginForm from "../LoginForm";
 import * as sessionActions from "../../store/session";
 
 function SignupForm({ clickedBusiness, setClickedBusiness}) {
