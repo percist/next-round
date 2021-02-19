@@ -18,16 +18,7 @@ function SignupForm({ clickedBusiness, setClickedBusiness}) {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  useEffect(()=>{
-    console.log( clickedBusiness, displayButton)
-    setDisplayButton(true)
-  },[clickedBusiness])
-
   if (sessionUser) return <Redirect to={`/users/${sessionUser.id}`} />;
-  
-  const handleClick = () => {
-    setClickedBusiness(false)
-  }
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -146,14 +137,6 @@ function SignupForm({ clickedBusiness, setClickedBusiness}) {
           type="submit"
         >
           Sign Up
-        </button>
-        <button
-          hidden={displayButton}
-          className="button"
-          id="hide-form_button"
-          onClick={() => handleClick()}
-        >
-          Maybe Later
         </button>
       </form>
     </div>

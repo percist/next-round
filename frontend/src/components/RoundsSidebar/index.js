@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { FiSend } from 'react-icons/all'
+import { Modal } from '../../context/Modal';
+import { FiSend, IoStorefront } from 'react-icons/all'
+import SiteFormPage from '../SiteFormPage';
 import { useHistory } from 'react-router-dom';
+import '../../context/Modal.css'
 
 const RoundsSidebar = () => {
   const history = useHistory();
-
+  
   const { user } = useSelector(reduxState => {
     return reduxState.session;
   });
-
+  
+  const [showModal, setShowModal] = useState(false);
   const [numRounds, setNumRounds] = useState('');
   const [sitesOwned, setSitesOwned] = useState({});
 
@@ -35,6 +39,11 @@ const RoundsSidebar = () => {
 
   const buyRoundClickHandler = () => {
     history.push("/users/round");
+  }
+
+  const signupSiteClickHandler = (e) => {
+    e.preventDefault()
+    setShowModal(true);
   }
 
   return (
@@ -71,6 +80,23 @@ const RoundsSidebar = () => {
           />
         </div>
         Send a Round
+      </button>
+      <button
+        className="button"
+        id="button-signup-site"
+        onClick={signupSiteClickHandler}
+      >
+        <div id="button-signup-site-icon">
+          <IoStorefront 
+            id="button-signup-site-image"
+          />
+        </div>
+        {/* {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <SiteFormPage />
+        </Modal>
+      )} */}
+        Create Business
       </button>
       <div className="rounds-sidebar_sites-owned">
         <hr />

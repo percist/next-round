@@ -14,12 +14,12 @@
   display: flex;
   justify-content: flex-end;
   position: fixed;
-  left: calc(20vw - 80px);
+  left: calc(18vw - 80px);
   top: 80;
   overflow-y: scroll;
   width: 20vw;
   min-width: 100px;
-  max-width: 450px;
+  max-width: 500px;
 }
 
 .rounds-sidebar {
@@ -90,13 +90,15 @@
 }
 
 #button-buy-round,
-#button-redeem-round {
+#button-redeem-round,
+#button-signup-site {
   display: flex;
   align-items: center;
 }
 
 #button-buy-round-icon,
-#button-redeem-round-icon {
+#button-redeem-round-icon,
+#button-signup-site-icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,7 +110,8 @@
 }
 
 #button-buy-round-image,
-#button-redeem-round-image {
+#button-redeem-round-image,
+#button-signup-site-image {
   height: 40px;
   width: 40px;
   color: var(--main-border-color)
