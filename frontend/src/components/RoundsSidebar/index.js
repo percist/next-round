@@ -9,9 +9,7 @@ import '../../context/Modal.css'
 const RoundsSidebar = () => {
   const history = useHistory();
   
-  const { user } = useSelector(reduxState => {
-    return reduxState.session;
-  });
+  const { user } = useSelector(state => state.session);
   
   const [showModal, setShowModal] = useState(false);
   const [numRounds, setNumRounds] = useState('');
@@ -39,11 +37,6 @@ const RoundsSidebar = () => {
 
   const buyRoundClickHandler = () => {
     history.push("/users/round");
-  }
-
-  const signupSiteClickHandler = (e) => {
-    e.preventDefault()
-    setShowModal(true);
   }
 
   return (
@@ -84,20 +77,20 @@ const RoundsSidebar = () => {
       <button
         className="button"
         id="button-signup-site"
-        onClick={signupSiteClickHandler}
+        onClick={() => setShowModal(true)}
       >
         <div id="button-signup-site-icon">
           <IoStorefront 
             id="button-signup-site-image"
           />
         </div>
-        {/* {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
-          <SiteFormPage />
-        </Modal>
-      )} */}
         Create Business
       </button>
+        {showModal && (
+          <Modal onClose={() => setShowModal(false)}>
+            <SiteFormPage />
+          </Modal>
+        )}
       <div className="rounds-sidebar_sites-owned">
         <hr />
         Your Businesses

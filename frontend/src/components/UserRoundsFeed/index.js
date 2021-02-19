@@ -7,7 +7,7 @@ const UserRoundsFeed = ({ roundsArray }) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    if (Array.isArray(roundsArray) && Array.isArray(roundsArray[0].Items)){
+    if (Array.isArray(roundsArray) && roundsArray[0] && Array.isArray(roundsArray[0].Items)){
       const itemsArray = roundsArray.map((round) => round.Items[0])
       setItems(itemsArray)
     }

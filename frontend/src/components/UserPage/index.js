@@ -29,7 +29,7 @@ const UserPage = () => {
       <div className="buddy-page-header">
         <div id="buddy-page-header_banner">
         {!Array.isArray(rounds) && "loading..."}
-        {Array.isArray(rounds) && <img src={rounds[0].imgUrl} alt="a round" />}
+        {Array.isArray(rounds) && rounds[0] && <img src={rounds[0].imgUrl} alt="a round" />}
           </div>
           <div id="buddy-page-header_profile">
         {!user.imgUrl && "loading..."}
