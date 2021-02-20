@@ -53,13 +53,13 @@ const ItemCardContainer = ({ items }) => {
           else return null
         })}
       </div>
-      <button hidden={showButton} onClick={handleShowClick}>
+      <button className="button" id="show-items-button" hidden={showButton} onClick={handleShowClick}>
         Show All Items
             </button>
       <div id="item-card-container_additional">
         {overflow()}
       </div>
-      <button hidden={hideButton} onClick={handleHideClick}>
+      <button className="button" id="hide-items-button" hidden={hideButton} onClick={handleHideClick}>
         Hide Items
             </button>
     </div>

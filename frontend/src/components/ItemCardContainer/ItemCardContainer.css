@@ -1,4 +1,12 @@
 #item-card-container_initial,
 #item-card-container_additional {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+.item-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
