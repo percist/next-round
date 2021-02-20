@@ -98,11 +98,17 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'receiverId',
       otherKey: 'senderId'
     }
+    const columnMapping6 = {
+      foreignKey: 'userId',
+      through: 'RoundComments',
+      otherKey: 'roundId'
+    };
     User.belongsToMany(models.Site, columnMapping1); // through Owners
     User.belongsToMany(models.User, columnMapping2); // through Buddies as follower
     User.belongsToMany(models.User, columnMapping3); // through Buddies as following
     User.belongsToMany(models.Round, columnMapping4); // through Rounds as hasSentRoundsTo
     User.belongsToMany(models.Round, columnMapping5); // through Rounds as hasReceivedRoundsFrom
+    User.belongsToMany(models.Round, columnMapping6); // through RoundComments
     User.hasMany(models.Round, { foreignKey: 'senderId' });
     User.hasMany(models.Round, { foreignKey: 'receiverId' });
   };

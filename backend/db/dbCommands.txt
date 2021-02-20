@@ -5,6 +5,7 @@ npx sequelize-cli model:generate --name  Owner --attributes "name:string" &&
 npx sequelize-cli model:generate --name  Payment --attributes "name:string" &&
 npx sequelize-cli model:generate --name  Round --attributes "name:string" &&
 npx sequelize-cli model:generate --name  RoundItem --attributes "name:string" &&
+npx sequelize-cli model:generate --name  RoundComment --attributes "body:string"
 
 npx sequelize-cli seed:generate --name 'Users' &&
 npx sequelize-cli seed:generate --name 'Buddies' &&
@@ -15,6 +16,7 @@ npx sequelize-cli seed:generate --name 'Items' &&
 npx sequelize-cli seed:generate --name 'Rounds' &&
 npx sequelize-cli seed:generate --name 'RoundItems' &&
 npx sequelize-cli seed:generate --name 'Payments'
+npx sequelize-cli seed:generate --name 'RoundComments'
 
 npx dotenv sequelize-cli db:seed:undo:all && npx dotenv sequelize-cli db:migrate:undo:all && npx dotenv sequelize-cli db:migrate && npx dotenv sequelize-cli db:seed:all  
 

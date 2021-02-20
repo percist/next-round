@@ -30,7 +30,13 @@ module.exports = (sequelize, DataTypes) => {
       through: 'RoundItems',
       otherKey: 'itemId'
     };
+    const columnMapping2 = {
+      foreignKey: 'roundId',
+      through: 'RoundComments',
+      otherKey: 'userId'
+    };
     Round.belongsToMany(models.Item, columnMapping1);
+    Round.belongsToMany(models.User, columnMapping2);
     Round.belongsTo(models.User, { foreignKey: 'senderId' })
     Round.belongsTo(models.User, { foreignKey: 'receiverId' })
     Round.hasOne(models.Payment, { foreignKey: "roundId" })

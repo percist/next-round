@@ -4,7 +4,7 @@ const { sequelize } = require("../../db/models");
 const asyncHandler = require('express-async-handler');
 const { requireAuth, restoreUser } = require('../../utils/auth');
 const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
-const { Round, User, RoundItem, Item, Site } = require("../../db/models");
+const { Round, User, RoundItem, Item, Site, RoundComment } = require("../../db/models");
 
 const router = express.Router();
 
@@ -220,6 +220,8 @@ router.get(
   })
 )
 
+// ******** Create and Update Rounds
+
 // PATCH Update round to status "claimed" and add optional comment
 router.patch(
   `/:id(\\d+)`,
@@ -266,6 +268,32 @@ router.post(
     return res.json({
       round
     })
+  })
+)
+
+// ******** Comments
+
+router.get(
+  `/:id(\\d+)/comments`,
+  asyncHandler(async (req, res) => {
+    const roundId = req.params.id;
+    const roundComments = await RoundComment.findAll({
+      where: { roundId }
+    })
+    return res.json( { roundComments })
+  })
+)
+
+router.post(
+  `/:id(\\d+)/comments`,
+  asyncHandler(async (req, res) => {
+    const { userId, roundId, body } = req.body.newCommentData
+    const roundComment = await RoundComment.create({
+      userId: userId,
+      roundId: roundId,
+      body: body
+    })
+    return res.json({ roundComment })
   })
 )
 
