@@ -25,7 +25,6 @@ const RoundsSidebar = () => {
     const fetchOwnedSites = async () => {
       const response = await fetch('/api/sites/user')
       const sitesUserOwns = await response.json()
-      console.log(sitesUserOwns.sites)
       setSitesOwned(sitesUserOwns)
     }
     fetchPaidRounds()

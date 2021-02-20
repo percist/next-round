@@ -7,10 +7,11 @@ import UserImage from '../UserImage';
 const RoundsCard = ({ user, site, item, round, type }) => {
   const [receiver, setReceiver] = useState([]);
   const [comments, setComments] = useState([]);
-
+  console.log(type)
   useEffect(() => {
     const receiverFetchFunction = async () => {
       if (type === "user") {
+        // console.log("HIT***************")
         const fetchReceiver = async (userId) => {
           const res = await fetch(`/api/users/${userId}`)
           const user = await res.json()
@@ -34,17 +35,20 @@ const RoundsCard = ({ user, site, item, round, type }) => {
 
   if (type === "user") user = receiver
 
-  if (user === undefined || site === undefined || item === undefined || round === undefined) return null
+  // if (user === undefined || site === undefined || item === undefined || round === undefined) return null
 
   return (
+    
     <div className="rounds-card" >
       <div className="rounds-card-header">
         <div id="rounds-card-header_image">
-          <UserImage user={user} />
+          {!user && "loading..."}
+          {user && <UserImage user={user} />}
         </div>
         <div className="rounds-card-header-description">
           <div id="rounds-card-header_name">
-            {user.username}
+            {!user && "loading..."}
+            {user && user.username}
           </div>
           <div id="rounds-card-header_time">
             {/* using createdAt for demo but in production would use updatedAt*/}

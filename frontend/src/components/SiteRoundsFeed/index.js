@@ -16,10 +16,12 @@ const SiteRoundsCard = ({ round, site }) => {
       if (roundItem) return setItem(roundItem.Item)
     }
     fetchRoundItem(round.id)
-    setUser(round.User)
+    setUser(round.Users[0])
+    // console.log("round.user", round)
   }, [dispatch, round])
 
   if (!!item) {
+    console.log(user)
     return (
       <RoundsCard
         round={round}

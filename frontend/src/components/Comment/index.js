@@ -12,7 +12,7 @@ const Comment = ({comment}) => {
           setUser(user)
           }
       fetchUser()
-  },[])
+  },[comment])
 
   return (
     <div className="comment" id={`comment-${comment.id}`}>

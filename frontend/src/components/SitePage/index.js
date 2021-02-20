@@ -47,7 +47,7 @@ const SitePage = () => {
   useEffect(() => {
     setItems(site.Items);
   }, [site])
-
+  console.log("ROUNDS", rounds)
   return (
     <div className="site-page">
       <div className="site-page-header">

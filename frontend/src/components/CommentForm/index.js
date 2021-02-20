@@ -2,10 +2,9 @@ import React from "react";
 import Cookies from 'js-cookie';
 import { useState } from "react";
 import UserImage from '../UserImage';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const CommentForm = ({ round, comments, setComments }) => {
-  const dispatch = useDispatch();
   const {user} = useSelector(state => state.session);
 
   const [comment, setComment] = useState('');

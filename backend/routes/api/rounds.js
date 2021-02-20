@@ -184,10 +184,13 @@ router.get(
       })
       return item;
     }))
+    // TODO: NOT RETURNING ALL USERS. CHECK ON THIS
+
     // returns an array for each item with an array of each item round containing round and user data
     const allItems = roundsArray.flat()
     const allRounds = allItems.map(item => item.Round)
-    const payload = allRounds.slice(0, 20).sort((a, b) => a.createdAt - b.createdAt)
+    const claimedRounds = allRounds.filter(round => round.status !== "userPaid")
+    const payload = claimedRounds.slice(0, 20).sort((a, b) => a.createdAt - b.createdAt)
     // returns an array of rounds (including nulls)
     res.json(payload);
   })

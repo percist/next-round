@@ -59,7 +59,7 @@ const RoundsSendForm = () => {
   const handleBuddySelect = (e) => {
     if (e) {
       const buddyId = e
-      const selectedBuddy = buddies.filter(buddy => buddy.id == buddyId);
+      const selectedBuddy = buddies.filter(buddy => buddy.id === buddyId);
       setBuddy(selectedBuddy[0])
       setPurchaseDetails([])
     } else {
@@ -71,7 +71,7 @@ const RoundsSendForm = () => {
   const handleItemSelect = (e) => {
     if (e) {
       const itemId = e
-      const selectedItem = siteItems.filter(item => item.id == itemId);
+      const selectedItem = siteItems.filter(item => item.id === itemId);
       setItem(selectedItem[0])
       setTotal(selectedItem[0].price)
       setPurchaseDetails([])
@@ -84,7 +84,7 @@ const RoundsSendForm = () => {
   const handleSiteSelect = (e) => {
     if (e) {
       const siteId = e
-      const selectedSite = sites.filter(site => site.id == siteId);
+      const selectedSite = sites.filter(site => site.id === siteId);
       setSite(selectedSite[0])
       setPurchaseDetails([])
     } else {
