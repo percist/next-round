@@ -72,7 +72,7 @@ const SitePage = () => {
               {`${site.city}, ${site.state}`}
             </div>
             <a href={`${site.website}`}>
-              {site.website}
+              {site.website && site.website.split('www.')[1]}
             </a>
           </div>
         </div>

@@ -35,7 +35,8 @@
     padding: 8px;
     margin: 5px 15px 0;
     border-radius: 8px;
-    box-shadow: var(--main-box-shadow)
+    box-shadow: var(--main-box-shadow);
+    overflow-wrap: break-word;
 }
 
 #site-page-content-rounds-sidebar_info {
