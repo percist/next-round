@@ -7,11 +7,10 @@ import UserImage from '../UserImage';
 const RoundsCard = ({ user, site, item, round, type }) => {
   const [receiver, setReceiver] = useState([]);
   const [comments, setComments] = useState([]);
-  console.log(type)
+
   useEffect(() => {
     const receiverFetchFunction = async () => {
       if (type === "user") {
-        // console.log("HIT***************")
         const fetchReceiver = async (userId) => {
           const res = await fetch(`/api/users/${userId}`)
           const user = await res.json()
@@ -34,8 +33,6 @@ const RoundsCard = ({ user, site, item, round, type }) => {
   }, [round])
 
   if (type === "user") user = receiver
-
-  // if (user === undefined || site === undefined || item === undefined || round === undefined) return null
 
   return (
     

@@ -152,7 +152,9 @@ router.get(
       })
       return rounds
     }))
-    const payload = roundsArray.flat().slice(0, 20).sort((a, b) => a.createdAt - b.createdAt)
+    const payload = roundsArray.flat()
+                                .slice(0, 20)
+                                .sort((a, b) => a.createdAt - b.createdAt)
     res.json({ payload });
   })
 );
@@ -168,7 +170,7 @@ router.get(
       include: { model: Item },
     });
     //array of itemIds
-    let itemIds = site.Items.map((item => item.dataValues.id));
+    let itemIds = site.Items.map((item => item.id));
     itemIds = [...itemIds];
     // query for all rounds associated with the items
 
@@ -177,22 +179,21 @@ router.get(
         where: { itemId: itemId },
         include: {
           model: Round,
-          include: [{
-            model: User
-          }]
         },
       })
       return item;
     }))
-    // TODO: NOT RETURNING ALL USERS. CHECK ON THIS
-
-    // returns an array for each item with an array of each item round containing round and user data
-    const allItems = roundsArray.flat()
-    const allRounds = allItems.map(item => item.Round)
-    const claimedRounds = allRounds.filter(round => round.status !== "userPaid")
-    const payload = claimedRounds.slice(0, 20).sort((a, b) => a.createdAt - b.createdAt)
-    // returns an array of rounds (including nulls)
-    res.json(payload);
+    const claimedRounds = roundsArray.flat()
+                                      .map(item => item.Round)
+                                      .filter(round => round.status !== "userPaid")
+    await Promise.all(claimedRounds.map(async (round, i) => {
+      const recipient = await User.findByPk(round.receiverId);
+      claimedRounds[i].receiverId = recipient.dataValues;
+    }))
+    const payload = claimedRounds.slice(0, 20)
+                                  .sort((a, b) => a.createdAt - b.createdAt)
+    // returns an array of rounds (may include nulls)
+    res.json(claimedRounds);
   })
 );
 

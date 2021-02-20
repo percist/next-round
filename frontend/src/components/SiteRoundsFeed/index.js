@@ -16,7 +16,7 @@ const SiteRoundsCard = ({ round, site }) => {
       if (roundItem) return setItem(roundItem.Item)
     }
     fetchRoundItem(round.id)
-    setUser(round.Users[0])
+    setUser(round.receiverId)
     // console.log("round.user", round)
   }, [dispatch, round])
 
