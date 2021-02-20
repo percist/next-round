@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import UserImage from '../UserImage';
 
 const Comment = ({comment}) => {
 
@@ -16,10 +17,12 @@ const Comment = ({comment}) => {
   return (
     <div className="comment" id={`comment-${comment.id}`}>
         <div className="comment-info">
-            {/* {user && <UserImage user={user} />} */}
-            {user && user.username}
+            <UserImage user={user} />
         </div>
         <div className="comment-body">
+            <div id="comment-body_username">
+              {user && user.username}
+            </div> 
             {comment.body}
         </div>
     </div>

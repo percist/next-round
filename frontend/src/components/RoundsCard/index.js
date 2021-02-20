@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {timeDifference} from '../../dateUtilities'
 import CommentFeed from '../CommentFeed';
 import CommentForm from '../CommentForm';
+import UserImage from '../UserImage';
 
 const RoundsCard = ({ user, site, item, round, type }) => {
   const [receiver, setReceiver] = useState([]);
@@ -39,10 +40,7 @@ const RoundsCard = ({ user, site, item, round, type }) => {
     <div className="rounds-card" >
       <div className="rounds-card-header">
         <div id="rounds-card-header_image">
-          <a href={`/users/${user.id}`} >
-            {!user.imgUrl && "Loading ..."}
-            {user.imgUrl && <img src={user.imgUrl} alt="user" />}
-          </a>
+          <UserImage user={user} />
         </div>
         <div className="rounds-card-header-description">
           <div id="rounds-card-header_name">
@@ -89,8 +87,8 @@ const RoundsCard = ({ user, site, item, round, type }) => {
       </div>
         <hr id="rounds-card-info_divider" color='silver'/>
         <div id="rounds-card-info_comments">
-          <CommentFeed comments={comments}/>
           <CommentForm round={round} comments={comments} setComments={setComments}/>
+          <CommentFeed comments={comments}/>
         </div>
     </div>
   )

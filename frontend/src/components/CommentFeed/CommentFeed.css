@@ -1,0 +1,22 @@
+.comment-info img,
+.comment-form img {
+  width: 40px;
+  height: 40px;
+  align-self: flex-start;
+}
+
+.comment {
+  padding: 10px 16px;
+  display: flex;
+}
+
+.comment-body,
+.comment-form textarea {
+  border-radius: 16px;
+  background-color: var(--main-bg-color-dark);
+  padding: 12px;
+  margin: 0 10px;
+  max-width: 590px;
+  word-wrap: break-word;
+  border: none;
+}

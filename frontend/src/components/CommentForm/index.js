@@ -1,6 +1,7 @@
 import React from "react";
 import Cookies from 'js-cookie';
 import { useState } from "react";
+import UserImage from '../UserImage';
 import { useSelector, useDispatch } from "react-redux";
 
 const CommentForm = ({ round, comments, setComments }) => {
@@ -38,6 +39,7 @@ const CommentForm = ({ round, comments, setComments }) => {
   return (
     <div className="comment-form_wrapper">
     <form className="comment-form" onSubmit={onSubmit}>
+        <UserImage user={user} />
         <textarea value={comment} onChange={e => setComment(e.target.value)} className="input-field"/>
       <button type="submit" className="submit-button">Send</button>
     </form>

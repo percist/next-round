@@ -1,14 +1,14 @@
 import React from 'react';
 import { IoPersonCircleOutline } from 'react-icons/io5';
-import "./Buddies.css"
+import UserImage from '../UserImage';
+import "./Buddies.css";
 
 
 const Buddies = ({ buddy }) => {
 
   return (
     <div className="buddy">
-      {!buddy.imgUrl && <IoPersonCircleOutline />}
-      {buddy.imgUrl && <img src={buddy.imgUrl} alt="user" />}
+      <UserImage user={buddy} />
       <div id='buddy-info'>
         <h3>
           <a href={`/users/${buddy.id}`} >{buddy.username}</a>

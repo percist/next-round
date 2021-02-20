@@ -33,8 +33,7 @@ const UserPage = () => {
         {Array.isArray(rounds) && rounds[0] && <img src={rounds[0].imgUrl} alt="a round" />}
           </div>
           <div id="buddy-page-header_profile">
-        {!user.imgUrl && "loading..."}
-        {user.imgUrl && <img src={user.imgUrl} alt="a round" />}
+            <UserImage user={user} />
         </div>
         {!user && "loading..."}
         {user && <h1>{user.firstName} {user.lastName}</h1>}

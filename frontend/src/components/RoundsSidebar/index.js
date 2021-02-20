@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Modal } from '../../context/Modal';
-import { FiSend, IoStorefront } from 'react-icons/all'
+import { FiSend, IoStorefront } from 'react-icons/all';
+import UserImage from '../UserImage';
 import SiteFormPage from '../SiteFormPage';
 import { useHistory } from 'react-router-dom';
 import '../../context/Modal.css'
@@ -38,12 +39,11 @@ const RoundsSidebar = () => {
   const buyRoundClickHandler = () => {
     history.push("/users/round");
   }
-
+// className="rounds-sidebar_image" id="rounds-sidebar_user_image"
   return (
     <div hidden={sitesOwned} className="rounds-sidebar">
       <div className="rounds-sidebar_user">
-        {!user.imgUrl && "loading..."}
-        {user.imgUrl && <img className="rounds-sidebar_image" id="rounds-sidebar_user_image" src={user.imgUrl} alt="Me" />}
+        <UserImage user={user} />
         {user.username}
       </div>
 
