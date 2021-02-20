@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import ItemCardContainer from "../ItemCardContainer";
-import RoundsSidebar from "../RoundsSidebar";
 import RoundsFeed from "../RoundsFeed";
 import { fetchOneSite } from "../../store/sites";
 import { fetchAllSiteRounds } from "../../store/rounds";
@@ -47,7 +46,7 @@ const SitePage = () => {
   useEffect(() => {
     setItems(site.Items);
   }, [site])
-  console.log("ROUNDS", rounds)
+
   return (
     <div className="site-page">
       <div className="site-page-header">

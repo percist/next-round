@@ -17,11 +17,9 @@ const SiteRoundsCard = ({ round, site }) => {
     }
     fetchRoundItem(round.id)
     setUser(round.receiverId)
-    // console.log("round.user", round)
   }, [dispatch, round])
 
   if (!!item) {
-    console.log(user)
     return (
       <RoundsCard
         round={round}

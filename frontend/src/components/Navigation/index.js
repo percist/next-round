@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {AiFillHome} from 'react-icons/all'
 import ProfileButton from './ProfileButton';
@@ -8,10 +8,10 @@ import './Navigation.css';
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
-  const [userId, setUserId] = useState('')
+  // const [userId, setUserId] = useState('')
 
   useEffect(() => {
-    if (sessionUser) setUserId(sessionUser.id)
+    // if (sessionUser) setUserId(sessionUser.id)
     if (!sessionUser) return <Redirect to={`/`} />;
   }, [sessionUser])
 

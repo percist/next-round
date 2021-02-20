@@ -1,5 +1,4 @@
 import React from 'react';
-import { IoPersonCircleOutline } from 'react-icons/io5';
 import UserImage from '../UserImage';
 import "./Buddies.css";
 

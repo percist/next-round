@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
-import ItemCardContainer from "../ItemCardContainer";
+import { useParams } from 'react-router-dom';
 import UserRoundsFeed from "../UserRoundsFeed";
 import UserImage from "../UserImage";
 import { fetchOneUser } from "../../store/users";
@@ -9,11 +8,9 @@ import { fetchAllUserClaimedRounds } from "../../store/rounds";
 import './UserPage.css'
 
 const UserPage = () => {
-  const history = useHistory();
   const dispatch = useDispatch();
   const params = useParams();
   const { id } = params;
-  const [bannerImg, setBannerImg] = useState(null)
   const  user  = useSelector((state) => state.users)
 
   const rounds = useSelector(fullReduxState => {

@@ -4,7 +4,7 @@ import SiteRoundsFeed from '../SiteRoundsFeed';
 import './RoundsFeed.css'
 
 const RoundsFeed = ({ rounds, site, type }) => {
-  // console.log("ROUNDS:", rounds)
+
   if (type === "users") {
     return (
       <div className="rounds-feed">

@@ -3,7 +3,6 @@ import RoundsCard from '../RoundsCard'
 
 const UserRoundsFeed = ({ roundsArray }) => {
 
-  const [sites, setSites] = useState([]);
   const [items, setItems] = useState([]);
 
   useEffect(() => {

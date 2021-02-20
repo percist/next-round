@@ -1,15 +1,12 @@
-import { set } from "js-cookie";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import LoginForm from "../LoginForm";
 import * as sessionActions from "../../store/session";
 
 function SignupForm({ clickedBusiness, setClickedBusiness}) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
-  const [displayButton, setDisplayButton] = useState(false)
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
