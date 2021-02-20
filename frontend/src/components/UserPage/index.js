@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import ItemCardContainer from "../ItemCardContainer";
 import UserRoundsFeed from "../UserRoundsFeed";
+import UserImage from "../UserImage";
 import { fetchOneUser } from "../../store/users";
 import { fetchAllUserClaimedRounds } from "../../store/rounds";
 import './UserPage.css'

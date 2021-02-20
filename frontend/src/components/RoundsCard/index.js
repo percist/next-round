@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import {timeDifference} from '../../dateUtilities'
+import CommentFeed from '../CommentFeed';
+import CommentForm from '../CommentForm';
 
 const RoundsCard = ({ user, site, item, round, type }) => {
-  const [receiver, setReceiver] = useState([])
+  const [receiver, setReceiver] = useState([]);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     const receiverFetchFunction = async () => {
-      if (type == "user") {
+      if (type === "user") {
         const fetchReceiver = async (userId) => {
           const res = await fetch(`/api/users/${userId}`)
           const user = await res.json()
@@ -18,6 +21,15 @@ const RoundsCard = ({ user, site, item, round, type }) => {
     }
     receiverFetchFunction()
   }, [type, round])
+
+  useEffect(() => {
+    const fetchRoundComments = async () => {
+      const res = await fetch(`/api/rounds/${round.id}/comments`);
+      const { roundComments } = await res.json()
+      setComments(roundComments)
+    }
+    fetchRoundComments()
+  }, [round])
 
   if (type === "user") user = receiver
 
@@ -76,6 +88,10 @@ const RoundsCard = ({ user, site, item, round, type }) => {
         </div>
       </div>
         <hr id="rounds-card-info_divider" color='silver'/>
+        <div id="rounds-card-info_comments">
+          <CommentFeed comments={comments}/>
+          <CommentForm round={round} comments={comments} setComments={setComments}/>
+        </div>
     </div>
   )
 };
