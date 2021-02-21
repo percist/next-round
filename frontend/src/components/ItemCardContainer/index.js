@@ -32,7 +32,7 @@ const ItemCardContainer = ({ items }) => {
     if (!!overflowItemsShown) {
       return (
         <>
-          {!Array.isArray(items) && <image src={spinner} />}
+          {!Array.isArray(items) && <img src={spinner} alt="loading..."/>}
           {Array.isArray(items) && items.slice(5).map(item => {
             if (item) {
               return <ItemCard item={item} key={item.name} />
@@ -48,7 +48,7 @@ const ItemCardContainer = ({ items }) => {
   return (
     <div className="item-card-container">
       <div id="item-card-container_initial">
-        {!Array.isArray(items) && <image src={spinner} />}
+        {!Array.isArray(items) && <img src={spinner} alt="loading..."/>}
         {Array.isArray(items) && items.slice(0, 5).map((item, i) => {
           if (item) return <ItemCard item={item} key={i} />
           else return null

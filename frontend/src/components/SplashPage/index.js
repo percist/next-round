@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '../../context/Modal';
@@ -68,7 +68,10 @@ const SplashPage = () => {
                 onClick={handleDemoClick}
               >
                 Demo
-                            </button>
+              </button>
+              <ul>
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+              </ul>
             </div>
           </div>
           {showModal && (

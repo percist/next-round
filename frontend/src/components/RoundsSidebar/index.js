@@ -80,7 +80,7 @@ const RoundsSidebar = () => {
       <div className="rounds-sidebar_sites-owned">
         <hr />
         Your Businesses
-        {!Array.isArray(sitesOwned.sites) && <image src={spinner} />}
+        {!Array.isArray(sitesOwned.sites) && <img src={spinner} alt="loading..."/>}
         {Array.isArray(sitesOwned.sites) && sitesOwned.sites.map(owner => {
           return (
             <div className="rounds-sidebar_site" key={owner.siteId}>

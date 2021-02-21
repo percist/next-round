@@ -28,6 +28,7 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
     setComment("");
     setImage(null);
     setWasClaimed(true);
+    // eslint-disable-next-line eqeqeq
     await setRoundsToDisplay([...roundsToDisplay.filter(setRound => setRound.id != id)])
   }
 
@@ -45,6 +46,7 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
       const roundSender = await response.json()
       setSender(roundSender)
     }
+    // eslint-disable-next-line eqeqeq
     if (Array.isArray(round.Items) && round.Items[0] != undefined) {
       setId(round.id)
       setItem(round.Items[0]);
@@ -55,6 +57,9 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
 
   return (
     <div hidden={wasClaimed} className="rounds-claim-card">
+      <ul>
+        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+      </ul>
       <div className="rounds-claim-card-info">
         <div id="rounds-claim-card_image">
           <ItemImage image={item.imgUrl} />
@@ -62,7 +67,7 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
         <div className="rounds-claim-card-details">
           <div id="rounds-claim-card_info">
             <div id="rounds-claim-card_info_round">
-              {!item && !site && <image src={spinner} />}
+              {!item && !site && <img src={spinner} alt="loading..."/>}
               {item && site &&
                 <>
                   <h2>{item.name}</h2>

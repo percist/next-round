@@ -24,13 +24,13 @@ const UserPage = () => {
     <div id="buddy-page">
       <div className="buddy-page-header">
         <div id="buddy-page-header_banner">
-        {!Array.isArray(rounds) && <image src={spinner} />}
+        {!Array.isArray(rounds) && <img src={spinner} alt="loading..."/>}
         {Array.isArray(rounds) && rounds[0] && <img src={rounds[0].imgUrl} alt="a round" />}
           </div>
           <div id="buddy-page-header_profile">
             <UserImage user={user} />
         </div>
-        {!user && <image src={spinner} />}
+        {!user && <img src={spinner} alt="loading..."/>}
         {user && <h1>{user.firstName} {user.lastName}</h1>}
       </div>
       <div className="buddy-page-content">

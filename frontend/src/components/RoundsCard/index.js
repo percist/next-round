@@ -24,12 +24,12 @@ const RoundsCard = ({ user, site, item, round, type }) => {
     <div className="rounds-card" >
       <div className="rounds-card-header">
         <div id="rounds-card-header_image">
-          {!user && <image src={spinner} />}
+          {!user && <img src={spinner} alt="loading..."/>}
           {user && <UserImage user={user} />}
         </div>
         <div className="rounds-card-header-description">
           <div id="rounds-card-header_name">
-            {!user && <image src={spinner} />}
+            {!user && <img src={spinner} alt="loading..."/>}
             {user && user.username}
           </div>
           <div id="rounds-card-header_time">
@@ -41,7 +41,7 @@ const RoundsCard = ({ user, site, item, round, type }) => {
         <div id="rounds-card-header_comment">
           {round.comment}
         </div>
-      <div className="rounds-card-image">
+      <div className="rounds-car <img">
         {!round.imgUrl &&
           !site.imgUrl &&
           "Loading ..."
@@ -56,18 +56,18 @@ const RoundsCard = ({ user, site, item, round, type }) => {
       </div>
       <div className="rounds-card-info">
         <div id="rounds-card-info_site_name">
-          {!site && <image src={spinner} />}
+          {!site && <img src={spinner} alt="loading..."/>}
           {site &&
             <a href={`/sites/${site.id}`} >
               {site.name}
             </a>}
         </div>
         <div id="rounds-card-info_site_item">
-         {!item && <image src={spinner} />}
+         {!item && <img src={spinner} alt="loading..."/>}
           {item && `${item.name}`}
         </div>
         <div id="rounds-card-info_site_location">
-          {!site && <image src={spinner} />}
+          {!site && <img src={spinner} alt="loading..."/>}
           {site && `${site.city}, ${site.state}`}
         </div>
       </div>

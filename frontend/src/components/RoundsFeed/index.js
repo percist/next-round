@@ -9,14 +9,14 @@ const RoundsFeed = ({ rounds, site, type }) => {
   if (type === "users") {
     return (
       <div className="rounds-feed">
-        {!Array.isArray(rounds) && <image src={spinner} />}
+        {!Array.isArray(rounds) && <img src={spinner} alt="loading..."/>}
         {Array.isArray(rounds) && <UserRoundsFeed roundsArray={rounds} />}
       </div>
     )
   } else if (type === "site") {
     return (
       <div className="rounds-feed">
-        {!site && <image src={spinner} />}
+        {!site && <img src={spinner} alt="loading..."/>}
         {site && Array.isArray(rounds) && rounds.map((round, i) => {
           if (!!round) {
             return <SiteRoundsFeed round={round} key={i} site={site} />
