@@ -4,6 +4,7 @@ import { fetchAllBuddies } from "../../store/users";
 import { fetchAllSites } from "../../store/sites";
 import { createOneRound } from "../../store/rounds";
 import ItemImage from '../ItemImage';
+import UserImage from '../UserImage';
 import {FaUserCircle, IoStorefront} from 'react-icons/all';
 import './RoundsSendForm.css'
 
@@ -59,38 +60,44 @@ const RoundsSendForm = () => {
   const handleBuddySelect = (e) => {
     if (e) {
       const buddyId = e
-      const selectedBuddy = buddies.filter(buddy => buddy.id === buddyId);
+      const selectedBuddy = buddies.filter(buddy => buddy.id == buddyId);
       setBuddy(selectedBuddy[0])
       setPurchaseDetails([])
     } else {
-      setBuddy({})
+      setBuddy({});
     }
+    setConfirmSubmit(false);
+    setPurchaseDetails([]);
     setBuddySelected(true)
   }
 
   const handleItemSelect = (e) => {
     if (e) {
       const itemId = e
-      const selectedItem = siteItems.filter(item => item.id === itemId);
+      const selectedItem = siteItems.filter(item => item.id == itemId);
       setItem(selectedItem[0])
       setTotal(selectedItem[0].price)
       setPurchaseDetails([])
     } else {
       setItem({})
     }
+    setConfirmSubmit(false);
+    setPurchaseDetails([]);
     setItemSelected(true)
   }
 
   const handleSiteSelect = (e) => {
     if (e) {
       const siteId = e
-      const selectedSite = sites.filter(site => site.id === siteId);
+      const selectedSite = sites.filter(site => site.id == siteId);
       setSite(selectedSite[0])
       setPurchaseDetails([])
     } else {
       setSite({})
       setItem({})
     }
+    setConfirmSubmit(false);
+    setPurchaseDetails([]);
     setSiteSelected(true)
   }
 
@@ -142,7 +149,7 @@ const RoundsSendForm = () => {
                   <option value="">--Please choose an option--</option>
                   {!buddies && <option value=''>None</option>}
                   {Array.isArray(buddies) && buddies.map(buddy => {
-                    return <option value={buddy.id}>{buddy.firstName}</option>
+                    return <option value={buddy.id} key={buddy.id}>{buddy.firstName}</option>
                   })}
                 </select>
               </div>
@@ -156,7 +163,7 @@ const RoundsSendForm = () => {
                   <option value="">--Please choose an option--</option>
                   {!sites && <option value=''>None</option>}
                   {Array.isArray(sites) && sites.map(site => {
-                    return <option value={site.id}>{site.name}</option>
+                    return <option value={site.id} key={site.id}>{site.name}</option>
                   })}
                 </select>
               </div>
@@ -171,7 +178,7 @@ const RoundsSendForm = () => {
                   {!siteItems && <option value=''>None</option>}
                   {Array.isArray(siteItems) && siteItems.map(item => {
                     return (
-                      <option value={`${item.id}`}>
+                      <option value={`${item.id}`} key={item.id}>
                         {`${item.name} $${item.price / 100}`}
                       </option>
                     )
@@ -202,15 +209,15 @@ const RoundsSendForm = () => {
               <h2>{site.name}</h2>
             <div id="round-send-mockup_details_user">
             <div id="round-send-mockup_details_user_image">
-              {!buddyImage && <FaUserCircle class="icon" />}
-              {buddyImage && <img src={buddyImage} alt="buddy" />}
+              {!buddyImage && <FaUserCircle className="icon" />}
+              {buddyImage && <UserImage user={buddy} />}
               </div>
               <h2>{buddy.username}</h2>
             </div>
           </div>
             <div id="round-send-mockup_details_site">
               <div id="round-send-mockup_details_site_image">
-              {!siteImage && <IoStorefront class="icon" /> }
+              {!siteImage && <IoStorefront className="icon" /> }
               {siteImage && <img src={siteImage} alt="site" />}
               </div>
             </div>

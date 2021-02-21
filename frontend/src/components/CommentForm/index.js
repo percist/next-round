@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 import { useState } from "react";
 import UserImage from '../UserImage';
 import { useSelector } from "react-redux";
+import "./CommentForm.css";
 
 const CommentForm = ({ round, comments, setComments }) => {
   const {user} = useSelector(state => state.session);
