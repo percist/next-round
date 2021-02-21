@@ -47,7 +47,7 @@ const SplashPage = () => {
     <div className="splash-page">
       <div className="splash-page_img">
         <img src='./N.png' alt="logo" />
-        <div class="splash-page-overlay" id="splash-page-overlay">
+        <div className="splash-page-overlay" id="splash-page-overlay">
           <div id="splash-page-cta">
             <h1 id="splash-page-cta_1">
               Drink together even when you're apart

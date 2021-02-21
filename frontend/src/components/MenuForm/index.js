@@ -44,7 +44,7 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
         <div id="menu-item-form_form">
-          <div class="menu-item-form_field">
+          <div className="menu-item-form_field">
             <label>
               Name
             </label>
@@ -57,7 +57,7 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
               required
             />
           </div>
-          <div class="menu-item-form_field">
+          <div className="menu-item-form_field">
             <label>
               Description
                   </label>
@@ -70,7 +70,7 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
               required
             />
           </div>
-          <div class="menu-item-form_field">
+          <div className="menu-item-form_field">
             <label>
               Price
                 </label>
@@ -86,7 +86,7 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
               required
             />
           </div>
-          <div class="menu-item-form_field">
+          <div className="menu-item-form_field">
 
             <label>
               Item Picture

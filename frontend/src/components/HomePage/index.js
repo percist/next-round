@@ -4,23 +4,16 @@ import RoundsSidebar from '../RoundsSidebar';
 import BuddiesSidebar from '../BuddiesSidebar';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchAllBuddyRounds } from '../../store/rounds';
-import "./HomePage.css"
+import "./HomePage.css";
 
-const HomePage = () => {
+const HomePage = ({user}) => {
 
   const dispatch = useDispatch();
-
-  const { user } = useSelector(reduxState => {
-    return reduxState.session;
-  });
-
-  const rounds = useSelector(reduxState => {
-    return reduxState.rounds;
-  });
+  const rounds = useSelector(state => state.rounds);
 
   useEffect(() => {
-    dispatch(fetchAllBuddyRounds(user.id))
-  }, [dispatch, user])
+    dispatch(fetchAllBuddyRounds(user.id));
+  }, [dispatch, user]);
 
   return (
     <div className="user-page-container">

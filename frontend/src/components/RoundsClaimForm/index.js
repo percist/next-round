@@ -2,30 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllUserRounds } from '../../store/rounds';
 import RoundsClaimItem from '../RoundsClaimItem';
-import './RoundsClaim.css'
+import './RoundsClaim.css';
 
 const RoundsClaimForm = () => {
 
   const dispatch = useDispatch();
-
-  const rounds = useSelector(fullReduxState => {
-    return fullReduxState.rounds;
-  })
-
-  const { user } = useSelector(reduxState => {
-    return reduxState.session;
-  });
-
+  const rounds = useSelector(state => state.rounds);
+  const { user } = useSelector(state => state.session);
   const [roundsToDisplay, setRoundsToDisplay] = useState([]);
 
   useEffect(() => {
-    dispatch(fetchAllUserRounds(user.id))
-  }, [dispatch, user])
+    dispatch(fetchAllUserRounds(user.id));
+  }, [dispatch, user]);
 
   useEffect(() => {
     if (rounds[0])
-      setRoundsToDisplay([...rounds])
-  }, [dispatch, rounds])
+      setRoundsToDisplay([...rounds]);
+  }, [dispatch, rounds]);
 
   return (
     <div className="round-claim-feed">

@@ -6,39 +6,34 @@ import { createOneRound } from "../../store/rounds";
 import ItemImage from '../ItemImage';
 import UserImage from '../UserImage';
 import {FaUserCircle, IoStorefront} from 'react-icons/all';
-import './RoundsSendForm.css'
+import './RoundsSendForm.css';
 
 const RoundsSendForm = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [buddy, setBuddy] = useState({}) // sets a single buddy object
-  const [buddyImage, setBuddyImage] = useState('') // sets a single buddy object
+  const [buddy, setBuddy] = useState({}); // sets a single buddy object
+  const [buddyImage, setBuddyImage] = useState(''); // sets a single buddy object
   const [site, setSite] = useState({}); // sets site object
   const [siteImage, setSiteImage] = useState(''); // sets site image url
   const [item, setItem] = useState([]); // sets an array with a single item object
   const [itemImage, setItemImage] = useState(""); // sets site image url
   const [siteItems, setSiteItems] = useState([]); // sets an array of item objects
   const [total, setTotal] = useState(0.00); // sets an integer
-  const [buddySelected, setBuddySelected] = useState(false) //sets whether a buddy has been selected (in case they don't have a pic);
-  const [siteSelected, setSiteSelected] = useState(false) //sets whether a site has been selected (in case it doesn't have a pic);
-  const [itemSelected, setItemSelected] = useState(false) //sets whether a item has been selected (in case it doesn't have a pic);
+  const [buddySelected, setBuddySelected] = useState(false); //sets whether a buddy has been selected (in case they don't have a pic);
+  const [siteSelected, setSiteSelected] = useState(false); //sets whether a site has been selected (in case it doesn't have a pic);
+  const [itemSelected, setItemSelected] = useState(false); //sets whether a item has been selected (in case it doesn't have a pic);
   const [errors, setErrors] = useState([]);
   const [purchaseDetails, setPurchaseDetails] = useState([]);
   const [confirmSubmit, setConfirmSubmit] = useState(false);
 
-  const buddies = useSelector(fullReduxState => {
-    return fullReduxState.users;
-  })
-
-  const sites = useSelector(fullReduxState => {
-    return fullReduxState.sites;
-  })
+  const buddies = useSelector(state => state.users);
+  const sites = useSelector(state => state.sites);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!buddy || !item || !site) {
       return setErrors(['Please select a buddy, site, and item to send a round.'])
-    }
+    };
     setErrors([]);
     await dispatch(createOneRound({
       receiverId: buddy.id,
@@ -47,70 +42,72 @@ const RoundsSendForm = () => {
       .catch(res => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       });
-    setConfirmSubmit(true)
-    setPurchaseDetails([buddy, site, item])
-    setBuddy({})
-    setSite({})
-    setItem({})
-    setBuddySelected(false)
-    setSiteSelected(false)
-    setItemSelected(false)
+    setConfirmSubmit(true);
+    setPurchaseDetails([buddy, site, item]);
+    setBuddy({});
+    setSite({});
+    setItem({});
+    setBuddySelected(false);
+    setSiteSelected(false);
+    setItemSelected(false);
   }
 
+  const resetForm = () => {
+    setConfirmSubmit(false);
+    setPurchaseDetails([]);
+  }
+  
   const handleBuddySelect = (e) => {
     if (e) {
-      const buddyId = e
+      const buddyId = e;
       const selectedBuddy = buddies.filter(buddy => buddy.id == buddyId);
-      setBuddy(selectedBuddy[0])
-      setPurchaseDetails([])
+      setBuddy(selectedBuddy[0]);
+      setPurchaseDetails([]);
     } else {
       setBuddy({});
     }
-    setConfirmSubmit(false);
-    setPurchaseDetails([]);
-    setBuddySelected(true)
+    resetForm();
+    setBuddySelected(true);
   }
 
   const handleItemSelect = (e) => {
     if (e) {
-      const itemId = e
+      const itemId = e;
       const selectedItem = siteItems.filter(item => item.id == itemId);
-      setItem(selectedItem[0])
-      setTotal(selectedItem[0].price)
-      setPurchaseDetails([])
+      setItem(selectedItem[0]);
+      setTotal(selectedItem[0].price);
+      setPurchaseDetails([]);
     } else {
-      setItem({})
+      setItem({});
     }
-    setConfirmSubmit(false);
-    setPurchaseDetails([]);
-    setItemSelected(true)
+    resetForm();
+    setItemSelected(true);
   }
 
   const handleSiteSelect = (e) => {
     if (e) {
-      const siteId = e
+      const siteId = e;
       const selectedSite = sites.filter(site => site.id == siteId);
-      setSite(selectedSite[0])
-      setPurchaseDetails([])
+      setSite(selectedSite[0]);
+      setPurchaseDetails([]);
     } else {
-      setSite({})
-      setItem({})
+      setSite({});
+      setItem({});
     }
-    setConfirmSubmit(false);
-    setPurchaseDetails([]);
-    setSiteSelected(true)
+    resetForm();
+    setSiteSelected(true);
   }
 
   useEffect(() => {
-    setBuddyImage(buddy.imgUrl)
+    setBuddyImage(buddy.imgUrl);
   }, [buddy])
 
   useEffect(() => {
-    setItemImage(item.imgUrl)
+    setItemImage(item.imgUrl);
   }, [item])
 
   useEffect(() => {
-    setSiteImage(site.imgUrl)
+    setSiteImage(site.imgUrl);
   }, [site])
 
   useEffect(() => {
@@ -126,7 +123,7 @@ const RoundsSendForm = () => {
 
   useEffect(() => {
     if (item[0]) {
-      setTotal(item[0].price)
+      setTotal(item[0].price);
     }
   }, [item])
 
@@ -192,8 +189,9 @@ const RoundsSendForm = () => {
               </label>
               <button
                 className="button"
-                id="sign-up-form_button"
+                id="round-send-form_button"
                 type="submit"
+                hidden={!buddySelected || !siteSelected || !itemSelected}
               >
                 Buy Now
                           </button>

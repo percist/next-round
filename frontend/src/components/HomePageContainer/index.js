@@ -5,12 +5,12 @@ import SplashPage from '../SplashPage';
 
 
 function HomePageContainer() {
-  const sessionUser = useSelector(state => state.session.user);
+  const user = useSelector(state => state.session.user);
 
   let homePageSelector;
-  if (sessionUser) {
+  if (user) {
     homePageSelector = (
-      <HomePage />
+      <HomePage user={user}/>
     );
   } else {
     homePageSelector = (

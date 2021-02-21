@@ -5,13 +5,8 @@ import Buddies from '../Buddies'
 
 const BuddiesSidebar = () => {
   const dispatch = useDispatch()
-  const buddies = useSelector(fullReduxState => {
-    return fullReduxState.users;
-  });
-
-  const { user } = useSelector(reduxState => {
-    return reduxState.session;
-  });
+  const buddies = useSelector(state => state.users);
+  const { user } = useSelector(state => state.session);
 
   useEffect(() => {
     dispatch(fetchAllBuddies(user.id))

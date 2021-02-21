@@ -65,7 +65,7 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
         <div id="rounds-claim-card_image">
           <ItemImage image={item.imgUrl} />
         </div>
-        <div class="rounds-claim-card-details">
+        <div className="rounds-claim-card-details">
           <div id="rounds-claim-card_info">
             <div id="rounds-claim-card_info_round">
               {!item && !site && <h2>loading...</h2>}
