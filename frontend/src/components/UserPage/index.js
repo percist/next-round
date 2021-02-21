@@ -5,21 +5,18 @@ import UserRoundsFeed from "../UserRoundsFeed";
 import UserImage from "../UserImage";
 import { fetchOneUser } from "../../store/users";
 import { fetchAllUserClaimedRounds } from "../../store/rounds";
-import './UserPage.css'
+import './UserPage.css';
 
 const UserPage = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const { id } = params;
-  const  user  = useSelector((state) => state.users)
-
-  const rounds = useSelector(fullReduxState => {
-    return fullReduxState.rounds;
-  })
+  const  user  = useSelector((state) => state.users);
+  const rounds = useSelector(state => state.rounds);
 
   useEffect(() => {
-    dispatch(fetchOneUser(id))
-    dispatch(fetchAllUserClaimedRounds(id))
+    dispatch(fetchOneUser(id));
+    dispatch(fetchAllUserClaimedRounds(id));
   }, [dispatch, id]);
 
   return (

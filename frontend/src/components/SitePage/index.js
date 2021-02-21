@@ -11,22 +11,17 @@ const SitePage = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const params = useParams();
+
   const { siteId } = params;
-  const user = useSelector((state) => state.session.user)
+  const user = useSelector((state) => state.session.user);
+  const rounds = useSelector(state => state.rounds);
+  const site = useSelector(state => state.sites);
   const [items, setItems] = useState([]);
-  const [isOwner, setIsOwner] = useState(false)
-
-  const site = useSelector(fullReduxState => {
-    return fullReduxState.sites;
-  })
-
-  const rounds = useSelector(fullReduxState => {
-    return fullReduxState.rounds;
-  })
+  const [isOwner, setIsOwner] = useState(false);
 
   const updateMenuHandler = () => {
     history.push(`/sites/${site.id}/menu`)
-  }
+  };
 
   useEffect(() => {
     const checkIsOwner = async () => {
@@ -45,7 +40,7 @@ const SitePage = () => {
 
   useEffect(() => {
     setItems(site.Items);
-  }, [site])
+  }, [site]);
 
   return (
     <div className="site-page">
