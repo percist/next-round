@@ -27,8 +27,6 @@ const MenuPage = () => {
       setItemsToDisplay([...items]);
   }, [dispatch, items]);
 
-
-
   return (
     <div className="menu">
       <h1>Menu for {site.name}</h1>
@@ -46,6 +44,6 @@ const MenuPage = () => {
       />
     </div>
   )
-}
+};
 
 export default MenuPage;

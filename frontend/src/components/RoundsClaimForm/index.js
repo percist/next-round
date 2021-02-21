@@ -16,8 +16,7 @@ const RoundsClaimForm = () => {
   }, [dispatch, user]);
 
   useEffect(() => {
-    if (rounds[0])
-      setRoundsToDisplay([...rounds]);
+    if (rounds[0]) setRoundsToDisplay([...rounds]);
   }, [dispatch, rounds]);
 
   return (
@@ -37,6 +36,6 @@ const RoundsClaimForm = () => {
       })}
     </div>
   )
-}
+};
 
 export default RoundsClaimForm;

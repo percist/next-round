@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux';
 import { deleteMenuItem } from "../../store/items";
 
 const MenuItem = ({ item, itemsToDisplay, setItemsToDisplay, siteId }) => {
+
   const dispatch = useDispatch();
-  const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState([]);
 
   const handleMenuDelete = async (e) => {
     e.preventDefault();
@@ -12,11 +13,14 @@ const MenuItem = ({ item, itemsToDisplay, setItemsToDisplay, siteId }) => {
       .catch(res => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       })
-    setItemsToDisplay([...itemsToDisplay.filter(setItem => setItem.id != item.id)])
+    setItemsToDisplay([...itemsToDisplay.filter(setItem => setItem.id != item.id)]);
   }
 
   return (
-    <div className="menu-item">
+    <div className="menu-item">        
+      <ul>
+        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+      </ul>
       <div className="menu-item_image">
         {item.imgUrl && <img src={item.imgUrl} alt="site item" />}
       </div>
@@ -40,6 +44,6 @@ const MenuItem = ({ item, itemsToDisplay, setItemsToDisplay, siteId }) => {
       </div>
     </div>
   )
-}
+};
 
 export default MenuItem;

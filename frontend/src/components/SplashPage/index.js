@@ -12,14 +12,9 @@ const SplashPage = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
-  const [userId, setUserId] = useState("")
   const [form, setForm] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [errors, setErrors] = useState([]);
-
-  useEffect(() => {
-    if (sessionUser) setUserId(sessionUser.id)
-  }, [sessionUser])
 
   if (sessionUser) return <Redirect to={`/users/${sessionUser.id}`} />;
 

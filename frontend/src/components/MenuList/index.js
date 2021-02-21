@@ -20,6 +20,6 @@ const MenuList = ({ itemsToDisplay, setItemsToDisplay, siteId }) => {
       })}
     </div>
   )
-}
+};
 
 export default MenuList;

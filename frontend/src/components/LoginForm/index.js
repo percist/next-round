@@ -8,14 +8,14 @@ const LoginForm = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
-  const [userId, setUserId] = useState('')
+  const [userId, setUserId] = useState('');
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
-    if (sessionUser) setUserId(sessionUser.id)
-  }, [sessionUser])
+    if (sessionUser) setUserId(sessionUser.id);
+  }, [sessionUser]);
 
   if (sessionUser) return <Redirect to={`/users/${userId}`} />;
 
@@ -69,16 +69,9 @@ const LoginForm = () => {
           type="submit"
         >Log In
                 </button>
-        {/* TODO: Configure demo login */}
-        {/* <button
-                    className="button"
-                    id="button-login-demo"
-                    onClick={handleDemo}
-                    >Demo
-                </button> */}
       </form>
     </div>
   )
-}
+};
 
 export default LoginForm;

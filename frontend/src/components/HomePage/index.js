@@ -30,6 +30,6 @@ const HomePage = ({user}) => {
       </div>
     </div>
   )
-}
+};
 
-export default HomePage
+export default HomePage;

@@ -5,6 +5,7 @@ import ItemCardContainer from "../ItemCardContainer";
 import RoundsFeed from "../RoundsFeed";
 import { fetchOneSite } from "../../store/sites";
 import { fetchAllSiteRounds } from "../../store/rounds";
+import { checkIsOwner } from './SitePageUtils';
 import "./SitePage.css";
 
 const SitePage = () => {
@@ -19,21 +20,10 @@ const SitePage = () => {
   const [items, setItems] = useState([]);
   const [isOwner, setIsOwner] = useState(false);
 
-  const updateMenuHandler = () => {
-    history.push(`/sites/${site.id}/menu`)
-  };
+  const updateMenuHandler = () => history.push(`/sites/${site.id}/menu`);
 
   useEffect(() => {
-    const checkIsOwner = async () => {
-      const response = await fetch(`/api/sites/${siteId}/owners`)
-      const owners = await response.json();
-      if (Array.isArray(owners.siteOwners)) {
-        owners.siteOwners.forEach(owner => {
-          if (owner.userId === user.id) setIsOwner(true)
-        })
-      }
-    }
-    checkIsOwner(user.id)
+    checkIsOwner(user, siteId, setIsOwner)
     dispatch(fetchOneSite(siteId))
     dispatch(fetchAllSiteRounds(siteId))
   }, [dispatch, siteId, user]);

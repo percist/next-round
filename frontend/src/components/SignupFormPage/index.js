@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
-import SignupForm from "../SignupForm"
+import SignupForm from "../SignupForm";
 
 const SignupFormPage = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -13,6 +13,6 @@ const SignupFormPage = () => {
       <SignupForm />
     </div>
   )
-}
+};
 
-export default SignupFormPage
+export default SignupFormPage;

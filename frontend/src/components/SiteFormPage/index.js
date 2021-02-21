@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createNewSite } from '../../store/sites'
+import { createNewSite } from '../../store/sites';
 
 const SiteFormPage = () => {
   const dispatch = useDispatch();
 
-  const [name, setName] = useState("")
-  const [address, setAddress] = useState("")
-  const [city, setCity] = useState("")
-  const [state, setState] = useState("")
-  const [image, setImage] = useState(null)
-  const [website, setWebsite] = useState("")
-  const [zip, setZip] = useState("")
-  const [isActive, setIsActive] = useState(false)
-  const [errors, setErrors] = useState([])
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [image, setImage] = useState(null);
+  const [website, setWebsite] = useState("");
+  const [zip, setZip] = useState("");;
+  const [isActive, setIsActive] = useState(false);
+  const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,8 +35,8 @@ const SiteFormPage = () => {
 
   const updateFile = (e) => {
     const file = e.target.files[0];
-    if (file) setImage(file)
-  }
+    if (file) setImage(file);
+  };
 
   return (
     <div id="site-form">
@@ -138,5 +138,5 @@ const SiteFormPage = () => {
       </form>
     </div>
   )
-}
+};
 export default SiteFormPage;

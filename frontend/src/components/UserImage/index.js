@@ -28,8 +28,8 @@ const UserImage = ({ user, type }) => {
             alt="user"
           />}
       </a>
-    )
-  }
-}
+    );
+  };
+};
 
 export default UserImage;

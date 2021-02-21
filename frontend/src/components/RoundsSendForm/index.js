@@ -32,7 +32,7 @@ const RoundsSendForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!buddy || !item || !site) {
-      return setErrors(['Please select a buddy, site, and item to send a round.'])
+      return setErrors(['Please select a buddy, site, and item to send a round.']);
     };
     setErrors([]);
     await dispatch(createOneRound({
@@ -231,6 +231,6 @@ const RoundsSendForm = () => {
       </div>
     </div>
   )
-}
+};
 
 export default RoundsSendForm;

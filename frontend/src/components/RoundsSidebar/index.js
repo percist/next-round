@@ -5,7 +5,9 @@ import { FiSend, IoStorefront } from 'react-icons/all';
 import UserImage from '../UserImage';
 import SiteFormPage from '../SiteFormPage';
 import { useHistory } from 'react-router-dom';
-import '../../context/Modal.css'
+import { fetchOwnedSites, fetchPaidRounds } from './RoundsSidebarUtils';
+import spinner from  '../../Spinner-1s-44px.gif'
+import '../../context/Modal.css';
 
 const RoundsSidebar = () => {
   const history = useHistory();
@@ -17,27 +19,12 @@ const RoundsSidebar = () => {
   const [sitesOwned, setSitesOwned] = useState({});
 
   useEffect(() => {
-    const fetchPaidRounds = async () => {
-      const response = await fetch('/api/rounds/user/total')
-      const roundsToRedeem = await response.json()
-      setNumRounds(roundsToRedeem)
-    }
-    const fetchOwnedSites = async () => {
-      const response = await fetch('/api/sites/user')
-      const sitesUserOwns = await response.json()
-      setSitesOwned(sitesUserOwns)
-    }
-    fetchPaidRounds()
-    fetchOwnedSites()
+    fetchPaidRounds(setNumRounds)
+    fetchOwnedSites(setSitesOwned)
   }, []);
 
-  const redeemRoundClickHandler = () => {
-    history.push(`/users/${user.id}/round`);
-  }
-
-  const buyRoundClickHandler = () => {
-    history.push("/users/round");
-  }
+  const redeemRoundClickHandler = () => history.push(`/users/${user.id}/round`);
+  const buyRoundClickHandler = () => history.push("/users/round");
 
   return (
     <div hidden={sitesOwned} className="rounds-sidebar">
@@ -93,7 +80,7 @@ const RoundsSidebar = () => {
       <div className="rounds-sidebar_sites-owned">
         <hr />
         Your Businesses
-        {!Array.isArray(sitesOwned.sites) && "loading..."}
+        {!Array.isArray(sitesOwned.sites) && <image src={spinner} />}
         {Array.isArray(sitesOwned.sites) && sitesOwned.sites.map(owner => {
           return (
             <div className="rounds-sidebar_site" key={owner.siteId}>

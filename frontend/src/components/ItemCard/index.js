@@ -1,6 +1,6 @@
 import React from 'react';
 import ItemImage from '../ItemImage';
-import './ItemCard.css'
+import './ItemCard.css';
 
 const ItemCard = ({ item }) => {
   return (
@@ -13,6 +13,6 @@ const ItemCard = ({ item }) => {
       </div>
     </div>
   )
-}
+};
 
 export default ItemCard;

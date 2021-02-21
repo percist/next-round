@@ -1,50 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import {timeDifference} from '../../dateUtilities'
+import {timeDifference} from '../../dateUtilities';
 import CommentFeed from '../CommentFeed';
 import CommentForm from '../CommentForm';
 import UserImage from '../UserImage';
+import spinner from  '../../Spinner-1s-44px.gif'
+import { receiverFetchFunction, fetchRoundComments } from './RoundsCardUtils';
 
 const RoundsCard = ({ user, site, item, round, type }) => {
   const [receiver, setReceiver] = useState([]);
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    const receiverFetchFunction = async () => {
-      if (type === "user") {
-        const fetchReceiver = async (userId) => {
-          const res = await fetch(`/api/users/${userId}`)
-          const user = await res.json()
-          return user
-        }
-        const thisUser = await fetchReceiver(round.receiverId)
-        await setReceiver(thisUser)
-      }
-    }
-    receiverFetchFunction()
+    receiverFetchFunction(round, type, setReceiver);
   }, [type, round])
 
   useEffect(() => {
-    const fetchRoundComments = async () => {
-      const res = await fetch(`/api/rounds/${round.id}/comments`);
-      const { roundComments } = await res.json()
-      setComments(roundComments)
-    }
-    fetchRoundComments()
+    fetchRoundComments(round, setComments);
   }, [round])
 
-  if (type === "user") user = receiver
+  if (type === "user") user = receiver;
 
   return (
-    
     <div className="rounds-card" >
       <div className="rounds-card-header">
         <div id="rounds-card-header_image">
-          {!user && "loading..."}
+          {!user && <image src={spinner} />}
           {user && <UserImage user={user} />}
         </div>
         <div className="rounds-card-header-description">
           <div id="rounds-card-header_name">
-            {!user && "loading..."}
+            {!user && <image src={spinner} />}
             {user && user.username}
           </div>
           <div id="rounds-card-header_time">
@@ -71,18 +56,18 @@ const RoundsCard = ({ user, site, item, round, type }) => {
       </div>
       <div className="rounds-card-info">
         <div id="rounds-card-info_site_name">
-          {!site && <h2>loading....</h2>}
+          {!site && <image src={spinner} />}
           {site &&
             <a href={`/sites/${site.id}`} >
               {site.name}
             </a>}
         </div>
         <div id="rounds-card-info_site_item">
-         {!item && <h2>loading....</h2>}
+         {!item && <image src={spinner} />}
           {item && `${item.name}`}
         </div>
         <div id="rounds-card-info_site_location">
-          {!site && <h2>loading....</h2>}
+          {!site && <image src={spinner} />}
           {site && `${site.city}, ${site.state}`}
         </div>
       </div>

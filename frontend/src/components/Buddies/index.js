@@ -2,7 +2,6 @@ import React from 'react';
 import UserImage from '../UserImage';
 import "./Buddies.css";
 
-
 const Buddies = ({ buddy }) => {
 
   return (
@@ -12,11 +11,9 @@ const Buddies = ({ buddy }) => {
         <h3>
           <a href={`/users/${buddy.id}`} >{buddy.username}</a>
         </h3>
-
       </div>
     </div>
-
   )
-}
+};
 
 export default Buddies;

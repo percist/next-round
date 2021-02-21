@@ -1,5 +1,5 @@
 import React from 'react';
-import './ItemImage.css'
+import './ItemImage.css';
 
 const ItemImage = ({ image }) => {
   return (
@@ -8,6 +8,6 @@ const ItemImage = ({ image }) => {
       {image && <img src={image} alt="item" />}
     </div>
   )
-}
+};
 
 export default ItemImage;

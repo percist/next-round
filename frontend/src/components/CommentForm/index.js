@@ -1,11 +1,12 @@
 import React from "react";
-import Cookies from 'js-cookie';
 import { useState } from "react";
 import UserImage from '../UserImage';
 import { useSelector } from "react-redux";
 import "./CommentForm.css";
+import {createCommentDispatcher} from "./CommentFormUtils";
 
 const CommentForm = ({ round, comments, setComments }) => {
+
   const {user} = useSelector(state => state.session);
 
   const [comment, setComment] = useState('');
@@ -17,24 +18,9 @@ const CommentForm = ({ round, comments, setComments }) => {
       body: comment,
       roundId: round.id
     };
-    const createCommentDispatcher = async() => {
-      const createComment = async () => {
-        const res = await fetch(`/api/rounds/${round.id}/comments`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': "application/json",
-            'XSRF-Token': Cookies.get('XSRF-TOKEN')
-          },
-          body: JSON.stringify({newCommentData})
-        });
-        if (res.ok) return res.json();
-      } ;
-      const { roundComment } = await createComment()
-      await setComments([...comments, roundComment])
-    }
-    createCommentDispatcher()
-    setComment("")
-  }
+    createCommentDispatcher(round, newCommentData, comments, setComments);
+    setComment("");
+  };
 
   return (
     <div className="comment-form_wrapper">
@@ -45,7 +31,6 @@ const CommentForm = ({ round, comments, setComments }) => {
     </form>
   </div>
   )
+};
 
-}
-
-export default CommentForm
+export default CommentForm;

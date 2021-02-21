@@ -5,6 +5,7 @@ import UserRoundsFeed from "../UserRoundsFeed";
 import UserImage from "../UserImage";
 import { fetchOneUser } from "../../store/users";
 import { fetchAllUserClaimedRounds } from "../../store/rounds";
+import spinner from  '../../Spinner-1s-44px.gif';
 import './UserPage.css';
 
 const UserPage = () => {
@@ -23,23 +24,22 @@ const UserPage = () => {
     <div id="buddy-page">
       <div className="buddy-page-header">
         <div id="buddy-page-header_banner">
-        {!Array.isArray(rounds) && "loading..."}
+        {!Array.isArray(rounds) && <image src={spinner} />}
         {Array.isArray(rounds) && rounds[0] && <img src={rounds[0].imgUrl} alt="a round" />}
           </div>
           <div id="buddy-page-header_profile">
             <UserImage user={user} />
         </div>
-        {!user && "loading..."}
+        {!user && <image src={spinner} />}
         {user && <h1>{user.firstName} {user.lastName}</h1>}
       </div>
       <div className="buddy-page-content">
         <div className="buddy-page-content-feed">
-        {/* <ItemCardContainer items={items} />  */}
         <UserRoundsFeed roundsArray={rounds} />
       </div>
         </div>
   </div>
-  )
-}
+  );
+};
 
 export default UserPage;

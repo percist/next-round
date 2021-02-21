@@ -23,6 +23,6 @@ function HomePageContainer() {
       {homePageSelector}
     </>
     )
-}
+};
 
 export default HomePageContainer;

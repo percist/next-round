@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux'
-import { createNewItem } from '../../store/items'
+import { useDispatch } from 'react-redux';
+import { createNewItem } from '../../store/items';
 
 const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
 
@@ -9,7 +9,7 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState('0.00');
   const [image, setImage] = useState(null);
-  const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,12 +28,12 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
     setDescription("");
     setPrice("");
     setImage(null);
-    setItemsToDisplay([...itemsToDisplay, newItem])
+    setItemsToDisplay([...itemsToDisplay, newItem]);
   }
 
   const updateFile = (e) => {
     const file = e.target.files[0];
-    if (file) setImage(file)
+    if (file) setImage(file);
   }
 
   return (
@@ -108,6 +108,6 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
       </form>
     </div>
   )
-}
+};
 
 export default MenuForm;

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import ItemCard from '../ItemCard';
-import "./ItemCardContainer.css"
+import "./ItemCardContainer.css";
+import spinner from  '../../Spinner-1s-44px.gif'
 
 const ItemCardContainer = ({ items }) => {
 
-  const [overflowItemsShown, setOverflowItemsShown] = useState(false)
-  const [showButton, setShowButton] = useState(true)
-  const [hideButton, setHideButton] = useState(true)
+  const [overflowItemsShown, setOverflowItemsShown] = useState(false);
+  const [showButton, setShowButton] = useState(true);
+  const [hideButton, setHideButton] = useState(true);
 
   const handleShowClick = (e) => {
     e.preventDefault();
@@ -17,21 +18,21 @@ const ItemCardContainer = ({ items }) => {
   const handleHideClick = (e) => {
     e.preventDefault();
     setHideButton(true);
-    setShowButton(false)
+    setShowButton(false);
     setOverflowItemsShown(false);
   }
 
   useEffect(() => {
     if (Array.isArray(items) && items.length > 4) {
-      setShowButton(false)
+      setShowButton(false);
     }
-  }, [items])
+  }, [items]);
 
   const overflow = () => {
     if (!!overflowItemsShown) {
       return (
         <>
-          {!Array.isArray(items) && <h2>loading...</h2>}
+          {!Array.isArray(items) && <image src={spinner} />}
           {Array.isArray(items) && items.slice(5).map(item => {
             if (item) {
               return <ItemCard item={item} key={item.name} />
@@ -47,7 +48,7 @@ const ItemCardContainer = ({ items }) => {
   return (
     <div className="item-card-container">
       <div id="item-card-container_initial">
-        {!Array.isArray(items) && <h2>loading...</h2>}
+        {!Array.isArray(items) && <image src={spinner} />}
         {Array.isArray(items) && items.slice(0, 5).map((item, i) => {
           if (item) return <ItemCard item={item} key={i} />
           else return null
@@ -64,6 +65,6 @@ const ItemCardContainer = ({ items }) => {
             </button>
     </div>
   )
-}
+};
 
 export default ItemCardContainer;

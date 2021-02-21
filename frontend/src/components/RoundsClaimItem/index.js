@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import qrImage from './qr-code.png';
-import ItemImage from "../ItemImage"
-import { fetchUpdateRoundToClaimed } from '../../store/rounds'
-// import './roundCard.css'
+import ItemImage from "../ItemImage";
+import { fetchUpdateRoundToClaimed } from '../../store/rounds';
+import spinner from  '../../Spinner-1s-44px.gif'
 
 const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
 
@@ -11,13 +11,13 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
 
   const [item, setItem] = useState({});
   const [site, setSite] = useState({});
-  const [id, setId] = useState('')
+  const [id, setId] = useState('');
   const [sender, setSender] = useState({});
   const [comment, setComment] = useState("");
   const [image, setImage] = useState(null);
-  const [wasClaimed, setWasClaimed] = useState(false)
+  const [wasClaimed, setWasClaimed] = useState(false);
   const [wasClicked, setWasClicked] = useState(false);
-  const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState([]);
 
   const onCommentSubmit = async (e) => {
     e.preventDefault();
@@ -33,16 +33,11 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
 
   const updateFile = (e) => {
     const file = e.target.files[0];
-    if (file) setImage(file)
+    if (file) setImage(file);
   }
 
-  const handleRedeemClick = () => {
-    setWasClicked(true)
-  }
-
-  const handleNevermindClick = () => {
-    setWasClicked(false)
-  }
+  const handleRedeemClick = () => setWasClicked(true)
+  const handleNevermindClick = () => setWasClicked(false);
 
   useEffect(() => {
     const fetchOneUser = async (userId) => {
@@ -61,14 +56,13 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
   return (
     <div hidden={wasClaimed} className="rounds-claim-card">
       <div className="rounds-claim-card-info">
-
         <div id="rounds-claim-card_image">
           <ItemImage image={item.imgUrl} />
         </div>
         <div className="rounds-claim-card-details">
           <div id="rounds-claim-card_info">
             <div id="rounds-claim-card_info_round">
-              {!item && !site && <h2>loading...</h2>}
+              {!item && !site && <image src={spinner} />}
               {item && site &&
                 <>
                   <h2>{item.name}</h2>
@@ -81,7 +75,7 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
           </div>
         <button className="button redeem-button" hidden={wasClicked} onClick={handleRedeemClick} >
           Redeem Now
-                        </button>
+        </button>
         </div>
       </div>
       <div className="rounds-claim-card_actions">
@@ -93,7 +87,7 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
             <div className="comment-form_form-field">
               <label>
                 Write a post:
-                </label>
+              </label>
               <textarea
                 value={comment}
                 onChange={e => setComment(e.target.value)}
@@ -117,13 +111,13 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
           <div className="comment-form_buttons">
             <button className="button later-button" hidden={!wasClicked} onClick={handleNevermindClick} >
               Maybe Later
-                          </button>
+            </button>
           </div>
         </div>
       </div>
 
     </div>
   )
-}
+};
 
 export default RoundsClaimRound;
