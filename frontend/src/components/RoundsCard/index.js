@@ -41,10 +41,10 @@ const RoundsCard = ({ user, site, item, round, type }) => {
         <div id="rounds-card-header_comment">
           {round.comment}
         </div>
-      <div className="rounds-car <img">
+      <div className="rounds-card-image">
         {!round.imgUrl &&
           !site.imgUrl &&
-          "Loading ..."
+          <img src={spinner} alt="loading..."/>
         }
         {round.imgUrl &&
           <img src={round.imgUrl} alt="round"

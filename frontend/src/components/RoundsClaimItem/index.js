@@ -46,7 +46,6 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
       const roundSender = await response.json()
       setSender(roundSender)
     }
-    // eslint-disable-next-line eqeqeq
     if (Array.isArray(round.Items) && round.Items[0] != undefined) {
       setId(round.id)
       setItem(round.Items[0]);
