@@ -74,7 +74,7 @@ const RoundsCard = ({ user, site, item, round, type }) => {
         <hr id="rounds-card-info_divider" color='silver'/>
         <div id="rounds-card-info_comments">
           <CommentForm round={round} comments={comments} setComments={setComments}/>
-          <CommentFeed comments={comments}/>
+          <CommentFeed round={round} comments={comments} setComments={setComments}/>
         </div>
     </div>
   )

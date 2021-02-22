@@ -277,6 +277,7 @@ router.post(
 
 // ******** Comments
 
+//GET all round comments
 router.get(
   `/:id(\\d+)/comments`,
   asyncHandler(async (req, res) => {
@@ -288,6 +289,7 @@ router.get(
   })
 )
 
+//POST a new comment
 router.post(
   `/:id(\\d+)/comments`,
   asyncHandler(async (req, res) => {
@@ -301,5 +303,36 @@ router.post(
   })
 )
 
+//EDIT an existing comment
+router.patch(
+  `/:roundId(\\d+)/comments/:commentId(\\d+)`,
+  restoreUser,
+  asyncHandler(async (req, res) => {
+    const user = await req.user.toJSON();
+    const { roundId, commentId } = req.params
+    const comment = await RoundComment.findByPk(commentId);
+    if (comment) {
+      await comment.update({
+        body: body
+      })
+    } 
+    res.json({ comment })
+  })
+)
+
+//DELETE a comment
+router.delete(
+  `/:roundId(\\d+)/comments/:commentId(\\d+)`,
+  restoreUser,
+  asyncHandler(async (req, res) => {
+    const user = await req.user.toJSON();
+    const { roundId, commentId } = req.params
+    const comment = await RoundComment.findByPk(commentId);
+    if (comment) {
+      await comment.destroy();
+    } 
+    res.json({ message: "comment deleted" })
+  })
+)
 
 module.exports = router;

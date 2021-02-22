@@ -2,11 +2,20 @@ import React from 'react';
 import Comment from '../Comment';
 import './CommentFeed.css';
 
-const CommentFeed = ({ comments }) => {
+const CommentFeed = ({ round, comments, setComments }) => {
   return (
     <div className="comment-feed">
       {!Array.isArray(comments) && <h3>Start the conversation</h3>}
-      {Array.isArray(comments) && comments.map(comment => <Comment key={comment.id} comment={comment} className="comment" />)}
+      {Array.isArray(comments) && comments.map(comment => {
+        return <Comment 
+          key={comment.id}
+          round={round} 
+          comment={comment} 
+          comments={comments} 
+          setComments={setComments} 
+          className="comment" 
+        />
+      })}
     </div>
   )
 };
