@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Modal } from '../../context/Modal';
-import { FiSend, IoStorefront } from 'react-icons/all';
+import { FaGlassCheers, IoStorefront } from 'react-icons/all';
 import UserImage from '../UserImage';
 import SiteFormPage from '../SiteFormPage';
 import { useHistory } from 'react-router-dom';
@@ -54,7 +54,7 @@ const RoundsSidebar = () => {
         onClick={buyRoundClickHandler}
       >
         <div id="button-buy-round-icon">
-          <FiSend
+          <FaGlassCheers
             id="button-buy-round-image"
           />
         </div>

@@ -10,10 +10,9 @@
   display: flex;
 }
 
-.comment-body,
-.comment-form textarea {
+.comment-body {
   border-radius: 16px;
-  background-color: var(--main-bg-color-dark);
+  background-color: var(--main-bg-color);
   padding: 12px;
   margin: 0 10px;
   max-width: 590px;

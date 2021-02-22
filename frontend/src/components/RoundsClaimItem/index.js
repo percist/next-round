@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import qrImage from './qr-code.png';
 import ItemImage from "../ItemImage";
+import UserImage from "../UserImage";
 import { fetchUpdateRoundToClaimed } from '../../store/rounds';
 import spinner from  '../../Spinner-1s-44px.gif'
 
@@ -74,7 +75,7 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
                 </>}
             </div>
             <div id="rounds-claim-card_info_sender" >
-              <img src={sender.imgUrl}  alt="user" /> {sender.username}
+              <UserImage user={sender} /> {sender.username}
             </div>
           </div>
         <button className="button redeem-button" hidden={wasClicked} onClick={handleRedeemClick} >

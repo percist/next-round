@@ -3,6 +3,7 @@ import { useState } from "react";
 import UserImage from '../UserImage';
 import { useSelector } from "react-redux";
 import "./CommentForm.css";
+import { IoSend } from "react-icons/all"
 import {createCommentDispatcher} from "./CommentFormUtils";
 
 const CommentForm = ({ round, comments, setComments }) => {
@@ -13,21 +14,23 @@ const CommentForm = ({ round, comments, setComments }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const newCommentData = {
-      userId: user.id,
-      body: comment,
-      roundId: round.id
-    };
-    createCommentDispatcher(round, newCommentData, comments, setComments);
-    setComment("");
+    if (comment){
+      const newCommentData = {
+        userId: user.id,
+        body: comment,
+        roundId: round.id
+      };
+      createCommentDispatcher(round, newCommentData, comments, setComments);
+      setComment("");
+    }
   };
 
   return (
     <div className="comment-form_wrapper">
     <form className="comment-form" onSubmit={onSubmit}>
         <UserImage user={user} />
-        <textarea value={comment} onChange={e => setComment(e.target.value)} className="input-field"/>
-      <button type="submit" className="submit-button">Send</button>
+        <textarea id="comment-form-input" value={comment} onChange={e => setComment(e.target.value)} className="input-field"/>
+      <button type="submit" id="comment-form-submit-button"><IoSend id="send-icon"/></button>
     </form>
   </div>
   )

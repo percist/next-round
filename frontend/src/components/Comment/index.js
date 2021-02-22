@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import UserImage from '../UserImage';
 import {fetchUser} from './CommentUtils';
 
 const Comment = ({comment}) => {
+  const sessionUser = useSelector(state => state.session.user);
   const [ user, setUser ] = useState({});
 
   useEffect(() => {
@@ -20,6 +22,8 @@ const Comment = ({comment}) => {
             </div> 
             {comment.body}
         </div>
+        <button hidden={sessionUser.id !== user.id}>edit</button>
+        <button hidden={sessionUser.id !== user.id}>delete</button>
     </div>
   )
 };

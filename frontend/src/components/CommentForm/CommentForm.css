@@ -4,8 +4,39 @@
   align-items: center;
 }
 
-.comment-form textarea {
+#comment-form-input {
   width: calc(100% - 60px);
-  /* min-height: 20px; */
-  height: 20px;
+  min-height: 35px;
+  border-radius: 16px;
+  border: none;
+  margin-left: 10px;
+  height: auto;
+  font-size: 18px;
+  padding: 4px 12px;
+  background-color: var(--main-bg-color);
+  font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+}
+
+#comment-form-input:focus{
+  outline: none;
+  background-color: var(--main-bg-color-dark);
+}
+
+#comment-form-submit-button:focus {
+  outline: none;
+}
+
+#comment-form-submit-button {
+  background-color: var(--main-border-color);
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#send-icon {
+  color: var(--main-accent-color);
 }
