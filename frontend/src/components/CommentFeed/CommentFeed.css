@@ -19,8 +19,14 @@
   word-wrap: break-word;
   border: none;
 }
+
 #comment-body_body-buttons {
   margin-left: 22px;
+  display: flex;
+}
+
+#comment-body_body-buttons_1{
+  margin-right: 5pt;
 }
 
 .comment-button {

@@ -43,11 +43,14 @@ const Comment = ({round, comment, comments, setComments}) => {
                 {commentDisplayed.body} 
               </div>
             </div>
-              <div id="comment-body_body-buttons" hidden={sessionUser.id !== user.id}>
-                <button className="comment-button"  onClick={e=>editClickHandler(e)}>edit</button>
-                ·
-                <button className="comment-button"  onClick={e=>deleteClickHandler(e)}>delete</button>
-                {`·  ${timeDifference(comment.updatedAt)}`}
+              <div id="comment-body_body-buttons" >
+                <div id="comment-body_body-buttons_1" hidden={sessionUser.id !== user.id}>
+                  <button className="comment-button" onClick={e=>editClickHandler(e)}>edit</button>
+                  ·
+                  <button className="comment-button" onClick={e=>deleteClickHandler(e)}>delete</button>
+                  ·
+                </div>
+                {timeDifference(comment.updatedAt)}
               </div>
           </div>
         </div>
