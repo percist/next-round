@@ -24,15 +24,12 @@ export const createNewSite = (site) => async (dispatch) => {
   formData.append("zip", zip);
   formData.append("active", active);
   if (image) formData.append("image", image);
-  const response = await fetch('/api/sites', {
+  const response = await fetch('/api/sites/', {
     method: 'POST',
-    headers: {
-      "Content-Type": "application/json",
-    },
     body: formData,
   });
-  dispatch(setSite(response.data.site));
-  return response;
+  dispatch(setSite(response.data));
+  return response.data;
 };
 
 export const fetchOneSite = (siteId) => async (dispatch) => {

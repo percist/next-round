@@ -26,11 +26,6 @@ const validateSignup = [
     .isInt()
     .isLength({ min: 5, max: 5 })
     .withMessage('Please provide a valid five digit zip code.'),
-  // check('imgUrl')
-  //   .exists({ checkFalsey: false })
-  //   .isString()
-  //   .isURL()
-  //   .withMessage('Please provide a valid web address to a profile picture.'),
   check('username')
     .exists({ checkFalsy: true })
     .isLength({ min: 4 })
@@ -50,8 +45,19 @@ router.post(
   validateSignup,
   asyncHandler(async (req, res) => {
     const { email, password, firstName, lastName, username, zip } = req.body;
-    const imgUrl = await singlePublicFileUpload(req.file);
-    const user = await User.signup({ email, password, imgUrl, firstName, lastName, username, zip });
+    let imgUrl;
+    if (req.file) {
+      imgUrl = await singlePublicFileUpload(req.file);
+    }      
+    const user = await User.signup({ 
+      email, 
+      password, 
+      imgUrl: imgUrl ? imgUrl : null,     
+      firstName, 
+      lastName, 
+      username, 
+      zip 
+    });
     await setTokenCookie(res, user);
 
     return res.json({

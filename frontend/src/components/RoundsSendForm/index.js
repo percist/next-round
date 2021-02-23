@@ -143,7 +143,7 @@ const RoundsSendForm = () => {
                 <select name="buddy"
                   className="input sign-up-form_input"
                   onChange={(e) => handleBuddySelect(e.target.value)}>
-                  <option value="">--Please choose an option--</option>
+                  <option value="">--Please choose a buddy--</option>
                   {!buddies && <option value=''>None</option>}
                   {Array.isArray(buddies) && buddies.map(buddy => {
                     return <option value={buddy.id} key={buddy.id}>{buddy.firstName}</option>

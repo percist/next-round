@@ -123,14 +123,15 @@ router.get(
 // Create a new site
 router.post(
   `/`,
-  restoreUser,
   singleMulterUpload("image"), //receives req.file
+  restoreUser,
   validateSignup,
   asyncHandler(async (req, res) => {
     const user = await req.user.toJSON();
     const { name, address, city, state, website, active, zip } = req.body;
+    let imgUrl;
     if (req.file) {
-      const imgUrl = await singlePublicFileUpload(req.file);
+      imgUrl = await singlePublicFileUpload(req.file);
     }
     const site = await Site.create({
       name,
@@ -195,12 +196,15 @@ router.post(
   asyncHandler(async (req, res) => {
     const siteId = req.params.siteId;
     const { name, description, price } = req.body
-    const imgUrl = await singlePublicFileUpload(req.file);
+    let imgUrl;
+    if (req.file) {
+      imgUrl = await singlePublicFileUpload(req.file);
+    }    
     const item = await Item.create({
       name,
       description,
       price: parseInt(price),
-      imgUrl
+      imgUrl: imgUrl ? imgUrl : null,
     });
     await Menu.create({
       siteId,

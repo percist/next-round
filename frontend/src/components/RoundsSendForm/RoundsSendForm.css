@@ -94,7 +94,7 @@
 }
 
 #round-send-mockup_details_user img,
-#round-send-mockup_details_user_image {
+#round-send-mockup_details #user_image {
     width: 60px;
     height: 60px;
     margin: 8px;
