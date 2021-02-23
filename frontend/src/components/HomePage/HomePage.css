@@ -82,10 +82,10 @@
 }
 
 #rounds-sidebar_site_image,
-#rounds-sidebar_user_image {
+.rounds-sidebar #user-image {
   display: flex;
   align-items: center;
-  margin: 8px 8px 8px 0;
+  margin: 8px 8px 8px -10px;
 }
 
 #button-buy-round,

@@ -1,8 +1,12 @@
-.comment-info img,
+.comment-info img {
+  margin-top: 12px;
+  width: 40px;
+  height: 40px;
+}
+
 .comment-form img {
   width: 40px;
   height: 40px;
-  align-self: flex-start;
 }
 
 .comment {
