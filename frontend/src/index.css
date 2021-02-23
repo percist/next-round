@@ -24,3 +24,7 @@ body, header {
     color: var(--main-text-color);
     overscroll-behavior: none;
 }
+
+textarea {
+  resize: none;
+}

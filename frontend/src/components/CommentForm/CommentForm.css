@@ -4,6 +4,10 @@
   align-items: center;
 }
 
+#comment-form-editing{
+  width: calc(100% - 60px);
+  
+}
 #comment-form-input {
   width: calc(100% - 60px);
   min-height: 35px;
@@ -35,6 +39,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#comment-form-cancel-button {
+  background: none;
+  border: none;
+  margin: 0 22px;
 }
 
 #send-icon {

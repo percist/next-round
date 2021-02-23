@@ -19,64 +19,67 @@ const RoundsCard = ({ user, site, item, round, type }) => {
   }, [round])
 
   if (type === "user") user = receiver;
-
+  
   return (
-    <div className="rounds-card" >
-      <div className="rounds-card-header">
-        <div id="rounds-card-header_image">
-          {!user && <img src={spinner} alt="loading..."/>}
-          {user && <UserImage user={user} />}
-        </div>
-        <div className="rounds-card-header-description">
-          <div id="rounds-card-header_name">
+    <>
+    {user && site && round && item && 
+      <div className="rounds-card" >
+        <div className="rounds-card-header">
+          <div id="rounds-card-header_image">
             {!user && <img src={spinner} alt="loading..."/>}
-            {user && user.username}
+            {user && <UserImage user={user} />}
           </div>
-          <div id="rounds-card-header_time">
-            {/* using createdAt for demo but in production would use updatedAt*/}
-            {timeDifference(round.createdAt)} 
+          <div className="rounds-card-header-description">
+            <div id="rounds-card-header_name">
+              {!user && <img src={spinner} alt="loading..."/>}
+              {user && user.username}
+            </div>
+            <div id="rounds-card-header_time">
+              {/* using createdAt for demo but in production would use updatedAt*/}
+              {timeDifference(round.createdAt)} 
+            </div>
           </div>
         </div>
-      </div>
-        <div id="rounds-card-header_comment">
-          {round.comment}
+          <div id="rounds-card-header_comment">
+            {round.comment}
+          </div>
+        <div className="rounds-card-image">
+          {!round.imgUrl &&
+            !site.imgUrl &&
+            <img src={spinner} alt="loading..."/>
+          }
+          {round.imgUrl &&
+            <img src={round.imgUrl} alt="round"
+            />}
+          {!round.imgUrl &&
+            site.imgUrl &&
+            <img src={site.imgUrl} alt="site"
+            />}
         </div>
-      <div className="rounds-card-image">
-        {!round.imgUrl &&
-          !site.imgUrl &&
-          <img src={spinner} alt="loading..."/>
-        }
-        {round.imgUrl &&
-          <img src={round.imgUrl} alt="round"
-          />}
-        {!round.imgUrl &&
-          site.imgUrl &&
-          <img src={site.imgUrl} alt="site"
-          />}
-      </div>
-      <div className="rounds-card-info">
-        <div id="rounds-card-info_site_name">
-          {!site && <img src={spinner} alt="loading..."/>}
-          {site &&
-            <a href={`/sites/${site.id}`} >
-              {site.name}
-            </a>}
+        <div className="rounds-card-info">
+          <div id="rounds-card-info_site_name">
+            {!site && <img src={spinner} alt="loading..."/>}
+            {site &&
+              <a href={`/sites/${site.id}`} >
+                {site.name}
+              </a>}
+          </div>
+          <div id="rounds-card-info_site_item">
+          {!item && <img src={spinner} alt="loading..."/>}
+            {item && `${item.name}`}
+          </div>
+          <div id="rounds-card-info_site_location">
+            {!site && <img src={spinner} alt="loading..."/>}
+            {site && `${site.city}, ${site.state}`}
+          </div>
         </div>
-        <div id="rounds-card-info_site_item">
-         {!item && <img src={spinner} alt="loading..."/>}
-          {item && `${item.name}`}
-        </div>
-        <div id="rounds-card-info_site_location">
-          {!site && <img src={spinner} alt="loading..."/>}
-          {site && `${site.city}, ${site.state}`}
-        </div>
-      </div>
-        <hr id="rounds-card-info_divider" color='silver'/>
-        <div id="rounds-card-info_comments">
-          <CommentForm round={round} comments={comments} setComments={setComments}/>
-          <CommentFeed round={round} comments={comments} setComments={setComments}/>
-        </div>
-    </div>
+          <hr id="rounds-card-info_divider" color='silver'/>
+          <div id="rounds-card-info_comments">
+            <CommentForm round={round} comments={comments} setComments={setComments}/>
+            <CommentFeed round={round} comments={comments} setComments={setComments}/>
+          </div>
+      </div>}
+    </>
   )
 };
 

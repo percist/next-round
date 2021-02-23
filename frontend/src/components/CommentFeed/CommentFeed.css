@@ -10,7 +10,7 @@
   display: flex;
 }
 
-.comment-body {
+#comment-body_info {
   border-radius: 16px;
   background-color: var(--main-bg-color);
   padding: 12px;
@@ -18,4 +18,13 @@
   max-width: 590px;
   word-wrap: break-word;
   border: none;
+}
+#comment-body_body-buttons {
+  margin-left: 22px;
+}
+
+.comment-button {
+  background: none;
+  border: none;
+  margin: 0;
 }
