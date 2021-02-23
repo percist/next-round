@@ -310,13 +310,15 @@ router.patch(
   asyncHandler(async (req, res) => {
     const user = await req.user.toJSON();
     const { roundId, commentId } = req.params
+    const { body } = req.body.newCommentData
+
     const comment = await RoundComment.findByPk(commentId);
     if (comment) {
       await comment.update({
         body: body
       })
     } 
-    res.json({ comment })
+    return res.json({ comment })
   })
 )
 

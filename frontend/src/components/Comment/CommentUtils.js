@@ -21,24 +21,7 @@ const deleteCommentDispatcher = async(roundId, commentId, comments, setComments)
   await setComments([...comments.filter(comment => comment.id !== commentId)])
 };
 
-const editCommentDispatcher = async(roundId, commentId, newCommentData, comments, setComments) => {
-  const editComment = async () => {
-    const res = await fetch(`/api/rounds/${roundId}/comments/${commentId}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': "application/json",
-        'XSRF-Token': Cookies.get('XSRF-TOKEN')
-      },
-      body: JSON.stringify({newCommentData})
-    });
-    if (res.ok) return res.json();
-  } ;
-  const { roundComment } = await editComment(commentId)
-  await setComments([...comments, roundComment])
-};
-
 export {
   fetchUser,
-  deleteCommentDispatcher,
-  editCommentDispatcher
+  deleteCommentDispatcher
 }

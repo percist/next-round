@@ -9,9 +9,12 @@ const Comment = ({round, comment, comments, setComments}) => {
   const sessionUser = useSelector(state => state.session.user);
   const [ user, setUser ] = useState({});
   const [ editing, setEditing ] = useState(false);
+  const [ commentDisplayed, setCommentDisplayed ] = useState({})
 
   useEffect(() => {
       fetchUser(comment, setUser)
+      setCommentDisplayed(comment)
+      setEditing(false)
   },[comment])
 
   const editClickHandler = (e) => {
@@ -35,7 +38,7 @@ const Comment = ({round, comment, comments, setComments}) => {
                 {user && user.username}
               </div> 
               <div id="comment-body_body">
-                {comment.body} 
+                {commentDisplayed.body} 
               </div>
               <div id="comment-body_body-buttons">
                 <button hidden={sessionUser.id !== user.id} onClick={e=>editClickHandler(e)}>edit</button>
@@ -45,7 +48,14 @@ const Comment = ({round, comment, comments, setComments}) => {
         </div>
       )
     }else{
-      return <CommentForm body={comment.body} />
+      return <CommentForm 
+        comment={comment} 
+        round={round}
+        comments={comments}
+        setComments={setComments}
+        setCommentDisplayed={setCommentDisplayed}
+        setEditing={setEditing}
+        />
     }
   }
 
