@@ -58,6 +58,14 @@ router.post(
       username, 
       zip 
     });
+
+    if (!user) {
+      const err = new Error('Registration failed');
+      err.status = 401;
+      err.title = 'Registration failed';
+      err.errors = ['Something weird happened. Your registration was not processed. Please try again later.'];
+      return next(err);
+    }
     await setTokenCookie(res, user);
 
     return res.json({

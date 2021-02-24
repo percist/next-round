@@ -108,6 +108,7 @@ router.get(
     res.json({ sites })
   })
 )
+
 // Get owner of site
 router.get(
   `/:id(\\d+)/owners`,
@@ -147,6 +148,13 @@ router.post(
       siteId: site.id,
       userId: user.id
     })
+    if (!site) {
+      const err = new Error('Registration failed');
+      err.status = 401;
+      err.title = 'Registration failed';
+      err.errors = ['Something weird happened. Your business could not be created at this time.'];
+      return next(err);
+    }
     return res.json({
       site
     });
@@ -210,6 +218,13 @@ router.post(
       siteId,
       itemId: item.id
     });
+    if (!item) {
+      const err = new Error('Item creation failed');
+      err.status = 401;
+      err.title = 'Item creation failed';
+      err.errors = ['Something weird happened. Your item was not created. Please try again later.'];
+      return next(err);
+    }
     res.json(item)
   })
 )

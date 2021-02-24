@@ -29,7 +29,6 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
     setComment("");
     setImage(null);
     setWasClaimed(true);
-    // eslint-disable-next-line eqeqeq
     await setRoundsToDisplay([...roundsToDisplay.filter(setRound => setRound.id != id)])
   }
 

@@ -11,6 +11,7 @@ import RoundsSendForm from "./components/RoundsSendForm";
 import RoundsClaimForm from "./components/RoundsClaimForm";
 import HomePageContainer from "./components/HomePageContainer";
 import UserPage from "./components/UserPage";
+import NotFoundPage from "./components/NotFoundPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +46,9 @@ function App() {
           </Route>
           <Route path="/sites/:siteId/menu" exact >
             <MenuPage />
+          </Route>
+          <Route path="*" >
+            <NotFoundPage />
           </Route>
         </Switch>
       )}

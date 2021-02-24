@@ -1,4 +1,5 @@
 const express = require("express")
+const { check } = require('express-validator');
 const { Op } = require("sequelize")
 const { sequelize } = require("../../db/models");
 const asyncHandler = require('express-async-handler');
@@ -7,6 +8,28 @@ const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
 const { Round, User, RoundItem, Item, Site, RoundComment } = require("../../db/models");
 
 const router = express.Router();
+
+
+const validateRoundCreation = [
+  check('receiverId')
+    .exists()
+    .withMessage('Please choose a buddy.'),
+  check('itemId')
+    .exists()
+    .withMessage('Please choose an item.'),
+]
+
+const validateCommentCreation = [
+  check('userId')
+    .exists()
+    .withMessage('What exactly are you trying to do?'),
+  check('itemId')
+    .exists()
+    .withMessage('Where did this come from even?'),
+  check('body')
+    .exists()
+    .withMessage('Please write a comment.')
+]
 
 // GET a round by Id
 router.get(
@@ -252,11 +275,11 @@ router.patch(
     }
   }))
 
-// TODO: Form Validation
 // Create one round and accompanying roundItem
 router.post(
   `/`,
   restoreUser,
+  validateRoundCreation,
   asyncHandler(async (req, res) => {
     const user = await req.user.toJSON()
     const { receiverId, itemId } = req.body;
@@ -292,6 +315,7 @@ router.get(
 //POST a new comment
 router.post(
   `/:id(\\d+)/comments`,
+  validateRoundCreation,
   asyncHandler(async (req, res) => {
     const { userId, roundId, body } = req.body.newCommentData
     const roundComment = await RoundComment.create({
@@ -299,6 +323,13 @@ router.post(
       roundId: roundId,
       body: body
     })
+    if (!roundComment) {
+      const err = new Error('Comment failed');
+      err.status = 401;
+      err.title = 'Comment failed';
+      err.errors = ['Something weird happened. Your comment was not posted. Please try again later'];
+      return next(err);
+    }
     return res.json({ roundComment })
   })
 )

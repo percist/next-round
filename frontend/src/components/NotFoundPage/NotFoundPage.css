@@ -1,0 +1,19 @@
+#error-page img{
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  height: calc(95vh);
+  object-fit: cover;
+  object-position: 100% 100%;
+  margin-bottom: 60px;
+}
+
+#error-page_message {
+  position: fixed;
+  top: calc(20vh + 80px);
+  right: 10vh;
+  color: white;
+  background: rgba(0, 0, 0, 0.287);
+  border-radius: 12px;
+  padding: 20px;
+}

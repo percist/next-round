@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '../../context/Modal';
+import image from '../../N.png'
 import LoginForm from '../LoginForm';
 import SignupFormPage from '../SignupFormPage';
 import * as sessionActions from "../../store/session";
@@ -41,7 +42,7 @@ const SplashPage = () => {
   return (
     <div className="splash-page">
       <div className="splash-page_img">
-        <img src='./N.png' alt="logo" />
+        <img src={image} alt="logo" />
         <div className="splash-page-overlay" id="splash-page-overlay">
           <div id="splash-page-cta">
             <h1 id="splash-page-cta_1">
