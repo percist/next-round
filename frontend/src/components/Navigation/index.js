@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {AiFillHome} from 'react-icons/all';
 import ProfileButton from './ProfileButton';
+import SearchBar from '../SearchBar';
 import image from "./NextRoundText.png";
 import './Navigation.css';
 
@@ -17,6 +18,7 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = (
       <div id="session-links">
+        <SearchBar />
         <ProfileButton user={sessionUser} />
         <a id="session-links_home-container" href={`/`}>
           <AiFillHome

@@ -4,11 +4,11 @@
   align-items: center;
 }
 
-#comment-form-editing{
+.comment-form-editing{
   width: calc(100% - 60px);
   
 }
-#comment-form-input {
+.comment-form-input {
   width: calc(100% - 60px);
   min-height: 35px;
   border-radius: 16px;
@@ -21,16 +21,16 @@
   font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
 }
 
-#comment-form-input:focus{
+.comment-form-input:focus{
   outline: none;
   background-color: var(--main-bg-color-dark);
 }
 
-#comment-form-submit-button:focus {
+.comment-form-submit-button:focus {
   outline: none;
 }
 
-#comment-form-submit-button {
+.comment-form-submit-button {
   background-color: var(--main-border-color);
   border-radius: 100%;
   width: 30px;
@@ -41,12 +41,12 @@
   align-items: center;
 }
 
-#comment-form-cancel-button {
+.comment-form-cancel-button {
   background: none;
   border: none;
   margin: 0 22px;
 }
 
-#send-icon {
+.send-icon {
   color: var(--main-accent-color);
 }

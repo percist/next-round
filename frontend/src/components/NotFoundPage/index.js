@@ -9,6 +9,7 @@ const NotFoundPage = () => {
         <img src={image} alt="logo" />
       </div>
       <div id="error-page_message">
+        <h1> 404 Error </h1>
         <h1> That's not a thing. </h1>
         <h2> Try clicking on the Home icon at the top</h2>
       </div>

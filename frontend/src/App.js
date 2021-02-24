@@ -11,6 +11,7 @@ import RoundsSendForm from "./components/RoundsSendForm";
 import RoundsClaimForm from "./components/RoundsClaimForm";
 import HomePageContainer from "./components/HomePageContainer";
 import UserPage from "./components/UserPage";
+import SearchResultsPage from "./components/SearchResultsPage";
 import NotFoundPage from "./components/NotFoundPage";
 
 function App() {
@@ -46,6 +47,9 @@ function App() {
           </Route>
           <Route path="/sites/:siteId/menu" exact >
             <MenuPage />
+          </Route>
+          <Route path="/search/?=:query" exact >
+            <SearchResultsPage />
           </Route>
           <Route path="*" >
             <NotFoundPage />

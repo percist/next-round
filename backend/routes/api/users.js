@@ -1,4 +1,5 @@
 const express = require('express');
+const { Op } = require('sequelize')
 const { check } = require('express-validator');
 const asyncHandler = require('express-async-handler');
 const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
@@ -88,7 +89,7 @@ router.get(
 router.get(
   `/:id(\\d+)/buddies`,
   asyncHandler(async (req, res) => {
-    const userId = req.params.id
+    const userId = req.params.id;
     const userWithBuddies = await User.findOne({
       where: { id: userId },
       include: [{
@@ -110,5 +111,36 @@ router.get(
     res.json(buddiesArray)
   })
 )
+
+// GET Search Results
+router.get(
+  `/:query`,
+  asyncHandler(async (req, res) => {
+    const query = req.params.query;
+    const sites = await Site.findAll({
+      where: {
+        [Op.or]: [
+          { 'name': { [Op.like]:`%${query}%`}},
+          { 'address': { [Op.like]:`%${query}%`}},
+          { 'city': { [Op.like]:`%${query}%`}},
+          { 'website': { [Op.like]:`%${query}%`}},
+        ]
+      },
+      limit: 20,
+    })
+    const users = await User.findAll({
+      where: {
+        [Op.or]: [
+        { 'username': { [Op.like]:`%${query}%`}},
+        { 'firstName': { [Op.like]:`%${query}%`}},
+        { 'lastName': { [Op.like]:`%${query}%`}},
+        ]  
+      },
+      limit: 20,
+    })
+    const results = [...sites,...users].sort((a,b)=> a.updatedAt - b.updatedAt)
+    res.json(results) 
+  })
+  )
 
 module.exports = router;
