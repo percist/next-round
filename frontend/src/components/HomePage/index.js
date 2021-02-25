@@ -6,10 +6,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchAllBuddyRounds } from '../../store/rounds';
 import "./HomePage.css";
 
-const HomePage = ({user}) => {
+const HomePage = () => {
 
   const dispatch = useDispatch();
   const rounds = useSelector(state => state.rounds);
+  const {user} = useSelector(state => state.session);
 
   useEffect(() => {
     dispatch(fetchAllBuddyRounds(user.id));

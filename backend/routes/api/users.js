@@ -120,10 +120,10 @@ router.get(
     const sites = await Site.findAll({
       where: {
         [Op.or]: [
-          { 'name': { [Op.like]: `%${query}%` } },
-          { 'address': { [Op.like]: `%${query}%` } },
-          { 'city': { [Op.like]: `%${query}%` } },
-          { 'website': { [Op.like]: `%${query}%` } },
+          { 'name': { [Op.iLike]: `%${query}%` } },
+          { 'address': { [Op.iLike]: `%${query}%` } },
+          { 'city': { [Op.iLike]: `%${query}%` } },
+          { 'website': { [Op.iLike]: `%${query}%` } },
         ]
       },
       limit: 20,
@@ -131,9 +131,9 @@ router.get(
     const users = await User.findAll({
       where: {
         [Op.or]: [
-          { 'username': { [Op.like]: `%${query}%` } },
-          { 'firstName': { [Op.like]: `%${query}%` } },
-          { 'lastName': { [Op.like]: `%${query}%` } },
+          { 'username': { [Op.iLike]: `%${query}%` } },
+          { 'firstName': { [Op.iLike]: `%${query}%` } },
+          { 'lastName': { [Op.iLike]: `%${query}%` } },
         ]
       },
       limit: 20,

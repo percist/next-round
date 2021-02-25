@@ -31,7 +31,7 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route path="/" exact>
-            <HomePageContainer />
+            <HomePageContainer isLoaded={isLoaded}/>
           </Route>
           <Route path="/users/round" exact>
             <RoundsSendForm />
@@ -43,7 +43,7 @@ function App() {
             <UserPage />
           </Route>
           <Route path="/sites/:siteId" exact >
-            <SitePage />
+            <SitePage isLoaded={isLoaded}/>
           </Route>
           <Route path="/sites/:siteId/menu" exact >
             <MenuPage />

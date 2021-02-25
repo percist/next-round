@@ -4,23 +4,24 @@ import HomePage from '../HomePage';
 import SplashPage from '../SplashPage';
 
 
-function HomePageContainer() {
-  const user = useSelector(state => state.session.user);
+function HomePageContainer({ isLoaded }) {
+  const {user} = useSelector(state => state.session);
 
-  let homePageSelector;
+  const homePageSelector = () => {
   if (user) {
-    homePageSelector = (
-      <HomePage user={user}/>
+    return (
+      <HomePage />
     );
   } else {
-    homePageSelector = (
+    return (
       <SplashPage />
     )
   }
+}
 
   return (
     <>
-      {homePageSelector}
+      {isLoaded && homePageSelector()}
     </>
     )
 };

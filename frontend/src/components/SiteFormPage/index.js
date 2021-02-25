@@ -125,7 +125,6 @@ const SiteFormPage = () => {
             type="checkbox"
             id="active"
             onChange={(e) => setIsActive(e.target.value)}
-            required
           />
         </label>
         <button

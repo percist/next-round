@@ -20,12 +20,12 @@ const RoundsSidebar = () => {
 
   useEffect(() => {
     fetchPaidRounds(setNumRounds)
-    fetchOwnedSites(setSitesOwned)
+    fetchOwnedSites(setSitesOwned)   
   }, []);
 
   const redeemRoundClickHandler = () => history.push(`/users/${user.id}/round`);
   const buyRoundClickHandler = () => history.push("/users/round");
-
+  
   return (
     <div hidden={sitesOwned} className="rounds-sidebar">
       <div className="rounds-sidebar_user">

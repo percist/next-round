@@ -19,8 +19,8 @@ const UserRoundsFeed = ({ roundsArray }) => {
       {Array.isArray(roundsArray) && items && roundsArray.map((round, i) => {
         return (
           <div key={round.id}>
-            {(!round || !round.Items[0]) && <img src={spinner} alt="loading..."/>}
-            {round && round.Items[0] &&
+            {(!round || !Array.isArray(round.Items) ||!round.Items[0]) && <img src={spinner} alt="loading..."/>}
+            {round && Array.isArray(round.Items) && round.Items[0] &&
               <RoundsCard
                 round={round}
                 site={round.Items[0].Sites[0]}
