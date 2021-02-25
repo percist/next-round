@@ -2,11 +2,10 @@ import React from 'react';
 import { TiUserAdd } from 'react-icons/all';
 import { fetchCreateBuddy } from './FollowButtonUtils';
 
-const FollowButton = ({ userId }) => {
-
+const FollowButton = ({ userId, buddyId, setIsBuddy }) => {
 
   return (
-    <TiUserAdd/>
+    <TiUserAdd onClick={()=> fetchCreateBuddy(userId, buddyId, setIsBuddy)}/>
   )
 }
 

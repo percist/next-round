@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import UserRoundsFeed from "../UserRoundsFeed";
 import UserImage from "../UserImage";
 import { fetchOneUser } from "../../store/users";
 import { fetchAllUserClaimedRounds } from "../../store/rounds";
+import {followSwitch} from "./UserPageUtils";
+import UnfollowButton from "../UnfollowButton";
 import spinner from  '../../Spinner-1s-44px.gif';
 import './UserPage.css';
 
@@ -12,13 +14,21 @@ const UserPage = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const { id } = params;
+  const sessionUser = useSelector(state => state.session.user)
   const  user  = useSelector((state) => state.users);
   const rounds = useSelector(state => state.rounds);
+  const [ isBuddy, setIsBuddy ] = useState(false);
 
   useEffect(() => {
     dispatch(fetchOneUser(id));
     dispatch(fetchAllUserClaimedRounds(id));
   }, [dispatch, id]);
+
+  const unfollowSwitch = () =>{
+    if (isBuddy) {
+      return <UnfollowButton userId={sessionUser.id} buddyId={id} setIsBuddy={setIsBuddy}/>
+    }
+  }
 
   return (
     <div id="buddy-page">
@@ -30,8 +40,14 @@ const UserPage = () => {
           <div id="buddy-page-header_profile">
             <UserImage user={user} />
         </div>
-        {!user && <img src={spinner} alt="loading..."/>}
-        {user && <h1>{user.firstName} {user.lastName}</h1>}
+        <div id="buddy-page-header_name">
+          {!user && <img src={spinner} alt="loading..."/>}
+          {user && <h1>{user.firstName} {user.lastName}</h1>}
+          <div id="buddy-page-header_name-follow">
+            {followSwitch(isBuddy, setIsBuddy, id, sessionUser.id)}
+            {unfollowSwitch()}
+          </div>
+        </div>
       </div>
       <div className="buddy-page-content">
         <div className="buddy-page-content-feed">

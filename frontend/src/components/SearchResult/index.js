@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import UserImage from '../UserImage';
 import { FaUserFriends } from 'react-icons/all';
 import FollowButton from '../FollowButton';
 
 const SearchResult = ({ type, result, buddy }) => {
   const [ isBuddy, setIsBuddy ] = useState(false);
-  const dispatch = useDispatch();
+  const {user} = useSelector(state=> state.session)
 
   const followSwitch = () =>{
-    if (buddy) {
+    if (isBuddy) {
       return <FaUserFriends />
     }else{
-      return <FollowButton userId={result.id}/>
+      return <FollowButton buddyId={result.id} userId={user.id} setIsBuddy={setIsBuddy}/>
     }
   }
+
+  useEffect(()=>{
+    setIsBuddy(buddy)
+  },[])
 
   if (type === "user"){
   return (

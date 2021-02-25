@@ -49,15 +49,15 @@ router.post(
     let imgUrl;
     if (req.file) {
       imgUrl = await singlePublicFileUpload(req.file);
-    }      
-    const user = await User.signup({ 
-      email, 
-      password, 
-      imgUrl: imgUrl ? imgUrl : null,     
-      firstName, 
-      lastName, 
-      username, 
-      zip 
+    }
+    const user = await User.signup({
+      email,
+      password,
+      imgUrl: imgUrl ? imgUrl : null,
+      firstName,
+      lastName,
+      username,
+      zip
     });
 
     if (!user) {
@@ -120,10 +120,10 @@ router.get(
     const sites = await Site.findAll({
       where: {
         [Op.or]: [
-          { 'name': { [Op.like]:`%${query}%`}},
-          { 'address': { [Op.like]:`%${query}%`}},
-          { 'city': { [Op.like]:`%${query}%`}},
-          { 'website': { [Op.like]:`%${query}%`}},
+          { 'name': { [Op.like]: `%${query}%` } },
+          { 'address': { [Op.like]: `%${query}%` } },
+          { 'city': { [Op.like]: `%${query}%` } },
+          { 'website': { [Op.like]: `%${query}%` } },
         ]
       },
       limit: 20,
@@ -131,16 +131,50 @@ router.get(
     const users = await User.findAll({
       where: {
         [Op.or]: [
-        { 'username': { [Op.like]:`%${query}%`}},
-        { 'firstName': { [Op.like]:`%${query}%`}},
-        { 'lastName': { [Op.like]:`%${query}%`}},
-        ]  
+          { 'username': { [Op.like]: `%${query}%` } },
+          { 'firstName': { [Op.like]: `%${query}%` } },
+          { 'lastName': { [Op.like]: `%${query}%` } },
+        ]
       },
       limit: 20,
     })
-    const results = [...sites,...users].sort((a,b)=> a.updatedAt - b.updatedAt)
-    res.json(results) 
+    const results = [...sites, ...users].sort((a, b) => a.updatedAt - b.updatedAt)
+    res.json(results)
   })
-  )
+)
+
+// POST new follow
+router.post(
+  `/:userId(\\d+)/buddies/:buddyId(\\d+)`,
+  asyncHandler(async (req, res) => {
+    const {userId, buddyId} = req.params
+    const buddy = await Buddy.create({
+      ownerId: userId,
+      buddyId: buddyId
+    })
+    return res.json({ 
+      buddy 
+    })
+  })
+)
+
+router.delete(
+  `/:userId(\\d+)/buddies/:buddyId(\\d+)`,
+  asyncHandler(async (req, res) => {
+    const {userId, buddyId} = req.params
+    const buddy = await Buddy.findOne({
+      where:{
+        ownerId: userId,
+        buddyId: buddyId
+      }
+    })
+    await buddy.destroy();
+    return res.json({ 
+      message: "user unfollowed" 
+    })
+  })
+
+)
+
 
 module.exports = router;
