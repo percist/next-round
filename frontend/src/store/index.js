@@ -5,7 +5,6 @@ import sites from './sites';
 import rounds from './rounds';
 import items from './items';
 import users from './users';
-// import search from './search';
 
 const rootReducer = combineReducers({
   session,
@@ -13,7 +12,6 @@ const rootReducer = combineReducers({
   rounds,
   items,
   users,
-  // search
 });
 
 let enhancer;

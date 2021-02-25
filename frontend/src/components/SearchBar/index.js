@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import createSearchResults from '../../store/search';
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -15,7 +14,6 @@ const SearchBar = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // dispatch(createSearchResults(query))
     const searchSitesAndBuddies = async(query) => {
       const createSearch = async () => {
         const res = await fetch(`/api/users/${query}`);
@@ -24,14 +22,11 @@ const SearchBar = () => {
       const results = await createSearch()
       setQuery('');
       history.push({
-        pathname: `/search/?=${query}`,
-        state: results
+        pathname: `/search`,
+        state: {results, query}
       });
     };
     searchSitesAndBuddies(query)
-
-    //TODO: refactor to pass in results props based on this link:
-    //https://levelup.gitconnected.com/how-to-pass-additional-data-while-redirecting-to-different-route-f7bf5f95d48c
   }
 
   return (

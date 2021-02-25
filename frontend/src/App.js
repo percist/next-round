@@ -48,7 +48,7 @@ function App() {
           <Route path="/sites/:siteId/menu" exact >
             <MenuPage />
           </Route>
-          <Route path="/search/?=:query" exact >
+          <Route path="/search" exact >
             <SearchResultsPage />
           </Route>
           <Route path="*" >
