@@ -18,7 +18,8 @@ module.exports = {
       },
       imgUrl: {
         allowNull: true,
-        type: Sequelize.STRING(1000)
+        type: Sequelize.STRING(1000),
+        defaultValue: '../../DefaultHeader.png'
       },
       receiverId: {
         allowNull: false,

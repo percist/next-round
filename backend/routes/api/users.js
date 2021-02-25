@@ -164,8 +164,10 @@ router.post(
   asyncHandler(async (req, res) => {
     const {userId, buddyId} = req.params
     const buddy = await Buddy.findOrCreate({
-      ownerId: userId,
-      buddyId: buddyId
+      where:{
+        ownerId: userId,
+        buddyId: buddyId
+      }
     })
     return res.json({ 
       buddy 

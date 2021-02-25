@@ -50,7 +50,8 @@ module.exports = {
         }
       },
       imgUrl: {
-        type: Sequelize.STRING(1000)
+        type: Sequelize.STRING(1000),
+        defaultValue: "../../DefaultHeader.png"
       },
       active: Sequelize.BOOLEAN,
       createdAt: {
