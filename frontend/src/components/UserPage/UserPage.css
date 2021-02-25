@@ -32,6 +32,15 @@
   margin-top: -700;
 }
 
+#buddy-page-header_name {
+  display: flex;
+  align-items: center;
+}
+
+#buddy-page-header_name-follow{
+  margin-left: 12px;
+}
+
 .buddy-page-content { 
   padding-top: 12px;
   display: flex;
@@ -40,3 +49,10 @@
   background-color: var(--main-bg-color-dark);
 }
 
+.following-icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--main-bg-color-dark);
+    border-radius: 100%;
+    padding: 6px;
+}

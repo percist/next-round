@@ -15,6 +15,15 @@
 #search-results-page-sidebar_filters{
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
+}
+
+#search-results-page-sidebar_filters div{
+  border-radius: 10px;
+}
+
+#search-results-page-sidebar_filters div:hover{
+  background-color: var(--main-bg-color-dark);
 }
 
 #search-results-page-sidebar_filters button{
@@ -23,11 +32,21 @@
   height: 40px;
   text-align: left;
   padding:0;
+  align-self: center;
+  margin-left: 10px;
+}
+
+#search-results-page-sidebar_filters-all,
+#search-results-page-sidebar_filters-sites,
+#search-results-page-sidebar_filters-people {
+  display: flex;
+  padding: 8px 5px;
 }
 
 .search-result {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-radius: 10px;
   box-shadow: var(--main-box-shadow);
   background-color: white;
@@ -37,11 +56,23 @@
   padding: 8px;
 }
 
+.search-result-content_icon{
+  margin: 10px;
+}
+
 .search-result-content {
   display: flex;
 }
 
 .search-result-content_image img{
+  width: 60px;
+  height: 60px;
+  margin: 8px;
+}
+
+.business-image{
+  border-radius: 50%;
+  object-fit: cover;
   width: 60px;
   height: 60px;
   margin: 8px;
