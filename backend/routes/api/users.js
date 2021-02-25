@@ -143,12 +143,27 @@ router.get(
   })
 )
 
+// GET if follower
+router.get(
+  `/:userId(\\d+)/buddies/:buddyId(\\d+)`,
+  asyncHandler(async (req, res) => {
+    const {userId, buddyId} = req.params
+    const buddy = await Buddy.findOne({
+      where:{
+        ownerId: userId,
+        buddyId: buddyId
+      }
+    })
+    return res.json({buddy})
+  })
+)
+
 // POST new follow
 router.post(
   `/:userId(\\d+)/buddies/:buddyId(\\d+)`,
   asyncHandler(async (req, res) => {
     const {userId, buddyId} = req.params
-    const buddy = await Buddy.create({
+    const buddy = await Buddy.findOrCreate({
       ownerId: userId,
       buddyId: buddyId
     })
@@ -158,6 +173,7 @@ router.post(
   })
 )
 
+//DELETE follower
 router.delete(
   `/:userId(\\d+)/buddies/:buddyId(\\d+)`,
   asyncHandler(async (req, res) => {
