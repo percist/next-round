@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { FaSearch, MdClear } from 'react-icons/all';
 
 const SearchBar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [query, setQuery] = useState('');
+  const [errors, setErrors] = useState([]);
 
   const handleXClick = (e) => {
     e.preventDefault()
@@ -23,26 +25,27 @@ const SearchBar = () => {
       setQuery('');
       history.push({
         pathname: `/search`,
-        state: {results, query}
+        state: {results, query, errors}
       });
     };
-    searchSitesAndBuddies(query)
+    if (query.length > 0) searchSitesAndBuddies(query)
   }
 
   return (
     <div id="search-bar">
       <input
         id="search-bar"
+        className="input"
         maxLength={60}
         value={query}
-        placeholder={"Search to find buddies and businesses"}
+        placeholder={errors.length > 0 ? errors[0]:"Search"}
         onChange={(e) => setQuery(e.target.value)}
       />
       <button onClick={handleSearch} id="search-button">
-        Search
+        <FaSearch className="search-icon"/>
               </button>
-      <button onClick={handleXClick} className="clear-button">
-        clear
+      <button onClick={handleXClick} id="clear-button">
+        <MdClear className="search-icon"/>
             </button>
     </div>
   );

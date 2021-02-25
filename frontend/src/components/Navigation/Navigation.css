@@ -39,10 +39,6 @@ a {
   border: none;
 }
 
-#link-logout {
-
-}
-
 .input {
   color: var(--main-text-color);
   background: var(--main-bg-color);
@@ -81,7 +77,6 @@ a {
   list-style: none;
   align-items: center;
   background-color: var(--main-bg-color);
-  /* z-index: 999; */
 }
 
 #profile-button-container {
@@ -103,7 +98,7 @@ a {
   border: none;
 }
 
-#session-links_home-container{
+#session-links_home-container {
   border-radius: 100px;
   background-color: var(--main-bg-color-dark);
   width: 50px;
@@ -122,4 +117,22 @@ a {
 #profile-button img {
   width: 50px;
   height: 50px;
+}
+
+#search-bar {
+  margin: 0 15px;
+  height: 30px;
+  font-size: 18px;
+}
+
+#search-bar button{
+  background: none;
+  background-color: var(--main-bg-color);
+  border: none;
+  border-radius: 10px;
+}
+
+.search-icon {
+  height: 20px;
+  width: 20px;
 }
