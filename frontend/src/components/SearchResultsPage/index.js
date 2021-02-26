@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import SearchResult from '../SearchResult';
 import { ImFilesEmpty, IoPersonCircleOutline, IoStorefront } from 'react-icons/all';
 import { fetchAllBuddies } from '../../store/users'
@@ -46,12 +46,16 @@ const SearchResultsPage = () => {
         {resultsToDisplay && buddyIds && filter === "sites" && resultsToDisplay.map((result, i) => {
           if (!result.username) {
             return (<SearchResult type={"site"} result={result} key={i} />)
+          }else{
+            return null
           }
         })}
         {resultsToDisplay && buddyIds && filter === "users" && resultsToDisplay.map((result, i) => {
           if (result.username) {
             const buddy = buddyIds.includes(result.id)
             return (<SearchResult type={"user"} buddy={buddy} result={result} key={i} />)
+          }else{
+            return null
           }
         })}
       </>

@@ -7,7 +7,9 @@ import { fetchOneUser } from "../../store/users";
 import { fetchAllUserClaimedRounds } from "../../store/rounds";
 import { followSwitch, fetchIfBuddies } from "./UserPageUtils";
 import UnfollowButton from "../UnfollowButton";
+import headerImg from '../../DefaultHeader.png';
 import spinner from '../../Spinner-1s-44px.gif';
+import largeSpinner from '../../Spinner-1s-617px.gif';
 import './UserPage.css';
 
 const UserPage = () => {
@@ -27,18 +29,18 @@ const UserPage = () => {
   useEffect(() => {
     fetchIfBuddies(sessionUser.id, id, setIsBuddy)
   },[sessionUser, id])
-
+  
   const unfollowSwitch = () => {
     if (isBuddy) {
       return <UnfollowButton userId={sessionUser.id} buddyId={id} setIsBuddy={setIsBuddy} />
     }
   }
-
+  console.log(headerImg)
   return (
     <div id="buddy-page">
       <div className="buddy-page-header">
         <div id="buddy-page-header_banner">
-          {!Array.isArray(rounds) && <img src={spinner} alt="loading..." />}
+          {!Array.isArray(rounds) && <img src={largeSpinner} alt="loading..." />}
           {Array.isArray(rounds) && rounds[0] && <img src={rounds[0].imgUrl} alt="a round" />}
         </div>
         <div id="buddy-page-header_profile">

@@ -37,12 +37,12 @@
   border-radius: 6pt;
 }
 
-#rounds-sidebar_site {
+.rounds-sidebar_site-link {
   border-radius: 8px;
-  padding: 0 8px;
+  padding: 0 20px;
 }
 
-#rounds-sidebar_site:hover,
+.rounds-sidebar_site-link:hover,
 .rounds-sidebar .button:hover {
   background-color: var(--main-bg-color-dark);
 }
@@ -71,17 +71,17 @@
   border-radius: 100px;
 }
 
-#rounds-sidebar_site_image {
+.rounds-sidebar_site_image {
   border-radius: 8px;
 }
 
-#rounds-sidebar_site,
+.rounds-sidebar_site-link,
 .rounds-sidebar_user {
   display: flex;
   align-items: center;
 }
 
-#rounds-sidebar_site_image,
+.rounds-sidebar_site_image,
 .rounds-sidebar #user-image {
   display: flex;
   align-items: center;

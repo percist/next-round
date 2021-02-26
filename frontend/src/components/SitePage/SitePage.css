@@ -26,6 +26,8 @@
 }
 
 .site-page-content-rounds-sidebar {
+    position: sticky;
+    top: 100px;
     display: flex;
     background-color: var(--secondary-bg-color);
     flex-direction: column;

@@ -7,11 +7,10 @@ const MenuList = ({ itemsToDisplay, setItemsToDisplay, siteId }) => {
     <div className="comment-feed">
       {Array.isArray(itemsToDisplay) && itemsToDisplay.map(item => {
         return (
-          <div className="menu-list-item">
+          <div className="menu-list-item" key={item.id}>
             <MenuItem
               item={item}
               siteId={siteId}
-              key={item.id}
               itemsToDisplay={itemsToDisplay}
               setItemsToDisplay={setItemsToDisplay}
             />

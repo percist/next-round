@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { FaSearch, MdClear } from 'react-icons/all';
 
 const SearchBar = () => {
-  const dispatch = useDispatch();
   const history = useHistory();
   const [query, setQuery] = useState('');
   const [errors, setErrors] = useState([]);

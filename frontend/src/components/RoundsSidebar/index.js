@@ -84,8 +84,8 @@ const RoundsSidebar = () => {
         {Array.isArray(sitesOwned.sites) && sitesOwned.sites.map(owner => {
           return (
             <div className="rounds-sidebar_site" key={owner.siteId}>
-              <a id="rounds-sidebar_site" href={`/sites/${owner.siteId}`}>
-                <img className="rounds-sidebar_image" id="rounds-sidebar_site_image" src={owner.Site.imgUrl} alt="site" />
+              <a className="rounds-sidebar_site-link" href={`/sites/${owner.siteId}`}>
+                <img className="rounds-sidebar_image rounds-sidebar_site_image" src={owner.Site.imgUrl} alt="site" />
                 {owner.Site.name}
               </a>
             </div>

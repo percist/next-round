@@ -4,23 +4,17 @@ import './UserImage.css';
 import { IoPersonCircleOutline } from 'react-icons/all';
 
 const UserImage = ({ user, type }) => {
-
-  const [ imageLoaded, setImageLoaded ] = useState("loading")
-  const [ imageErrored, setImageErrored ] = useState("")
   
-  const handleImageLoaded = () => setImageLoaded("loaded")
-  
-  const handleImageErrored = () => setImageErrored(<img src={spinner} alt="loading..."/>)
+  const handleImageErrored = () => <IoPersonCircleOutline />
 
   if (type === "profile") {
     return (
       <>
-        {!user.imgUrl && <IoPersonCircleOutline />}
+        {!user.imgUrl && <img src={spinner} alt="loading..."/>}
         {user.imgUrl &&
           <img
             id="user-image"
             src={user.imgUrl}
-            onLoad={handleImageLoaded}
             onError={handleImageErrored}
             alt="user"
           />}
@@ -30,7 +24,7 @@ const UserImage = ({ user, type }) => {
 
     return (
       <a href={`/users/${user.id}`} >
-        {!user.imgUrl && <IoPersonCircleOutline />}
+        {!user.imgUrl && <img src={spinner} alt="loading..."/>}
         {user.imgUrl &&
           <img
             id="user-image"

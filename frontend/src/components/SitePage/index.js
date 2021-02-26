@@ -6,6 +6,8 @@ import RoundsFeed from "../RoundsFeed";
 import { fetchOneSite } from "../../store/sites";
 import { fetchAllSiteRounds } from "../../store/rounds";
 import { checkIsOwner } from './SitePageUtils';
+import headerImg from '../../DefaultHeader.png';
+import largeSpinner from '../../Spinner-1s-617px.gif';
 import "./SitePage.css";
 
 const SitePage = () => {
@@ -17,25 +19,28 @@ const SitePage = () => {
   const user = useSelector((state) => state.session.user);
   const rounds = useSelector(state => state.rounds);
   const site = useSelector(state => state.sites);
+  const [imgUrl, setImgUrl] = useState(headerImg);
   const [items, setItems] = useState([]);
   const [isOwner, setIsOwner] = useState(false);
 
   const updateMenuHandler = () => history.push(`/sites/${site.id}/menu`);
 
   useEffect(() => {
-    checkIsOwner(user, siteId, setIsOwner)
-    dispatch(fetchOneSite(siteId))
-    dispatch(fetchAllSiteRounds(siteId))
+    checkIsOwner(user, siteId, setIsOwner);
+    dispatch(fetchOneSite(siteId));
+    dispatch(fetchAllSiteRounds(siteId));
   }, [dispatch, siteId, user]);
 
   useEffect(() => {
     setItems(site.Items);
+    if(site.imgUrl) setImgUrl(site.imgUrl);
   }, [site]);
 
   return (
     <div className="site-page">
       <div className="site-page-header">
-        <img src={site.imgUrl} alt={site.name} />
+        {!imgUrl && <img src={largeSpinner} alt="loading..." />}
+        {imgUrl && <img src={imgUrl} alt={site.name} />}
         <h1>{site.name}</h1>
       </div>
       <div className="site-page-content">
