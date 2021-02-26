@@ -29,7 +29,7 @@ const MenuPage = () => {
 
   return (
     <div className="menu">
-      <h1>Menu for {site.name}</h1>
+      <a href={`/sites/${site.id}`} ><h1>Menu for {site.name}</h1></a>
       <div className="menu-list">
         <MenuList
           itemsToDisplay={itemsToDisplay}

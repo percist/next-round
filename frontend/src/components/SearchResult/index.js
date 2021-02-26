@@ -55,7 +55,7 @@ const SearchResult = ({ type, result, buddy }) => {
             </a>
           </div>
           <div className="site search-result-info">
-            <div><a href={`/users/${result.id}`} >{result.name}</a></div>
+            <div><a href={`/sites/${result.id}`} >{result.name}</a></div>
             <div>Business</div>
             <div>{`${result.address} ${result.city}, ${result.state}`}</div>
           </div>

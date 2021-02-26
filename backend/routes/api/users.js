@@ -138,16 +138,16 @@ router.get(
       },
       limit: 20,
     })
-    const items = await Item.findAll({
-      where: {
-        [Op.or]: [
-          { 'name': { [Op.iLike]: `%${query}%` } },
-          { 'description': { [Op.iLike]: `%${query}%` } },
-        ]
-      },
-      limit: 20,
-    })
-    const results = [...sites, ...users, ...items].sort((a, b) => a.updatedAt - b.updatedAt)
+    // const items = await Item.findAll({
+    //   where: {
+    //     [Op.or]: [
+    //       { 'name': { [Op.iLike]: `%${query}%` } },
+    //       { 'description': { [Op.iLike]: `%${query}%` } },
+    //     ]
+    //   },
+    //   limit: 20,
+    // })
+    const results = [...sites, ...users].sort((a, b) => a.updatedAt - b.updatedAt)
     res.json(results)
   })
 )

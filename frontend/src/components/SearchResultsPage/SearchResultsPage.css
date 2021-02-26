@@ -26,6 +26,10 @@
   background-color: var(--main-bg-color-dark);
 }
 
+#search-results-page-sidebar_filters div:active{
+  background-color: var(--main-bg-color-dark);
+}
+
 #search-results-page-sidebar_filters button{
   background: none;
   border: none;

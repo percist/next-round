@@ -77,3 +77,11 @@
 .later-button {
   background-color: var(--main-accent-color);
 }
+
+.comment-form_form-field label{
+  align-items: center;
+}
+
+.rounds-cliam-form_input{
+  font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+}

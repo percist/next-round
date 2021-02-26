@@ -23,7 +23,7 @@ const ItemCardContainer = ({ items }) => {
   }
 
   useEffect(() => {
-    if (Array.isArray(items) && items.length > 4) {
+    if (Array.isArray(items) && items.length > 5) {
       setShowButton(false);
     }
   }, [items]);
