@@ -3,6 +3,7 @@ import * as sessionActions from '../../store/session';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import './LoginForm.css';
 
 const LoginForm = () => {
   const history = useHistory();

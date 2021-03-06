@@ -26,7 +26,8 @@
   background-color: var(--main-bg-color-dark);
 }
 
-#search-results-page-sidebar_filters div:active{
+.filter-button:focus{
+  outline: none;
   background-color: var(--main-bg-color-dark);
 }
 

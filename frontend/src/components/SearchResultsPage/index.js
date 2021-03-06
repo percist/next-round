@@ -80,15 +80,15 @@ const SearchResultsPage = () => {
             <h3>Filters</h3>
             <div onClick={() => setFilter("all")} id="search-results-page-sidebar_filters-all">
               <ImFilesEmpty className="following-icon" />
-              <button>All</button>
+              <button className="filter-button">All</button>
             </div>
             <div onClick={() => setFilter("users")} id="search-results-page-sidebar_filters-people">
               <IoPersonCircleOutline className="following-icon" />
-              <button>People</button>
+              <button className="filter-button">People</button>
             </div>
             <div onClick={() => setFilter("sites")} id="search-results-page-sidebar_filters-sites">
               <IoStorefront className="following-icon" />
-              <button>Businesses</button>
+              <button className="filter-button">Businesses</button>
             </div>
           </div>
         </div>

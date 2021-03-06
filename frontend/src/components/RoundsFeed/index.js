@@ -17,7 +17,7 @@ const RoundsFeed = ({ rounds, site, type }) => {
     return (
       <div className="rounds-feed">
         {!site && <img src={spinner} alt="loading..."/>}
-        {site && Array.isArray(rounds) && rounds.map((round, i) => {
+        {site && Array.isArray(rounds) && rounds.sort((a,b)=> a.updatedAt - b.updatedAt).map((round, i) => {
           if (!!round) {
             return <SiteRoundsFeed round={round} key={i} site={site} />
           } else return null

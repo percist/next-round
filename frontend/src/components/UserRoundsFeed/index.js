@@ -16,7 +16,7 @@ const UserRoundsFeed = ({ roundsArray }) => {
   return (
     <>
       {!Array.isArray(roundsArray) && <img src={spinner} alt="loading..."/>}
-      {Array.isArray(roundsArray) && items && roundsArray.map((round, i) => {
+      {Array.isArray(roundsArray) && items && roundsArray.sort((a,b)=> new Date(b.createdAt) - new Date(a.createdAt)).map((round, i) => {
         return (
           <div key={round.id}>
             {(!round || !Array.isArray(round.Items) ||!round.Items[0]) && <img src={spinner} alt="loading..."/>}
