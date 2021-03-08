@@ -1,7 +1,7 @@
 # Welcome to Next Round's on Me!
 
-Live link: https://www.next-round.herokuapp.com
+Live link: https://next-round.herokuapp.com/
 
-For more information please click on the wiki.
+For more information see the Wiki (above).
 
 ![Demo](Next-Round-Demo.gif)
