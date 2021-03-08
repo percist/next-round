@@ -14,12 +14,12 @@
   display: flex;
   justify-content: flex-end;
   position: fixed;
-  left: calc(18vw - 80px);
+  left: 0;
   top: 80;
   overflow-y: scroll;
   width: 20vw;
   min-width: 100px;
-  max-width: 500px;
+  max-width: 300px;
 }
 
 .rounds-sidebar {
@@ -122,7 +122,6 @@
 
 .user-page-site_feed {
   margin: 15px 0;
-  width: 50%;
   align-self: center;
 }
 
@@ -130,14 +129,14 @@
   display: flex;
   justify-content: flex-start;
   position: fixed;
-  right: calc(40vw - 650px);
+  right: 0;
   width: 20vw;
   margin-right: auto;
   top: 60px;
   height: calc(100% - 80px);
   overflow-y: scroll;
   min-width: 100px;
-  max-width: 450px;
+  max-width: 350px;
   background-color: var(--main-bg-color);
   color: var(--main-text-color);
 }
