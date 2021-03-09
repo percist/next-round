@@ -52,7 +52,68 @@ The backend is an Express server with a PostgreSQL database.
 The frontend is a `create-react-app` using functional components with hooks. The backend is an express server with various RESTful endpoints. They are deployed to a Heroku server.
 
 #### Next Round Database Schema
-![image]
+![image](https://github.com/percist/next-round/blob/master/Next-Round-DB.png)
+
+## Frontend Overview
+The front end incorporates some visual design elements from Facebook but uses all original architecture using custom components. Components are reused with unique styling to achieve a DRYer code base.
+
+## Backend Overview
+The Express backend is a collection of RESTful routes serving data to the frontend from the PostgreSQL database. Routes were designed to deliver as much targeted data as possible to limit the number of API calls from frontend components.
+
+The database is queried using sequelize and seed data was created using faker npm package and resources like Unsplash.
+
+## Backend Installation and Setup
+
+1. Clone this repository (only this branch)
+
+  ```bash
+  git clone https://github.com/percist/Next-Round
+  ```
+2. Install Dependencies
+
+  ```bash
+   npm install
+   ```
+3. Create a **.env** file based on the .env.example with proper settings for your
+   development environment
+
+4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+  * **NOTE: if you intent to use the photo upload feature, you will need to provide your own AWS access key id and secret key and update the information in awsS3.js**
+
+5. From inside the backend file, use the commands in the **dbCommands.txt** file
+
+6. Start the backend server
+
+  ```bash
+  npm start
+  ```
+
+## Frontend Installatin and Run Application Locally
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+1. Change Directory to fontend
+
+  ```bash
+  cd frontend
+  ```
+2. Install Dependencies
+
+  ```bash
+  npm install
+  ```
+3. Start the local host
+
+  ```bash
+  npm start
+  ```
+  
+4. Visit application at localhost:3000 (changes you make locally will appear)
 
 
+## Conclusion
+Next Round was inspired by a whiteboard at Tradesman Brewing in Charleston, SC where people can buy a beer for a buddy who can then redeem it the next time they come in as well as the Facebook group 'Isolation Porch Beers'. While I could not visit family and friends during COVID I wanted to develop a platform for people to be able to share a drink remotely that could also serve as a traffic generator for local businesses. 
+
+Future features would include adding items to search, validating follow requests, ratings for menu items, saved locations, favorited menu items, likes on posts, tips on payments, and a payments dashboard for owners to see activity and redeem funds.
+  
 ![Demo](Next-Round-Demo.gif)
