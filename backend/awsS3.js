@@ -1,5 +1,5 @@
 const AWS = require("aws-sdk");
-// name of your bucket here
+// name of bucket
 const NAME_OF_BUCKET = "nextroundfiles";
 
 const multer = require("multer");
