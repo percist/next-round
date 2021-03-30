@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import spinner from  '../../Spinner-1s-44px.gif'
 import './UserImage.css';
 import { IoPersonCircleOutline } from 'react-icons/all';
