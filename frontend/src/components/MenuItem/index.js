@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteMenuItem } from "../../store/items";
+// TODO: implement react-sortable-hoc documentation: https://www.npmjs.com/package/react-sortable-hoc
 
 const MenuItem = ({ item, itemsToDisplay, setItemsToDisplay, siteId }) => {
+
 
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
@@ -17,7 +19,9 @@ const MenuItem = ({ item, itemsToDisplay, setItemsToDisplay, siteId }) => {
   }
 
   return (
-    <div className="menu-item">        
+    <div 
+      className="menu-item"
+      >        
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
