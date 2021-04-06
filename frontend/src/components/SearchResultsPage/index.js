@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import SearchResult from '../SearchResult';
-import { ImFilesEmpty, IoPersonCircleOutline, IoStorefront } from 'react-icons/all';
+import { ImFilesEmpty, IoPersonCircleOutline, IoStorefront, FaGlassCheers } from 'react-icons/all';
 import { fetchAllBuddies } from '../../store/users'
 import './SearchResultsPage.css'
 
@@ -17,8 +17,8 @@ const SearchResultsPage = () => {
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
-    setResultsToDisplay([...location.state.results])
-    setErrors(location.state.errors)
+      setResultsToDisplay([...location.state.results])
+      setErrors(location.state.errors)
   }, [location])
 
   useEffect(() => {
@@ -39,6 +39,8 @@ const SearchResultsPage = () => {
           if (result.username) {
             const buddy = buddyIds.includes(result.id)
             return (<SearchResult type={"user"} buddy={buddy} result={result} key={i} />)
+          } else if (result.description) {
+            return (<SearchResult type={"item"} result={result} key={i} />)
           } else {
             return (<SearchResult type={"site"} result={result} key={i} />)
           }
@@ -54,6 +56,13 @@ const SearchResultsPage = () => {
           if (result.username) {
             const buddy = buddyIds.includes(result.id)
             return (<SearchResult type={"user"} buddy={buddy} result={result} key={i} />)
+          }else{
+            return null
+          }
+        })}
+        {resultsToDisplay && buddyIds && filter === "items" && resultsToDisplay.map((result, i) => {
+          if (result.username) {
+            return (<SearchResult type={"item"} result={result} key={i} />)
           }else{
             return null
           }
@@ -89,6 +98,10 @@ const SearchResultsPage = () => {
             <div onClick={() => setFilter("sites")} id="search-results-page-sidebar_filters-sites">
               <IoStorefront className="following-icon" />
               <button className="filter-button">Businesses</button>
+            </div>
+            <div onClick={() => setFilter("items")} id="search-results-page-sidebar_filters-items">
+              <FaGlassCheers className="following-icon" />
+              <button className="filter-button">Items</button>
             </div>
           </div>
         </div>

@@ -43,6 +43,7 @@
 
 #search-results-page-sidebar_filters-all,
 #search-results-page-sidebar_filters-sites,
+#search-results-page-sidebar_filters-items,
 #search-results-page-sidebar_filters-people {
   display: flex;
   padding: 8px 5px;
@@ -75,7 +76,8 @@
   margin: 8px;
 }
 
-.business-image{
+.business-image,
+.item-image{
   border-radius: 50%;
   object-fit: cover;
   width: 60px;
