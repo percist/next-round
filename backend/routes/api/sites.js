@@ -179,6 +179,7 @@ router.get(
 )
 
 // Delete an item
+// TODO: Change from deleteing to making it inactive, put an inactive button on the item edit instead of delete so items will persist on Rounds for the rounds feed.
 router.delete(
   `/:siteId(\\d+)/items/:itemId(\\d+)`,
   asyncHandler(async (req, res) => {

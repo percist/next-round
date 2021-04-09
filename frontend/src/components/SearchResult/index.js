@@ -75,7 +75,7 @@ const SearchResult = ({ type, result, buddy }) => {
               {!user.imgUrl && <FaGlassCheers />}
               {user.imgUrl &&
                 <img
-                  className="item-image"
+                  className="search-item-image"
                   src={result.imgUrl}
                   alt="item"
                 />}

@@ -77,7 +77,7 @@
 }
 
 .business-image,
-.item-image{
+.search-item-image{
   border-radius: 50%;
   object-fit: cover;
   width: 60px;
