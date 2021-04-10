@@ -204,7 +204,7 @@ router.post(
   validateItemCreation,
   asyncHandler(async (req, res) => {
     const siteId = req.params.siteId;
-    const { name, description, price } = req.body
+    const { name, description, price, isActive } = req.body
     let imgUrl;
     if (req.file) {
       imgUrl = await singlePublicFileUpload(req.file);
@@ -213,6 +213,7 @@ router.post(
       name,
       description,
       price: parseInt(price),
+      isActive: isActive,
       imgUrl: imgUrl ? imgUrl : null,
     });
     await Menu.create({
