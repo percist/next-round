@@ -16,6 +16,11 @@ module.exports = (sequelize, DataTypes) => {
     imgUrl: {
       allowNull: true,
       type: DataTypes.STRING(1000)
+    },
+    isActive: {
+      allowNull: false,
+      type: DataTypes.BOOLEAN,
+      default: false
     }
   }, {});
   Item.associate = function (models) {
