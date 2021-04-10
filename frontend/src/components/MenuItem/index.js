@@ -26,7 +26,12 @@ const MenuItem = ({ item, itemsToDisplay, setItemsToDisplay, siteId }) => {
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       <div className="menu-item_image">
-        {item.imgUrl && <img src={item.imgUrl} alt="site item" />}
+        <div className="menu-item_image-image">
+          {item.imgUrl && <img src={item.imgUrl} alt="site item" />}
+        </div>
+        <div className="menu-item_image-is_active">
+          {item.isActive ? "Showing" : "Hidden"}
+        </div>
       </div>
       <div className="menu-item_info">
         <div className="menu-item_info_title">
@@ -45,6 +50,14 @@ const MenuItem = ({ item, itemsToDisplay, setItemsToDisplay, siteId }) => {
         >
           Delete
         </button>
+        {/* <button 
+          id="menu-item_edit_button" 
+          onClick={handleMenuEdit}
+        >
+          Edit
+        </button> 
+        TODO: IMPLEMENT EDIT FUNCTIONALITY FOR MENU ITEM
+        */}
       </div>
     </div>
   )
