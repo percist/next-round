@@ -179,6 +179,7 @@ router.get(
 )
 
 // Delete an item
+// TODO: Change from deleteing to making it inactive, put an inactive button on the item edit instead of delete so items will persist on Rounds for the rounds feed.
 router.delete(
   `/:siteId(\\d+)/items/:itemId(\\d+)`,
   asyncHandler(async (req, res) => {
@@ -203,7 +204,7 @@ router.post(
   validateItemCreation,
   asyncHandler(async (req, res) => {
     const siteId = req.params.siteId;
-    const { name, description, price } = req.body
+    const { name, description, price, isActive } = req.body
     let imgUrl;
     if (req.file) {
       imgUrl = await singlePublicFileUpload(req.file);
@@ -212,6 +213,7 @@ router.post(
       name,
       description,
       price: parseInt(price),
+      isActive: isActive,
       imgUrl: imgUrl ? imgUrl : null,
     });
     await Menu.create({

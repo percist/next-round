@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
 import UserImage from '../UserImage';
-import { FaUserFriends, IoStorefront } from 'react-icons/all';
+import { FaUserFriends, IoStorefront, FaGlassCheers } from 'react-icons/all';
 import FollowButton from '../FollowButton';
 
 const SearchResult = ({ type, result, buddy }) => {
   const [isBuddy, setIsBuddy] = useState(false);
   const { user } = useSelector(state => state.session)
-
+  console.log(result)
   const followSwitch = () => {
     if (isBuddy) {
       return <FaUserFriends className="following-icon" />
@@ -39,7 +39,7 @@ const SearchResult = ({ type, result, buddy }) => {
       </div>
     );
   }
-  else {
+  else if(type === "site"){
     return (
       <div className="site search-result">
         <div className="site search-result-content">
@@ -62,6 +62,33 @@ const SearchResult = ({ type, result, buddy }) => {
         </div>
         <div className="site search-result-content_icon">
         <IoStorefront className="following-icon"/>
+      </div>
+      </div>
+    );
+  }
+  else{
+    return (
+      <div className="item search-result">
+        <div className="item search-result-content">
+          <div className="item search-result-image">
+            <a href={`/sites/${result.id}`} >
+              {!user.imgUrl && <FaGlassCheers />}
+              {user.imgUrl &&
+                <img
+                  className="search-item-image"
+                  src={result.imgUrl}
+                  alt="item"
+                />}
+            </a>
+          </div>
+          <div className="item search-result-info">
+            <div>{result.name}</div>
+            {result.Sites[0] && <div>On the menu at <a href={`/sites/${result.Sites[0].id}`} >{result.Sites[0].name}</a></div>}
+            <div>{`${result.description}`}</div>
+          </div>
+        </div>
+        <div className="item search-result-content_icon">
+        <FaGlassCheers className="following-icon"/>
       </div>
       </div>
     );

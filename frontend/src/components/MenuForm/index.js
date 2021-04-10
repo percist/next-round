@@ -9,7 +9,16 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState('0.00');
   const [image, setImage] = useState(null);
+  const [isActive, setIsActive] = useState(false);
   const [errors, setErrors] = useState([]);
+
+  console.log(isActive)
+
+  const handleClick = () =>{
+    isActive === false? 
+    setIsActive(true) :
+    setIsActive(false);
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +27,8 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
       name,
       description,
       price: (price * 100),
-      image
+      image,
+      isActive
     }
     const newItem = await dispatch(createNewItem(siteId, item))
       .catch(res => {
@@ -27,6 +37,7 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
     setName("");
     setDescription("");
     setPrice("");
+    setIsActive(false)
     setImage(null);
     setItemsToDisplay([...itemsToDisplay, newItem]);
   }
@@ -95,6 +106,19 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
               className="input menu-item-form_input"
               type="file"
               onChange={updateFile}
+            />
+          </div>
+          <div className="menu-item-form_field">
+
+            <label>
+              Display Item on Menu?
+                </label>
+            <input
+              className="input menu-item-form_input"
+              type="checkbox"
+              id="isActive"
+              value={isActive}
+              onChange={handleClick}
             />
           </div>
         </div>

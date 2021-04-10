@@ -36,11 +36,12 @@ export const deleteMenuItem = (siteId, itemId) => async (dispatch) => {
 }
 
 export const createNewItem = (siteId, item) => async (dispatch) => {
-  const { name, description, price, image } = item;
+  const { name, description, price, image, isActive } = item;
   const formData = new FormData();
   formData.append("name", name);
   formData.append("description", description);
   formData.append("price", price);
+  formData.append("isActive", isActive)
   if (image) formData.append("image", image);
   const response = await fetch(`/api/sites/${siteId}/items`, {
     method: 'POST',
