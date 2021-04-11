@@ -16,7 +16,7 @@ const createCommentDispatcher = async(round, newCommentData, comments, setCommen
   await setComments([...comments, roundComment])
 };
 
-const editCommentDispatcher = async(roundId, commentId, newCommentData, comments, setComments) => { // do comments and setComments do anything????
+const editCommentDispatcher = async(roundId, commentId, newCommentData) => { 
   const editComment = async () => {
     const res = await fetch(`/api/rounds/${roundId}/comments/${commentId}`, {
       method: 'PATCH',

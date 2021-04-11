@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteMenuItem } from "../../store/items";
+import { editMenuItemDispatcher } from "./MenuItemUtils";
 // TODO: implement react-sortable-hoc documentation: https://www.npmjs.com/package/react-sortable-hoc
 
 const MenuItem = ({ item, itemsToDisplay, setItemsToDisplay, siteId }) => {
@@ -8,6 +9,8 @@ const MenuItem = ({ item, itemsToDisplay, setItemsToDisplay, siteId }) => {
 
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
+  const [editing, setEditing] = useState(false);
+  const [menuItemDisplayed, setMenuItemDisplayed ] = useState({});
 
   const handleMenuDelete = async (e) => {
     e.preventDefault();
@@ -16,6 +19,15 @@ const MenuItem = ({ item, itemsToDisplay, setItemsToDisplay, siteId }) => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       })
     setItemsToDisplay([...itemsToDisplay.filter(setItem => setItem.id != item.id)]);
+  }
+
+  useEffect(() => {
+    setMenuItemDisplayed(item);
+    setEditing(false);
+  },[item])
+
+  const updateClickHandler = () => {
+    editMenuItemDispatcher(item.id, siteId, menuItemDisplayed)
   }
 
   return (
