@@ -1,8 +1,32 @@
 .menu {
     display:flex;
+    flex-direction: row;
+    justify-content: center;
+    /* margin-top: 40px; */
+    position: sticky;
+    top: 40px;
+  }
+
+  .menu-form {
+    position: fixed;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 40px;
+    top: 100px;
+    left: 0px;
+    margin: 0 15px;
+    width: 30%;
+  }
+
+  .menu-list {
+    align-self: center;
+    top: 0;
+    margin: 15px 0;
+    width: 30vw;
+  }
+  
+  .menu-list_title a{
+    text-align: center;
   }
   
   .menu-item-form {
@@ -33,7 +57,7 @@
   
   .menu-item,
   .menu-item-form {
-    width: 50vw;
+    width: 100%;
     max-width: 650px;
     display: flex;
     border-radius: 12pt;

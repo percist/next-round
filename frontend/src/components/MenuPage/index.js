@@ -29,19 +29,23 @@ const MenuPage = () => {
 
   return (
     <div className="menu">
-      <a href={`/sites/${site.id}`} ><h1>Menu for {site.name}</h1></a>
+      <div className="menu-form">
+        <a className="menu-list_title-link" href={`/sites/${site.id}`} ><h1>Menu for {site.name}</h1></a>
+        <MenuForm
+          siteId={siteId}
+          itemsToDisplay={itemsToDisplay}
+          setItemsToDisplay={setItemsToDisplay}
+        />
+      </div>
       <div className="menu-list">
+
         <MenuList
           itemsToDisplay={itemsToDisplay}
           setItemsToDisplay={setItemsToDisplay}
           siteId={siteId}
         />
       </div>
-      <MenuForm
-        siteId={siteId}
-        itemsToDisplay={itemsToDisplay}
-        setItemsToDisplay={setItemsToDisplay}
-      />
+      
     </div>
   )
 };

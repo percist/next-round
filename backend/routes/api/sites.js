@@ -4,8 +4,9 @@ const asyncHandler = require('express-async-handler');
 const { restoreUser } = require('../../utils/auth');
 const { handleValidationErrors } = require('../../utils/validation');
 const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
-const { Site, Owner, Item, Menu } = require("../../db/models"
+const { Site, Owner, Item, Menu, Round } = require("../../db/models"
 );
+const { round } = require("lodash");
 const router = express.Router();
 
 const validateSignup = [
@@ -179,7 +180,6 @@ router.get(
 )
 
 // Delete an item
-// TODO: Change from deleteing to making it inactive, put an inactive button on the item edit instead of delete so items will persist on Rounds for the rounds feed.
 router.delete(
   `/:siteId(\\d+)/items/:itemId(\\d+)`,
   asyncHandler(async (req, res) => {
@@ -190,10 +190,24 @@ router.delete(
         itemId: itemId
       }
     });
-    await menu.destroy();
-    const item = await Item.findByPk(itemId);
-    await item.destroy();
-    res.json({ message: "item deleted" })
+    const round = await Round.findAll({
+      where: {
+        itemId: itemId
+      }
+    })
+    if (!round) {
+      await menu.destroy();
+      const item = await Item.findByPk(itemId);
+      await item.destroy();
+      res.json({ message: "item deleted" })
+    }else{
+      const err = new Error('Item Delete Falied');
+      err.status = 403;
+      err.title = 'Item Delete failed';
+      err.errors = ['It looks like someone has posted about this item before. Best you can do is hide it from your menu.'];
+      return next(err);
+    }
+
   })
 )
 
@@ -227,6 +241,37 @@ router.post(
       err.errors = ['Something weird happened. Your item was not created. Please try again later.'];
       return next(err);
     }
+    res.json(item)
+  })
+)
+
+// Edit an item
+router.patch(
+  `/:siteId(\\d+)/items/:itemId(\\d+)`,
+  singleMulterUpload("image"),
+  asyncHandler(async (req, res) => {
+    const siteId = req.params.siteId;
+    const { name, description, price, isActive } = req.body
+    let imgUrl;
+    if (req.file) {
+      imgUrl = await singlePublicFileUpload(req.file);
+    }    
+    const item = await Item.findByPk(itemId)
+    if (!item) {
+      const err = new Error('Item update failed');
+      err.status = 401;
+      err.title = 'Item update failed';
+      err.errors = ['Something weird happened. That item could not be found. Please try again later.'];
+      return next(err);
+    }
+
+    name? item.name = name : null;
+    description? item.description = description : null;
+    isActive? item.isActive = isActive : null;
+    imgUrl? item.imgUrl = imgUrl : null;
+
+    await item.save();
+ 
     res.json(item)
   })
 )
