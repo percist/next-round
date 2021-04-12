@@ -245,4 +245,35 @@ router.post(
   })
 )
 
+// Edit an item
+router.patch(
+  `/:siteId(\\d+)/items/:itemId(\\d+)`,
+  singleMulterUpload("image"),
+  asyncHandler(async (req, res) => {
+    const siteId = req.params.siteId;
+    const { name, description, price, isActive } = req.body
+    let imgUrl;
+    if (req.file) {
+      imgUrl = await singlePublicFileUpload(req.file);
+    }    
+    const item = await Item.findByPk(itemId)
+    if (!item) {
+      const err = new Error('Item update failed');
+      err.status = 401;
+      err.title = 'Item update failed';
+      err.errors = ['Something weird happened. That item could not be found. Please try again later.'];
+      return next(err);
+    }
+
+    name? item.name = name : null;
+    description? item.description = description : null;
+    isActive? item.isActive = isActive : null;
+    imgUrl? item.imgUrl = imgUrl : null;
+
+    await item.save();
+ 
+    res.json(item)
+  })
+)
+
 module.exports = router;
