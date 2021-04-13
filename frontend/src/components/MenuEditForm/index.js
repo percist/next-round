@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { editItem } from '../../store/items';
-import './MenuPage.css';
+import { editMenuItem } from '../../store/items';
 
-const MenuEditForm = ({ siteId, item, setIsEditing, setItemToDisplay }) => {
+const MenuEditForm = ({ siteId, item, setIsEditing, itemsToDisplay, setItemsToDisplay }) => {
 
   const dispatch = useDispatch();
   const [name, setName] = useState("");
@@ -18,18 +17,19 @@ const MenuEditForm = ({ siteId, item, setIsEditing, setItemToDisplay }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
-    const item = {
+    const updatedItem = {
+      id: item.id,
       name,
       description,
       price: (price * 100),
       image,
       isActive
     }
-    const newItem = await dispatch(editItem(siteId, item))
+    const newItem = await dispatch(editMenuItem(siteId, updatedItem))
       .catch(res => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       })
-    setItemToDisplay(newItem);
+    setItemsToDisplay([...itemsToDisplay.filter(itemDisplayed => itemDisplayed.id != item.id), newItem].sort((a,b)=> a.id < b.id));
     setIsEditing(false);
   }
 
@@ -41,19 +41,18 @@ const MenuEditForm = ({ siteId, item, setIsEditing, setItemToDisplay }) => {
   useEffect(()=>{
     setName(item.name);
     setDescription(item.description);
-    setPrice(item.price);
+    setPrice(item.price/100);
     setImage(item.imgUrl);
     setIsActive(item.isActive);
   },[item])
 
   return (
     <div className="menu-edit-item-form">
+      <ul>
+        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+      </ul>
       <form id="menu-edit-item-form_form" onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
-        <h2>Editing</h2>
-        <div className="menu-item_image">
+        <div className="menu-item-form_image">
           <div className="menu-item_image-image">
             {image && <img src={image} alt="site item" />}
           </div>
@@ -62,20 +61,20 @@ const MenuEditForm = ({ siteId, item, setIsEditing, setItemToDisplay }) => {
                 type="file"
                 onChange={updateFile}
               />
-          <label id="isActive-label">
-                Display Item?
-                  </label>
-              <input
-                className="input menu-item-form_input"
-                type="checkbox"
-                id="isActive"
-                value={isActive}
-                onChange={handleClick}
-              />
+          <div className="menu-item_is-active">
+            <label id="isActive-label">
+                  Display Item?
+                    </label>
+                <input
+                  className="input menu-item-form_input"
+                  type="checkbox"
+                  id="isActive"
+                  value={isActive}
+                  onChange={handleClick}
+                />
+          </div>
         </div>
         <div className="menu-edit-item-form_info">
-
-
           <div className="menu-edit-item-form_field">
             <label>
               Name
@@ -118,14 +117,14 @@ const MenuEditForm = ({ siteId, item, setIsEditing, setItemToDisplay }) => {
               required
             />
           </div>
-        </div>
         <button
           className="button"
           id="menu-edit-item-form_button"
           type="submit"
-        >
-          Add Item to Menu
+          >
+          Update Menu Item
                 </button>
+          </div>
       </form>
     </div>
   )

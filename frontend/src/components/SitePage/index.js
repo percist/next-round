@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import ItemCardContainer from "../ItemCardContainer";
 import RoundsFeed from "../RoundsFeed";
 import { fetchOneSite } from "../../store/sites";
@@ -13,7 +13,6 @@ import largeSpinner from '../../Spinner-1s-617px.gif';
 import "./SitePage.css";
 
 const SitePage = () => {
-  const history = useHistory();
   const dispatch = useDispatch();
   const params = useParams();
 
@@ -26,11 +25,7 @@ const SitePage = () => {
   const [isOwner, setIsOwner] = useState(false);
   const [isUpdatingMenu, setIsUpdatingMenu] = useState(false)
 
-  const updateMenuHandler = () => {
-
-    setIsUpdatingMenu(!isUpdatingMenu);
-    // history.push(`/sites/${site.id}/menu`)
-  };
+  const updateMenuHandler = () => setIsUpdatingMenu(!isUpdatingMenu);
 
   useEffect(() => {
     checkIsOwner(user, siteId, setIsOwner);

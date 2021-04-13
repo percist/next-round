@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchAllSiteItems } from '../../store/items'
 import { fetchOneSite } from '../../store/sites';
-import MenuForm from '../MenuForm';
 import MenuList from '../MenuList';
 import './MenuPage.css';
 
@@ -13,7 +12,6 @@ const MenuPage = () => {
   const params = useParams();
   const { siteId } = params;
   const items = useSelector(state => state.items);
-  const site = useSelector(state => state.sites);
 
   const [itemsToDisplay, setItemsToDisplay] = useState([]);
 
@@ -24,7 +22,7 @@ const MenuPage = () => {
 
   useEffect(() => {
     if (items[0])
-      setItemsToDisplay([...items]);
+      setItemsToDisplay([...items.sort((a,b)=> a.id < b.id)]);
   }, [dispatch, items]);
 
   return (

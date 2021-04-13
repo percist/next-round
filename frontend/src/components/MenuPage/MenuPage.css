@@ -1,18 +1,17 @@
-
 .menu-list {
   align-self: center;
   top: 0;
   margin: 15px 0;
 }
 
-.menu-list_title a{
+.menu-list_title a {
   text-align: center;
 }
 
-
-.menu-item {
+.menu-item-container {
   width: 680px;
   display: flex;
+  flex-direction: column;
   border-radius: 12pt;
   margin: 12pt 0;
   background-color: var(--secondary-bg-color);
@@ -23,39 +22,104 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px 0px 10px 10px;
+  margin: 0 0px 10px 10px;
 }
-.menu-item img {
-    height: 190px;
-    width: 110px;
-    border-radius: 6pt;
-    object-fit: cover;
+.menu-item_image img,
+.menu-item-form_image img {
+  height: 190px;
+  width: 110px;
+  border-radius: 6pt;
+  object-fit: cover;
 }
 
 .menu-item {
-    border-radius: 6pt;
-    display: flex;
+  border-radius: 6pt;
+  display: flex;
 }
 
 .menu-item_info {
-    width: 80%;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  width: 80%;
+  padding: 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
-.menu-item_info h2{
-    justify-self: flex-start;
+.menu-item_info h2 {
+  justify-self: flex-start;
+}
+
+.menu-item_buttons {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+#menu-item_delete_button,
+#menu-item_edit_button {
+  border-radius: 4pt;
+  color: white;
+  height: 30px;
+  margin: 0 0 20px;
 }
 
 #menu-item_delete_button {
-  border-radius: 4pt;
-  color: white;
-  width: 40%;
-  background-color: var(--main-border-color);
+  background-color: var(--main-accent-color);
+  width: 20%;
 }
 
-.menu input {
+#menu-item_edit_button {
+  background-color: var(--main-border-color);
+  width: 60%
+}
+
+.site-page input {
   font-size: 18px;
+}
+
+#menu-edit-item-form_form{
+  display: flex;
+  flex-direction: row;
+}
+
+.menu-item_is-active {
+  display: flex;
+  width: 100%;
+}
+
+.menu-item_is-active label{
+  display: flex;
+  width: 60%;
+  align-self: center;
+}
+
+.menu-item-form_image{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 0px 10px 10px;
+}
+
+.menu-edit-item-form_input {
+  width: fit-content;
+  text-align: right;
+}
+
+.menu-edit-item-form_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0 5px 15px;
+}
+
+.menu-item-form_image {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 5px 15px;
+}
+
+.menu-edit-item-form_field {
+  display: flex;
+  justify-content: space-between;
 }
