@@ -6,6 +6,8 @@ import RoundsFeed from "../RoundsFeed";
 import { fetchOneSite } from "../../store/sites";
 import { fetchAllSiteRounds } from "../../store/rounds";
 import { checkIsOwner } from './SitePageUtils';
+import MenuPage from "../MenuPage";
+import MenuForm from "../MenuForm";
 import headerImg from '../../DefaultHeader.png';
 import largeSpinner from '../../Spinner-1s-617px.gif';
 import "./SitePage.css";
@@ -22,8 +24,13 @@ const SitePage = () => {
   const [imgUrl, setImgUrl] = useState(headerImg);
   const [items, setItems] = useState([]);
   const [isOwner, setIsOwner] = useState(false);
+  const [isUpdatingMenu, setIsUpdatingMenu] = useState(false)
 
-  const updateMenuHandler = () => history.push(`/sites/${site.id}/menu`);
+  const updateMenuHandler = () => {
+
+    setIsUpdatingMenu(!isUpdatingMenu);
+    // history.push(`/sites/${site.id}/menu`)
+  };
 
   useEffect(() => {
     checkIsOwner(user, siteId, setIsOwner);
@@ -48,8 +55,9 @@ const SitePage = () => {
           {isOwner && <button
             onClick={updateMenuHandler}
             className="button update-menu-button"
-          >
-            Update menu
+            >
+            {isUpdatingMenu && 'Done updating'}
+            {!isUpdatingMenu && 'Update menu'}
                         </button>
           }
           <div id="site-page-content-rounds-sidebar_info">
@@ -63,12 +71,14 @@ const SitePage = () => {
             <a href={`${site.website}`}>
               {site.website && site.website.split('www.')[1]}
             </a>
+          {isUpdatingMenu && <MenuForm />}
           </div>
         </div>
-        <div className="site-page-content-feed">
+        {!isUpdatingMenu && <div className="site-page-content-feed">
           <ItemCardContainer items={items} />
           <RoundsFeed rounds={rounds} site={site} type="site" />
-        </div>
+        </div>}
+        {isUpdatingMenu && <MenuPage />}
       </div>
     </div>
   )

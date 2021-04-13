@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createNewItem } from '../../store/items';
+import './MenuForm.css';
 
 const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
 
@@ -49,7 +50,7 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
 
   return (
     <div className="menu-item-form">
-      <h2>Add an item to your menu</h2>
+      <h2>Add a menu item</h2>
       <form id="menu-item-form_form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
