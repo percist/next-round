@@ -13,7 +13,7 @@
   .menu-item-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     padding: 8px;
   }
   
@@ -29,10 +29,25 @@
     flex-direction: column;
     justify-content: space-between;
     font-size: 20px;
+    padding: 4px 0;
   }
   
   .menu-item-form_input {
-    width: 250px;
+    width: 100%;
     height: 30px;
     text-align: right;
   }
+  #menu-item-form_button{
+    width: 102.5%;
+  }
+
+  #menu-item-form_field-isActive {
+    flex-direction: row;
+  }
+
+  #menu-item-form_field-isActive #isActive-label {
+    width: 100%;
+    align-self: center;
+  }
+
+

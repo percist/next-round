@@ -1,44 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { deleteMenuItem } from "../../store/items";
-import { editMenuItemDispatcher } from "./MenuItemUtils";
-// TODO: implement react-sortable-hoc documentation: https://www.npmjs.com/package/react-sortable-hoc
-// TODO: develop a form for editing the menu item that looks like the menu card. 
-        // Abstract a menu card holder with a switch that reads an 'edit mode' button and displays a static menu item 
-        // or a form in it's place where fields are prepopulated but can be edited
-const MenuItem = ({ item, itemsToDisplay, setItemsToDisplay, siteId }) => {
+import React from 'react';
 
-
-  const dispatch = useDispatch();
-  const [errors, setErrors] = useState([]);
-  const [editing, setEditing] = useState(false);
-  const [menuItemDisplayed, setMenuItemDisplayed ] = useState({});
-
-  const handleMenuDelete = async (e) => {
-    e.preventDefault();
-    await dispatch(deleteMenuItem(siteId, item.id))
-      .catch(res => {
-        if (res.data && res.data.errors) setErrors(res.data.errors);
-      })
-    setItemsToDisplay([...itemsToDisplay.filter(setItem => setItem.id != item.id)]);
-  }
-
-  useEffect(() => {
-    setMenuItemDisplayed(item);
-    setEditing(false);
-  },[item])
-
-  const updateClickHandler = () => {
-    editMenuItemDispatcher(item.id, siteId, menuItemDisplayed)
-  }
+const MenuItem = ({ item }) => {
 
   return (
-    <div 
-      className="menu-item"
-      >        
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
+    <div className="menu-item">
       <div className="menu-item_image">
         <div className="menu-item_image-image">
           {item.imgUrl && <img src={item.imgUrl} alt="site item" />}
@@ -58,20 +23,6 @@ const MenuItem = ({ item, itemsToDisplay, setItemsToDisplay, siteId }) => {
         <div className="menu-item_info_price">
           Price: {`$${item.price / 100}`}
         </div>
-        <button 
-          id="menu-item_delete_button" 
-          onClick={handleMenuDelete}
-        >
-          Delete
-        </button>
-        {/* <button 
-          id="menu-item_edit_button" 
-          onClick={handleMenuEdit}
-        >
-          Edit
-        </button> 
-        TODO: IMPLEMENT EDIT FUNCTIONALITY FOR MENU ITEM
-        */}
       </div>
     </div>
   )

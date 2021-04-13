@@ -3,6 +3,7 @@ import { fetch } from './csrf.js';
 const SET_ALL_ITEMS = "SET_ALL_ITEMS"
 const ADD_ONE_ITEM = "ADD_ONE_ITEM"
 const REMOVE_ONE_ITEM = "REMOVE_ONE_ITEM"
+const UPDATE_ONE_ITEM = "UPDATE_ONE_ITEM"
 
 const setItems = (item) => ({
   type: SET_ALL_ITEMS,
@@ -16,6 +17,11 @@ const addOneItem = (item) => ({
 
 const removeOneItem = (item) => ({
   type: REMOVE_ONE_ITEM,
+  payload: item
+})
+
+const updateOneItem = (item) => ({
+  type: UPDATE_ONE_ITEM,
   payload: item
 })
 
@@ -51,6 +57,22 @@ export const createNewItem = (siteId, item) => async (dispatch) => {
   return response.data;
 }
 
+export const editMenuItem = (siteId, item) => async (dispatch) => {
+  const { name, description, price, image, isActive } = item;
+  const formData = new FormData();
+  if (name) formData.append("name", name);
+  if (description) formData.append("description", description);
+  if (price) formData.append("price", price);
+  if (isActive) formData.append("isActive", isActive);
+  if (image) formData.append("image", image)
+  const response = await fetch(`/api/sites/${siteId}/items`, {
+    method: 'PATCH',
+    body: formData,
+  });
+  dispatch(updateOneItem(response.data));
+  return response.data;
+}
+
 const initialState = {}
 
 function reducer(state = initialState, action) {
@@ -64,6 +86,9 @@ function reducer(state = initialState, action) {
       return newState;
     case SET_ALL_ITEMS:
       newState = action.payload;
+      return newState;
+    case UPDATE_ONE_ITEM:
+      newState = [...state.filter(item => item.id != action.payload.id), action.payload];
       return newState;
     default:
       return state;
