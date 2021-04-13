@@ -1,8 +1,9 @@
+/* TODO: implement similar styling on homepage to prevent bumping sidebars and main feed */
+
 .menu {
     display:flex;
     flex-direction: row;
     justify-content: center;
-    /* margin-top: 40px; */
     position: sticky;
     top: 40px;
   }

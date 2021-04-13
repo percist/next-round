@@ -3,7 +3,9 @@ import { useDispatch } from 'react-redux';
 import { deleteMenuItem } from "../../store/items";
 import { editMenuItemDispatcher } from "./MenuItemUtils";
 // TODO: implement react-sortable-hoc documentation: https://www.npmjs.com/package/react-sortable-hoc
-
+// TODO: develop a form for editing the menu item that looks like the menu card. 
+        // Abstract a menu card holder with a switch that reads an 'edit mode' button and displays a static menu item 
+        // or a form in it's place where fields are prepopulated but can be edited
 const MenuItem = ({ item, itemsToDisplay, setItemsToDisplay, siteId }) => {
 
 
