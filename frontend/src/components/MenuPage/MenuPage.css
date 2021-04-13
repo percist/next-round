@@ -1,69 +1,22 @@
-.menu {
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-    /* margin-top: 40px; */
-    position: sticky;
-    top: 40px;
-  }
 
-  .menu-form {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    top: 100px;
-    left: 0px;
-    margin: 0 15px;
-    width: 30%;
-  }
+.menu-list {
+  align-self: center;
+  top: 0;
+  margin: 15px 0;
+}
 
-  .menu-list {
-    align-self: center;
-    top: 0;
-    margin: 15px 0;
-    width: 30vw;
-  }
-  
-  .menu-list_title a{
-    text-align: center;
-  }
-  
-  .menu-item-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 8px;
-  }
-  
-  #menu-item-form_form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .menu-item-form_field {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    font-size: 20px;
-  }
-  
-  .menu-item-form_input {
-    width: 250px;
-    height: 30px;
-    text-align: right;
-  }
-  
-  .menu-item,
-  .menu-item-form {
-    width: 100%;
-    max-width: 650px;
-    display: flex;
-    border-radius: 12pt;
-    margin: 12pt 0;
-    background-color: var(--secondary-bg-color);
-    box-shadow: var(--main-box-shadow);
+.menu-list_title a{
+  text-align: center;
+}
+
+
+.menu-item {
+  width: 680px;
+  display: flex;
+  border-radius: 12pt;
+  margin: 12pt 0;
+  background-color: var(--secondary-bg-color);
+  box-shadow: var(--main-box-shadow);
 }
 
 .menu-item_image {
@@ -85,7 +38,7 @@
 }
 
 .menu-item_info {
-    width: 420px;
+    width: 80%;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -99,7 +52,7 @@
 #menu-item_delete_button {
   border-radius: 4pt;
   color: white;
-  width: 90%;
+  width: 40%;
   background-color: var(--main-border-color);
 }
 

@@ -1,0 +1,53 @@
+/* 
+  .menu-form {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 100px;
+    left: 0px;
+    margin: 0 15px;
+    width: 30%;
+  } */
+    
+  .menu-item-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px;
+  }
+  
+  /* #menu-item-form_form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  } */
+  
+  .menu-item-form_field {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 20px;
+    padding: 4px 0;
+  }
+  
+  .menu-item-form_input {
+    width: 100%;
+    height: 30px;
+    text-align: right;
+  }
+  #menu-item-form_button{
+    width: 102.5%;
+  }
+
+  #menu-item-form_field-isActive {
+    flex-direction: row;
+  }
+
+  #menu-item-form_field-isActive #isActive-label {
+    width: 100%;
+    align-self: center;
+  }
+
+

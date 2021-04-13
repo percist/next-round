@@ -1,3 +1,5 @@
+/* TODO: media queries to optimize for mobile */
+
 .user-page-container {
   display: flex;
   justify-content: center;
@@ -7,7 +9,7 @@
   display: flex;
   justify-content: center;
   margin-bottom: 80px;
-  width: 55vw;
+  width: 55%;
 }
 
 .user-page-rounds_sidebar {
@@ -17,9 +19,11 @@
   left: 0;
   top: 80;
   overflow-y: scroll;
-  width: 20vw;
+  width: 20%;
+  height: 100%;
   min-width: 100px;
   max-width: 300px;
+  background-color: var(--main-bg-color);
 }
 
 .rounds-sidebar {
@@ -130,7 +134,7 @@
   justify-content: flex-start;
   position: fixed;
   right: 0;
-  width: 20vw;
+  width: 20%;
   margin-right: auto;
   top: 60px;
   height: calc(100% - 80px);

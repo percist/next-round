@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createNewItem } from '../../store/items';
-import './MenuForm.css';
+import { editItem } from '../../store/items';
+import './MenuPage.css';
 
-const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
+const MenuEditForm = ({ siteId, item, setIsEditing, setItemToDisplay }) => {
 
   const dispatch = useDispatch();
   const [name, setName] = useState("");
@@ -13,9 +13,7 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
   const [isActive, setIsActive] = useState(false);
   const [errors, setErrors] = useState([]);
 
-  console.log(isActive)
-
-  const handleClick = () => setIsActive(!isActive);
+  const handleClick = () => setIsActive(!isActive)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,16 +25,12 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
       image,
       isActive
     }
-    const newItem = await dispatch(createNewItem(siteId, item))
+    const newItem = await dispatch(editItem(siteId, item))
       .catch(res => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       })
-    setName("");
-    setDescription("");
-    setPrice("");
-    setIsActive(false)
-    setImage(null);
-    setItemsToDisplay([...itemsToDisplay, newItem]);
+    setItemToDisplay(newItem);
+    setIsEditing(false);
   }
 
   const updateFile = (e) => {
@@ -44,20 +38,50 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
     if (file) setImage(file);
   }
 
+  useEffect(()=>{
+    setName(item.name);
+    setDescription(item.description);
+    setPrice(item.price);
+    setImage(item.imgUrl);
+    setIsActive(item.isActive);
+  },[item])
+
   return (
-    <div className="menu-item-form">
-      <h2>Add a menu item</h2>
-      <form id="menu-item-form_form" onSubmit={handleSubmit}>
+    <div className="menu-edit-item-form">
+      <form id="menu-edit-item-form_form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
-        <div id="menu-item-form_form">
-          <div className="menu-item-form_field">
+        <h2>Editing</h2>
+        <div className="menu-item_image">
+          <div className="menu-item_image-image">
+            {image && <img src={image} alt="site item" />}
+          </div>
+          <input
+                className="input menu-item-form_input"
+                type="file"
+                onChange={updateFile}
+              />
+          <label id="isActive-label">
+                Display Item?
+                  </label>
+              <input
+                className="input menu-item-form_input"
+                type="checkbox"
+                id="isActive"
+                value={isActive}
+                onChange={handleClick}
+              />
+        </div>
+        <div className="menu-edit-item-form_info">
+
+
+          <div className="menu-edit-item-form_field">
             <label>
               Name
             </label>
             <input
-              className="input menu-item-form_input"
+              className="input menu-edit-item-form_input"
               type="text"
               id="name"
               value={name}
@@ -65,12 +89,12 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
               required
             />
           </div>
-          <div className="menu-item-form_field">
+          <div className="menu-edit-item-form_field">
             <label>
               Description
                   </label>
             <input
-              className="input menu-item-form_input"
+              className="input menu-edit-item-form_input"
               type="text"
               id="description"
               value={description}
@@ -78,12 +102,12 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
               required
             />
           </div>
-          <div className="menu-item-form_field">
+          <div className="menu-edit-item-form_field">
             <label>
               Price
                 </label>
             <input
-              className="input menu-item-form_input"
+              className="input menu-edit-item-form_input"
               type="number"
               min="1"
               max="1000"
@@ -94,34 +118,10 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
               required
             />
           </div>
-          <div className="menu-item-form_field">
-
-            <label>
-              Item Picture
-                </label>
-            <input
-              className="input menu-item-form_input"
-              type="file"
-              onChange={updateFile}
-            />
-          </div>
-          <div className="menu-item-form_field" id="menu-item-form_field-isActive">
-
-            <label id="isActive-label">
-              Display Item?
-                </label>
-            <input
-              className="input menu-item-form_input"
-              type="checkbox"
-              id="isActive"
-              value={isActive}
-              onChange={handleClick}
-            />
-          </div>
         </div>
         <button
           className="button"
-          id="menu-item-form_button"
+          id="menu-edit-item-form_button"
           type="submit"
         >
           Add Item to Menu
@@ -131,4 +131,4 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
   )
 };
 
-export default MenuForm;
+export default MenuEditForm;
