@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuItem from '../MenuItem';
+import MenuItemContainer from '../MenuItemContainer';
 // TODO: implement react-sortable-hoc documentation: https://www.npmjs.com/package/react-sortable-hoc
 const MenuList = ({ itemsToDisplay, setItemsToDisplay, siteId }) => {
 
@@ -8,7 +8,7 @@ const MenuList = ({ itemsToDisplay, setItemsToDisplay, siteId }) => {
         {Array.isArray(itemsToDisplay) && itemsToDisplay.map(item => {
           return (
             <div className="menu-list-item" key={item.id}>
-              <MenuItem
+              <MenuItemContainer
                 item={item}
                 siteId={siteId}
                 itemsToDisplay={itemsToDisplay}

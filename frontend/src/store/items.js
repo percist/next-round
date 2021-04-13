@@ -58,14 +58,14 @@ export const createNewItem = (siteId, item) => async (dispatch) => {
 }
 
 export const editMenuItem = (siteId, item) => async (dispatch) => {
-  const { name, description, price, image, isActive } = item;
+  const { name, description, price, image, isActive, id } = item;
   const formData = new FormData();
   if (name) formData.append("name", name);
   if (description) formData.append("description", description);
   if (price) formData.append("price", price);
   if (isActive) formData.append("isActive", isActive);
   if (image) formData.append("image", image)
-  const response = await fetch(`/api/sites/${siteId}/items`, {
+  const response = await fetch(`/api/sites/${siteId}/items/${id}`, {
     method: 'PATCH',
     body: formData,
   });

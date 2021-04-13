@@ -250,12 +250,10 @@ router.patch(
   `/:siteId(\\d+)/items/:itemId(\\d+)`,
   singleMulterUpload("image"),
   asyncHandler(async (req, res) => {
-    const siteId = req.params.siteId;
+    const itemId = req.params.itemId;
+    
     const { name, description, price, isActive } = req.body
-    let imgUrl;
-    if (req.file) {
-      imgUrl = await singlePublicFileUpload(req.file);
-    }    
+     
     const item = await Item.findByPk(itemId)
     if (!item) {
       const err = new Error('Item update failed');
@@ -265,10 +263,11 @@ router.patch(
       return next(err);
     }
 
-    name? item.name = name : null;
-    description? item.description = description : null;
-    isActive? item.isActive = isActive : null;
-    imgUrl? item.imgUrl = imgUrl : null;
+    if (name) item.name = name;
+    if (description) item.description = description;
+    if (isActive) item.isActive = isActive;
+    if (price) item.price = parseInt(price);
+    if (req.file) item.imgUrl = await singlePublicFileUpload(req.file);
 
     await item.save();
  

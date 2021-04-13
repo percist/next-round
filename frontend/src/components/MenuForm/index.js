@@ -13,8 +13,6 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
   const [isActive, setIsActive] = useState(false);
   const [errors, setErrors] = useState([]);
 
-  console.log(isActive)
-
   const handleClick = () => setIsActive(!isActive);
 
   const handleSubmit = async (e) => {
@@ -36,7 +34,7 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
     setPrice("");
     setIsActive(false)
     setImage(null);
-    setItemsToDisplay([...itemsToDisplay, newItem]);
+    setItemsToDisplay([...itemsToDisplay, newItem].sort((a,b)=> a.id < b.id));
   }
 
   const updateFile = (e) => {
