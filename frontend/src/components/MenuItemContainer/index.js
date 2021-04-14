@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import {SortableElement} from 'react-sortable-hoc'
 import { deleteMenuItem } from "../../store/items";
 import MenuEditForm from '../MenuEditForm';
 import MenuItem from '../MenuItem';
-// TODO: implement react-sortable-hoc documentation: https://www.npmjs.com/package/react-sortable-hoc
-const MenuItemContainer = ({ item, itemsToDisplay, setItemsToDisplay, siteId }) => {
+
+const MenuItemContainer = SortableElement(({ item, itemsToDisplay, setItemsToDisplay, siteId }) => {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
@@ -62,6 +63,6 @@ const MenuItemContainer = ({ item, itemsToDisplay, setItemsToDisplay, siteId }) 
      
     </div>
   )
-};
+});
 
 export default MenuItemContainer;
