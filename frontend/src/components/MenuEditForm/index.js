@@ -9,10 +9,8 @@ const MenuEditForm = ({ siteId, item, setIsEditing, itemsToDisplay, setItemsToDi
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState('0.00');
   const [image, setImage] = useState(null);
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState("Inactive");
   const [errors, setErrors] = useState([]);
-
-  const handleClick = () => setIsActive(!isActive)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,6 +23,7 @@ const MenuEditForm = ({ siteId, item, setIsEditing, itemsToDisplay, setItemsToDi
       image,
       isActive
     }
+    console.log(updatedItem)
     const newItem = await dispatch(editMenuItem(siteId, updatedItem))
       .catch(res => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
@@ -69,8 +68,11 @@ const MenuEditForm = ({ siteId, item, setIsEditing, itemsToDisplay, setItemsToDi
                   className="input menu-item-form_input"
                   type="checkbox"
                   id="isActive"
-                  value={isActive}
-                  onChange={handleClick}
+                  checked={isActive === "Active"}
+                  onChange={ ()=>   isActive === "Active" ? 
+                    setIsActive("Inactive") :
+                    setIsActive("Active") 
+                  }
                 />
           </div>
         </div>

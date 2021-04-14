@@ -19,8 +19,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     isActive: {
       allowNull: false,
-      type: DataTypes.BOOLEAN,
-      default: false
+      type: DataTypes.STRING(10),
+      default: "Active",
+      isIn: [["Active, Inactive"]]
+    },
+    order: {
+      allowNull: false,
+      type: DataTypes.INTEGER
     }
   }, {});
   Item.associate = function (models) {
