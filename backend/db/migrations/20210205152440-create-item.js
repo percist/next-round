@@ -26,8 +26,13 @@ module.exports = {
       },
       isActive: {
         allowNull: false,
-        type: Sequelize.BOOLEAN,
-        default: false
+        type: Sequelize.STRING(10),
+        default: "Active",
+        isIn: [["Active", "Inactive"]]
+      },
+      order: {
+        allowNull: false,
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

@@ -9,7 +9,7 @@ const MenuItem = ({ item }) => {
           {item.imgUrl && <img src={item.imgUrl} alt="site item" />}
         </div>
         <div className="menu-item_image-is_active">
-          {item.isActive ? "Showing" : "Hidden"}
+          {item.isActive}
         </div>
       </div>
       <div className="menu-item_info">

@@ -22,8 +22,8 @@ const MenuPage = () => {
 
   useEffect(() => {
     if (items[0])
-      setItemsToDisplay([...items.sort((a,b)=> a.id < b.id)]);
-  }, [dispatch, items]);
+      setItemsToDisplay([...items.sort((a,b)=> a.order < b.order)]);
+  }, [items]);
 
   return (
     <div className="menu">
