@@ -151,7 +151,6 @@ router.get(
       limit: 20,
     })
     const results = [...sites, ...users, ...items].sort((a, b) => a.updatedAt - b.updatedAt)
-    console.log(results)
     res.json(results)
   })
 )

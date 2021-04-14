@@ -28,7 +28,8 @@ const MenuEditForm = ({ siteId, item, setIsEditing, itemsToDisplay, setItemsToDi
       .catch(res => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       })
-    setItemsToDisplay([...itemsToDisplay.filter(itemDisplayed => itemDisplayed.id != item.id), newItem].sort((a,b)=> a.id < b.id));
+    
+    setItemsToDisplay([...itemsToDisplay.filter(itemDisplayed => itemDisplayed.id != item.id), newItem].sort((a,b)=> a.order < b.order));
     setIsEditing(false);
   }
 

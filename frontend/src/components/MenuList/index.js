@@ -5,7 +5,7 @@ const MenuList = ({ itemsToDisplay, setItemsToDisplay, siteId }) => {
 
   return (
     <div className="comment-feed">
-        {Array.isArray(itemsToDisplay) && itemsToDisplay.map(item => {
+        {Array.isArray(itemsToDisplay) && itemsToDisplay.sort((a,b)=> a.order - b.order).map(item => {
           return (
             <div className="menu-list-item" key={item.id}>
               <MenuItemContainer

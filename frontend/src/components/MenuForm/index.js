@@ -34,7 +34,7 @@ const MenuForm = ({ siteId, itemsToDisplay, setItemsToDisplay }) => {
     setPrice("");
     setIsActive(false)
     setImage(null);
-    setItemsToDisplay([...itemsToDisplay, newItem].sort((a,b)=> a.id < b.id));
+    setItemsToDisplay(itemsToDisplay.splice(newItem.order, 0, newItem));
   }
 
   const updateFile = (e) => {

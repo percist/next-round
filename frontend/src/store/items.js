@@ -28,7 +28,7 @@ const updateOneItem = (item) => ({
 export const fetchAllSiteItems = (siteId) => async (dispatch) => {
   const response = await fetch(`/api/sites/${siteId}/items`);
   dispatch(
-    setItems(response.data.site.Items)
+    setItems(response.data.site.Items.sort((a,b) => a.order < b.order))
   )
 }
 
