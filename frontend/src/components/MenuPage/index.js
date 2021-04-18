@@ -15,6 +15,10 @@ const MenuPage = () => {
 
   const [itemsToDisplay, setItemsToDisplay] = useState([]);
 
+  const onSortEnd = ({ oldIndex, newIndex }) => {
+    setItemsToDisplay()
+  }
+
   useEffect(() => {
     dispatch(fetchAllSiteItems(siteId));
     dispatch(fetchOneSite(siteId));
@@ -31,6 +35,7 @@ const MenuPage = () => {
 
         <MenuList
           itemsToDisplay={itemsToDisplay}
+          onSortEnd={onSortEnd}
           setItemsToDisplay={setItemsToDisplay}
           siteId={siteId}
         />

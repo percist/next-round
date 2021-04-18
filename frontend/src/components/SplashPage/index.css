@@ -1,11 +1,73 @@
 
-.splash-page_banner{
+@media screen and (max-width: 400px){
+  .splash-page_banner{
     position: absolute;
     bottom: 0px;
     object-fit: cover;
+  }
+  
+  .splash-page img{
+    height: calc(100% - 80px);
+    position: fixed;
+    top: 0px;
+    left: -110px;
+    object-fit: cover;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .splash-page_img {
+    display: flex;
+    justify-content: center;
+  }
+
+  .splash-page-overlay {
+    width: 90vw;
+    height: 30vh;
+    background: rgba(255, 255, 255, 0.2);
+    position: absolute;
+    top: 10vh;
+    display: flex;
+    border-radius: 20px;
+  }
+
+  #splash-page-cta {
+    align-self: center;
+  }
+
+  #splash-page-cta h1 {
+    color: var(--main-border-color);
+    text-shadow: black 1px 1px 2px;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  #splash-page-cta_buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }  
+    
+    #splash-page-cta_buttons button{
+    color: var(--secondary-bg-color);
+    margin: 3px 0;
+    height: 3vh;
+    width: 60vw;
+    background-color: var(--main-border-color);
+  }
+
 }
 
-.splash-page img{
+@media screen and (min-width: 401px){
+
+  .splash-page_banner{
+    position: absolute;
+    bottom: 0px;
+    object-fit: cover;
+  }
+  
+  .splash-page img{
     width: 100%;
     position: fixed;
     top: 0px;
@@ -13,9 +75,9 @@
     object-fit: cover;
     object-position: 100% 100%;
     margin-bottom: 60px;
-}
-
-.splash-page-overlay {
+  }
+  
+  .splash-page-overlay {
     width: 500px;
     height: 600px;
     padding: 30px 60px 60px;
@@ -25,39 +87,40 @@
     right: 40px;
     display: flex;
     border-radius: 20px;
-}
-
-#splash-page-cta,
-#splash-page-cta_1,
-#splash-page-cta_buttons,
-#splash-page-cta_buttons button {
+  }
+  
+  #splash-page-cta,
+  #splash-page-cta_1,
+  #splash-page-cta_buttons,
+  #splash-page-cta_buttons button {
     background: none;
-}
-#splash-page-cta,
-#splash-page-cta_1 {
+  }
+  #splash-page-cta,
+  #splash-page-cta_1 {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-}
-
-#splash-page-cta h1 {
+  }
+  
+  #splash-page-cta h1 {
     color: var(--secondary-bg-color);
     text-shadow: black 1px 1px 2px;
     text-align: center;
     font-size: 60px;
-}
-
-#splash-page-cta_buttons {
+  }
+  
+  #splash-page-cta_buttons {
     display: flex;
     flex-direction: column;
-}
-
-#splash-page-cta_buttons button{
+  }
+  
+  #splash-page-cta_buttons button{
     font-size: large;
     color: var(--secondary-bg-color);
     margin: 10px;
     height: 40px;
     width: 300px;
     background-color: var(--main-border-color);
+  }
 }
