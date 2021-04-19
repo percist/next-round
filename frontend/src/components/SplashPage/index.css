@@ -1,5 +1,5 @@
 
-@media screen and (max-width: 600px){
+@media (max-width: 1150px){
   .splash-page_banner{
     position: absolute;
     bottom: 0px;
@@ -10,7 +10,7 @@
     height: calc(100% - 80px);
     position: fixed;
     top: 0px;
-    left: -110px;
+    left: -50px;
     object-fit: cover;
     margin-bottom: 100px;
     display: flex;
@@ -23,24 +23,22 @@
   }
 
   .splash-page-overlay {
-    width: 90vw;
+    width: 80vw;
     height: 30vh;
     background: rgba(255, 255, 255, 0.2);
     position: absolute;
     top: 10vh;
     display: flex;
     border-radius: 20px;
-  }
-
-  #splash-page-cta {
-    align-self: center;
+    justify-content: center;
+    align-items: center;
   }
 
   #splash-page-cta h1 {
-    color: var(--main-border-color);
-    text-shadow: black 1px 1px 2px;
+    color: var(--main-bg-color);
+    text-shadow: black 2px 0px 3px;
     text-align: center;
-    font-size: 20px;
+    font-size: 30px;
   }
 
   #splash-page-cta_buttons{
@@ -59,9 +57,7 @@
 
 }
 
-/* another media query for screen sizes 601-1350 */
-
-@media screen and (min-width: 601px){
+@media (min-width: 1151px){
 
   .splash-page_banner{
     position: absolute;
