@@ -1,4 +1,6 @@
-/* TODO: media queries to optimize for mobile */
+/* TODO: media queries to optimize for mobile 
+break at 1404px to hide rounds sidebar with hamburger menu
+Another break to hide buddies sidebar */
 
 .user-page-container {
   display: flex;
