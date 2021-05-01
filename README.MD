@@ -114,6 +114,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Conclusion
 Next Round was inspired by a whiteboard at Tradesman Brewing in Charleston, SC where people can buy a beer for a buddy who can then redeem it the next time they come in as well as the Facebook group 'Isolation Porch Beers'. While I could not visit family and friends during COVID I wanted to develop a platform for people to be able to share a drink remotely that could also serve as a traffic generator for local businesses. 
 
-Future features would include lazy loading for post feed, infinite scroll, validating follow requests, ratings for menu items, saved locations, favorited menu items, likes on posts, tips on payments, a payments dashboard for owners to see activity and redeem funds, chat between users, pop-up modals with more info about buddys on hover, and drag and drop functionality for menu items so an owner can order the menu.
+Future features would include optimization for mobile, dark mode, lazy loading for post feed, infinite scroll, validating follow requests, ratings for menu items, saved locations, favorited menu items, likes on posts, tips on payments, a payments dashboard for owners to see activity and redeem funds, chat between users, pop-up modals with more info about buddys on hover, and drag and drop functionality for menu items so an owner can order the menu.
   
 ![Demo](Next-Round-Demo.gif)
