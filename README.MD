@@ -88,7 +88,7 @@ The database is queried using sequelize and seed data was created using faker np
   npm start
   ```
 
-## Frontend Installatin and Run Application Locally
+## Frontend Installation and Run Application Locally
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
