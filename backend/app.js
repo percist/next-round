@@ -85,7 +85,7 @@ const options = {
 }
 
 // Keep Dynos Awake
-app.listen(proces.env.PORT, () => {
+app.listen(process.env.PORT, () => {
   wakeDyno(DYNO_URL, options);
 })
 
