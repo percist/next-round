@@ -9,8 +9,9 @@ const bodyParser = require("body-parser");
 const routes = require('./routes');
 const { environment } = require('./config');
 const isProduction = environment === 'production';
-
+const { wakeDyno } = require('heroku-keep-awake')
 const app = express();
+const DYNO_URL = 'https://bike-around.herokuapp.com';
 
 app.use(morgan('dev'));
 
@@ -73,5 +74,19 @@ app.use((err, _req, res, _next) => {
     stack: isProduction ? null : err.stack
   });
 });
+
+const options = {
+  interval: 29,
+  logging: false,
+  stopTimes: {
+    start: '08:00',
+    end: '18:00'
+  }
+}
+
+// Keep Dynos Awake
+app.listen(process.env.PORT, () => {
+  wakeDyno(DYNO_URL, options);
+})
 
 module.exports = app;
