@@ -4,6 +4,8 @@ const { port } = require('../config');
 
 const app = require('../app');
 const db = require('../db/models');
+const dynoWakeup = require("../dynoWakeup");
+const DYNO_URL = "https://next-round.herokuapp.com";
 
 // Check the database connection before starting the app
 db.sequelize
@@ -12,7 +14,10 @@ db.sequelize
     console.log('Database connection success! Sequelize is ready to use...');
 
     // Start listening for connections
-    app.listen(port, () => console.log(`Listening on port ${port}...`));
+    app.listen(port, () => {
+      console.log(`Listening on port ${port}...`)
+      dynoWakeup(DYNO_URL);
+    });
   })
   .catch((err) => {
     console.log('Database connection failure.');
