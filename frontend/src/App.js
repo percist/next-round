@@ -32,12 +32,12 @@ function App() {
           </Route>
           <Route path="/" exact>
             <HomePageContainer isLoaded={isLoaded}/>
+          <Route path="/users/round" exact>
+            <RoundsSendForm />
+          </Route>
           </Route>
           <Route path="/users/:id" exact >
             <UserPage />
-          </Route>
-          <Route path="/users/round" exact>
-            <RoundsSendForm />
           </Route>
           <Route path="/users/:id/round" exact>
             <RoundsClaimForm />
