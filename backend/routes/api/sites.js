@@ -271,8 +271,33 @@ router.patch(
 
     await item.save();
  
-    res.json(item)
+    res.json(item);
   })
-)
+);
+
+// Edit order of items
+router.patch(
+  '/:siteId(\\d+)/items',
+  asyncHandler(async (req, res) => {
+    const { ids } = req.body; //receives an array of ids with the index = new order
+
+    const items = await Item.findAll();
+    if (!items || items.length !== ids.length) {
+      const err = new Error('Unable to reorder items at this time. Please try again later');
+      err.status = 401;
+      err.title = 'Item reorder failed';
+      err.errors = ['Something weird happened. The items could not be reordered.'];
+      return next(err);
+    };
+
+    await items.forEach((item, index) => {
+      item.order = ids.findIndex(id => id === item.id);
+    });
+
+    await items.save();
+
+    res.json(items);
+  })
+);
 
 module.exports = router;
