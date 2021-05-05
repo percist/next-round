@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const routes = require('./routes');
 const { environment } = require('./config');
 const isProduction = environment === 'production';
+
 const app = express();
 
 app.use(morgan('dev'));
@@ -72,14 +73,5 @@ app.use((err, _req, res, _next) => {
     stack: isProduction ? null : err.stack
   });
 });
-
-const options = {
-  interval: 29,
-  logging: false,
-  stopTimes: {
-    start: '08:00',
-    end: '18:00'
-  }
-}
 
 module.exports = app;
