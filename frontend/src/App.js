@@ -30,27 +30,35 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+
           <Route path="/" exact>
             <HomePageContainer isLoaded={isLoaded}/>
           </Route>
+
           <Route path="/users/round" exact>
             <RoundsSendForm />
           </Route>
+
           <Route path="/users/:id" exact >
             <UserPage />
           </Route>
+
           <Route path="/users/:id/round" exact>
             <RoundsClaimForm />
           </Route>
+
           <Route path="/sites/:siteId" exact >
             <SitePage isLoaded={isLoaded}/>
           </Route>
+
           <Route path="/sites/:siteId/menu" exact >
             <MenuPage />
           </Route>
+
           <Route path="/search" exact >
             <SearchResultsPage />
           </Route>
+          
           <Route path="*" >
             <NotFoundPage />
           </Route>
