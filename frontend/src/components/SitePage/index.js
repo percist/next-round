@@ -37,7 +37,7 @@ const SitePage = () => {
   useEffect(() => {
     if(Array.isArray(site.Items)){
       const sortedItems = site.Items.sort((a,b) => a.order-b.order);
-      setItems(sortedItems);
+      setItemsToDisplay(sortedItems);
     }
     if(site.imgUrl) setImgUrl(site.imgUrl);
   }, [site]);

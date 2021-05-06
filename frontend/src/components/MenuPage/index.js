@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { editMenuOrderDispatcher } from "./MenuPageUtils";
 import arrayMove from 'array-move';
 import MenuList from '../MenuList';
@@ -9,17 +9,17 @@ const MenuPage = ({site, items, itemsToDisplay, setItemsToDisplay}) => {
   const { siteId } = site.id;
 
   const onSortEnd = ({ oldIndex, newIndex }) => {
-    let newItemsToDisplay = arrayMove(
+    let newItems = arrayMove(
       itemsToDisplay,
       oldIndex,
       newIndex,
     );
-    for (let i = 0; i < newItemsToDisplay.length; i++){
-      newItemsToDisplay[i].order = i
+    for (let i = 0; i < newItems.length; i++){
+      newItems[i].order = i
     }
-    const ids = newItemsToDisplay.map(item => item.id)
+    const ids = newItems.map(item => item.id)
     editMenuOrderDispatcher(siteId, ids);
-    setItemsToDisplay(newItemsToDisplay);
+    setItemsToDisplay(newItems);
   }
 
   return (
@@ -27,8 +27,8 @@ const MenuPage = ({site, items, itemsToDisplay, setItemsToDisplay}) => {
       <div className="menu-list">
 
         <MenuList
+          items={items}
           itemsToDisplay={itemsToDisplay}
-          onSortEnd={onSortEnd}
           setItemsToDisplay={setItemsToDisplay}
           siteId={siteId}
           onSortEnd={onSortEnd}
