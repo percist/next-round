@@ -1,33 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { fetchAllSiteItems } from '../../store/items'
-import { fetchOneSite } from '../../store/sites';
+import React from 'react';
+import { editMenuOrderDispatcher } from "./MenuPageUtils";
+import arrayMove from 'array-move';
 import MenuList from '../MenuList';
 import './MenuPage.css';
 
-const MenuPage = () => {
+const MenuPage = ({site, items, itemsToDisplay, setItemsToDisplay}) => {
 
-  const dispatch = useDispatch();
-  const params = useParams();
-  const { siteId } = params;
-  const items = useSelector(state => state.items);
-
-  const [itemsToDisplay, setItemsToDisplay] = useState([]);
+  const { siteId } = site.id;
 
   const onSortEnd = ({ oldIndex, newIndex }) => {
-    setItemsToDisplay()
+    let newItemsToDisplay = arrayMove(
+      itemsToDisplay,
+      oldIndex,
+      newIndex,
+    );
+    for (let i = 0; i < newItemsToDisplay.length; i++){
+      newItemsToDisplay[i].order = i
+    }
+    const ids = newItemsToDisplay.map(item => item.id)
+    editMenuOrderDispatcher(siteId, ids);
+    setItemsToDisplay(newItemsToDisplay);
   }
-
-  useEffect(() => {
-    dispatch(fetchAllSiteItems(siteId));
-    dispatch(fetchOneSite(siteId));
-  }, [dispatch, siteId]);
-
-  useEffect(() => {
-    if (items[0])
-      setItemsToDisplay([...items.sort((a,b)=> a.order < b.order)]);
-  }, [items]);
 
   return (
     <div className="menu">
@@ -38,6 +31,8 @@ const MenuPage = () => {
           onSortEnd={onSortEnd}
           setItemsToDisplay={setItemsToDisplay}
           siteId={siteId}
+          onSortEnd={onSortEnd}
+          axis='y'
         />
       </div>
       

@@ -5,7 +5,7 @@ import { deleteMenuItem } from "../../store/items";
 import MenuEditForm from '../MenuEditForm';
 import MenuItem from '../MenuItem';
 
-const MenuItemContainer = SortableElement(({ item, itemsToDisplay, setItemsToDisplay, siteId }) => {
+const MenuItemContainer = SortableElement(({ item, itemsToDisplay, setItemsToDisplay, siteId, index }) => {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
@@ -29,7 +29,9 @@ const MenuItemContainer = SortableElement(({ item, itemsToDisplay, setItemsToDis
 
   return (
     <div
-      className="menu-item-container"
+      className="menu-item-container menu-list-item"
+      key={item.id}
+      index={index}
     >
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
