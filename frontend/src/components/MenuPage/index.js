@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchAllSiteItems } from '../../store/items'
 import { fetchOneSite } from '../../store/sites';
+import { editMenuOrderDispatcher } from "./MenuPageUtils";
 import arrayMove from 'array-move';
 import MenuList from '../MenuList';
 import './MenuPage.css';
@@ -35,6 +36,8 @@ const MenuPage = () => {
     for (let i = 0; i < newItemsToDisplay.length; i++){
       newItemsToDisplay[i].order = i
     }
+    const ids = newItemsToDisplay.map(item => item.id)
+    editMenuOrderDispatcher(siteId, ids);
     setItemsToDisplay(newItemsToDisplay);
   }
 
