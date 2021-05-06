@@ -24,7 +24,6 @@ const SitePage = () => {
   const [items, setItems] = useState([]);
   const [isOwner, setIsOwner] = useState(false);
   const [isUpdatingMenu, setIsUpdatingMenu] = useState(false)
-
   const [itemsToDisplay, setItemsToDisplay] = useState([]);
 
   const updateMenuHandler = () => setIsUpdatingMenu(!isUpdatingMenu);
