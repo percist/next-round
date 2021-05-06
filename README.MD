@@ -30,8 +30,8 @@ The backend is an Express server with a PostgreSQL database.
 * Site pages include rounds claimed at that site, menu items, ability for site owner to update menu
 * Round claim form allowing user to claim a round they have been sent and transform it into a post
 * Round send form allowing user to purchase and send a round to another user
-* Search functionality allowing user to search for users or sites and filter based on type
-* Menu form allowing site owner to add or delete menu items
+* Search functionality allowing user to search for users, sites, and items and filter based on type
+* Menu allowing site owner to add, edit, or delete menu items
 * Site form allowing users to add sites they own
 
 ## Technologies Used
@@ -88,7 +88,7 @@ The database is queried using sequelize and seed data was created using faker np
   npm start
   ```
 
-## Frontend Installatin and Run Application Locally
+## Frontend Installation and Run Application Locally
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -114,6 +114,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Conclusion
 Next Round was inspired by a whiteboard at Tradesman Brewing in Charleston, SC where people can buy a beer for a buddy who can then redeem it the next time they come in as well as the Facebook group 'Isolation Porch Beers'. While I could not visit family and friends during COVID I wanted to develop a platform for people to be able to share a drink remotely that could also serve as a traffic generator for local businesses. 
 
-Future features would include adding items to search, validating follow requests, ratings for menu items, saved locations, favorited menu items, likes on posts, tips on payments, a payments dashboard for owners to see activity and redeem funds, and drag and drop functionality for menu items so an owner can order the menu.
+Future features would include optimization for mobile, dark mode, lazy loading for post feed, infinite scroll, validating follow requests, ratings for menu items, saved locations, favorited menu items, likes on posts, tips on payments, a payments dashboard for owners to see activity and redeem funds, chat between users, pop-up modals with more info about buddys on hover, and drag and drop functionality for menu items so an owner can order the menu.
   
 ![Demo](Next-Round-Demo.gif)

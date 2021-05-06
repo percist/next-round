@@ -28,6 +28,7 @@ const MenuPage = ({site, items, itemsToDisplay, setItemsToDisplay}) => {
 
         <MenuList
           itemsToDisplay={itemsToDisplay}
+          onSortEnd={onSortEnd}
           setItemsToDisplay={setItemsToDisplay}
           siteId={siteId}
           onSortEnd={onSortEnd}
