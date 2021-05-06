@@ -260,7 +260,7 @@ router.patch(
       err.status = 401;
       err.title = 'Item update failed';
       err.errors = ['Something weird happened. That item could not be found. Please try again later.'];
-      return next(err);
+      return (err);
     }
 
     if (name) item.name = name;
@@ -271,8 +271,48 @@ router.patch(
 
     await item.save();
  
-    res.json(item)
+    res.json(item);
   })
-)
+);
+
+// Edit order of items
+router.patch(
+  '/:siteId(\\d+)/items',
+  asyncHandler(async (req, res) => {
+    const { siteId } = req.params;
+    const { ids } = req.body; //receives an array of ids with the index = new order
+    console.log(ids)
+    const site = await Site.findOne({
+      where: {id: siteId},
+      include: [
+        {
+          model: Item
+        }
+      ]
+    });
+    const items = site.Items;
+    if (!items || items.length !== ids.length) {
+      const err = new Error('Unable to reorder items at this time. Please try again later');
+      err.status = 401;
+      err.title = 'Item reorder failed';
+      err.errors = ['Something weird happened. The items could not be reordered.'];
+      return (err);
+    };
+    console.log(items.forEach(item=> item.id))
+    const updatedItems = await Promise.all(items.map(async (item) => {
+      const updatedItem = await Item.findByPk(item.id)
+      updatedItem.order = ids.findIndex(id => id === item.id) + 1;
+      if (updatedItem.order !== item.order) await updatedItem.save();
+    }))
+
+    // await items.forEach((item, index) => {
+    //   item.order = ids.findIndex(id => id === item.id);
+    // });
+
+    // await items.save();
+
+    res.json(updatedItems);
+  })
+);
 
 module.exports = router;
