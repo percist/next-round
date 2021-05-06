@@ -8,19 +8,11 @@ import arrayMove from 'array-move';
 import MenuList from '../MenuList';
 import './MenuPage.css';
 
-const MenuPage = () => {
+const MenuPage = ({site, items, itemsToDisplay, setItemsToDisplay}) => {
 
   const dispatch = useDispatch();
   const params = useParams();
-  const { siteId } = params;
-  const items = useSelector(state => state.items);
-
-  const [itemsToDisplay, setItemsToDisplay] = useState([]);
-
-  useEffect(() => {
-    dispatch(fetchAllSiteItems(siteId));
-    dispatch(fetchOneSite(siteId));
-  }, [dispatch, siteId]);
+  const { siteId } = site.id;
 
   useEffect(() => {
     if (items[0])

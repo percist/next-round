@@ -25,16 +25,21 @@ const SitePage = () => {
   const [isOwner, setIsOwner] = useState(false);
   const [isUpdatingMenu, setIsUpdatingMenu] = useState(false)
 
+  const [itemsToDisplay, setItemsToDisplay] = useState([]);
+
   const updateMenuHandler = () => setIsUpdatingMenu(!isUpdatingMenu);
 
   useEffect(() => {
     checkIsOwner(user, siteId, setIsOwner);
     dispatch(fetchOneSite(siteId));
     dispatch(fetchAllSiteRounds(siteId));
-  }, [dispatch, siteId, user]);
+  }, [dispatch, siteId, user, setItemsToDisplay]);
 
   useEffect(() => {
-    setItems(site.Items);
+    if(Array.isArray(site.Items)){
+      const sortedItems = site.Items.sort((a,b) => a.order-b.order);
+      setItems(sortedItems);
+    }
     if(site.imgUrl) setImgUrl(site.imgUrl);
   }, [site]);
 
@@ -70,10 +75,10 @@ const SitePage = () => {
           </div>
         </div>
         {!isUpdatingMenu && <div className="site-page-content-feed">
-          <ItemCardContainer items={items} />
+          <ItemCardContainer items={itemsToDisplay} />
           <RoundsFeed rounds={rounds} site={site} type="site" />
         </div>}
-        {isUpdatingMenu && <MenuPage />}
+        {isUpdatingMenu && <MenuPage site={site} items={items} itemsToDisplay={itemsToDisplay} setItemsToDisplay={setItemsToDisplay}/>}
       </div>
     </div>
   )
