@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { editMenuOrderDispatcher } from "./MenuPageUtils";
 import arrayMove from 'array-move';
 import MenuList from '../MenuList';
@@ -25,7 +25,7 @@ const MenuPage = ({site, items, itemsToDisplay, setItemsToDisplay}) => {
   return (
     <div className="menu">
       <div className="menu-list">
-
+        <h2 id="menu-list_instructions"> Drag and drop menu items to reorder on your page </h2>
         <MenuList
           items={items}
           itemsToDisplay={itemsToDisplay}

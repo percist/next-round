@@ -8,6 +8,10 @@
   text-align: center;
 }
 
+#menu-list_instructions {
+  text-align: center;
+}
+
 .menu-item-container {
   width: 680px;
   display: flex;
