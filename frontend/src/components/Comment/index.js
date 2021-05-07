@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import CommentForm from '../CommentForm';
 import {timeDifference} from '../../dateUtilities';
 import UserImage from '../UserImage';
-import {fetchUser, deleteCommentDispatcher, editCommentDispatcher} from './CommentUtils';
+import {fetchUser, deleteCommentDispatcher } from './CommentUtils';
 
 const Comment = ({round, comment, comments, setComments}) => {
 

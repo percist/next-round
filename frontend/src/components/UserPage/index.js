@@ -7,7 +7,6 @@ import { fetchOneUser } from "../../store/users";
 import { fetchAllUserClaimedRounds } from "../../store/rounds";
 import { followSwitch, fetchIfBuddies } from "./UserPageUtils";
 import UnfollowButton from "../UnfollowButton";
-import headerImg from '../../DefaultHeader.png';
 import spinner from '../../Spinner-1s-44px.gif';
 import largeSpinner from '../../Spinner-1s-617px.gif';
 import './UserPage.css';

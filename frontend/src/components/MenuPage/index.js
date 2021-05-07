@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { editMenuOrderDispatcher } from "./MenuPageUtils";
 import arrayMove from 'array-move';
 import MenuList from '../MenuList';
