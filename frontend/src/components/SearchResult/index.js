@@ -7,7 +7,7 @@ import FollowButton from '../FollowButton';
 const SearchResult = ({ type, result, buddy }) => {
   const [isBuddy, setIsBuddy] = useState(false);
   const { user } = useSelector(state => state.session)
-  console.log(result)
+
   const followSwitch = () => {
     if (isBuddy) {
       return <FaUserFriends className="following-icon" />

@@ -23,7 +23,7 @@ const MenuEditForm = ({ siteId, item, setIsEditing, itemsToDisplay, setItemsToDi
       image,
       isActive
     }
-    console.log(updatedItem)
+
     const newItem = await dispatch(editMenuItem(siteId, updatedItem))
       .catch(res => {
         if (res.data && res.data.errors) setErrors(res.data.errors);

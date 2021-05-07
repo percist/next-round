@@ -281,7 +281,6 @@ router.patch(
   asyncHandler(async (req, res) => {
     const { siteId } = req.params;
     const { ids } = req.body; //receives an array of ids with the index = new order
-    console.log(ids)
     const site = await Site.findOne({
       where: {id: siteId},
       include: [
@@ -298,7 +297,6 @@ router.patch(
       err.errors = ['Something weird happened. The items could not be reordered.'];
       return (err);
     };
-    console.log(items.forEach(item=> item.id))
     const updatedItems = await Promise.all(items.map(async (item) => {
       const updatedItem = await Item.findByPk(item.id)
       updatedItem.order = ids.findIndex(id => id === item.id) + 1;

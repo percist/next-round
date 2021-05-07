@@ -35,7 +35,7 @@ const UserPage = () => {
       return <UnfollowButton userId={sessionUser.id} buddyId={id} setIsBuddy={setIsBuddy} />
     }
   }
-  console.log(headerImg)
+
   return (
     <div id="buddy-page">
       <div className="buddy-page-header">
