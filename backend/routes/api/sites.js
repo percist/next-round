@@ -305,12 +305,6 @@ router.patch(
       if (updatedItem.order !== item.order) await updatedItem.save();
     }))
 
-    // await items.forEach((item, index) => {
-    //   item.order = ids.findIndex(id => id === item.id);
-    // });
-
-    // await items.save();
-
     res.json(updatedItems);
   })
 );

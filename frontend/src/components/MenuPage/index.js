@@ -4,7 +4,7 @@ import arrayMove from 'array-move';
 import MenuList from '../MenuList';
 import './MenuPage.css';
 
-const MenuPage = ({site, items, itemsToDisplay, setItemsToDisplay}) => {
+const MenuPage = ({site, itemsToDisplay, setItemsToDisplay}) => {
 
   const { siteId } = site.id;
 
@@ -27,7 +27,6 @@ const MenuPage = ({site, items, itemsToDisplay, setItemsToDisplay}) => {
       <div className="menu-list">
         <h2 id="menu-list_instructions"> Drag and drop menu items to reorder on your page </h2>
         <MenuList
-          items={items}
           itemsToDisplay={itemsToDisplay}
           setItemsToDisplay={setItemsToDisplay}
           siteId={siteId}

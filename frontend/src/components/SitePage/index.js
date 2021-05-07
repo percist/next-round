@@ -21,7 +21,6 @@ const SitePage = () => {
   const rounds = useSelector(state => state.rounds);
   const site = useSelector(state => state.sites);
   const [imgUrl, setImgUrl] = useState(headerImg);
-  const [items, setItems] = useState([]);
   const [isOwner, setIsOwner] = useState(false);
   const [isUpdatingMenu, setIsUpdatingMenu] = useState(false)
   const [itemsToDisplay, setItemsToDisplay] = useState([]);
@@ -77,7 +76,12 @@ const SitePage = () => {
           <ItemCardContainer items={itemsToDisplay} />
           <RoundsFeed rounds={rounds} site={site} type="site" />
         </div>}
-        {isUpdatingMenu && <MenuPage site={site} items={items} itemsToDisplay={itemsToDisplay} setItemsToDisplay={setItemsToDisplay}/>}
+        {isUpdatingMenu && 
+        <MenuPage 
+          site={site} 
+          itemsToDisplay={itemsToDisplay} 
+          setItemsToDisplay={setItemsToDisplay}
+          />}
       </div>
     </div>
   )
