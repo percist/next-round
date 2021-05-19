@@ -13,11 +13,17 @@
   box-shadow: var(--main-box-shadow);
 }
 
-#buddy-page-header_banner img{
+#buddy-page-header_banner img,
+#buddy-page-header_banner #placeholder{
   width: 940px;
   height: 400px;
   object-fit: cover;
   border-radius: 8px;
+}
+
+#buddy-page-header_banner #placeholder{
+  background-color: rgba(143, 143, 143, 0.3);
+  box-shadow: var(--main-box-shadow)
 }
 
 #buddy-page-header_profile img{

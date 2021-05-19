@@ -11,11 +11,16 @@
     padding-bottom: 60px;
 }
 
-.site-page-header img{
+.site-page-header img,
+.site-page-header #placeholder{
     width: 940px;
     height: 400px;
     object-fit: cover;
     border-radius: 8px;
+}
+
+.site-page-header #placeholder{
+  background-color: var(--secondary-bg-color);
 }
 
 .site-page-content { 

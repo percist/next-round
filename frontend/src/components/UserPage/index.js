@@ -34,12 +34,16 @@ const UserPage = () => {
       return <UnfollowButton userId={sessionUser.id} buddyId={id} setIsBuddy={setIsBuddy} />
     }
   }
+  if(rounds[0]){
 
+    console.log(!rounds[0].imgUrl)
+  }
   return (
     <div id="buddy-page">
       <div className="buddy-page-header">
         <div id="buddy-page-header_banner">
           {!Array.isArray(rounds) && <img src={largeSpinner} alt="loading..." />}
+          {Array.isArray(rounds) && rounds && rounds[0] === undefined && <div id="placeholder"></div>}
           {Array.isArray(rounds) && rounds[0] && <img src={rounds[0].imgUrl} alt="a round" />}
         </div>
         <div id="buddy-page-header_profile">
@@ -56,7 +60,8 @@ const UserPage = () => {
       </div>
       <div className="buddy-page-content">
         <div className="buddy-page-content-feed">
-          <UserRoundsFeed roundsArray={rounds} />
+          {Array.isArray(rounds) && rounds && rounds[0] === undefined && <div> This buddy has not claimed any rounds yet.</div>}
+          {Array.isArray(rounds) && <UserRoundsFeed roundsArray={rounds} />}
         </div>
       </div>
     </div>

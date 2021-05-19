@@ -44,7 +44,8 @@ const SitePage = () => {
   return (
     <div className="site-page">
       <div className="site-page-header">
-        {!imgUrl && <img src={largeSpinner} alt="loading..." />}
+        {/* {!imgUrl && <img src={largeSpinner} alt="loading..." />} */}
+        {!imgUrl && <div id="placeholder"></div>}
         {imgUrl && <img src={imgUrl} alt={site.name} />}
         <h1>{site.name}</h1>
       </div>
