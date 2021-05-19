@@ -5,7 +5,16 @@ const { port } = require('../config');
 const app = require('../app');
 const db = require('../db/models');
 const dynoWakeup = require("../dynoWakeup");
+const { wakeDyno } = require('heroku-keep-awake')
 const DYNO_URL = "https://next-round.herokuapp.com";
+const opts = {
+  interval: 29,
+  logging: false,
+  stopTimes: { 
+    start: '08:00',
+    end: '19:00'
+  }
+}
 
 // Check the database connection before starting the app
 db.sequelize
@@ -15,6 +24,7 @@ db.sequelize
 
     // Start listening for connections
     app.listen(port, () => {
+      wakeDyno(DYNO_URL, opts);
       console.log(`Listening on port ${port}...`)
       dynoWakeup(DYNO_URL);
     });
