@@ -51,6 +51,7 @@ Another break to hide buddies sidebar */
 .rounds-sidebar_site-link:hover,
 .rounds-sidebar .button:hover {
   background-color: var(--main-bg-color-dark);
+  cursor: pointer;
 }
 
 .rounds-sidebar div {

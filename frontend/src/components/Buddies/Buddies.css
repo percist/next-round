@@ -20,6 +20,7 @@
 
 .buddy:hover {
   background-color: var(--main-bg-color-dark);
+  cursor: pointer;
 }
 
 #buddy-info a:link{

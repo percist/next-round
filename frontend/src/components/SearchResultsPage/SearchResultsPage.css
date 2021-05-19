@@ -24,6 +24,7 @@
 
 #search-results-page-sidebar_filters div:hover{
   background-color: var(--main-bg-color-dark);
+  cursor: pointer;
 }
 
 .filter-button:focus{

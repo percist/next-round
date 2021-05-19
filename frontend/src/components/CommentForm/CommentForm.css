@@ -30,6 +30,10 @@
   outline: none;
 }
 
+.comment-form-submit-button:hover {
+  cursor: pointer;
+}
+
 .comment-form-submit-button {
   background-color: var(--main-border-color);
   border-radius: 100%;

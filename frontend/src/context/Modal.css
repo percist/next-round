@@ -26,14 +26,6 @@
   background-color:white;
 }
 
-/* login modal */
-/* #modal #login{
-  display: flex;
-  align-items: center;
-  min-height: 20vh;
-  width: 450px;
-} */
-
 #modal label{
   margin: 8px 8px 0px 20px;
   font-size: 18px;

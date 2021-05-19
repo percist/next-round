@@ -24,7 +24,6 @@
 }
 
 a {
-  cursor: default;
   text-decoration: none;
   font-size: 20px;
   color: var(--main-text-color);
@@ -92,6 +91,7 @@ a {
   border: none;
   background: none;
   text-decoration: none;
+  cursor: pointer;
 }
 
 #profile-button:active {
@@ -130,6 +130,10 @@ a {
   background-color: var(--main-bg-color);
   border: none;
   border-radius: 10px;
+}
+
+#search-bar button:hover{
+  cursor: pointer;
 }
 
 .search-icon {
