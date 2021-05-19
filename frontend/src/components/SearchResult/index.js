@@ -66,7 +66,8 @@ const SearchResult = ({ type, result, buddy }) => {
       </div>
     );
   }
-  else{
+  else if(type === "item"){
+    console.log(result)
     return (
       <div className="item search-result">
         <div className="item search-result-content">
@@ -83,7 +84,8 @@ const SearchResult = ({ type, result, buddy }) => {
           </div>
           <div className="item search-result-info">
             <div>{result.name}</div>
-            {result.Sites[0] && <div>On the menu at <a href={`/sites/${result.Sites[0].id}`} >{result.Sites[0].name}</a></div>}
+            {!Array.isArray(result.Sites) && 'loading...'}
+            {Array.isArray(result.Sites) && <div>On the menu at <a href={`/sites/${result.Sites[0].id}`} >{result.Sites[0].name}</a></div>}
             <div>{`${result.description}`}</div>
           </div>
         </div>

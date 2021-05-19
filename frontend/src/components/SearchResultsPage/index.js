@@ -30,24 +30,26 @@ const SearchResultsPage = () => {
       setBuddyIds([...buddies.map(buddy => buddy.id)]);
     }
   }, [buddies]);
+  console.log(resultsToDisplay)
 
   const resultsFilter = () => {
     return (
       <>
         {!resultsToDisplay && "no results to display"}
-        {resultsToDisplay && buddyIds && filter === "all" && resultsToDisplay.map((result, i) => {
+        {resultsToDisplay && buddyIds && filter === "all" && resultsToDisplay.map(result => {
           if (result.username) {
             const buddy = buddyIds.includes(result.id)
-            return (<SearchResult type={"user"} buddy={buddy} result={result} key={i} />)
-          } else if (result.description) {
-            return (<SearchResult type={"item"} result={result} key={i} />)
+            return (<SearchResult type={"user"} buddy={buddy} result={result} key={`user${result.id}`} />)
+          } else if (result.price) {
+            console.log(result)
+            return (<SearchResult type={"item"} result={result} key={`item${result.id}`} />)
           } else {
-            return (<SearchResult type={"site"} result={result} key={i} />)
+            return (<SearchResult type={"site"} result={result} key={`site${result.id}`} />)
           }
         })}
         {resultsToDisplay && buddyIds && filter === "sites" && resultsToDisplay.map((result, i) => {
           if (!result.username) {
-            return (<SearchResult type={"site"} result={result} key={i} />)
+            return (<SearchResult type={"site"} result={result} key={`site${result.id}`} />)
           }else{
             return null
           }
@@ -55,14 +57,14 @@ const SearchResultsPage = () => {
         {resultsToDisplay && buddyIds && filter === "users" && resultsToDisplay.map((result, i) => {
           if (result.username) {
             const buddy = buddyIds.includes(result.id)
-            return (<SearchResult type={"user"} buddy={buddy} result={result} key={i} />)
+            return (<SearchResult type={"user"} buddy={buddy} result={result} key={`user${result.id}`} />)
           }else{
             return null
           }
         })}
         {resultsToDisplay && buddyIds && filter === "items" && resultsToDisplay.map((result, i) => {
-          if (result.username) {
-            return (<SearchResult type={"item"} result={result} key={i} />)
+          if (result.price) {
+            return (<SearchResult type={"item"} result={result} key={`item${result.id}`} />)
           }else{
             return null
           }
