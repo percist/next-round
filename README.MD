@@ -127,7 +127,8 @@ Future features would include:
 - tips on payments, 
 - a payments dashboard for owners to see activity and redeem funds, 
 - chat between users, 
-- more placeholder elements and components,
-- and pop-up modals with more info about buddys on hover.
+- placeholder elements and components to preserve styling while loading or when data is incomplete,
+- optimizing for accessibility,
+- and pop-up modals with more info about each buddy on hover.
   
 ![Demo](Next-Round-Demo.gif)
