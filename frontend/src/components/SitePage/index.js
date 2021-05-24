@@ -51,12 +51,14 @@ const SitePage = () => {
       </div>
       <div className="site-page-content">
         <div className="site-page-content-rounds-sidebar">
-          {isOwner && <button
-            onClick={updateMenuHandler}
-            className="button update-menu-button"
+          {isOwner && 
+            <button
+              onClick={updateMenuHandler}
+              className="button update-menu-button"
+              label="update your business' menu"
             >
-            {isUpdatingMenu && 'Done updating'}
-            {!isUpdatingMenu && 'Update menu'}
+              {isUpdatingMenu && 'Done updating'}
+              {!isUpdatingMenu && 'Update menu'}
                         </button>
           }
           <div id="site-page-content-rounds-sidebar_info">

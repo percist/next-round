@@ -59,13 +59,27 @@ const CommentForm = ({
         <UserImage user={user} />
         <div className="comment-form-editing">
         <textarea 
+          label="comment on a round posting"
           className="comment-form-input input-field" 
           value={newComment} 
           onChange={e => setNewComment(e.target.value)} 
         />
-        <button hidden={!editing} className="comment-form-cancel-button" onClick={()=>setEditing(false)}>cancel</button>
+        <button 
+          hidden={!editing} 
+          label="cancel the comment"
+          className="comment-form-cancel-button" 
+          onClick={()=>setEditing(false)}
+          >
+            cancel
+            </button>
         </div>
-      <button type="submit" className="comment-form-submit-button"><IoSend className="send-icon"/></button>
+      <button 
+        type="submit" 
+        className="comment-form-submit-button"
+        label="post a comment"
+        >
+          <IoSend className="send-icon"/>
+          </button>
     </form>
   </div>
   )

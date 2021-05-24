@@ -91,19 +91,39 @@ const SearchResultsPage = () => {
             <h3>Filters</h3>
             <div onClick={() => setFilter("all")} id="search-results-page-sidebar_filters-all">
               <ImFilesEmpty className="following-icon" />
-              <button className="filter-button">All</button>
+              <button 
+                className="filter-button"
+                label="show all results"
+                >
+                  All
+              </button>
             </div>
             <div onClick={() => setFilter("users")} id="search-results-page-sidebar_filters-people">
               <IoPersonCircleOutline className="following-icon" />
-              <button className="filter-button">People</button>
+              <button 
+                className="filter-button"
+                label="show only people"
+                >
+                  People
+              </button>
             </div>
             <div onClick={() => setFilter("sites")} id="search-results-page-sidebar_filters-sites">
               <IoStorefront className="following-icon" />
-              <button className="filter-button">Businesses</button>
+              <button 
+                className="filter-button"
+                label="show only businesses"
+                >
+                  Businesses
+              </button>
             </div>
             <div onClick={() => setFilter("items")} id="search-results-page-sidebar_filters-items">
               <FaGlassCheers className="following-icon" />
-              <button className="filter-button">Items</button>
+              <button 
+                className="filter-button"
+                label="show only items"
+                >
+                  Items
+              </button>
             </div>
           </div>
         </div>

@@ -41,15 +41,23 @@ const SearchBar = () => {
       <input
         id="search-bar"
         className="input"
+        label="search for items, sites, or people"
         maxLength={60}
         value={query}
         placeholder={errors.length > 0 ? errors[0] : "Search"}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <button onClick={handleSearch} id="search-button">
+      <button 
+        onClick={handleSearch} 
+        id="search-button"
+        label="search button">
         <FaSearch className="search-icon" />
       </button>
-      <button onClick={handleXClick} id="clear-button">
+      <button 
+        onClick={handleXClick} 
+        id="clear-button"
+        label="clear search terms"
+        >
         <MdClear className="search-icon" />
       </button>
     </div>

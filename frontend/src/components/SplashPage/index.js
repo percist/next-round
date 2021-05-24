@@ -51,6 +51,7 @@ const SplashPage = () => {
             <div id="splash-page-cta_buttons">
               <button
                 className="button"
+                label="login to site"
                 id="splash-page-cta_2"
                 onClick={handleLoginClick}
               >
@@ -59,6 +60,7 @@ const SplashPage = () => {
               <button
                 className="button"
                 id="splash-page-cta_3"
+                label="signup for an account"
                 onClick={handleSignupClick}
               >
                 SignUp
@@ -66,6 +68,7 @@ const SplashPage = () => {
               <button
                 className="button"
                 id="splash-page-cta_4"
+                label="demo without creating an account"
                 onClick={handleDemoClick}
               >
                 Demo

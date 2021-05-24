@@ -123,6 +123,7 @@ const MenuEditForm = ({ siteId, item, setIsEditing, itemsToDisplay, setItemsToDi
         <button
           className="button"
           id="menu-edit-item-form_button"
+          label="update menu item"
           type="submit"
           >
           Update Menu Item

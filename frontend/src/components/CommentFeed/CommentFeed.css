@@ -14,7 +14,7 @@
   display: flex;
 }
 
-#comment-body_info {
+.comment-body_info {
   border-radius: 16px;
   background-color: var(--main-bg-color);
   padding: 12px;
@@ -24,12 +24,12 @@
   border: none;
 }
 
-#comment-body_body-buttons {
+.comment-body_body-buttons {
   margin-left: 22px;
   display: flex;
 }
 
-#comment-body_body-buttons_1{
+.comment-body_body-buttons_1{
   margin-right: 5pt;
 }
 
