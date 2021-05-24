@@ -35,19 +35,31 @@ const Comment = ({round, comment, comments, setComments}) => {
               <UserImage user={user} />
           </div>
           <div className="comment-body">
-            <div id="comment-body_info">
-              <div id="comment-body_username">
+            <div className="comment-body_info">
+              <div className="comment-body_username">
                 {user && user.username}
               </div> 
-              <div id="comment-body_body">
+              <div className="comment-body_body">
                 {commentDisplayed.body} 
               </div>
             </div>
-              <div id="comment-body_body-buttons" >
-                <div id="comment-body_body-buttons_1" hidden={sessionUser.id !== user.id}>
-                  <button className="comment-button" onClick={e=>editClickHandler(e)}>edit</button>
+              <div className="comment-body_body-buttons" >
+                <div className="comment-body_body-buttons_1" hidden={sessionUser.id !== user.id}>
+                  <button 
+                    className="comment-button" 
+                    onClick={e=>editClickHandler(e)}
+                    label="edit comment"
+                    >
+                      edit
+                      </button>
                   ·
-                  <button className="comment-button" onClick={e=>deleteClickHandler(e)}>delete</button>
+                  <button 
+                    className="comment-button" 
+                    onClick={e=>deleteClickHandler(e)}
+                    label="delete comment"
+                    >
+                      delete
+                      </button>
                   ·
                 </div>
                 {timeDifference(comment.updatedAt)}

@@ -59,6 +59,7 @@ const CommentForm = ({
         <UserImage user={user} />
         <div className="comment-form-editing">
         <textarea 
+          label="comment on a round posting"
           className="comment-form-input input-field" 
           value={newComment} 
           onChange={e => setNewComment(e.target.value)} 

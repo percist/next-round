@@ -93,6 +93,7 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
                 Write a post:
               </label>
               <textarea
+                label="post about your round"
                 value={comment}
                 onChange={e => setComment(e.target.value)}
                 className="input rounds-cliam-form_input"
