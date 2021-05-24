@@ -53,6 +53,7 @@ function SignupForm({ clickedBusiness, setClickedBusiness}) {
           Email
           <input
             className="input sign-up-form_input"
+            label="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -63,6 +64,7 @@ function SignupForm({ clickedBusiness, setClickedBusiness}) {
           First Name
           <input
             className="input sign-up-form_input"
+            label="first name"
             type="text"
             id="firstName"
             value={firstName}
@@ -74,6 +76,7 @@ function SignupForm({ clickedBusiness, setClickedBusiness}) {
           Last Name
           <input
             className="input sign-up-form_input"
+            label="last name"
             type="text"
             id="lastName"
             value={lastName}
@@ -85,6 +88,7 @@ function SignupForm({ clickedBusiness, setClickedBusiness}) {
           Zip Code
           <input
             className="input sign-up-form_input"
+            label="zip code"
             type="integer"
             value={zip}
             onChange={(e) => setZip(e.target.value)}
@@ -95,6 +99,7 @@ function SignupForm({ clickedBusiness, setClickedBusiness}) {
           Profile Picture
           <input
             className="input sign-up-form_input"
+            label="profile picture"
             type="file"
             onChange={updateFile}
           />
@@ -103,6 +108,7 @@ function SignupForm({ clickedBusiness, setClickedBusiness}) {
           Username
           <input
             className="input sign-up-form_input"
+            label="user name"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -113,6 +119,7 @@ function SignupForm({ clickedBusiness, setClickedBusiness}) {
           Password
           <input
             className="input sign-up-form_input"
+            label="password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -123,6 +130,7 @@ function SignupForm({ clickedBusiness, setClickedBusiness}) {
           Confirm Password
           <input
             className="input sign-up-form_input"
+            label="confirm password"
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
@@ -131,6 +139,7 @@ function SignupForm({ clickedBusiness, setClickedBusiness}) {
         </label>
         <button
           className="button"
+          label="sign up"
           id="sign-up-form_button"
           type="submit"
         >

@@ -140,9 +140,11 @@ const RoundsSendForm = () => {
                 <label>
                   Choose a Buddy
                               </label>
-                <select name="buddy"
+                <select 
+                  name="buddy"
                   className="input sign-up-form_input"
-                  onChange={(e) => handleBuddySelect(e.target.value)}>
+                  onChange={(e) => handleBuddySelect(e.target.value)}
+                  >
                   <option value="">--Please choose a buddy--</option>
                   {!buddies && <option value=''>None</option>}
                   {Array.isArray(buddies) && buddies.map(buddy => {
@@ -154,9 +156,11 @@ const RoundsSendForm = () => {
                 <label>
                   Choose a Participating Restaurant or Bar
                                   </label>
-                <select name="site"
+                <select 
+                  name="site"
                   className="input sign-up-form_input"
-                  onChange={(e) => handleSiteSelect(e.target.value)}>
+                  onChange={(e) => handleSiteSelect(e.target.value)}
+                  >
                   <option value="">--Please choose an option--</option>
                   {!sites && <option value=''>None</option>}
                   {Array.isArray(sites) && sites.map(site => {
@@ -168,9 +172,11 @@ const RoundsSendForm = () => {
                 <label>
                   Choose an Item off their Menu
                                   </label>
-                <select name="item"
+                <select 
+                  name="item"
                   className="input sign-up-form_input"
-                  onChange={(e) => handleItemSelect(e.target.value)}>
+                  onChange={(e) => handleItemSelect(e.target.value)}
+                  >
                   <option value="">--Please choose an option--</option>
                   {!siteItems && <option value=''>None</option>}
                   {Array.isArray(siteItems) && siteItems.map(item => {
@@ -191,6 +197,7 @@ const RoundsSendForm = () => {
                 className="button"
                 id="round-send-form_button"
                 type="submit"
+                label="buy round now"
                 hidden={!buddySelected || !siteSelected || !itemSelected}
               >
                 Buy Now

@@ -77,7 +77,12 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
               <UserImage user={sender} /> {sender.username}
             </div>
           </div>
-        <button className="button redeem-button" hidden={wasClicked} onClick={handleRedeemClick} >
+        <button 
+          className="button redeem-button" 
+          hidden={wasClicked} 
+          onClick={handleRedeemClick} 
+          label="redeem round now"
+          >
           Redeem Now
         </button>
         </div>
@@ -109,12 +114,21 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
                 onChange={updateFile}
               />
             </div>
-            <button type="submit" className="button submit-button">
+            <button 
+              type="submit" 
+              className="button submit-button"
+              label="post your round"
+              >
               Post your Round
                           </button>
           </form>
           <div className="comment-form_buttons">
-            <button className="button later-button" hidden={!wasClicked} onClick={handleNevermindClick} >
+            <button 
+              className="button later-button" 
+              hidden={!wasClicked} 
+              onClick={handleNevermindClick} 
+              label="post round later"
+              >
               Maybe Later
             </button>
           </div>

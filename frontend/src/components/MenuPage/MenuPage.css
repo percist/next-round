@@ -59,20 +59,20 @@
   justify-content: space-evenly;
 }
 
-#menu-item_delete_button,
-#menu-item_edit_button {
+.menu-item_delete_button,
+.menu-item_edit_button {
   border-radius: 4pt;
   color: white;
   height: 30px;
   margin: 0 0 20px;
 }
 
-#menu-item_delete_button {
+.menu-item_delete_button {
   background-color: var(--main-accent-color);
   width: 20%;
 }
 
-#menu-item_edit_button {
+.menu-item_edit_button {
   background-color: var(--main-border-color);
   width: 60%
 }

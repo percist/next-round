@@ -49,6 +49,7 @@ const SiteFormPage = () => {
           Name
                     <input
             className="input site-creation-form_input"
+            label="name of business"
             type="text"
             id="name"
             value={name}
@@ -60,6 +61,7 @@ const SiteFormPage = () => {
           Address
                     <input
             className="input site-creation-form_input"
+            label="street address of business"
             type="text"
             id="address"
             value={address}
@@ -71,6 +73,7 @@ const SiteFormPage = () => {
           City
                     <input
             className="input site-creation-form_input"
+            label="city of business"
             type="text"
             id="city"
             value={city}
@@ -82,6 +85,7 @@ const SiteFormPage = () => {
           State
                     <input
             className="input site-creation-form_input"
+            label="state of business"
             type="text"
             id="state"
             value={state}
@@ -93,6 +97,7 @@ const SiteFormPage = () => {
           Zip Code
                     <input
             className="input site-creation-form_input"
+            label="zip code of business"
             type="integer"
             value={zip}
             onChange={(e) => setZip(e.target.value)}
@@ -103,6 +108,7 @@ const SiteFormPage = () => {
           Website
                     <input
             className="input site-creation-form_input"
+            label="website of business"
             type="text"
             id="website"
             value={website}
@@ -111,9 +117,10 @@ const SiteFormPage = () => {
           />
         </label>
         <label>
-          Profile Picture
+          Business Header Picture
                     <input
             className="input site-creation-form_input"
+            label="header picture for business"
             type="file"
             onChange={updateFile}
           />
@@ -122,6 +129,7 @@ const SiteFormPage = () => {
           Activate Now?
                     <input
             className="input site-creation-form_input"
+            label="activate business"
             type="checkbox"
             id="active"
             onChange={(e) => setIsActive(e.target.value)}
@@ -129,6 +137,7 @@ const SiteFormPage = () => {
         </label>
         <button
           className="button"
+          label="create the business"
           id="site-creation-form_button"
           type="submit"
         >
