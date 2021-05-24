@@ -79,11 +79,13 @@ a {
 }
 
 #profile-button-container {
+  align-items: center;
   display: flex;
 }
 
 #session-links {
   display: flex;
+  font-weight: 700;
   align-items: center;
 }
 

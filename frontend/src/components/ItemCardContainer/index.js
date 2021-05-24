@@ -56,7 +56,7 @@ const ItemCardContainer = ({ items }) => {
       </div>
       <button 
         className="button show-items-button" 
-        label="show items button" 
+        aria-label="show items button" 
         hidden={showButton} 
         onClick={handleShowClick}
         >
@@ -67,7 +67,7 @@ const ItemCardContainer = ({ items }) => {
       </div>
       <button 
         className="button hide-items-button" 
-        label="hide items button" 
+        aria-label="hide items button" 
         hidden={hideButton} 
         onClick={handleHideClick}
         >

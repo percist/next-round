@@ -32,10 +32,10 @@ function ProfileButton({ user }) {
 
   return (
     <div id="profile-button-container">
-      <h3>{user.username}</h3>
+      {user.username}
       <button 
         id="profile-button" 
-        label="show profile"
+        aria-label="show profile"
         onClick={openMenu}
         >
         <UserImage type="profile" user={user} />

@@ -67,7 +67,7 @@ const LoginForm = () => {
         <button
           className="button"
           id="button-login"
-          label="log in"
+          aria-label="log in"
           type="submit"
         >Log In
                 </button>

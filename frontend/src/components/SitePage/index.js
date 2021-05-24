@@ -55,7 +55,7 @@ const SitePage = () => {
             <button
               onClick={updateMenuHandler}
               className="button update-menu-button"
-              label="update your business' menu"
+              aria-label="update your business' menu"
             >
               {isUpdatingMenu && 'Done updating'}
               {!isUpdatingMenu && 'Update menu'}

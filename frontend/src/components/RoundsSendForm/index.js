@@ -197,7 +197,7 @@ const RoundsSendForm = () => {
                 className="button"
                 id="round-send-form_button"
                 type="submit"
-                label="buy round now"
+                aria-label="buy round now"
                 hidden={!buddySelected || !siteSelected || !itemSelected}
               >
                 Buy Now

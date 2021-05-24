@@ -16,7 +16,7 @@ const BuddiesSidebar = () => {
     <div className="buddies-sidebar-container">
       <div className="buddies-sidebar">
         <div className="buddies-sidebar_header">
-          <h2>Buddies</h2>
+          Buddies
         </div>
         <div className="buddies-sidebar_feed">
           {(Array.isArray(buddies) && buddies.map(buddy => {

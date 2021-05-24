@@ -93,7 +93,7 @@ const SearchResultsPage = () => {
               <ImFilesEmpty className="following-icon" />
               <button 
                 className="filter-button"
-                label="show all results"
+                aria-label="show all results"
                 >
                   All
               </button>
@@ -102,7 +102,7 @@ const SearchResultsPage = () => {
               <IoPersonCircleOutline className="following-icon" />
               <button 
                 className="filter-button"
-                label="show only people"
+                aria-label="show only people"
                 >
                   People
               </button>
@@ -111,7 +111,7 @@ const SearchResultsPage = () => {
               <IoStorefront className="following-icon" />
               <button 
                 className="filter-button"
-                label="show only businesses"
+                aria-label="show only businesses"
                 >
                   Businesses
               </button>
@@ -120,7 +120,7 @@ const SearchResultsPage = () => {
               <FaGlassCheers className="following-icon" />
               <button 
                 className="filter-button"
-                label="show only items"
+                aria-label="show only items"
                 >
                   Items
               </button>

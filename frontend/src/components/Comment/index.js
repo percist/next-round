@@ -48,7 +48,7 @@ const Comment = ({round, comment, comments, setComments}) => {
                   <button 
                     className="comment-button" 
                     onClick={e=>editClickHandler(e)}
-                    label="edit comment"
+                    aria-label="edit comment"
                     >
                       edit
                       </button>
@@ -56,7 +56,7 @@ const Comment = ({round, comment, comments, setComments}) => {
                   <button 
                     className="comment-button" 
                     onClick={e=>deleteClickHandler(e)}
-                    label="delete comment"
+                    aria-label="delete comment"
                     >
                       delete
                       </button>

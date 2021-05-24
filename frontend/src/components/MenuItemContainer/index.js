@@ -51,14 +51,14 @@ const MenuItemContainer = SortableElement(({ item, itemsToDisplay, setItemsToDis
       <div className="menu-item_buttons">
         <button
           className="menu-item_edit_button"
-          label="edit a menu item"
+          aria-label="edit a menu item"
           onClick={handleMenuEdit}
         >
           {isEditing? "Cancel" : "Edit"}
         </button>
         <button
           className="menu-item_delete_button"
-          label="delete a menu item"
+          aria-label="delete a menu item"
           onClick={handleMenuDelete}
         >
           Delete

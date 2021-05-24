@@ -59,14 +59,15 @@ const CommentForm = ({
         <UserImage user={user} />
         <div className="comment-form-editing">
         <textarea 
-          label="comment on a round posting"
+          aria-label="comment on a round posting"
+          placeholder="Add a comment..."
           className="comment-form-input input-field" 
           value={newComment} 
           onChange={e => setNewComment(e.target.value)} 
         />
         <button 
           hidden={!editing} 
-          label="cancel the comment"
+          aria-label="cancel the comment"
           className="comment-form-cancel-button" 
           onClick={()=>setEditing(false)}
           >
@@ -76,9 +77,12 @@ const CommentForm = ({
       <button 
         type="submit" 
         className="comment-form-submit-button"
-        label="post a comment"
+        aria-label="post a comment"
         >
-          <IoSend className="send-icon"/>
+          <IoSend 
+          className="send-icon"
+          alt="click to post a comment"
+          />
           </button>
     </form>
   </div>

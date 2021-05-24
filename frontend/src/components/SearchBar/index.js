@@ -41,7 +41,7 @@ const SearchBar = () => {
       <input
         id="search-bar"
         className="input"
-        label="search for items, sites, or people"
+        aria-label="search for items, sites, or people"
         maxLength={60}
         value={query}
         placeholder={errors.length > 0 ? errors[0] : "Search"}
@@ -50,13 +50,13 @@ const SearchBar = () => {
       <button 
         onClick={handleSearch} 
         id="search-button"
-        label="search button">
+        aria-label="search button">
         <FaSearch className="search-icon" />
       </button>
       <button 
         onClick={handleXClick} 
         id="clear-button"
-        label="clear search terms"
+        aria-label="clear search terms"
         >
         <MdClear className="search-icon" />
       </button>

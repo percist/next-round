@@ -36,7 +36,7 @@ const RoundsSidebar = () => {
       <button
         className="button"
         id="button-redeem-round"
-        label="reedem a round"
+        aria-label="reedem a round"
         onClick={redeemRoundClickHandler}
       >
         <div id="button-redeem-round-icon">
@@ -52,7 +52,7 @@ const RoundsSidebar = () => {
       <button
         className="button"
         id="button-buy-round"
-        label="buy a round"
+        aria-label="buy a round"
         onClick={buyRoundClickHandler}
       >
         <div id="button-buy-round-icon">
@@ -65,7 +65,7 @@ const RoundsSidebar = () => {
       <button
         className="button"
         id="button-signup-site"
-        label="sign up a new site"
+        aria-label="sign up a new site"
         onClick={() => setShowModal(true)}
       >
         <div id="button-signup-site-icon">
