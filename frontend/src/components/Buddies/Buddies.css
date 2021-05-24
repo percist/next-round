@@ -37,3 +37,11 @@
     padding: 0 5px;
     margin: 0 2px 0 5px;
 }
+
+.buddies-sidebar_header {
+  font-size: 20pt;
+  font-weight: 700;
+  /* position: sticky; */
+  top: 0px;
+  background-color: var(--main-bg-color);
+}

@@ -81,7 +81,7 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
           className="button redeem-button" 
           hidden={wasClicked} 
           onClick={handleRedeemClick} 
-          label="redeem round now"
+          aria-label="redeem round now"
           >
           Redeem Now
         </button>
@@ -98,7 +98,7 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
                 Write a post:
               </label>
               <textarea
-                label="post about your round"
+                aria-label="post about your round"
                 value={comment}
                 onChange={e => setComment(e.target.value)}
                 className="input rounds-cliam-form_input"
@@ -117,7 +117,7 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
             <button 
               type="submit" 
               className="button submit-button"
-              label="post your round"
+              aria-label="post your round"
               >
               Post your Round
                           </button>
@@ -127,7 +127,7 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
               className="button later-button" 
               hidden={!wasClicked} 
               onClick={handleNevermindClick} 
-              label="post round later"
+              aria-label="post round later"
               >
               Maybe Later
             </button>
