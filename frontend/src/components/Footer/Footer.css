@@ -1,6 +1,6 @@
 @media screen and (max-width: 600px){
 
-  .footer {
+  #footer {
       height: 80px;
       width: 100vw;
       position: fixed;
@@ -23,7 +23,7 @@
     margin: 0 1px;
   }
 
-  .footer h2 {
+  #footer-copywrite {
     font-size: 16px;
       background-color: var(--main-accent-color);
       color: var(--main-border-color);
@@ -32,7 +32,7 @@
 }
 @media screen and (min-width: 601px){
 
-  .footer {
+  #footer {
       height: 80px;
       width: 100vw;
       position: fixed;
@@ -51,9 +51,10 @@
       justify-content: space-evenly;
   }
 
-  .footer h2 {
+  #footer-copywrite {
       background-color: var(--main-accent-color);
       color: var(--main-border-color);
       margin-right: 40px;
+      font-size: 20pt;
   }
 }
