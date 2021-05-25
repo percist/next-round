@@ -16,7 +16,7 @@ const UserImage = ({ user, type }) => {
             id="user-image"
             src={user.imgUrl}
             onError={handleImageErrored}
-            alt="user"
+            alt={user.username}
           />}
       </>
     )
@@ -29,7 +29,7 @@ const UserImage = ({ user, type }) => {
           <img
             id="user-image"
             src={user.imgUrl}
-            alt="user"
+            alt={user.username}
           />}
       </a>
     );

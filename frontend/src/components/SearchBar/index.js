@@ -39,7 +39,7 @@ const SearchBar = () => {
         )}
       </ul>
       <input
-        id="search-bar"
+        id="search-bar-input"
         className="input"
         aria-label="search for items, sites, or people"
         maxLength={60}
