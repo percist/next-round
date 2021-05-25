@@ -23,17 +23,17 @@
   cursor: pointer;
 }
 
-#buddy-info a:link{
+.buddy-info a:link{
     color: var(--main-text-color);
     text-decoration: none;
 }
 
-#buddy-info a:visited{
+.buddy-info a:visited{
     color: var(--main-text-color);
     text-decoration: none;
 }
 
-#buddy-info {
+.buddy-info {
     padding: 0 5px;
     margin: 0 2px 0 5px;
     font-weight: 600;

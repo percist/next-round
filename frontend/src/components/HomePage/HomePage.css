@@ -89,7 +89,7 @@ Another break to hide buddies sidebar */
 }
 
 .rounds-sidebar_site_image,
-.rounds-sidebar #user-image {
+.rounds-sidebar .user-image {
   display: flex;
   align-items: center;
   margin: 8px 8px 8px -10px;

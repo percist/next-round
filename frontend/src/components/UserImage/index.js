@@ -13,7 +13,7 @@ const UserImage = ({ user, type }) => {
         {!user.imgUrl && <img src={spinner} alt="loading..."/>}
         {user.imgUrl &&
           <img
-            id="user-image"
+            className="user-image"
             src={user.imgUrl}
             onError={handleImageErrored}
             alt={user.username}
@@ -27,7 +27,7 @@ const UserImage = ({ user, type }) => {
         {!user.imgUrl && <img src={spinner} alt="loading..."/>}
         {user.imgUrl &&
           <img
-            id="user-image"
+            className="user-image"
             src={user.imgUrl}
             alt={user.username}
           />}
