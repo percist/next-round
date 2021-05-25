@@ -38,15 +38,15 @@
     margin: 0 5px;
 }
 
-#rounds-card-header_comment{
+.rounds-card-header_comment{
 padding: 0 18px 18px;
 }
 
-#rounds-card-info_site_name {
+.rounds-card-info_site_name {
     font-size: 20px;
     font-weight: 600;
 }
 
-#rounds-card-info_divider {
+.rounds-card-info_divider {
   width: 95%;
 }

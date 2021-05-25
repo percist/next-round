@@ -16,11 +16,11 @@ const UserImage = ({ user, type }) => {
           <img src={spinner} alt="loading..."/>
         </div>        {user.imgUrl &&
           <img
-            id="user-image"
+            className="user-image"
             src={user.imgUrl}
             onError={handleImageErrored}
+            alt={user.username}
             onLoad={() => setLoading(false)}
-            alt="user"
           />}
       </>
     )
@@ -33,9 +33,9 @@ const UserImage = ({ user, type }) => {
         </div>
         {user.imgUrl &&
           <img
-            id="user-image"
+            className="user-image"
             src={user.imgUrl}
-            alt="user"
+            alt={user.username}
             onError={handleImageErrored}
             onLoad={() => setLoading(false)}
           />}

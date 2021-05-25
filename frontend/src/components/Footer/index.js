@@ -4,7 +4,7 @@ import './Footer.css';
 
 const Footer = () => {
   return (
-    <div className="footer">
+    <div id="footer">
       <div className="icons">
         <SocialIcon 
           className="icon" 
@@ -23,7 +23,9 @@ const Footer = () => {
           alt="link to AngelList profile"
           url="https://angel.co/u/chris-clark-49" />
       </div>
-      <h2>Copyright Chris Clark, 2021</h2>
+      <div id="footer-copywrite">
+        Copyright Chris Clark, 2021
+      </div>
     </div >
   )
 };
