@@ -36,12 +36,15 @@
 #buddy-info {
     padding: 0 5px;
     margin: 0 2px 0 5px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
 }
 
 .buddies-sidebar_header {
+  color: var(--main-text-color);
   font-size: 20pt;
   font-weight: 700;
-  /* position: sticky; */
   top: 0px;
   background-color: var(--main-bg-color);
 }
