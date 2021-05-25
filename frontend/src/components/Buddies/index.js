@@ -8,9 +8,7 @@ const Buddies = ({ buddy }) => {
     <div className="buddy">
       <UserImage user={buddy} />
       <div id='buddy-info'>
-        <h3>
           <a href={`/users/${buddy.id}`} >{buddy.username}</a>
-        </h3>
       </div>
     </div>
   )
