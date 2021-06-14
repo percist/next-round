@@ -31,14 +31,14 @@ const ItemCardContainer = ({ items }) => {
   const overflow = () => {
     if (!!overflowItemsShown) {
       return (
-        <>
+        <div>
           {!Array.isArray(items) && <img src={spinner} alt="loading..."/>}
           {Array.isArray(items) && items.filter(item=> item.isActive).slice(5).map(item => {
             if (item) {
               return <ItemCard item={item} key={item.name} />
             } else return null
           })}
-        </>
+        </div>
       )
     } else {
       return null

@@ -8,12 +8,13 @@
 }
 
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 0px;
   background-color: var(--secondary-bg-color);
   color: var(--main-text-color);
   margin: 0px;
   height: 60px;
+  width: 100vw;
   display: flex;
   justify-content: space-between;
   align-items: center;

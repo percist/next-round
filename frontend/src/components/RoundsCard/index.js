@@ -21,7 +21,7 @@ const RoundsCard = ({ user, site, item, round, type }) => {
   if (type === "user") user = receiver;
   
   return (
-    <>
+    <div>
     {user && site && round && item && 
       <div className="rounds-card" >
         <div className="rounds-card-header">
@@ -79,7 +79,7 @@ const RoundsCard = ({ user, site, item, round, type }) => {
             <CommentFeed round={round} comments={comments} setComments={setComments}/>
           </div>
       </div>}
-    </>
+    </div>
   )
 };
 

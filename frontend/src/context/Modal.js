@@ -13,12 +13,12 @@ export function ModalProvider({ children }) {
   }, [])
 
   return (
-    <>
+    <div>
       <ModalContext.Provider value={value}>
         {children}
       </ModalContext.Provider>
       <div ref={modalRef} />
-    </>
+    </div>
   );
 }
 

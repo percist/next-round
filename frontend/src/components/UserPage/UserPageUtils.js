@@ -1,3 +1,4 @@
+import React from "react";
 import { FaUserFriends } from 'react-icons/all';
 import FollowButton from '../FollowButton';
 

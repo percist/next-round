@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState} from 'react';
 import spinner from  '../../Spinner-1s-44px.gif'
 import './UserImage.css';
 import { IoPersonCircleOutline } from 'react-icons/all';
@@ -11,7 +11,7 @@ const UserImage = ({ user, type }) => {
 
   if (type === "profile") {
     return (
-      <>
+      <div>
         <div hidden={!loading} className="user-placeholder">
           <img src={spinner} alt="loading..."/>
         </div>        {user.imgUrl &&
@@ -22,10 +22,9 @@ const UserImage = ({ user, type }) => {
             alt={user.username}
             onLoad={() => setLoading(false)}
           />}
-      </>
+      </div>
     )
   } else {
-
     return (
       <a href={`/users/${user.id}`} >
         <div hidden={!loading} className="user-placeholder">

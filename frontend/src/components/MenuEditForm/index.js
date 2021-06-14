@@ -29,6 +29,7 @@ const MenuEditForm = ({ siteId, item, setIsEditing, itemsToDisplay, setItemsToDi
         if (res.data && res.data.errors) setErrors(res.data.errors);
       })
     
+      // eslint-disable-next-line
     setItemsToDisplay([...itemsToDisplay.filter(itemDisplayed => itemDisplayed.id != item.id), newItem].sort((a,b)=> a.order < b.order));
     setIsEditing(false);
   }

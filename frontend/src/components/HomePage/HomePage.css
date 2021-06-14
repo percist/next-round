@@ -147,8 +147,17 @@ Another break to hide buddies sidebar */
   background-color: var(--main-bg-color);
   color: var(--main-text-color);
 }
+.buddies-sidebar-container{
+  margin-top: 80px;
+}
 
+.buddies-sidebar_feed {
+  padding-bottom: 100px;
+}
 .buddies-sidebar_header {
-  padding: 0 15px;
+  position: fixed;
+  top: 60px;
+  width: 100%;
+  padding: 30px 15px 10px;
 }
 

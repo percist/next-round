@@ -17,6 +17,7 @@ const MenuItemContainer = SortableElement(({ item, itemsToDisplay, setItemsToDis
         .catch(res => {
           if (res.data && res.data.errors) setErrors(res.data.errors);
         })
+        // eslint-disable-next-line
       setItemsToDisplay([...itemsToDisplay.filter(setItem => setItem.id != item.id)].sort((a,b)=> a.id < b.id));
     }
   }

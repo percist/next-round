@@ -81,9 +81,9 @@ const Comment = ({round, comment, comments, setComments}) => {
   }
 
   return (
-    <>
+    <div>
       {commentEditSwapper()}
-    </>
+    </div>
   )
 };
 

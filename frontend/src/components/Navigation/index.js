@@ -32,7 +32,7 @@ function Navigation({ isLoaded }) {
   };
 
   return (
-    <>
+    <div>
       <ul className='navbar'>
         <li>
           <img src={image} alt="Next Round's on Me" />
@@ -41,7 +41,7 @@ function Navigation({ isLoaded }) {
           {isLoaded && sessionLinks}
         </li>
       </ul>
-    </>
+    </div>
   )
 };
 

@@ -14,7 +14,7 @@ const UserRoundsFeed = ({ roundsArray }) => {
   }, [roundsArray]);
 
   return (
-    <>
+    <div>
       {!Array.isArray(roundsArray) && <img src={spinner} alt="loading..."/>}
       {Array.isArray(roundsArray) && items && roundsArray.sort((a,b)=> new Date(b.createdAt) - new Date(a.createdAt)).map((round, i) => {
         return (
@@ -32,7 +32,7 @@ const UserRoundsFeed = ({ roundsArray }) => {
           </div>
         );
       })}
-    </>
+    </div>
   );
 };
 

@@ -20,9 +20,9 @@ function HomePageContainer({ isLoaded }) {
 }
 
   return (
-    <>
+    <div>
       {isLoaded && homePageSelector()}
-    </>
+    </div>
     )
 };
 

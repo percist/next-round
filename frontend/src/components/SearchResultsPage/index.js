@@ -34,7 +34,7 @@ const SearchResultsPage = () => {
 
   const resultsFilter = () => {
     return (
-      <>
+      <div>
         {!resultsToDisplay && "no results to display"}
         {resultsToDisplay && buddyIds && filter === "all" && resultsToDisplay.map(result => {
           if (result.username) {
@@ -69,7 +69,7 @@ const SearchResultsPage = () => {
             return null
           }
         })}
-      </>
+      </div>
     )
   }
   if (errors.length > 0) {

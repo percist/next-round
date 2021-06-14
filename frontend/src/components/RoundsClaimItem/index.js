@@ -29,6 +29,7 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
     setComment("");
     setImage(null);
     setWasClaimed(true);
+    // eslint-disable-next-line
     await setRoundsToDisplay([...roundsToDisplay.filter(setRound => setRound.id != id)])
   }
 
@@ -46,6 +47,7 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
       const roundSender = await response.json()
       setSender(roundSender)
     }
+    // eslint-disable-next-line
     if (Array.isArray(round.Items) && round.Items[0] != undefined) {
       setId(round.id)
       setItem(round.Items[0]);
@@ -68,10 +70,10 @@ const RoundsClaimRound = ({ round, roundsToDisplay, setRoundsToDisplay }) => {
             <div id="rounds-claim-card_info_round">
               {!item && !site && <img src={spinner} alt="loading..."/>}
               {item && site &&
-                <>
+                <div>
                   <h2>{item.name}</h2>
                   <a href={`/sites/${site.id}`}><h3>at {site.name}</h3></a>
-                </>}
+                </div>}
             </div>
             <div id="rounds-claim-card_info_sender" >
               <UserImage user={sender} /> {sender.username}

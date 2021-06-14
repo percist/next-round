@@ -82,12 +82,14 @@ function reducer(state = initialState, action) {
       newState = [...state, action.payload]
       return newState;
     case REMOVE_ONE_ITEM:
+      // eslint-disable-next-line
       newState = [...state.filter(item => item.id != action.payload.id)];
       return newState;
     case SET_ALL_ITEMS:
       newState = action.payload;
       return newState;
     case UPDATE_ONE_ITEM:
+      // eslint-disable-next-line
       newState = [...state.filter(item => item.id != action.payload.id), action.payload];
       return newState;
     default:

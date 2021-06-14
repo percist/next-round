@@ -9,7 +9,6 @@ import { checkIsOwner } from './SitePageUtils';
 import MenuPage from "../MenuPage";
 import MenuForm from "../MenuForm";
 import headerImg from '../../DefaultHeader.png';
-import largeSpinner from '../../Spinner-1s-617px.gif';
 import "./SitePage.css";
 
 const SitePage = () => {
