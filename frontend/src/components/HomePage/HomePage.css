@@ -32,7 +32,7 @@ Another break to hide buddies sidebar */
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 31px;
+  margin-top: 60px;
   padding: 20px;
   height: 500px;
   width: 300px;
@@ -148,7 +148,7 @@ Another break to hide buddies sidebar */
   color: var(--main-text-color);
 }
 .buddies-sidebar-container{
-  margin-top: 80px;
+  margin-top: 65px;
 }
 
 .buddies-sidebar_feed {
@@ -158,6 +158,7 @@ Another break to hide buddies sidebar */
   position: fixed;
   top: 60px;
   width: 100%;
-  padding: 30px 15px 10px;
+  padding: 30px 15px 0;
+  box-shadow: var(--main-box-shadow);
 }
 
