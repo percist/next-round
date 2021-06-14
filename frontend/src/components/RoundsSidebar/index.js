@@ -28,23 +28,23 @@ const RoundsSidebar = () => {
   
   return (
     <div hidden={sitesOwned} className="rounds-sidebar">
+      <div className="rounds-sidebar-info">
       <div className="rounds-sidebar_user">
         <UserImage user={user} />
         {user.username}
       </div>
-
       <button
         className="button"
         id="button-redeem-round"
         aria-label="reedem a round"
         onClick={redeemRoundClickHandler}
-      >
+        >
         <div id="button-redeem-round-icon">
           <img
             id="button-redeem-round-image"
             src="https://img.icons8.com/fluent/96/000000/beer-glass.png"
             alt="beer"
-          />
+            />
           {numRounds}
         </div>
         Claim a Round
@@ -54,11 +54,11 @@ const RoundsSidebar = () => {
         id="button-buy-round"
         aria-label="buy a round"
         onClick={buyRoundClickHandler}
-      >
+        >
         <div id="button-buy-round-icon">
           <FaGlassCheers
             id="button-buy-round-image"
-          />
+            />
         </div>
         Send a Round
       </button>
@@ -67,21 +67,21 @@ const RoundsSidebar = () => {
         id="button-signup-site"
         aria-label="sign up a new site"
         onClick={() => setShowModal(true)}
-      >
+        >
         <div id="button-signup-site-icon">
           <IoStorefront
             id="button-signup-site-image"
-          />
+            />
         </div>
         Create Business
       </button>
+      </div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <SiteFormPage />
         </Modal>
       )}
       <div className="rounds-sidebar_sites-owned">
-        <hr />
         Your Businesses
         {!Array.isArray(sitesOwned.sites) && <img src={spinner} alt="loading..."/>}
         {Array.isArray(sitesOwned.sites) && sitesOwned.sites.map(owner => {

@@ -32,8 +32,6 @@ Another break to hide buddies sidebar */
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px;
-  padding: 20px;
   height: 500px;
   width: 300px;
   justify-content: space-around;
@@ -41,6 +39,18 @@ Another break to hide buddies sidebar */
   font-weight: 400;
   background-color: var(--main-bg-color);
   border-radius: 6pt;
+}
+
+.rounds-sidebar-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin-top: 60px;
+  padding: 20px;
+  box-shadow: var(--main-box-shadow);
+
 }
 
 .rounds-sidebar_site-link {
@@ -61,10 +71,10 @@ Another break to hide buddies sidebar */
 .rounds-sidebar .button {
   color: var(--main-text-color);
   justify-self: left;
-  margin: -10px;
-  font-size: 20px;
+  /* margin: -10px; */
+  font-size: 19px;
   background-color: var(--main-bg-color);
-  height: 60px;
+  height: 50px;
 }
 
 .rounds-sidebar_image,
@@ -125,6 +135,7 @@ Another break to hide buddies sidebar */
 
 .rounds-sidebar_sites-owned {
   font-size: 22px;
+  padding-top: 20px;
 }
 
 .user-page-site_feed {
